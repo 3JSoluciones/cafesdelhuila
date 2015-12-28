@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Cafes Del Huila<br><p style="color: #449d44; font-size: 23px;">Laravel 5.. MASTER</p></div>
             </div>
         </div>
     </body>
