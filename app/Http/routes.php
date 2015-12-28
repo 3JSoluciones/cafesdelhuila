@@ -51,6 +51,10 @@ Route::get('departamentos/nuevo', 'DepartamentosController@nuevo');
 Route::get('municipios/nuevo', 'MunicipiosController@nuevo');
 /*fin municipios*/
 
+/*inicio lotes*/
+Route::get('lotes/nuevo', 'LotesController@nuevo');
+/*fin lotes*/
+
 /*inicio variedades*/
 Route::get('variedades/nueva', 'VariedadesController@nueva');
 /*fin variedades*/

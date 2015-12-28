@@ -6,13 +6,11 @@
 
     <div class="row">
         <div class="col-lg-3">
-
             <div class="form-group">
                 <label for="input">Nombre</label><br>
                 <input type="text" class="k-textbox" id="nombre" name="nombre" required="required"
                        placeholder="Ingrese el Nombre" style="width: 100%">
             </div>
-
         </div>
     </div>
 
