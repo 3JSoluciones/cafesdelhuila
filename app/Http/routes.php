@@ -59,12 +59,21 @@ Route::get('lotes/nuevo', 'LotesController@nuevo');
 Route::get('variedades/nueva', 'VariedadesController@nueva');
 /*fin variedades*/
 
-
 /*inicio productores*/
 Route::get('productores/nuevo', 'ProductoresController@nuevo');
 /*fin productores*/
 
+/*inicio certificacionesProductores*/
+Route::get('certificacionesProductores/nueva', 'CertificacionesProductoresController@nueva');
+/*fin certificacionesProductores*/
 
+/*inicio fincas*/
+Route::get('fincas/nueva', 'FincasController@nueva');
+/*fin fincas*/
+
+/*inicio medios*/
+Route::get('medios/nuevo', 'MediosController@nuevo');
+/*fin medios*/
 
 
 
