@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AcidezTableSeeder' => $baseDir . '/database/seeds/AcidezTableSeeder.php',
+    'AromasTableSeeder' => $baseDir . '/database/seeds/AromasTableSeeder.php',
+    'CertificacionesTableSeeder' => $baseDir . '/database/seeds/CertificacionesTableSeeder.php',
     'CreateAcidezTable' => $baseDir . '/database/migrations/2015_12_22_134728_create_acidez_table.php',
     'CreateAromasTable' => $baseDir . '/database/migrations/2015_12_22_134932_create_aromas_table.php',
     'CreateCertificacionesProductoresTable' => $baseDir . '/database/migrations/2015_12_22_141143_create_certificaciones_productores_table.php',
@@ -24,6 +27,7 @@ return array(
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateVariedadesTable' => $baseDir . '/database/migrations/2015_12_22_135927_create_variedades_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DepartamentosTableSeeder' => $baseDir . '/database/seeds/DepartamentosTableSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
@@ -96,6 +100,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'MunicipiosTableSeeder' => $baseDir . '/database/seeds/MunicipiosTableSeeder.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -529,4 +534,6 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'TiposBeneficiosTableSeeder' => $baseDir . '/database/seeds/TiposBeneficiosTableSeeder.php',
+    'TiposSecadosTableSeeder' => $baseDir . '/database/seeds/TiposSecadosTableSeeder.php',
 );
