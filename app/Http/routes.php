@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.main');
 });
 
 /*inicio aromas*/
@@ -44,7 +44,7 @@ Route::get('tiposBeneficios/nuevo', 'TiposBeneficiosController@nuevo');
 /*fin tiposBeneficios*/
 
 /*inicio departamentos*/
-Route::get('departamentos/nuevo', 'DepartamentosController@nuevo');
+Route::resource('departamentos', 'DepartamentosController');
 /*fin departamentos*/
 
 /*inicio municipios*/

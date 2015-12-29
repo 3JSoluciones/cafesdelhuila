@@ -32,6 +32,10 @@
     <script src="/bower_components/toastr/toastr.js"></script>
     <!-- fin js -->
 
+    <script src="../js/scrip.js"></script>
+
+    @yield('page-js-code')
+
 </body>
 </html>
 

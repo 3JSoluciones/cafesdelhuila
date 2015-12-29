@@ -8,4 +8,5 @@ class Departamento extends Model
 {
     //model departamento
     protected $table = 'departamentos';
+    protected $fillable = ['nombre'];
 }
