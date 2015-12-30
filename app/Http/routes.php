@@ -67,13 +67,13 @@ Route::resource('certificacionesProductores', 'CertificacionesProductoresControl
 Route::resource('fincas', 'FincasController');
 /*fin fincas*/
 
-
-
-
-
 /*inicio lotes*/
-Route::get('lotes/nuevo', 'LotesController@nuevo');
+Route::resource('lotes', 'LotesController');
 /*fin lotes*/
+
+
+
+
 
 /*inicio medios*/
 Route::get('medios/nuevo', 'MediosController@nuevo');

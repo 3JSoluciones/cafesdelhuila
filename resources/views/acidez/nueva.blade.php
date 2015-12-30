@@ -13,7 +13,7 @@
     </div>
     <p><label>REGISTRO DE ACIDEZ</label></p>
 
-    <form>
+    <form id="formularioAcidez">
         <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
 
     <div class="row">
@@ -55,6 +55,7 @@
                 }
             });
         });
+
 
     </script>
 @stop

@@ -28,4 +28,21 @@ class Lote extends Model
     public function tipo_secado() {
         return $this->hasOne('App\Tipo_Secado','id','tipo_secado_id');
     }
+
+    protected $fillable =
+        [
+          'Finca_id',
+          'Variedad1_id',
+          'Variedad2_id',
+          'Variedad3_id',
+          'Tipo_beneficio_id',
+          'Tipo_secado_id',
+          'Cantidad_arboles_variedad1',
+          'Cantidad_arboles_variedad2',
+          'Cantidad_arboles_variedad3',
+          'Nombre',
+          'Area',
+          'Perfil'
+        ];
+
 }

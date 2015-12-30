@@ -5,6 +5,8 @@
         <!-- estilos -->
         <!-- bootstrap -->
         <link href="/bower_components/bootswatch/cerulean/bootstrap.css" rel="stylesheet">
+        <link href="/bower_components/bootstrap/dist/css/bootstrap2.min.css" rel="stylesheet">
+        <link href="/bower_components/bootstrap/dist/css/bootstrapValidator.min.css" rel="stylesheet">
         <!-- fin de los estilos -->
 
     </head>
@@ -28,6 +30,7 @@
     <script src="/bower_components/jquery/dist/jquery-1.11.2.min.js"></script>
     <!-- bootstrap -->
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Toastr -->
     <script src="/bower_components/toastr/toastr.js"></script>
     <!-- fin js -->
@@ -36,7 +39,7 @@
 
         $(document).ready(function () {
 
-            //configuracion de las notificaciones
+            //configuracion d <scs notificaciones
             function msg() {
 
                 toastr.options = {
