@@ -8,4 +8,5 @@ class Municipio extends Model
 {
     //model municipios
     protected $table = 'municipios';
+    protected $fillable = ['nombre'];
 }

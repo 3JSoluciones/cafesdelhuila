@@ -13,6 +13,9 @@
     </div>
     <p><label>REGISTRO DE AROMAS</label></p>
 
+    <form>
+        <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -25,8 +28,35 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input type="button" value="Agregar Aroma" class="btn btn-primary btn-sm">
+            <input type="button" value="Agregar Aroma" class="btn btn-primary btn-sm"
+                    id="btn-agregar-aromas">
         </div>
     </div>
+
+    </form>
+
+    @section('page-js-code')
+
+    <script type="application/javascript">
+
+        $("#btn-agregar-aromas").click(function(){
+            var nombre = $("#nombre").val();
+            $.ajax({
+                url: 'http://cafesdelhuila.com/aromas',
+                data:{
+                    nombre:nombre,
+                },
+                headers:{'X-CSRF-TOKEN': toke},
+                dataType:'json',
+                type:'POST',
+                success:function(data) {
+                    toastr.info("El aroma " + nombre + " se agrego con exito.","AROMAS");
+                    $("#nombre").val('');
+                }
+            });
+        });
+
+    </script>
+    @stop
 
 @stop

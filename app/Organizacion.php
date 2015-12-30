@@ -8,4 +8,5 @@ class Organizacion extends Model
 {
     //model organizaciones
     protected $table = 'organizaciones';
+    protected $fillable = ['nombre'];
 }

@@ -8,4 +8,5 @@ class Certificacion extends Model
 {
     //model certificaciones
     protected $table = 'certificaciones';
+    protected $fillable = ['nombre'];
 }

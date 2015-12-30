@@ -32,9 +32,40 @@
     <script src="/bower_components/toastr/toastr.js"></script>
     <!-- fin js -->
 
-    <script src="../js/scrip.js"></script>
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+
+            //configuracion de las notificaciones
+            function msg() {
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "300",
+                    "timeOut": "3000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+            };
+
+
+        });
+
+    </script>
 
     @yield('page-js-code')
+
 
 </body>
 </html>

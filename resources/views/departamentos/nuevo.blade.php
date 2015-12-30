@@ -33,5 +33,29 @@
         </div>
     </form>
 
+    @section('page-js-code')
+
+    <script type="application/javascript">
+
+        $("#btn-agregar-departamento").click(function(){
+            var nombre = $("#nombre").val();
+            $.ajax({
+                url: 'http://cafesdelhuila.com/departamentos',
+                data:{
+                    nombre:nombre,
+                },
+                headers:{'X-CSRF-TOKEN': toke},
+                dataType:'json',
+                type:'POST',
+                success:function(data) {
+                    toastr.info("El departamento " + nombre + " se agrego con exito.","DEPARTAMENTOS");
+                    $("#nombre").val('');
+                }
+            });
+        });
+
+
+    </script>
+    @stop
 
 @stop

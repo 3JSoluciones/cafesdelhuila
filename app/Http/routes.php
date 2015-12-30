@@ -15,41 +15,47 @@ Route::get('/', function () {
     return view('layouts.main');
 });
 
-/*inicio aromas*/
-Route::get('aromas/nuevo', 'AromasController@nuevo');
-/*fin aromas*/
-
-/*inicio acidez*/
-Route::get('acidez/nueva', 'AcidezController@nueva');
-/*fin acidez*/
-
-/*inicio sabores*/
-Route::get('sabores/nuevo', 'SaboresController@nuevo');
-/*fin sabores*/
-
-/*inicio organizaciones*/
-Route::get('organizaciones/nueva', 'OrganizacionesController@nueva');
-/*fin organizaciones*/
-
-/*inicio certificaciones*/
-Route::get('certificaciones/nueva', 'CertificacionesController@nueva');
-/*fin certificaciones*/
-
-/*inicio tiposSecados*/
-Route::get('tiposSecados/nuevo', 'TiposSecadosController@nuevo');
-/*fin tiposSecados*/
-
-/*inicio tiposBeneficios*/
-Route::get('tiposBeneficios/nuevo', 'TiposBeneficiosController@nuevo');
-/*fin tiposBeneficios*/
-
 /*inicio departamentos*/
 Route::resource('departamentos', 'DepartamentosController');
 /*fin departamentos*/
 
 /*inicio municipios*/
-Route::get('municipios/nuevo', 'MunicipiosController@nuevo');
+Route::resource('municipios', 'MunicipiosController');
 /*fin municipios*/
+
+/*inicio certificaciones*/
+Route::resource('certificaciones', 'CertificacionesController');
+/*fin certificaciones*/
+
+/*inicio organizaciones*/
+Route::resource('organizaciones', 'OrganizacionesController');
+/*fin organizaciones*/
+
+/*inicio tiposBeneficios*/
+Route::resource('tiposBeneficios', 'TiposBeneficiosController');
+/*fin tiposBeneficios*/
+
+/*inicio sabores*/
+Route::resource('sabores', 'SaboresController');
+/*fin sabores*/
+
+/*inicio acidez*/
+Route::resource('acidez', 'AcidezController');
+/*fin acidez*/
+
+/*inicio aromas*/
+Route::resource('aromas', 'AromasController');
+/*fin aromas*/
+
+/*inicio tiposSecados*/
+Route::resource('tiposSecados', 'TiposSecadosController');
+/*fin tiposSecados*/
+
+
+
+
+
+
 
 /*inicio lotes*/
 Route::get('lotes/nuevo', 'LotesController@nuevo');
