@@ -51,7 +51,21 @@ Route::resource('aromas', 'AromasController');
 Route::resource('tiposSecados', 'TiposSecadosController');
 /*fin tiposSecados*/
 
+/*inicio variedades*/
+Route::resource('variedades', 'VariedadesController');
+/*fin variedades*/
 
+/*inicio productores*/
+Route::resource('productores', 'ProductoresController');
+/*fin productores*/
+
+/*inicio certificacionesProductores*/
+Route::resource('certificacionesProductores', 'CertificacionesProductoresController');
+/*fin certificacionesProductores*/
+
+/*inicio fincas*/
+Route::resource('fincas', 'FincasController');
+/*fin fincas*/
 
 
 
@@ -60,22 +74,6 @@ Route::resource('tiposSecados', 'TiposSecadosController');
 /*inicio lotes*/
 Route::get('lotes/nuevo', 'LotesController@nuevo');
 /*fin lotes*/
-
-/*inicio variedades*/
-Route::get('variedades/nueva', 'VariedadesController@nueva');
-/*fin variedades*/
-
-/*inicio productores*/
-Route::get('productores/nuevo', 'ProductoresController@nuevo');
-/*fin productores*/
-
-/*inicio certificacionesProductores*/
-Route::get('certificacionesProductores/nueva', 'CertificacionesProductoresController@nueva');
-/*fin certificacionesProductores*/
-
-/*inicio fincas*/
-Route::get('fincas/nueva', 'FincasController@nueva');
-/*fin fincas*/
 
 /*inicio medios*/
 Route::get('medios/nuevo', 'MediosController@nuevo');

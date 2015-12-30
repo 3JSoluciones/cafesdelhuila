@@ -13,4 +13,6 @@ class Productor extends Model
     public function organizacion() {
         return $this->hasOne('App\Productor','id','productor_id');
     }
+
+    protected $fillable = ['Organizacion_id','nombre','Telefono','Email'];
 }

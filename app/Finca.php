@@ -19,4 +19,20 @@ class Finca extends Model
     public function municipio() {
         return $this->hasOne('App\Municipio','id','municipio_id');
     }
+
+    protected $fillable =
+        [
+            'Productor_id',
+            'Departamento_id',
+            'Municipio_id',
+            'Corregimiento',
+            'Vereda',
+            'Finca',
+            'Coordenadas',
+            'Altitud',
+            'Cosecha_comienza',
+            'Cosecha_termina',
+            'Mitaca_comienza',
+            'Mitaca_termina'
+        ];
 }

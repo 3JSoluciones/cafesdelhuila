@@ -19,4 +19,6 @@ class Variedad extends Model
     public function sabor() {
         return $this->hasOne('App\Sabor','id','sabor_id');
     }
+
+    protected $fillable = ['Acidez_id','Aroma_id','Sabor_id','nombre','Variedadescol'];
 }
