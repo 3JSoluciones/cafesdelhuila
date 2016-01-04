@@ -30,7 +30,7 @@
         <div class="col-lg-12 text-right">
             <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-municipio">
-            <input type="button" value="Agregar Municipio"
+            <input type="button" value="Agregar Municipio" accion="1"
                    class="btn btn-primary btn-sm" id="btn-agregar-municipio">
         </div>
     </div>

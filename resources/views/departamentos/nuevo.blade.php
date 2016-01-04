@@ -115,7 +115,6 @@
                     dataType:'json',
                     type:'PUT',
                     success:function(data) {
-                        toastr.info("El departamento " + nombre + " se actualizo con exito.","DEPARTAMENTOS");
                         self.location="http://cafesdelhuila.com/departamentos/create";
                     }
                 });
@@ -136,7 +135,7 @@
 
         });
 
-        //btn eliminar departamentos
+        //btn eliminar
         $(document).on('click','.btn_eliminar_departamento', function () {
 
             $("#id_depart").val($(this).attr('id_depart'));
@@ -172,7 +171,7 @@
             $("#btn-agregar-departamento").attr('accion','1');
             $("#nombre").val('');
 
-        })
+        });
 
 
     </script>
