@@ -26,9 +26,7 @@ class CertificacionesProductoresController extends Controller
     {
         if ($request->ajax( )) {
             Certificacion_Productor::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

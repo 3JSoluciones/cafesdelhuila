@@ -71,12 +71,8 @@ Route::resource('fincas', 'FincasController');
 Route::resource('lotes', 'LotesController');
 /*fin lotes*/
 
-
-
-
-
 /*inicio medios*/
-Route::get('medios/nuevo', 'MediosController@nuevo');
+Route::resource('medios', 'MediosController');
 /*fin medios*/
 
 

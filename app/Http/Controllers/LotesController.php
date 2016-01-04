@@ -32,9 +32,7 @@ class LotesController extends Controller
     {
         if ($request->ajax( )) {
             Lote::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

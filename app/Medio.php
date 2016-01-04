@@ -13,4 +13,5 @@ class Medio extends Model
     public function productor() {
         return $this->hasOne('App\Productor','id','productor_id');
     }
+    protected $fillable = ['Productor_id','nombre'];
 }

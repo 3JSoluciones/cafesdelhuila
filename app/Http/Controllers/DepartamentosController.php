@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class DepartamentosController extends Controller
 {
@@ -18,11 +19,10 @@ class DepartamentosController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->ajax( )) {
-                Departamento::create($request->all());
-                return response()->json ([
-                         "mensanje"=>"registrado"
-                ]);
-        }
+        if ($request->ajax()) {
+           Departamento::create($request->all());
+           return response()->json (["mensanje" => "registrado"]);
+       }
+
     }
 }

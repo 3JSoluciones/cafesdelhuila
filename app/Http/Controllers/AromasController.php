@@ -19,9 +19,7 @@ class AromasController extends Controller
     {
         if ($request->ajax( )) {
             Aroma::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

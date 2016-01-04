@@ -23,9 +23,7 @@ class ProductoresController extends Controller
     {
         if ($request->ajax( )) {
             Productor::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

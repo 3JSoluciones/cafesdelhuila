@@ -29,9 +29,7 @@ class FincasController extends Controller
     {
         if ($request->ajax( )) {
             Finca::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

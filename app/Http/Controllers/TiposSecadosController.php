@@ -19,9 +19,7 @@ class TiposSecadosController extends Controller
     {
         if ($request->ajax( )) {
             Tipo_Secado::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

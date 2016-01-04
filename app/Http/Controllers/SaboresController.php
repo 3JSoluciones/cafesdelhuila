@@ -19,9 +19,7 @@ class SaboresController extends Controller
     {
         if ($request->ajax( )) {
             Sabor::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

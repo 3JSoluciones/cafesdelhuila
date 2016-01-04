@@ -19,9 +19,7 @@ class OrganizacionesController extends Controller
     {
         if ($request->ajax( )) {
             Organizacion::create($request->all());
-            return response()->json ([
-                "mensanje"=>"registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

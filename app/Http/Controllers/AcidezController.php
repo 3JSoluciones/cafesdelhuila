@@ -19,9 +19,7 @@ class AcidezController extends Controller
     {
         if ($request->ajax( )) {
             Acidez::create($request->all());
-            return response()->json ([
-                "mensanje" => "registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

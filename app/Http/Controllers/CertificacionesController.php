@@ -19,9 +19,7 @@ class CertificacionesController extends Controller
     {
         if ($request->ajax( )) {
             Certificacion::create($request->all());
-            return response()->json ([
-                "mensanje"=>"registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 

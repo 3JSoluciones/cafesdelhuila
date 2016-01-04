@@ -19,9 +19,7 @@ class TiposBeneficiosController extends Controller
     {
         if ($request->ajax( )) {
             Tipo_Beneficio::create($request->all());
-            return response()->json ([
-                "mensanje"=>"registrado"
-            ]);
+            return response()->json (["mensanje" => "registrado"]);
         }
     }
 
