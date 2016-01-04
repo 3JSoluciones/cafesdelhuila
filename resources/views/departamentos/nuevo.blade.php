@@ -79,7 +79,7 @@
             }
         });
 
-        //btn agregar y actualizar departamentos
+        //btn agregar y actualizar
         $("#btn-agregar-departamento").click(function(){
 
             var nombre  = $("#nombre").val();
@@ -123,7 +123,7 @@
 
         });
 
-        //btn actualizar departamentos
+        //btn actualizar
         $(document).on('click','.btn_actualizar_departamento', function () {
 
             $("#btn-agregar-departamento").val('Actualizar departamento');

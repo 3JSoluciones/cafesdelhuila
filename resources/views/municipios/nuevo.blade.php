@@ -80,12 +80,7 @@
                 }
             });
 
-            $("#btn-agregar-municipio").click(function(){
-                var nombre = $("#nombre").val();
-
-            });
-
-            //btn agregar y actualizar departamentos
+            //btn agregar y actualizar
             $("#btn-agregar-municipio").click(function(){
 
                 var nombre  = $("#nombre").val();
@@ -128,7 +123,7 @@
 
             });
 
-            //btn actualizar departamentos
+            //btn actualizar
             $(document).on('click','.btn_actualizar_municipio', function () {
 
                 $("#btn-agregar-municipio").val('Actualizar municipio');
@@ -140,7 +135,7 @@
 
             });
 
-            //btn eliminar departamentos
+            //btn eliminar
             $(document).on('click','.btn_eliminar_municipio', function () {
 
                 $("#id_municipio").val($(this).attr('id_municipio'));
@@ -176,7 +171,7 @@
                 $("#btn-agregar-municipio").attr('accion','1');
                 $("#nombre").val('');
 
-            })
+            });
 
         </script>
 

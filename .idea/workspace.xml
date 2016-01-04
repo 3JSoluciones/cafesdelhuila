@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccf084e-2789-4d66-a2db-cf0bda0b7724" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CertificacionesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CertificacionesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cafesdelhuila.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,14 +28,14 @@
     <favorites_list name="cafesdelhuila" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.36678404">
       <split-first>
         <leaf>
-          <file leaf-file-name="nuevo.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php">
+          <file leaf-file-name="MunicipiosController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MunicipiosController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.39937106">
-                  <caret line="32" column="63" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="63" />
+                <state vertical-scroll-proportion="0.79002076">
+                  <caret line="42" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -44,10 +46,10 @@
       <split-second>
         <leaf>
           <file leaf-file-name="nueva.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php">
+            <entry file="file://$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.39203355">
-                  <caret line="165" column="52" selection-start-line="165" selection-start-column="52" selection-end-line="165" selection-end-column="52" />
+                <state vertical-scroll-proportion="0.7389937">
+                  <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -63,7 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Tipo_Beneficio.php" />
         <option value="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/app/Sabor.php" />
         <option value="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" />
@@ -94,7 +95,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/FincasController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LotesController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MediosController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php" />
@@ -110,10 +110,12 @@
         <option value="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap2.min.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DepartamentosController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MunicipiosController.php" />
-        <option value="$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CertificacionesController.php" />
-        <option value="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" />
+        <option value="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" />
       </list>
     </option>
   </component>
@@ -161,8 +163,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -217,51 +219,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="municipios" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="departamentos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="certificaciones" />
+              <option name="myItemId" value="organizaciones" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,13 +364,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -433,13 +391,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/bower_components/bootstrap/js/affix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/topbar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -573,13 +524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5167715">
-          <caret line="21" column="67" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6079665">
@@ -672,13 +616,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap-theme.css.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20206659">
           <caret line="0" column="807" selection-start-line="0" selection-start-column="807" selection-end-line="0" selection-end-column="807" />
         </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
@@ -710,13 +654,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap.css.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35523385">
           <caret line="0" column="1240" selection-start-line="0" selection-start-column="1240" selection-end-line="0" selection-end-column="1240" />
         </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -747,33 +691,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MunicipiosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7872117">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <marker date="1451943032000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943032000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Certificacion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1451479455000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -781,19 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5744235">
           <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <marker date="1451943784000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943784000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -801,86 +710,106 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3836478">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <marker date="1451941638000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451941638000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39937106">
-          <caret line="32" column="63" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5744235">
-          <caret line="176" column="17" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
-          <folding>
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: &quot;/bower_components/jquery/Spanish.json&quot;...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: 'http://cafesdelhuila.com/municipios'...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451943858000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39203355">
-          <caret line="165" column="52" selection-start-line="165" selection-start-column="52" selection-end-line="165" selection-end-column="52" />
+        <state vertical-scroll-proportion="1.8280922">
+          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.3784068">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4475597">
+          <caret line="157" column="34" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
+          <folding>
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: &quot;/bower_components/jquery/Spanish.json&quot;...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: 'http://cafesdelhuila.com/municipios'...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944524000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MunicipiosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79002076">
+          <caret line="42" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5524403">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <marker date="1451944624000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451944624000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7389937">
+          <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
           <folding />
         </state>
       </provider>
