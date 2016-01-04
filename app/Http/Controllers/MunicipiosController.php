@@ -12,7 +12,10 @@ class MunicipiosController extends Controller
 {
     //controller municipios
     public function create() {
-        return view('municipios.nuevo');
+        $municipios = \App\Municipio::all();
+        return view('municipios.nuevo', array(
+            'municipios' => $municipios
+        ));
     }
 
     public function store(Request $request)
@@ -20,6 +23,22 @@ class MunicipiosController extends Controller
         if ($request->ajax( )) {
             Municipio::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            Municipio::find($id)->fill($request->all())->save();
+            return response()->json (["mensanje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            Municipio::find($id)->fill($request->all())->delete();
+            return response()->json(["mensanje" => "eliminado"]);
         }
     }
 
