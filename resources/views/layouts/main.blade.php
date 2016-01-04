@@ -5,6 +5,10 @@
         <!-- estilos -->
         <!-- bootstrap -->
         <link href="/bower_components/bootswatch/cerulean/bootstrap.css" rel="stylesheet">
+
+        <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/bower_components/jquery/jquery.dataTables.css">
+
         <link href="/bower_components/bootstrap/dist/css/bootstrap2.min.css" rel="stylesheet">
         <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css"/>
@@ -33,6 +37,9 @@
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="/bower_components/jquery/jquery.dataTables.js"></script>
+
     <!-- Toastr -->
     <script src="/bower_components/toastr/toastr.js"></script>
     <script src="/js/scrip.js"></script>

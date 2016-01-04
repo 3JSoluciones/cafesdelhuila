@@ -38,12 +38,13 @@
             <div class="form-group">
                 <label for="input">Certificacion</label><br>
                 <select name="certificacion_id" id="certificacion_id" class="form-control" style="width: 100%"
-                        multiple="multiple">
-                    <optgroup label="Grupo de certificaciones">
+                        >
+                    <option value="0">Seleccione..</option>
+                    <!--<optgroup label="Grupo de certificaciones">-->
                         @foreach($certificaciones as $certificacion)
                             <option value="{{ $certificacion->id }}">{{ $certificacion->nombre }}</option>
                         @endforeach
-                    </optgroup>
+                    <!--</optgroup>-->
                 </select>
             </div>
         </div>
@@ -62,30 +63,30 @@
 
     <script type="application/javascript">
 
-        $('#certificacion_id').multiselect({
+        /*$('#certificacion_id').multiselect({
             enableClickableOptGroups: true
-        });
+        });*/
 
         $("#btn-agregar-certificacionProductor").click(function(){
 
             var Productor_id        = $("#productor_id").val();
             var Certificacion_id    = $("#certificacion_id").val();
 
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificacionesProductores',
-                    data:{
-                        Productor_id:Productor_id,
-                        Certificacion_id:Certificacion_id,
-                    },
-                    headers:{'X-CSRF-TOKEN': toke},
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        toastr.info("Se agrego la ceritficacion al productor.","CERTIFICACIONES DE PRODUCTORES");
-                        $("#productor_id").val('');
-                        $("#certificacion_id").val('');
-                    }
-                });
+            $.ajax({
+                url: 'http://cafesdelhuila.com/certificacionesProductores',
+                data:{
+                    Productor_id:Productor_id,
+                    Certificacion_id:Certificacion_id,
+                },
+                headers:{'X-CSRF-TOKEN': toke},
+                dataType:'json',
+                type:'POST',
+                success:function(data) {
+                    toastr.info("Se agrego la ceritficacion al productor.","CERTIFICACIONES DE PRODUCTORES");
+                    $("#productor_id").val('');
+                    $("#certificacion_id").val('');
+                }
+            });
 
 
         });
