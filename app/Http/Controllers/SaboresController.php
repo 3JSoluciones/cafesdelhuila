@@ -12,7 +12,10 @@ class SaboresController extends Controller
 {
     //controller sabores
     public function create() {
-        return view('sabores.nuevo');
+        $sabores = \App\Sabor::all();
+        return view('sabores.nuevo', array(
+            'sabores' => $sabores
+        ));
     }
 
     public function store(Request $request)
@@ -20,6 +23,20 @@ class SaboresController extends Controller
         if ($request->ajax( )) {
             Sabor::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        if($request->ajax()) {
+            Sabor::find($id)->fill($request->all())->save();
+            return response()->json(["mensaje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id) {
+        if($request->ajax()) {
+            Sabor::find($id)->fill($request->all())->delete();
+            return response()->json(["mensaje" => "eliminado"]);
         }
     }
 

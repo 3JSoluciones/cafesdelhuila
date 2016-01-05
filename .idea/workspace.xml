@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccf084e-2789-4d66-a2db-cf0bda0b7724" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cafesdelhuila.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +31,8 @@
           <file leaf-file-name="DepartamentosController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DepartamentosController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.45090562">
-                  <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.5394862">
+                  <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -43,11 +42,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="TiposBeneficiosController.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php">
+          <file leaf-file-name="nuevo.blade.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.2519084">
-                  <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+                <state vertical-scroll-proportion="0.29118773">
+                  <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
                   <folding />
                 </state>
               </provider>
@@ -64,7 +63,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/Sabor.php" />
-        <option value="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/app/Acidez.php" />
         <option value="$PROJECT_DIR$/resources/views/aromas/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/app/Aroma.php" />
@@ -93,7 +91,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/LotesController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MediosController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TiposSecadosController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VariedadesController.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/CrearDepartamentoRequest.php" />
@@ -112,8 +109,10 @@
         <option value="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" />
         <option value="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php" />
+        <option value="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" />
+        <option value="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" />
       </list>
     </option>
   </component>
@@ -215,7 +214,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tiposBeneficios" />
+              <option name="myItemId" value="sabores" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -377,7 +376,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -410,13 +409,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Lote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0031446">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Tipo_Beneficio.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12159329">
@@ -540,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6079665">
           <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaboresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5167715">
-          <caret line="21" column="67" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -803,10 +788,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66983825">
+          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding>
+            <marker date="1451996600000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996600000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44349477">
+          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <folding>
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: &quot;/bower_components/jquery/Spanish.json&quot;...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: 'http://cafesdelhuila.com/tiposBeneficios'...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451996872000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3888889">
-          <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.9210276">
+          <caret line="154" column="6" selection-start-line="154" selection-start-column="6" selection-end-line="154" selection-end-column="6" />
           <folding>
             <marker date="1451944102000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1451944102000" expanded="true" signature="-1:-1" placeholder="..." />
@@ -856,67 +912,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DepartamentosController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45090562">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5394862">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaboresController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3888889">
-          <caret line="156" column="12" selection-start-line="156" selection-start-column="12" selection-end-line="156" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.53231937">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
           <folding>
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: &quot;/bower_components/jquery/Spanish.json&quot;...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{&quot;url&quot;: 'http://cafesdelhuila.com/tiposBeneficios'...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{&quot;dataType&quot;: 'json'...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1451996362000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451997389000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1451997389000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2519084">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.29118773">
+          <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
           <folding />
         </state>
       </provider>

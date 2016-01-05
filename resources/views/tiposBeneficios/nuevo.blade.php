@@ -30,7 +30,7 @@
             <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-tipoBene">
             <input type="button" value="Agregar Nuevo Tipo" class="btn btn-primary btn-sm"
-                    id="btn-agregar-tipoBeneficio">
+                    id="btn-agregar-tipoBeneficio" accion="1">
         </div>
     </div>
 
