@@ -15,13 +15,15 @@ class VariedadesController extends Controller
 {
     //controller variedades
     public function create() {
-        $acidezes = Acidez::all();
-        $aromas  = Aroma::all();
-        $sabores  = Sabor::all();
+        $variedades     = Variedad::with('acidez','aroma','sabor')->get();
+        $acidezes       = Acidez::all();
+        $aromas         = Aroma::all();
+        $sabores        = Sabor::all();
         return view('variedades.nueva', array(
-            'acidezes' => $acidezes,
-            'aromas'   => $aromas,
-            'sabores'  => $sabores
+            'variedades'    => $variedades,
+            'acidezes'      => $acidezes,
+            'aromas'        => $aromas,
+            'sabores'       => $sabores
         ));
     }
 
@@ -30,6 +32,20 @@ class VariedadesController extends Controller
         if ($request->ajax( )) {
             Variedad::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        if($request->ajax()) {
+            Variedad::find($id)->fill($request->all())->save();
+            return response()->json(["mensaje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id) {
+        if($request->ajax()) {
+            Variedad::find($id)->fill($request->all())->delete();
+            return response()->json(["mensaje" => "eliminado"]);
         }
     }
 
