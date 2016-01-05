@@ -11,7 +11,6 @@
             </ol>
         </div>
     </div>
-    <p><label>REGISTRO DE ACIDEZ</label></p>
 
     <form id="formularioAcidez">
         <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
@@ -19,7 +18,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
-                <label for="input">Nombre</label><br>
+                <label for="input">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required="required"
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_acidez" name="id_acidez">

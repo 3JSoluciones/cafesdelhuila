@@ -12,7 +12,10 @@ class AromasController extends Controller
 {
     //controller aromas
     public function create() {
-        return view('aromas.nuevo');
+        $aromas = \App\Aroma::all();
+        return view('aromas.nuevo', array(
+            'aromas' => $aromas
+        ));
     }
 
     public function store(Request $request)
@@ -20,6 +23,20 @@ class AromasController extends Controller
         if ($request->ajax( )) {
             Aroma::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        if($request->ajax()) {
+            Aroma::find($id)->fill($request->all())->save();
+            return response()->json(["mensaje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id) {
+        if($request->ajax()) {
+            Aroma::find($id)->fill($request->all())->delete();
+            return response()->json(["mensaje" => "eliminado"]);
         }
     }
 
