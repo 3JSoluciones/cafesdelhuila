@@ -13,9 +13,11 @@ class ProductoresController extends Controller
 {
     //controller productores
     public function create() {
+        $productores    = Productor::with('organizacion')->get();
         $organizaciones = Organizacion::all();
         return view('productores.nuevo', array(
-            'organizaciones' => $organizaciones
+            'productores'       => $productores,
+            'organizaciones'    => $organizaciones
         ));
     }
 
@@ -24,6 +26,20 @@ class ProductoresController extends Controller
         if ($request->ajax( )) {
             Productor::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        if($request->ajax()) {
+            Productor::find($id)->fill($request->all())->save();
+            return response()->json(["mensaje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id) {
+        if($request->ajax()) {
+            Productor::find($id)->fill($request->all())->delete();
+            return response()->json(["mensaje" => "eliminado"]);
         }
     }
 

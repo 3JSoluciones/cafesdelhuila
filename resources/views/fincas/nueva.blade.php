@@ -5,21 +5,21 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="#">Inicio</a></li>
+                <li><a href="http://cafesdelhuila.com/">Inicio</a></li>
                 <li><a href="#">Cafes del Huila</a></li>
                 <li class="active" id="proceso_activo">Fincas</li>
             </ol>
         </div>
     </div>
-    <p><label>REGISTRO DE FINCAS</label></p>
 
     <form>
         <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
+        <input type="hidden" id="id_finca" name="id_finca">
 
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Productor</label><br>
+                <label for="input">Productor</label>
                 <select name="productor_id" id="productor_id" class="form-control" style="width: 100%">
                     <option value="">Seleccione..</option>
 
@@ -32,7 +32,7 @@
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Departamento</label><br>
+                <label for="input">Departamento</label>
                 <select name="departamento_id" id="departamento_id" class="form-control" style="width: 100%">
                     <option value="">Seleccione..</option>
 
@@ -45,7 +45,7 @@
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Municipio</label><br>
+                <label for="input">Municipio</label>
                 <select name="municipio_id" id="municipio_id" class="form-control" style="width: 100%">
                     <option value="">Seleccione..</option>
 
@@ -62,21 +62,21 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Corregimiento</label><br>
+                <label for="input">Corregimiento</label>
                 <input type="text" class="form-control" id="corregimiento" name="orregimiento" required="required"
                        placeholder="Ingrese el nombre del corregimiento" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Vereda</label><br>
+                <label for="input">Vereda</label>
                 <input type="text" class="form-control" id="vereda" name="vereda" required="required"
                        placeholder="Ingrese el nombre de la vereda" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Finca</label><br>
+                <label for="input">Finca</label>
                 <input type="text" class="form-control" id="finca" name="finca" required="required"
                        placeholder="Ingrese el nombre de la finca" style="width: 100%">
             </div>
@@ -86,21 +86,21 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Coordenadas</label><br>
+                <label for="input">Coordenadas</label>
                 <input type="text" class="form-control" id="coordenadas" name="coordenadas" required="required"
                        placeholder="Ingrese las coordenadas" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="input">Altitud</label><br>
+                <label for="input">Altitud</label>
                 <input type="text" class="form-control" id="altitud" name="altitud" required="required"
                        placeholder="Ingrese la altitud" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="date">Inicio de la Cosecha</label><br>
+                <label for="date">Inicio de la Cosecha</label>
                 <input type='date' class="form-control" id='inicioCosecha' />
             </div>
         </div>
@@ -109,19 +109,19 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="date">Finalizacion de la Cosecha</label><br>
+                <label for="date">Finalizacion de la Cosecha</label>
                 <input type='date' class="form-control" id='finCosecha' />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="date">Inicio de la Mitaca</label><br>
+                <label for="date">Inicio de la Mitaca</label>
                 <input type='date' class="form-control" id='inicioMitaca' />
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
-                <label for="date">Finalizacion de la Mitaca</label><br>
+                <label for="date">Finalizacion de la Mitaca</label>
                 <input type='date' class="form-control" id='finMitaca' />
             </div>
         </div>
@@ -129,10 +129,68 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
+            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+                   id="btn-cancelar-finca">
             <input type="button" value="Agregar Variedad" class="btn btn-primary btn-sm"
-                    id="btn-agregar-finca">
+                    id="btn-agregar-finca" accion="1">
         </div>
     </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <table id="tabla_finca" class="display" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>NIT</th>
+                        <th>FINCA</th>
+                        <th>PRODUCTOR</th>
+                        <th>DEPAR</th>
+                        <th>MUNI</th>
+                        <th>CORRE</th>
+                        <th>VER</th>
+                        <th>CREADO</th>
+                        <th>ACCION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($fincas as $finca)
+                        <tr>
+                            <td>{{ $finca->id }}</td>
+                            <td>{{ $finca->finca }}</td>
+                            <td>{{ $finca->productor->nombre }}</td>
+                            <td>{{ $finca->departamento->nombre }}</td>
+                            <td>{{ $finca->municipio->nombre }}</td>
+                            <td>{{ $finca->corregimiento }}</td>
+                            <td>{{ $finca->vereda }}</td>
+                            <td>{{ $finca->created_at }}</td>
+                            <td>
+                                <input type="button" value="Actualizar" class="btn_actualizar_finca
+                                btn btn-primary btn-sm"
+                                       id                   ="{{ $finca->id }}"
+                                       Productor_id         ="{{ $finca->productor->id }}"
+                                       Departamento_id      ="{{ $finca->departamento->id }}"
+                                       Municipio_id         ="{{ $finca->municipio->id }}"
+                                       Corregimiento        ="{{ $finca->corregimiento }}"
+                                       Vereda               ="{{ $finca->vereda }}"
+                                       Finca                ="{{ $finca->finca }}"
+                                       Coordenadas          ="{{ $finca->coordenadas }}"
+                                       Altitud              ="{{ $finca->altitud }}"
+                                       Cosecha_comienza     ="{{ $finca->cosecha_comienza }}"
+                                       Cosecha_termina      ="{{ $finca->cosecha_termina }}"
+                                       Mitaca_comienza      ="{{ $finca->mitaca_comienza }}"
+                                       Mitaca_termina       ="{{ $finca->mitaca_termina }}">
+                                <input type="button" value="Eliminar" class="btn_eliminar_finca
+                                btn btn-danger btn-sm" id_finca="{{ $finca->id }}">
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
 
     </form>
 
@@ -140,8 +198,17 @@
 
     <script type="application/javascript">
 
+        //Establecer tabla con jquery table
+        $('#tabla_finca').DataTable({
+            "language": {
+                "url": "/bower_components/jquery/Spanish.json"
+            }
+        });
+
+        //btn agregar y actualizar
         $("#btn-agregar-finca").click(function(){
 
+            var id                      = $("#id_finca").val();
             var Productor_id            = $("#productor_id").val();
             var Departamento_id         = $("#departamento_id").val();
             var Municipio_id            = $("#municipio_id").val();
@@ -155,43 +222,138 @@
             var Mitaca_comienza         = $("#inicioMitaca").val();
             var Mitaca_termina          = $("#finMitaca").val();
 
+            if($("#btn-agregar-finca").attr('accion') == 1) {
+
+                //btn agregar
+                $.ajax({
+                    url: 'http://cafesdelhuila.com/fincas',
+                    data:{
+                        Productor_id:Productor_id,
+                        Departamento_id:Departamento_id,
+                        Municipio_id:Municipio_id,
+                        Corregimiento:Corregimiento,
+                        Vereda:Vereda,
+                        Finca:Finca,
+                        Coordenadas:Coordenadas,
+                        Altitud:Altitud,
+                        Cosecha_comienza:Cosecha_comienza,
+                        Cosecha_termina:Cosecha_termina,
+                        Mitaca_comienza:Mitaca_comienza,
+                        Mitaca_termina:Mitaca_termina,
+                    },
+                    headers:{'X-CSRF-TOKEN': toke},
+                    dataType:'json',
+                    type:'POST',
+                    success:function(data) {
+                        self.location="http://cafesdelhuila.com/fincas/create";
+                    }
+                });
+
+            } else {
+
+                //btn actualizar
+                $.ajax({
+                    url: 'http://cafesdelhuila.com/fincas/' + id + '',
+                    data:{
+                        id:id,
+                        Productor_id:Productor_id,
+                        Departamento_id:Departamento_id,
+                        Municipio_id:Municipio_id,
+                        Corregimiento:Corregimiento,
+                        Vereda:Vereda,
+                        Finca:Finca,
+                        Coordenadas:Coordenadas,
+                        Altitud:Altitud,
+                        Cosecha_comienza:Cosecha_comienza,
+                        Cosecha_termina:Cosecha_termina,
+                        Mitaca_comienza:Mitaca_comienza,
+                        Mitaca_termina:Mitaca_termina,
+                    },
+                    headers:{'X-CSRF-TOKEN': toke},
+                    dataType:'json',
+                    type:'PUT',
+                    success:function(data) {
+                        self.location="http://cafesdelhuila.com/fincas/create";
+                    }
+                });
+
+            }
+
+        });
+
+        //btn actualizar
+        $(document).on('click','.btn_actualizar_finca', function () {
+
+            $("#btn-agregar-finca").val('Actualizar Finca');
+            $("#btn-agregar-finca").attr('accion','2');
+            $("#btn-cancelar-finca").slideDown('slow');
+
+            $("#id_finca")         .val($(this).attr('id'));
+            $("#productor_id")      .val($(this).attr('Productor_id'));
+            $("#departamento_id")   .val($(this).attr('Departamento_id'));
+            $("#municipio_id")      .val($(this).attr('Municipio_id'));
+            $("#corregimiento")     .val($(this).attr('Corregimiento'));
+            $("#vereda")            .val($(this).attr('Vereda'));
+            $("#finca")             .val($(this).attr('Finca'));
+            $("#coordenadas")       .val($(this).attr('Coordenadas'));
+            $("#altitud")           .val($(this).attr('Altitud'));
+            $("#inicioCosecha")     .val($(this).attr('Cosecha_comienza'));
+            $("#finCosecha")        .val($(this).attr('Cosecha_termina'));
+            $("#inicioMitaca")      .val($(this).attr('Mitaca_comienza'));
+            $("#finMitaca")         .val($(this).attr('Mitaca_termina'));
+
+        });
+
+        //btn eliminar
+        $(document).on('click','.btn_eliminar_finca', function () {
+
+            $("#id_finca").val($(this).attr('id_finca'));
+            toastr.error("¿Esta seguro que desea eliminar la finca?<br>" +
+                    "<button class='btn-danger confirmar'>Confirmar eliminar</button>","FINCAS");
+
+        });
+
+        //confirmar eliminar
+        $(document).on('click','.confirmar', function () {
+
+            var id = $("#id_finca").val();
             $.ajax({
-                url: 'http://cafesdelhuila.com/fincas',
+                url: 'http://cafesdelhuila.com/fincas/' + id + '',
                 data:{
-                    Productor_id:Productor_id,
-                    Departamento_id:Departamento_id,
-                    Municipio_id:Municipio_id,
-                    Corregimiento:Corregimiento,
-                    Vereda:Vereda,
-                    Finca:Finca,
-                    Coordenadas:Coordenadas,
-                    Altitud:Altitud,
-                    Cosecha_comienza:Cosecha_comienza,
-                    Cosecha_termina:Cosecha_termina,
-                    Mitaca_comienza:Mitaca_comienza,
-                    Mitaca_termina:Mitaca_termina,
+                    id:id,
                 },
                 headers:{'X-CSRF-TOKEN': toke},
                 dataType:'json',
-                type:'POST',
+                type:'DELETE',
                 success:function(data) {
-                    toastr.info("La finca " + Finca + " se agrego con exito.","REGISTRO DE FINCAS");
-                    $("#productor_id").val('');
-                    $("#departamento_id").val('');
-                    $("#municipio_id").val('');
-                    $("#corregimiento").val('');
-                    $("#vereda").val('');
-                    $("#finca").val('');
-                    $("#coordenadas").val('');
-                    $("#altitud").val('');
-                    $("#inicioCosecha").val('');
-                    $("#finCosecha").val('');
-                    $("#inicioMitaca").val('');
-                    $("#finMitaca").val('');
+                    self.location="http://cafesdelhuila.com/fincas/create";
                 }
             });
+
         });
 
+        //cancelar actualizar
+        $(document).on('click','#btn-cancelar-finca', function () {
+
+            $("#btn-cancelar-finca").slideUp('slow');
+            $("#btn-agregar-finca").val('Agregar Finca');
+            $("#btn-agregar-finca").attr('accion','1');
+
+            $("#id_finca")         .val('');
+            $("#productor_id")      .val('');
+            $("#departamento_id")   .val('');
+            $("#municipio_id")      .val('');
+            $("#corregimiento")     .val('');
+            $("#vereda")            .val('');
+            $("#finca")             .val('');
+            $("#coordenadas")       .val('');
+            $("#altitud")           .val('');
+            $("#inicioCosecha")     .val('');
+            $("#finCosecha")        .val('');
+            $("#inicioMitaca")      .val('');
+            $("#finMitaca")         .val('');
+
+        });
 
     </script>
 

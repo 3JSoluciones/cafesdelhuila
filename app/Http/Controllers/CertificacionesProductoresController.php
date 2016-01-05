@@ -14,11 +14,13 @@ class CertificacionesProductoresController extends Controller
 {
     //controller certificacionesProductores
     public function create() {
-        $productores        = Productor::all();
-        $certificaciones    = Certificacion::all();
+        $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')->get();
+        $productores                = Productor::all();
+        $certificaciones            = Certificacion::all();
         return view('certificacionesProductores.nueva', array(
-            'productores'       => $productores,
-            'certificaciones'  => $certificaciones
+            'certificacionesProductores' => $certificacionesProductores,
+            'productores'                 => $productores,
+            'certificaciones'             => $certificaciones
         ));
     }
 
@@ -27,6 +29,20 @@ class CertificacionesProductoresController extends Controller
         if ($request->ajax( )) {
             Certificacion_Productor::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        if($request->ajax()) {
+            Certificacion_Productor::find($id)->fill($request->all())->save();
+            return response()->json(["mensaje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id) {
+        if($request->ajax()) {
+            Certificacion_Productor::find($id)->fill($request->all())->delete();
+            return response()->json(["mensaje" => "eliminado"]);
         }
     }
 

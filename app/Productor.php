@@ -11,7 +11,7 @@ class Productor extends Model
 
     //foreign keys
     public function organizacion() {
-        return $this->hasOne('App\Productor','id','productor_id');
+        return $this->hasOne('App\Organizacion','id','organizacion_id');
     }
 
     protected $fillable = ['Organizacion_id','nombre','Telefono','Email'];

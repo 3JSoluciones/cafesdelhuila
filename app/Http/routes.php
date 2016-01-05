@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.main');
+    return view('welcome');
 });
 
 /*inicio departamentos*/
