@@ -12,7 +12,10 @@ class TiposBeneficiosController extends Controller
 {
     //controller tiposBeneficios
     public function create() {
-        return view('tiposBeneficios.nuevo');
+        $tiposBeneficios = \App\Tipo_Beneficio::all();
+        return view('tiposBeneficios.nuevo', array(
+            'tiposBeneficios' => $tiposBeneficios
+        ));
     }
 
     public function store(Request $request)
@@ -20,6 +23,20 @@ class TiposBeneficiosController extends Controller
         if ($request->ajax( )) {
             Tipo_Beneficio::create($request->all());
             return response()->json (["mensanje" => "registrado"]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        if($request->ajax()) {
+            Tipo_Beneficio::find($id)->fill($request->all())->save();
+            return response()->json(["mensaje" => "actualizado"]);
+        }
+    }
+
+    public function destroy(Request $request, $id) {
+        if($request->ajax()) {
+            Tipo_Beneficio::find($id)->fill($request->all())->delete();
+            return response()->json(["mensaje" => "eliminado"]);
         }
     }
 
