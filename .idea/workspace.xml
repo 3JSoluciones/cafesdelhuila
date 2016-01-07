@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccf084e-2789-4d66-a2db-cf0bda0b7724" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acidez/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/acidez/nueva.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificacionesProductores/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificacionesProductores/nueva.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/fincas/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/fincas/nueva.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/variedades/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/variedades/nueva.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aromas/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/aromas/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/lotes/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/lotes/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/medios/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/medios/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/productores/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/productores/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/sabores/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tiposSecados/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/tiposSecados/nuevo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cafesdelhuila.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,8 +29,8 @@
       <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59581155">
-              <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.53089005">
+              <caret line="69" column="104" selection-start-line="69" selection-start-column="104" selection-end-line="69" selection-end-column="104" />
               <folding />
             </state>
           </provider>
@@ -94,8 +74,6 @@
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AcidezController.php" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
@@ -114,6 +92,8 @@
         <option value="$PROJECT_DIR$/resources/views/tiposBeneficios/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/tiposSecados/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/variedades/nueva.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
       </list>
     </option>
@@ -651,42 +631,6 @@
             <marker date="1452201088000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1452201088000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1452201088000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4094241">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1452200122000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200122000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200122000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200122000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200122000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200122000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5780105">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452200110000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1661,10 +1605,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2408377">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding>
+            <marker date="1452202564000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202564000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202564000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202564000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202564000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202564000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5780105">
+          <caret line="25" column="88" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="88" />
+          <folding>
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452202813000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59581155">
-          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.53089005">
+          <caret line="69" column="104" selection-start-line="69" selection-start-column="104" selection-end-line="69" selection-end-column="104" />
           <folding />
         </state>
       </provider>

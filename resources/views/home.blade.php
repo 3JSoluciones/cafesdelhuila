@@ -1,8 +1,16 @@
 @extends('layouts.main')
 
+<style type="text/css">
+
+    li {
+        list-style-type: none;
+    }
+
+</style>
+
 @section('content')
 
-<div class="container">
+<div class="container text-center">
 
     <div class="container spark-screen">
         <div class="row">
@@ -10,8 +18,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="title" style="color: #7c3d3d; font-size: 28px;">
-                            <b>Cafes Del Huila</b><br>
-                            <p style="color: #449d44; font-size: 18px;">Laravel 5.2.. MASTER</p>
+                            <b>Cafes Del Huila</b>
                         </div>
                     </div>
 

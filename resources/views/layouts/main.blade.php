@@ -48,6 +48,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/">INICIO</a></li>
+                        </ul>
+
                         <li><a href="/login">Iniciar Sesion</a></li>
                         <li><a href="/register">Crear una cuenta</a></li>
                     @else
@@ -62,7 +67,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/logout"><i class="fa fa-btn fa-sign-out"></i>Salir de..</a></li>
+                                <li><a href="/logout"><i class="fa fa-btn fa-sign-out"></i>Cerrar sesion ..</a></li>
                             </ul>
                         </li>
 
