@@ -14,7 +14,7 @@
     <p><label>REGISTRO DE MEDIOS</label></p>
 
     <form>
-        <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="row">
         <div class="col-lg-6">
@@ -71,7 +71,9 @@
                     Productor_id:Productor_id,
                     nombre:nombre,
                 },
-                headers:{'X-CSRF-TOKEN': toke},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 dataType:'json',
                 type:'POST',
                 success:function(data) {

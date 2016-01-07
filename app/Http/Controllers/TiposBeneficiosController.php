@@ -10,6 +10,17 @@ use App\Http\Controllers\Controller;
 
 class TiposBeneficiosController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller tiposBeneficios
     public function create() {
         $tiposBeneficios = \App\Tipo_Beneficio::all();

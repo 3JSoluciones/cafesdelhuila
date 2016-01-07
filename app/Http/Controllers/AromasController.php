@@ -10,6 +10,17 @@ use App\Http\Controllers\Controller;
 
 class AromasController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller aromas
     public function create() {
         $aromas = \App\Aroma::all();

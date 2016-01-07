@@ -10,6 +10,17 @@ use App\Http\Controllers\Controller;
 
 class OrganizacionesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller organizacion
     public function create() {
         $organizaciones = \App\Organizacion::all();

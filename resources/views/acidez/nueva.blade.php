@@ -13,7 +13,7 @@
     </div>
 
     <form id="formularioAcidez">
-        <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="row">
         <div class="col-lg-12">
@@ -95,7 +95,9 @@
                     data:{
                         nombre:nombre,
                     },
-                    headers:{'X-CSRF-TOKEN': toke},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     dataType:'json',
                     type:'POST',
                     success:function(data) {
@@ -112,7 +114,9 @@
                         id:id,
                         nombre:nombre,
                     },
-                    headers:{'X-CSRF-TOKEN': toke},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     dataType:'json',
                     type:'PUT',
                     success:function(data) {
@@ -154,7 +158,9 @@
                 data:{
                     id:id,
                 },
-                headers:{'X-CSRF-TOKEN': toke},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {

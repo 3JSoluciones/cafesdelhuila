@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Validator;
 
 class DepartamentosController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller departamentos
     public function create()
     {

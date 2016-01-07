@@ -10,6 +10,16 @@ use App\Http\Controllers\Controller;
 
 class TiposSecadosController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller tiposSecados
     public function create() {
         $tiposSecados = \App\Tipo_Secado::all();

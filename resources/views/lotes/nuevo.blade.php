@@ -13,7 +13,7 @@
     </div>
 
     <form>
-        <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <input type="hidden" id="id_lote" name="id_lote">
 
     <div class="row">
@@ -266,7 +266,9 @@
                         Area:Area,
                         Perfil:Perfil,
                     },
-                    headers:{'X-CSRF-TOKEN': toke},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     dataType:'json',
                     type:'POST',
                     success:function(data) {
@@ -294,7 +296,9 @@
                         Area:Area,
                         Perfil:Perfil,
                     },
-                    headers:{'X-CSRF-TOKEN': toke},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     dataType:'json',
                     type:'PUT',
                     success:function(data) {
@@ -347,7 +351,9 @@
                 data:{
                     id:id,
                 },
-                headers:{'X-CSRF-TOKEN': toke},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {

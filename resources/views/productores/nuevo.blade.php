@@ -13,7 +13,7 @@
     </div>
 
     <form>
-        <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke" >
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="row">
         <div class="col-lg-4">
@@ -142,7 +142,9 @@
                         Telefono:Telefono,
                         Email:Email,
                     },
-                    headers:{'X-CSRF-TOKEN': toke},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     dataType:'json',
                     type:'POST',
                     success:function(data) {
@@ -162,7 +164,9 @@
                         Telefono:Telefono,
                         Email:Email,
                     },
-                    headers:{'X-CSRF-TOKEN': toke},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     dataType:'json',
                     type:'PUT',
                     success:function(data) {
@@ -207,7 +211,9 @@
                 data:{
                     id:id,
                 },
-                headers:{'X-CSRF-TOKEN': toke},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {

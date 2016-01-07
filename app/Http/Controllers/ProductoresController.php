@@ -11,6 +11,17 @@ use App\Http\Controllers\Controller;
 
 class ProductoresController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller productores
     public function create() {
         $productores    = Productor::with('organizacion')->get();

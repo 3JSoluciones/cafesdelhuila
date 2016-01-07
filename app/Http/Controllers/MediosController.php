@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\Redirect;
 
 class MediosController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller medios
     public function create() {
         $productores = Productor::all();

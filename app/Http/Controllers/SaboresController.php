@@ -10,6 +10,16 @@ use App\Http\Controllers\Controller;
 
 class SaboresController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller sabores
     public function create() {
         $sabores = \App\Sabor::all();

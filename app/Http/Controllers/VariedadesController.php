@@ -13,6 +13,17 @@ use App\Http\Controllers\Controller;
 
 class VariedadesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller variedades
     public function create() {
         $variedades     = Variedad::with('acidez','aroma','sabor')->get();

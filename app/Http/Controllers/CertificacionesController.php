@@ -10,6 +10,17 @@ use App\Http\Controllers\Controller;
 
 class CertificacionesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller certificaciones
     public function create() {
         $certificaciones = \App\Certificacion::all();

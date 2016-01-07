@@ -12,6 +12,17 @@ use App\Http\Controllers\Controller;
 
 class CertificacionesProductoresController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller certificacionesProductores
     public function create() {
         $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')->get();

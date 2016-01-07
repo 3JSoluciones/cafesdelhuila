@@ -10,9 +10,19 @@ use App\Http\Controllers\Controller;
 
 class AcidezController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //controller acidez
     public function create() {
-        $acidez = \App\Acidez::all();
+        $acidez = Acidez::all();
         return view('acidez.nueva', array(
             'acidez' => $acidez
         ));
@@ -39,5 +49,7 @@ class AcidezController extends Controller
             return response()->json(["mensaje" => "eliminado"]);
         }
     }
+
+    //update
 
 }
