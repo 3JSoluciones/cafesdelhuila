@@ -1,79 +1,131 @@
 <html>
-    <head>
-        <title>Cafes del Huila</title>
+<head>
 
-        <!-- estilos -->
-        <!-- bootstrap -->
-        <link href="/bower_components/bootswatch/cerulean/bootstrap.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/bower_components/jquery/jquery.dataTables.css">
+    <title>Cafes del Huila</title>
 
-        <link href="/bower_components/bootstrap/dist/css/bootstrap2.min.css" rel="stylesheet">
-        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css"/>
-        <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
-        <!-- fin de los estilos -->
+    <!-- estilos -->
+    <!-- bootstrap -->
 
-        @yield('page-css-code')
+    <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/bower_components/jquery/jquery.dataTables.css">
 
-    </head>
-<body >
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css"/>
+    <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
+    <!-- fin de los estilos -->
 
-    <div class="text-center">
-        @include('layouts.topbar')
-    </div>
+    @yield('page-css-code')
 
-    <div class="container">
-        @yield('content')
-    </div>
+</head>
+<body id="app-layout">
+<center>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
 
-    <div class="text-center">
-        @include('layouts.footer')
-    </div>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#spark-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-    <!-- js -->
-    <!-- jquery -->
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="/home">
+                   <b>Cafes Del Huila</b>
+                </a>
+            </div>
 
-    <script type="text/javascript" charset="utf8" src="/bower_components/jquery/jquery.dataTables.js"></script>
+            <div class="collapse navbar-collapse" id="spark-navbar-collapse">
 
-    <!-- Toastr -->
-    <script src="/bower_components/toastr/toastr.js"></script>
-    <script src="/js/scrip.js"></script>
-    <!-- fin js -->
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="/login">Iniciar Sesion</a></li>
+                        <li><a href="/register">Crear una cuenta</a></li>
+                    @else
 
-    <script type="application/javascript">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/home">INICIO</a></li>
+                        </ul>
 
-        $(document).ready(function () {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
-            //configuracion notificaciones
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/logout"><i class="fa fa-btn fa-sign-out"></i>Salir de..</a></li>
+                            </ul>
+                        </li>
 
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+                    @endif
+                </ul>
+            </div>
 
-        });
+        </div>
+    </nav>
+</center>
+<div class="container">
+    @yield('content')
+</div>
 
-    </script>
+<div class="text-center">
+    @include('layouts.footer')
+</div>
 
-    @yield('page-js-code')
+
+
+<!-- js -->
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript" charset="utf8" src="/bower_components/jquery/jquery.dataTables.js"></script>
+
+<!-- Toastr -->
+<script src="/bower_components/toastr/toastr.js"></script>
+<script src="/js/scrip.js"></script>
+<!-- fin js -->
+
+<script type="application/javascript">
+
+    $(document).ready(function () {
+
+        //configuracion notificaciones
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+    });
+
+</script>
+
+@yield('page-js-code')
 
 
 </body>

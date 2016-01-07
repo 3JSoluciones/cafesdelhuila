@@ -1,11 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-    <br>
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="http://cafesdelhuila.com/">Inicio</a></li>
+                <li><a href="/home">Inicio</a></li>
                 <li><a href="#">Cafes del Huila</a></li>
                 <li class="active" id="proceso_activo">Acidez</li>
             </ol>
