@@ -14,6 +14,9 @@
 
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <div id="contenedor_registro_depart" style="display: none">
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group">
@@ -27,12 +30,22 @@
 
         <div class="row">
             <div class="col-lg-12 text-right">
-                <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+                <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                        id="btn-cancelar-departamento">
                 <input type="button" value="Agregar Departamento" class="btn btn-primary btn-sm"
                        id="btn-agregar-departamento" accion="1">
             </div>
         </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Departamento"
+                       class="btn_agregar_departamento btn btn-primary btn-sm" >
+            </div>
+        </div>
+
         <hr>
         <div class="row">
             <div class="col-lg-12">
@@ -77,6 +90,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_departamento").click(function () {
+            $(".btn_agregar_departamento").slideUp('slow');
+            $("#contenedor_registro_depart").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -130,9 +149,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_departamento', function () {
 
+            $(".btn_agregar_departamento").slideUp('slow');
+            $("#contenedor_registro_depart").slideDown('slow');
             $("#btn-agregar-departamento").val('Actualizar departamento');
             $("#btn-agregar-departamento").attr('accion','2');
-            $("#btn-cancelar-departamento").slideDown('slow');
             $("#id_depart").val($(this).attr('id_depart'));
             $("#nombre").val($(this).attr('nombre_depart'));
             console.log('actualizando');
@@ -172,7 +192,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-departamento', function () {
 
-            $("#btn-cancelar-departamento").slideUp('slow');
+            $(".btn_agregar_departamento").slideDown('slow');
+            $("#contenedor_registro_depart").slideUp('slow');
             $("#btn-agregar-departamento").val('Agregar departamento');
             $("#btn-agregar-departamento").attr('accion','1');
             $("#nombre").val('');

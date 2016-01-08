@@ -15,6 +15,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <div id="contenedor_registro_organiz" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -28,12 +30,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-organiz">
             <input type="button" value="Agregar Organizacion" accion="1"
                    class="btn btn-primary btn-sm" id="btn-agregar-organizacion">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Organizacion"
+                       class="btn_agregar_organizacion btn btn-primary btn-sm" >
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -79,6 +90,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_organizacion").click(function () {
+            $(".btn_agregar_organizacion").slideUp('slow');
+            $("#contenedor_registro_organiz").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -131,9 +148,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_organiz', function () {
 
+            $(".btn_agregar_organizacion").slideUp('slow');
+            $("#contenedor_registro_organiz").slideDown('slow');
             $("#btn-agregar-organizacion").val('Actualizar organizacion');
             $("#btn-agregar-organizacion").attr('accion','2');
-            $("#btn-cancelar-organiz").slideDown('slow');
             $("#id_organiz").val($(this).attr('id_organiz'));
             $("#nombre").val($(this).attr('nombre_organiz'));
             console.log('actualizando');
@@ -173,7 +191,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-organiz', function () {
 
-            $("#btn-cancelar-organiz").slideUp('slow');
+            $(".btn_agregar_organizacion").slideDown('slow');
+            $("#contenedor_registro_organiz").slideUp('slow');
             $("#btn-agregar-organizacion").val('Agregar organizacion');
             $("#btn-agregar-organizacion").attr('accion','1');
             $("#nombre").val('');

@@ -15,6 +15,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+   <div id="contenedor_registro_aroma" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -28,12 +30,20 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-aromas">
             <input type="button" value="Agregar Aroma" class="btn btn-primary btn-sm"
                     id="btn-agregar-aromas" accion="1">
         </div>
     </div>
+
+   </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Aroma" class="btn_agregar_aromas btn btn-primary btn-sm">
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -79,6 +89,14 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_aromas").click(function () {
+            $(".btn_agregar_aromas").slideUp('slow');
+            $("#contenedor_registro_aroma").slideDown('slow');
+            $(".btn_actualizar_aromas").attr('disabled','true');
+            $(".btn_eliminar_aromas").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -131,9 +149,12 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_aromas', function () {
 
+            $(".btn_actualizar_aromas").attr('disabled','true');
+            $(".btn_eliminar_aromas").attr('disabled','true');
+            $(".btn_agregar_aromas").slideUp('slow');
+            $("#contenedor_registro_aroma").slideDown('slow');
             $("#btn-agregar-aromas").val('Actualizar Aromas');
             $("#btn-agregar-aromas").attr('accion','2');
-            $("#btn-cancelar-aromas").slideDown('slow');
             $("#id_aromas").val($(this).attr('id_aromas'));
             $("#nombre").val($(this).attr('nombre_aromas'));
             console.log('actualizando');
@@ -173,7 +194,10 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-aromas', function () {
 
-            $("#btn-cancelar-aromas").slideUp('slow');
+            $(".btn_actualizar_aromas").attr('disabled',false);
+            $(".btn_eliminar_aromas").attr('disabled',false);
+            $(".btn_agregar_aromas").slideDown('slow');
+            $("#contenedor_registro_aroma").slideUp('slow');
             $("#btn-agregar-aromas").val('Agregar Aromas');
             $("#btn-agregar-aromas").attr('accion','1');
             $("#nombre").val('');

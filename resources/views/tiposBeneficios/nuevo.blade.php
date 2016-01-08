@@ -14,6 +14,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+   <div id="contenedor_registro_tipoBenef" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -27,12 +29,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-tipoBene">
             <input type="button" value="Agregar Nuevo Tipo" class="btn btn-primary btn-sm"
                     id="btn-agregar-tipoBeneficio" accion="1">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Nuevo Tipo"
+                       class="btn_agregar_tipoBeneficio btn btn-primary btn-sm">
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -78,6 +89,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_tipoBeneficio").click(function () {
+            $(".btn_agregar_tipoBeneficio").slideUp('slow');
+            $("#contenedor_registro_tipoBenef").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -130,9 +147,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_tipoBene', function () {
 
+            $(".btn_agregar_tipoBeneficio").slideUp('slow');
+            $("#contenedor_registro_tipoBenef").slideDown('slow');
             $("#btn-agregar-tipoBeneficio").val('Actualizar tipo beneficio');
             $("#btn-agregar-tipoBeneficio").attr('accion','2');
-            $("#btn-cancelar-tipoBene").slideDown('slow');
             $("#id_tipoBene").val($(this).attr('id_tipoBene'));
             $("#nombre").val($(this).attr('nombre_tipoBene'));
             console.log('actualizando');
@@ -172,7 +190,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-tipoBene', function () {
 
-            $("#btn-cancelar-tipoBene").slideUp('slow');
+            $(".btn_agregar_tipoBeneficio").slideDown('slow');
+            $("#contenedor_registro_tipoBenef").slideUp('slow');
             $("#btn-agregar-tipoBeneficio").val('Agregar tipo beneficio');
             $("#btn-agregar-tipoBeneficio").attr('accion','1');
             $("#nombre").val('');

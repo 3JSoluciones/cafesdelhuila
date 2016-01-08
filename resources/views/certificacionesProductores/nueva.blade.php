@@ -19,6 +19,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <input type="hidden" id="id_certProd" name="id_certProd">
 
+   <div id="contenedor_registro_certiProduct" style="display: none">
+
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
@@ -51,12 +53,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-certiProd">
             <input type="button" value="Agregar Certificacion al Productor" class="btn btn-primary btn-sm"
                     id="btn-agregar-certificacionProductor" accion="1">
         </div>
     </div>
+
+   </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Certificacion al Productor"
+                       class="btn_agregar_certificacionProductor btn btn-primary btn-sm" >
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -107,6 +118,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_certificacionProductor").click(function () {
+            $(".btn_agregar_certificacionProductor").slideUp('slow');
+            $("#contenedor_registro_certiProduct").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -162,9 +179,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_certiProd', function () {
 
+            $(".btn_agregar_certificacionProductor").slideUp('slow');
+            $("#contenedor_registro_certiProduct").slideDown('slow');
             $("#btn-agregar-certificacionProductor").val('Actualizar Certificacion a Productores');
             $("#btn-agregar-certificacionProductor").attr('accion','2');
-            $("#btn-cancelar-certiProd").slideDown('slow');
 
             $("#id_certProd")       .val($(this).attr('id_certiProd'));
             $("#productor_id")      .val($(this).attr('prod_certiProd'));
@@ -205,7 +223,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-certiProd', function () {
 
-            $("#btn-cancelar-certProd").slideUp('slow');
+            $(".btn_agregar_certificacionProductor").slideDown('slow');
+            $("#contenedor_registro_certiProduct").slideUp('slow');
             $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
             $("#btn-agregar-certificacionProductor").attr('accion','1');
             $("#id_certProd")       .val('');

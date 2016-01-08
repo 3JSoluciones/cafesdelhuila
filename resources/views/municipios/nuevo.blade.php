@@ -15,6 +15,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+   <div id="contenedor_registro_munici" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -28,12 +30,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-municipio">
             <input type="button" value="Agregar Municipio" accion="1"
                    class="btn btn-primary btn-sm" id="btn-agregar-municipio">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Municipio"
+                       class="btn_agregar_municipio btn btn-primary btn-sm" >
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -78,6 +89,12 @@
                 "language": {
                     "url": "/bower_components/jquery/Spanish.json"
                 }
+            });
+
+            //animacion del contenedor de registro
+            $(".btn_agregar_municipio").click(function () {
+                $(".btn_agregar_municipio").slideUp('slow');
+                $("#contenedor_registro_munici").slideDown('slow');
             });
 
             //btn agregar y actualizar
@@ -130,9 +147,10 @@
             //btn actualizar
             $(document).on('click','.btn_actualizar_municipio', function () {
 
+                $(".btn_agregar_municipio").slideUp('slow');
+                $("#contenedor_registro_munici").slideDown('slow');
                 $("#btn-agregar-municipio").val('Actualizar municipio');
                 $("#btn-agregar-municipio").attr('accion','2');
-                $("#btn-cancelar-municipio").slideDown('slow');
                 $("#id_municipio").val($(this).attr('id_municipio'));
                 $("#nombre").val($(this).attr('nombre_municipio'));
                 console.log('actualizando');
@@ -172,7 +190,8 @@
             //cancelar actualizar
             $(document).on('click','#btn-cancelar-municipio', function () {
 
-                $("#btn-cancelar-municipio").slideUp('slow');
+                $(".btn_agregar_municipio").slideDown('slow');
+                $("#contenedor_registro_munici").slideUp('slow');
                 $("#btn-agregar-municipio").val('Agregar municipio');
                 $("#btn-agregar-municipio").attr('accion','1');
                 $("#nombre").val('');

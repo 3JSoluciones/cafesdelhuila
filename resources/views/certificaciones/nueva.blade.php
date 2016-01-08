@@ -15,6 +15,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+   <div id="contenedor_registro_certifi" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -28,12 +30,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-certif">
             <input type="button" value="Agregar Certificacion" accion="1"
                    class="btn btn-primary btn-sm" id="btn-agregar-certificacion">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Certificacion"
+                       class="btn_agregar_certificacion btn btn-primary btn-sm">
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -79,6 +90,14 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_certificacion").click(function () {
+            $(".btn_agregar_certificacion").slideUp('slow');
+            $("#contenedor_registro_certifi").slideDown('slow');
+            $(".btn_actualizar_certif").attr('disabled','true');
+            $(".btn_eliminar_certif").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -129,9 +148,12 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_certif', function () {
 
+            $(".btn_actualizar_certif").attr('disabled','true');
+            $(".btn_eliminar_certif").attr('disabled','true');
+            $(".btn_agregar_certificacion").slideUp('slow');
+            $("#contenedor_registro_certifi").slideDown('slow');
             $("#btn-agregar-certificacion").val('Actualizar certificacion');
             $("#btn-agregar-certificacion").attr('accion','2');
-            $("#btn-cancelar-certif").slideDown('slow');
             $("#id_certif").val($(this).attr('id_certif'));
             $("#nombre").val($(this).attr('nombre_certif'));
             console.log('actualizando');
@@ -168,10 +190,13 @@
 
         });
 
-        //cancelar actualizar
+        //cancelar actualizar btn
         $(document).on('click','#btn-cancelar-certif', function () {
 
-            $("#btn-cancelar-certif").slideUp('slow');
+            $(".btn_actualizar_certif").attr('disabled',false);
+            $(".btn_eliminar_certif").attr('disabled',false);
+            $(".btn_agregar_certificacion").slideDown('slow');
+            $("#contenedor_registro_certifi").slideUp('slow');
             $("#btn-agregar-certificacion").val('Agregar certificacion');
             $("#btn-agregar-certificacion").attr('accion','1');
             $("#nombre").val('');

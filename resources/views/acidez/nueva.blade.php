@@ -11,28 +11,38 @@
         </div>
     </div>
 
-    <form id="formularioAcidez">
+    <form id="formularioAcidez" >
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="form-group">
-                <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
-                       placeholder="Ingrese el Nombre" style="width: 100%">
-                <input type="hidden" id="id_acidez" name="id_acidez">
+    <div id="contenedor_registro_acidez" style="display: none">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="input">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                           placeholder="Ingrese el Nombre" style="width: 100%">
+                    <input type="hidden" id="id_acidez" name="id_acidez">
+                </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
+                       id="btn-cancelar-acidez">
+                <input type="button" value="Agregar Acidez" class="btn btn-primary btn-sm"
+                       id="btn-agregar-acidez" accion="1">
+            </div>
+        </div>
+
     </div>
 
-    <div class="row">
-        <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
-                   id="btn-cancelar-acidez">
-            <input type="button" value="Agregar Acidez" class="btn btn-primary btn-sm"
-                    id="btn-agregar-acidez" accion="1">
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Acidez" class="btn_agregar_acidez btn btn-primary btn-sm">
+            </div>
         </div>
-    </div>
 
         <hr>
         <div class="row">
@@ -78,6 +88,14 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_acidez").click(function () {
+            $(".btn_agregar_acidez").slideUp('slow');
+            $("#contenedor_registro_acidez").slideDown('slow');
+            $(".btn_actualizar_acidez").attr('disabled','true');
+            $(".btn_eliminar_acidez").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -130,6 +148,11 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_acidez', function () {
 
+            $(".btn_agregar_acidez").slideUp('slow');
+            $("#contenedor_registro_acidez").slideDown('slow');
+            $(".btn_actualizar_acidez").attr('disabled','true');
+            $(".btn_eliminar_acidez").attr('disabled','true');
+
             $("#btn-agregar-acidez").val('Actualizar Acidez');
             $("#btn-agregar-acidez").attr('accion','2');
             $("#btn-cancelar-acidez").slideDown('slow');
@@ -172,7 +195,11 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-acidez', function () {
 
-            $("#btn-cancelar-acidez").slideUp('slow');
+            $(".btn_agregar_acidez").slideDown('slow');
+            $("#contenedor_registro_acidez").slideUp('slow');
+            $(".btn_actualizar_acidez").attr('disabled',false);
+            $(".btn_eliminar_acidez").attr('disabled',false);
+
             $("#btn-agregar-acidez").val('Agregar Acidez');
             $("#btn-agregar-acidez").attr('accion','1');
             $("#nombre").val('');

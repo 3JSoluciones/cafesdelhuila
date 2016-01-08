@@ -15,6 +15,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <div id="contenedor_registro_tipoSecad" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -28,12 +30,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-tipoSeca">
             <input type="button" value="Agregar Nuevo Tipo" class="btn btn-primary btn-sm"
                     id="btn-agregar-tipoSecados" accion="1">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Nuevo Tipo"
+                       class="btn_agregar_tipoSecados btn btn-primary btn-sm">
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -79,6 +90,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_tipoSecados").click(function () {
+            $(".btn_agregar_tipoSecados").slideUp('slow');
+            $("#contenedor_registro_tipoSecad").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -131,9 +148,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_tipoSeca', function () {
 
+            $(".btn_agregar_tipoSecados").slideUp('slow');
+            $("#contenedor_registro_tipoSecad").slideDown('slow');
             $("#btn-agregar-tipoSecados").val('Actualizar Tipo Secado');
             $("#btn-agregar-tipoSecados").attr('accion','2');
-            $("#btn-cancelar-tipoSeca").slideDown('slow');
             $("#id_tipoSeca").val($(this).attr('id_tipoSeca'));
             $("#nombre").val($(this).attr('nombre_tipoSeca'));
             console.log('actualizando');
@@ -173,7 +191,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-tipoSeca', function () {
 
-            $("#btn-cancelar-tipoSeca").slideUp('slow');
+            $(".btn_agregar_tipoSecados").slideDown('slow');
+            $("#contenedor_registro_tipoSecad").slideUp('slow');
             $("#btn-agregar-tipoSecados").val('Agregar Tipo Secado');
             $("#btn-agregar-tipoSecados").attr('accion','1');
             $("#nombre").val('');

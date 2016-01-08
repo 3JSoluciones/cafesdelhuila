@@ -16,6 +16,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <input type="hidden" id="id_lote" name="id_lote">
 
+  <div id="contenedor_registro_lote" style="display: none">
+
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
@@ -150,12 +152,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-lote">
             <input type="button" value="Agregar Lote" class="btn btn-primary btn-sm"
                     id="btn-agregar-lotes" accion="1">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Lote"
+                       class="btn_agregar_lotes btn btn-primary btn-sm">
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -228,6 +239,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_lotes").click(function () {
+            $(".btn_agregar_lotes").slideUp('slow');
+            $("#contenedor_registro_lote").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -313,9 +330,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_lote', function () {
 
+            $(".btn_agregar_lotes").slideUp('slow');
+            $("#contenedor_registro_lote").slideDown('slow');
             $("#btn-agregar-lotes").val('Actualizar Lote');
             $("#btn-agregar-lotes").attr('accion','2');
-            $("#btn-cancelar-lote").slideDown('slow');
 
             $("#id_lote")                   .val($(this).attr('id'));
             $("#finca_id")                  .val($(this).attr('finca_id'));
@@ -366,7 +384,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-lote', function () {
 
-            $("#btn-cancelar-lote").slideUp('slow');
+            $(".btn_agregar_lotes").slideDown('slow');
+            $("#contenedor_registro_lote").slideUp('slow');
             $("#btn-agregar-lotes").val('Agregar Lote');
             $("#btn-agregar-lotes").attr('accion','1');
 

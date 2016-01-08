@@ -16,6 +16,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <input type="hidden" id="id_finca" name="id_finca">
 
+   <div id="contenedor_registro_finca" style="display: none">
+
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
@@ -129,12 +131,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-finca">
             <input type="button" value="Agregar Variedad" class="btn btn-primary btn-sm"
                     id="btn-agregar-finca" accion="1">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Variedad"
+                       class="btn_agregar_finca btn btn-primary btn-sm" >
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -203,6 +214,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_finca").click(function () {
+            $(".btn_agregar_finca").slideUp('slow');
+            $("#contenedor_registro_finca").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -288,9 +305,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_finca', function () {
 
+            $(".btn_agregar_finca").slideUp('slow');
+            $("#contenedor_registro_finca").slideDown('slow');
             $("#btn-agregar-finca").val('Actualizar Finca');
             $("#btn-agregar-finca").attr('accion','2');
-            $("#btn-cancelar-finca").slideDown('slow');
 
             $("#id_finca")         .val($(this).attr('id'));
             $("#productor_id")      .val($(this).attr('Productor_id'));
@@ -341,7 +359,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-finca', function () {
 
-            $("#btn-cancelar-finca").slideUp('slow');
+            $(".btn_agregar_finca").slideDown('slow');
+            $("#contenedor_registro_finca").slideUp('slow');
             $("#btn-agregar-finca").val('Agregar Finca');
             $("#btn-agregar-finca").attr('accion','1');
 

@@ -15,6 +15,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+   <div id="contenedor_registro_product" style="display: none">
+
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
@@ -58,12 +60,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-prod">
             <input type="button" value="Agregar Productor" class="btn btn-primary btn-sm"
                     id="btn-agregar-productores" accion="1">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Productor"
+                       class="btn_agregar_productores btn btn-primary btn-sm">
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -120,6 +131,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_productores").click(function () {
+            $(".btn_agregar_productores").slideUp('slow');
+            $("#contenedor_registro_product").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -181,9 +198,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_prod', function () {
 
+            $(".btn_agregar_productores").slideUp('slow');
+            $("#contenedor_registro_product").slideDown('slow');
             $("#btn-agregar-productores").val('Actualizar Productor');
             $("#btn-agregar-productores").attr('accion','2');
-            $("#btn-cancelar-prod").slideDown('slow');
 
             $("#id_prod")           .val($(this).attr('id_prod'));
             $("#nombre")            .val($(this).attr('nombre_prod'));
@@ -226,7 +244,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-prod', function () {
 
-            $("#btn-cancelar-prod").slideUp('slow');
+            $(".btn_agregar_productores").slideDown('slow');
+            $("#contenedor_registro_product").slideUp('slow');
             $("#btn-agregar-productores").val('Agregar Productor');
             $("#btn-agregar-productores").attr('accion','1');
             $("#id_prod")           .val('');

@@ -14,6 +14,8 @@
     <form>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+   <div id="contenedor_registro_sabor" style="display: none">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -27,12 +29,21 @@
 
     <div class="row">
         <div class="col-lg-12 text-right">
-            <input style="display: none" type="button" value="Cancelar" class="btn btn-danger btn-sm"
+            <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                    id="btn-cancelar-sabor">
             <input type="button" value="Agregar Sabor" accion="1"
                    class="btn btn-primary btn-sm" id="btn-agregar-sabores">
         </div>
     </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <input type="button" value="+ Agregar Sabor"
+                       class="btn_agregar_sabores btn btn-primary btn-sm" >
+            </div>
+        </div>
 
         <hr>
         <div class="row">
@@ -78,6 +89,12 @@
             "language": {
                 "url": "/bower_components/jquery/Spanish.json"
             }
+        });
+
+        //animacion del contenedor de registro
+        $(".btn_agregar_sabores").click(function () {
+            $(".btn_agregar_sabores").slideUp('slow');
+            $("#contenedor_registro_sabor").slideDown('slow');
         });
 
         //btn agregar y actualizar
@@ -130,9 +147,10 @@
         //btn actualizar
         $(document).on('click','.btn_actualizar_sabor', function () {
 
+            $(".btn_agregar_sabores").slideUp('slow');
+            $("#contenedor_registro_sabor").slideDown('slow');
             $("#btn-agregar-sabores").val('Actualizar Sabor');
             $("#btn-agregar-sabores").attr('accion','2');
-            $("#btn-cancelar-sabor").slideDown('slow');
             $("#id_sabor").val($(this).attr('id_sabor'));
             $("#nombre").val($(this).attr('nombre_sabor'));
             console.log('actualizando');
@@ -172,7 +190,8 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-sabor', function () {
 
-            $("#btn-cancelar-sabor").slideUp('slow');
+            $(".btn_agregar_sabores").slideDown('slow');
+            $("#contenedor_registro_sabor").slideUp('slow');
             $("#btn-agregar-sabores").val('Agregar Sabor');
             $("#btn-agregar-sabores").attr('accion','1');
             $("#nombre").val('');
