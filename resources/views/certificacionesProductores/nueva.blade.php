@@ -15,7 +15,7 @@
             </ol>
         </div>
     </div>
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <input type="hidden" id="id_certProd" name="id_certProd">
 
@@ -25,7 +25,8 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label for="input">Productor</label>
-                <select name="productor_id" id="productor_id" class="form-control" style="width: 100%">
+                <select name="productor_id" id="productor_id" class="select" style="width: 100%"
+                        required validationMessage="El campo productor es obligatorio">
                     <option value="" >Seleccione..</option>
 
                     @foreach($productores as $productor)
@@ -38,9 +39,9 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label for="input">Certificacion</label>
-                <select name="certificacion_id" id="certificacion_id" class="form-control" style="width: 100%"
-                        >
-                    <option value="0">Seleccione..</option>
+                <select name="certificacion_id" id="certificacion_id" class="select" style="width: 100%"
+                        required validationMessage="El campo certificacion es obligatorio">
+                    <option value="">Seleccione..</option>
                     <!--<optgroup label="Grupo de certificaciones">-->
                         @foreach($certificaciones as $certificacion)
                             <option value="{{ $certificacion->id }}">{{ $certificacion->nombre }}</option>
@@ -124,6 +125,8 @@
         $(".btn_agregar_certificacionProductor").click(function () {
             $(".btn_agregar_certificacionProductor").slideUp('slow');
             $("#contenedor_registro_certiProduct").slideDown('slow');
+            $(".btn_actualizar_certiProd").attr('disabled','true');
+            $(".btn_eliminar_certiProd").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -135,42 +138,46 @@
 
             if($("#btn-agregar-certificacionProductor").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificacionesProductores',
-                    data:{
-                        Productor_id:Productor_id,
-                        Certificacion_id:Certificacion_id,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/certificacionesProductores/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/certificacionesProductores',
+                        data: {
+                            Productor_id: Productor_id,
+                            Certificacion_id: Certificacion_id,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/certificacionesProductores/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificacionesProductores/' + id + '',
-                    data:{
-                        id:id,
-                        Productor_id:Productor_id,
-                        Certificacion_id:Certificacion_id,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/certificacionesProductores/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/certificacionesProductores/' + id + '',
+                        data: {
+                            id: id,
+                            Productor_id: Productor_id,
+                            Certificacion_id: Certificacion_id,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/certificacionesProductores/create";
+                        }
+                    });
+                }
 
             }
 
@@ -183,6 +190,8 @@
             $("#contenedor_registro_certiProduct").slideDown('slow');
             $("#btn-agregar-certificacionProductor").val('Actualizar Certificacion a Productores');
             $("#btn-agregar-certificacionProductor").attr('accion','2');
+            $(".btn_actualizar_certiProd").attr('disabled','true');
+            $(".btn_eliminar_certiProd").attr('disabled','true');
 
             $("#id_certProd")       .val($(this).attr('id_certiProd'));
             $("#productor_id")      .val($(this).attr('prod_certiProd'));
@@ -225,6 +234,8 @@
 
             $(".btn_agregar_certificacionProductor").slideDown('slow');
             $("#contenedor_registro_certiProduct").slideUp('slow');
+            $(".btn_actualizar_certiProd").attr('disabled',false);
+            $(".btn_eliminar_certiProd").attr('disabled',false);
             $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
             $("#btn-agregar-certificacionProductor").attr('accion','1');
             $("#id_certProd")       .val('');

@@ -22,7 +22,31 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css"/>
     <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
+    <link href="https://kendo.cdn.telerik.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
     <!-- fin de los estilos -->
+
+    <style type="text/css">
+
+        span.k-widget.k-tooltip-validation {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: none;
+            box-shadow: none;
+            display: inline-block;
+            color: red;
+        }
+
+        .date {
+            width: 100%;
+        }
+
+        .select {
+            width: 100%;
+        }
+
+    </style>
 
     @yield('page-css-code')
 
@@ -84,6 +108,17 @@
     </nav>
 </center>
 <div class="container">
+
+    <div class="panel-heading text-center"
+         style="color: #66512c; font-size: 30px;
+                     font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">
+        BIENVENIDO A CAFES DEL HUILA
+    </div>
+
+    <div class="panel-body text-center">
+        <img src="/img/descarga.jpeg" width="600px" style="margin-right: 100px; text-align: center !important;">
+    </div>
+
     @yield('content')
 </div>
 
@@ -97,6 +132,7 @@
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="/bower_components/jquery/jquery.validate.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
 
@@ -104,6 +140,7 @@
 
 <!-- Toastr -->
 <script src="/bower_components/toastr/toastr.js"></script>
+<script src="https://kendo.cdn.telerik.com/2014.1.318/js/kendo.all.min.js"></script>
 <script src="/js/scrip.js"></script>
 <!-- fin js -->
 

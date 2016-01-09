@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <input type="hidden" id="id_lote" name="id_lote">
 
@@ -22,7 +22,8 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Variedad 1</label>
-                <select name="variedad1" id="variedad1" class="form-control" style="width: 100%">
+                <select name="variedad1" id="variedad1" class="select"
+                        validationMessage="El campo {0} es obligatorio" required style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($variedades as $variedad)
@@ -35,7 +36,7 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Variedad 2</label>
-                <select name="variedad2" id="variedad2" class="form-control" style="width: 100%">
+                <select name="variedad2" id="variedad2" class="select" style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($variedades as $variedad)
@@ -48,7 +49,7 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Variedad 3</label>
-                <select name="variedad3" id="variedad3" class="form-control" style="width: 100%">
+                <select name="variedad3" id="variedad3" class="select" style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($variedades as $variedad)
@@ -64,22 +65,21 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Cantidad de arboles por variedad 1</label>
-                <input type="text" class="form-control" id="cantidad_aboles_variedad1" name="cantidad_aboles_variedad1" required="required"
+                <input type="text" class="k-textbox" id="cantidad_aboles_variedad1" name="cantidad_aboles_variedad1"
+                       required validationMessage="El campo Cantidad de arboles es obligatorio"
                        placeholder="Ingrese" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Cantidad de arboles por variedad 2</label>
-                <input type="text" class="form-control" id="cantidad_aboles_variedad2" name="cantidad_aboles_variedad2" required="required"
-                       placeholder="Ingrese" style="width: 100%">
+                <input type="text" class="k-textbox" id="cantidad_aboles_variedad2" name="cantidad_aboles_variedad2" placeholder="Ingrese" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Cantidad de arboles por variedad 3</label>
-                <input type="text" class="form-control" id="cantidad_aboles_variedad3" name="cantidad_aboles_variedad3" required="required"
-                       placeholder="Ingrese" style="width: 100%">
+                <input type="text" class="k-textbox" id="cantidad_aboles_variedad3" name="cantidad_aboles_variedad3" placeholder="Ingrese" style="width: 100%">
             </div>
         </div>
     </div>
@@ -88,7 +88,8 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Finca</label>
-                <select name="finca_id" id="finca_id" class="form-control" style="width: 100%">
+                <select name="finca_id" id="finca_id" class="select"
+                        validationMessage="El campo finca es obligatorio" requiredstyle="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($fincas as $finca)
@@ -101,7 +102,8 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Tipo Beneficio</label>
-                <select name="tipo_beneficio_id" id="tipo_beneficio_id" class="form-control" style="width: 100%">
+                <select name="tipo_beneficio_id" id="tipo_beneficio_id" class="select"
+                        validationMessage="El campo tipo beneficio es obligatorio" required style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($tiposBeneficios as $tipoBeneficio)
@@ -114,7 +116,8 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Tipo Secado</label>
-                <select name="tipo_secado_id" id="tipo_secado_id" class="form-control" style="width: 100%">
+                <select name="tipo_secado_id" id="tipo_secado_id" class="select"
+                        validationMessage="El campo tipo secado es obligatorio" required style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($tiposSecados as $tipoSecado)
@@ -130,21 +133,24 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el nombre" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Area</label>
-                <input type="text" class="form-control" id="area" name="area" required="required"
+                <input type="text" class="k-textbox" id="area" name="area"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese la area" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Perfil</label>
-                <input type="text" class="form-control" id="perfil" name="perfil" required="required"
+                <input type="text" class="k-textbox" id="perfil" name="perfil"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el perfil" style="width: 100%">
             </div>
         </div>
@@ -245,6 +251,8 @@
         $(".btn_agregar_lotes").click(function () {
             $(".btn_agregar_lotes").slideUp('slow');
             $("#contenedor_registro_lote").slideDown('slow');
+            $(".btn_actualizar_lote").attr('disabled','true');
+            $(".btn_eliminar_lote").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -266,62 +274,66 @@
 
             if($("#btn-agregar-lotes").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/lotes',
-                    data:{
-                        Finca_id:Finca_id,
-                        Variedad1_id:Variedad1_id,
-                        Variedad2_id:Variedad2_id,
-                        Variedad3_id:Variedad3_id,
-                        Tipo_beneficio_id:Tipo_beneficio_id,
-                        Tipo_secado_id:Tipo_secado_id,
-                        Cantidad_arboles_variedad1:Cantidad_arboles_variedad1,
-                        Cantidad_arboles_variedad2:Cantidad_arboles_variedad2,
-                        Cantidad_arboles_variedad3:Cantidad_arboles_variedad3,
-                        Nombre:Nombre,
-                        Area:Area,
-                        Perfil:Perfil,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/lotes/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/lotes',
+                        data: {
+                            Finca_id: Finca_id,
+                            Variedad1_id: Variedad1_id,
+                            Variedad2_id: Variedad2_id,
+                            Variedad3_id: Variedad3_id,
+                            Tipo_beneficio_id: Tipo_beneficio_id,
+                            Tipo_secado_id: Tipo_secado_id,
+                            Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
+                            Cantidad_arboles_variedad2: Cantidad_arboles_variedad2,
+                            Cantidad_arboles_variedad3: Cantidad_arboles_variedad3,
+                            Nombre: Nombre,
+                            Area: Area,
+                            Perfil: Perfil,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/lotes/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/lotes/' + id + '',
-                    data:{
-                        id:id,
-                        Finca_id:Finca_id,
-                        Variedad1_id:Variedad1_id,
-                        Variedad2_id:Variedad2_id,
-                        Variedad3_id:Variedad3_id,
-                        Tipo_beneficio_id:Tipo_beneficio_id,
-                        Tipo_secado_id:Tipo_secado_id,
-                        Cantidad_arboles_variedad1:Cantidad_arboles_variedad1,
-                        Cantidad_arboles_variedad2:Cantidad_arboles_variedad2,
-                        Cantidad_arboles_variedad3:Cantidad_arboles_variedad3,
-                        Nombre:Nombre,
-                        Area:Area,
-                        Perfil:Perfil,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/lotes/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/lotes/' + id + '',
+                        data: {
+                            id: id,
+                            Finca_id: Finca_id,
+                            Variedad1_id: Variedad1_id,
+                            Variedad2_id: Variedad2_id,
+                            Variedad3_id: Variedad3_id,
+                            Tipo_beneficio_id: Tipo_beneficio_id,
+                            Tipo_secado_id: Tipo_secado_id,
+                            Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
+                            Cantidad_arboles_variedad2: Cantidad_arboles_variedad2,
+                            Cantidad_arboles_variedad3: Cantidad_arboles_variedad3,
+                            Nombre: Nombre,
+                            Area: Area,
+                            Perfil: Perfil,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/lotes/create";
+                        }
+                    });
+                }
 
             }
 
@@ -334,6 +346,8 @@
             $("#contenedor_registro_lote").slideDown('slow');
             $("#btn-agregar-lotes").val('Actualizar Lote');
             $("#btn-agregar-lotes").attr('accion','2');
+            $(".btn_actualizar_lote").attr('disabled','true');
+            $(".btn_eliminar_lote").attr('disabled','true');
 
             $("#id_lote")                   .val($(this).attr('id'));
             $("#finca_id")                  .val($(this).attr('finca_id'));
@@ -388,6 +402,8 @@
             $("#contenedor_registro_lote").slideUp('slow');
             $("#btn-agregar-lotes").val('Agregar Lote');
             $("#btn-agregar-lotes").attr('accion','1');
+            $(".btn_actualizar_lote").attr('disabled',false);
+            $(".btn_eliminar_lote").attr('disabled',false);
 
             $("#id_lote")                   .val('');
             $("#finca_id")                  .val('');

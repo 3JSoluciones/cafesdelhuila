@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_munici" style="display: none">
@@ -21,7 +21,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_municipio" name="id_municipio">
             </div>
@@ -95,6 +96,8 @@
             $(".btn_agregar_municipio").click(function () {
                 $(".btn_agregar_municipio").slideUp('slow');
                 $("#contenedor_registro_munici").slideDown('slow');
+                $(".btn_actualizar_municipio").attr('disabled','true');
+                $(".btn_eliminar_municipio").attr('disabled','true');
             });
 
             //btn agregar y actualizar
@@ -105,40 +108,44 @@
 
                 if($("#btn-agregar-municipio").attr('accion') == 1) {
 
-                    //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/municipios',
-                        data:{
-                            nombre:nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType:'json',
-                        type:'POST',
-                        success:function(data) {
-                            self.location="http://cafesdelhuila.com/municipios/create";
-                        }
-                    });
+                    if (validator.validate()) {
+                        //btn agregar
+                        $.ajax({
+                            url: 'http://cafesdelhuila.com/municipios',
+                            data: {
+                                nombre: nombre,
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            success: function (data) {
+                                self.location = "http://cafesdelhuila.com/municipios/create";
+                            }
+                        });
+                    }
 
                 } else {
 
-                    //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/municipios/' + id + '',
-                        data:{
-                            id:id,
-                            nombre:nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType:'json',
-                        type:'PUT',
-                        success:function(data) {
-                            self.location="http://cafesdelhuila.com/municipios/create";
-                        }
-                    });
+                    if (validator.validate()) {
+                        //btn actualizar
+                        $.ajax({
+                            url: 'http://cafesdelhuila.com/municipios/' + id + '',
+                            data: {
+                                id: id,
+                                nombre: nombre,
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            dataType: 'json',
+                            type: 'PUT',
+                            success: function (data) {
+                                self.location = "http://cafesdelhuila.com/municipios/create";
+                            }
+                        });
+                    }
 
                 }
 
@@ -149,6 +156,9 @@
 
                 $(".btn_agregar_municipio").slideUp('slow');
                 $("#contenedor_registro_munici").slideDown('slow');
+                $(".btn_actualizar_municipio").attr('disabled','true');
+                $(".btn_eliminar_municipio").attr('disabled','true');
+                $(".current").attr('disabled','true');
                 $("#btn-agregar-municipio").val('Actualizar municipio');
                 $("#btn-agregar-municipio").attr('accion','2');
                 $("#id_municipio").val($(this).attr('id_municipio'));
@@ -192,6 +202,8 @@
 
                 $(".btn_agregar_municipio").slideDown('slow');
                 $("#contenedor_registro_munici").slideUp('slow');
+                $(".btn_actualizar_municipio").attr('disabled',false);
+                $(".btn_eliminar_municipio").attr('disabled',false);
                 $("#btn-agregar-municipio").val('Agregar municipio');
                 $("#btn-agregar-municipio").attr('accion','1');
                 $("#nombre").val('');

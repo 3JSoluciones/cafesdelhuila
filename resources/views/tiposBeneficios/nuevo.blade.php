@@ -11,7 +11,7 @@
             </ol>
         </div>
     </div>
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_tipoBenef" style="display: none">
@@ -20,7 +20,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_tipoBene" name="id_tipoBene">
             </div>
@@ -95,6 +96,8 @@
         $(".btn_agregar_tipoBeneficio").click(function () {
             $(".btn_agregar_tipoBeneficio").slideUp('slow');
             $("#contenedor_registro_tipoBenef").slideDown('slow');
+            $(".btn_actualizar_tipoBene").attr('disabled','true');
+            $(".btn_eliminar_tipoBene").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -105,40 +108,44 @@
 
             if($("#btn-agregar-tipoBeneficio").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/tiposBeneficios',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/tiposBeneficios/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/tiposBeneficios',
+                        data: {
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/tiposBeneficios/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/tiposBeneficios/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/tiposBeneficios/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/tiposBeneficios/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/tiposBeneficios/create";
+                        }
+                    });
+                }
 
             }
 
@@ -149,6 +156,8 @@
 
             $(".btn_agregar_tipoBeneficio").slideUp('slow');
             $("#contenedor_registro_tipoBenef").slideDown('slow');
+            $(".btn_actualizar_tipoBene").attr('disabled','true');
+            $(".btn_eliminar_tipoBene").attr('disabled','true');
             $("#btn-agregar-tipoBeneficio").val('Actualizar tipo beneficio');
             $("#btn-agregar-tipoBeneficio").attr('accion','2');
             $("#id_tipoBene").val($(this).attr('id_tipoBene'));
@@ -192,6 +201,8 @@
 
             $(".btn_agregar_tipoBeneficio").slideDown('slow');
             $("#contenedor_registro_tipoBenef").slideUp('slow');
+            $(".btn_actualizar_tipoBene").attr('disabled',false);
+            $(".btn_eliminar_tipoBene").attr('disabled',false);
             $("#btn-agregar-tipoBeneficio").val('Agregar tipo beneficio');
             $("#btn-agregar-tipoBeneficio").attr('accion','1');
             $("#nombre").val('');

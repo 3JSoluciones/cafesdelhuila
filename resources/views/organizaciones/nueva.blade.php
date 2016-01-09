@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div id="contenedor_registro_organiz" style="display: none">
@@ -21,7 +21,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       required validationMessage="El campo Cantidad de arboles es obligatorio"
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_organiz" name="id_organiz">
             </div>
@@ -96,6 +97,8 @@
         $(".btn_agregar_organizacion").click(function () {
             $(".btn_agregar_organizacion").slideUp('slow');
             $("#contenedor_registro_organiz").slideDown('slow');
+            $(".btn_actualizar_organiz").attr('disabled','true');
+            $(".btn_eliminar_organiz").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -106,40 +109,44 @@
 
             if($("#btn-agregar-organizacion").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/organizaciones',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/organizaciones/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/organizaciones',
+                        data: {
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/organizaciones/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/organizaciones/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/organizaciones/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/organizaciones/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/organizaciones/create";
+                        }
+                    });
+                }
 
             }
 
@@ -150,6 +157,8 @@
 
             $(".btn_agregar_organizacion").slideUp('slow');
             $("#contenedor_registro_organiz").slideDown('slow');
+            $(".btn_actualizar_organiz").attr('disabled','true');
+            $(".btn_eliminar_organiz").attr('disabled','true');
             $("#btn-agregar-organizacion").val('Actualizar organizacion');
             $("#btn-agregar-organizacion").attr('accion','2');
             $("#id_organiz").val($(this).attr('id_organiz'));
@@ -193,6 +202,8 @@
 
             $(".btn_agregar_organizacion").slideDown('slow');
             $("#contenedor_registro_organiz").slideUp('slow');
+            $(".btn_actualizar_organiz").attr('disabled',false);
+            $(".btn_eliminar_organiz").attr('disabled',false);
             $("#btn-agregar-organizacion").val('Agregar organizacion');
             $("#btn-agregar-organizacion").attr('accion','1');
             $("#nombre").val('');

@@ -11,7 +11,7 @@
             </ol>
         </div>
     </div>
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_sabor" style="display: none">
@@ -20,7 +20,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       validationMessage="El campo {0} es obligatorio" required
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_sabor" name="id_sabor">
             </div>
@@ -95,6 +96,8 @@
         $(".btn_agregar_sabores").click(function () {
             $(".btn_agregar_sabores").slideUp('slow');
             $("#contenedor_registro_sabor").slideDown('slow');
+            $(".btn_actualizar_sabor").attr('disabled','true');
+            $(".btn_eliminar_sabor").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -105,40 +108,44 @@
 
             if($("#btn-agregar-sabores").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/sabores',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/sabores/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/sabores',
+                        data: {
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/sabores/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/sabores/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/sabores/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/sabores/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/sabores/create";
+                        }
+                    });
+                }
 
             }
 
@@ -149,6 +156,8 @@
 
             $(".btn_agregar_sabores").slideUp('slow');
             $("#contenedor_registro_sabor").slideDown('slow');
+            $(".btn_actualizar_sabor").attr('disabled','true');
+            $(".btn_eliminar_sabor").attr('disabled','true');
             $("#btn-agregar-sabores").val('Actualizar Sabor');
             $("#btn-agregar-sabores").attr('accion','2');
             $("#id_sabor").val($(this).attr('id_sabor'));
@@ -192,6 +201,8 @@
 
             $(".btn_agregar_sabores").slideDown('slow');
             $("#contenedor_registro_sabor").slideUp('slow');
+            $(".btn_actualizar_sabor").attr('disabled',false);
+            $(".btn_eliminar_sabor").attr('disabled',false);
             $("#btn-agregar-sabores").val('Agregar Sabor');
             $("#btn-agregar-sabores").attr('accion','1');
             $("#nombre").val('');

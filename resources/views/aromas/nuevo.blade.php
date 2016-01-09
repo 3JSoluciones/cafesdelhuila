@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_aroma" style="display: none">
@@ -21,8 +21,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
-                       placeholder="Ingrese el Nombre" style="width: 100%">
+                <input type="text" class="k-textbox" id="nombre" name="nombre" required="required"
+                       placeholder="Ingrese el Nombre" style="width: 100%" required validationMessage="El campo {0} es obligatorio">
                 <input type="hidden" id="id_aromas" name="id_aromas">
             </div>
         </div>
@@ -102,45 +102,50 @@
         //btn agregar y actualizar
         $("#btn-agregar-aromas").click(function(){
 
+
             var nombre  = $("#nombre").val();
             var id      = $("#id_aromas").val();
 
             if($("#btn-agregar-aromas").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/aromas',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/aromas/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/aromas',
+                        data: {
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/aromas/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/aromas/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/aromas/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/aromas/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/aromas/create";
+                        }
+                    });
+                }
 
             }
 

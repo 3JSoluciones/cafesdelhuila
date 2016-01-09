@@ -11,17 +11,20 @@
         </div>
     </div>
 
-    <form id="formularioAcidez" >
+    <form id="formularioAcidez" class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div id="contenedor_registro_acidez" style="display: none">
 
+
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group">
-                    <label for="input">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required="required"
-                           placeholder="Ingrese el Nombre" style="width: 100%">
+                    <label for="nombre" class="required">Nombre</label>
+                        <input type="text" class="k-textbox" id="nombre" name="nombre" required validationMessage="El campo {0} es obligatorio"
+                               placeholder="Ingrese el Nombre" style="width: 100%">
+
                     <input type="hidden" id="id_acidez" name="id_acidez">
                 </div>
             </div>
@@ -31,7 +34,7 @@
             <div class="col-lg-12 text-right">
                 <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                        id="btn-cancelar-acidez">
-                <input type="button" value="Agregar Acidez" class="btn btn-primary btn-sm"
+                <input type="button" value="Agregar Acidez" class=" btn btn-primary btn-sm"
                        id="btn-agregar-acidez" accion="1">
             </div>
         </div>
@@ -64,7 +67,7 @@
                             <td>{{ $acidz->nombre }}</td>
                             <td>{{ $acidz->created_at }}</td>
                             <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_acidez
+                                <input type="button" value="Actualizar" class=" btn_actualizar_acidez
                                 btn btn-primary btn-sm" id_acidez="{{ $acidz->id }}" nombre_acidez="{{ $acidz->nombre }}">
                                 <input type="button" value="Eliminar" class="btn_eliminar_acidez
                                 btn btn-danger btn-sm" id_acidez="{{ $acidz->id }}">
@@ -106,40 +109,46 @@
 
             if($("#btn-agregar-acidez").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/acidez',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/acidez/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/acidez',
+                        data:{
+                            nombre:nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType:'json',
+                        type:'POST',
+                        success:function(data) {
+                            self.location="http://cafesdelhuila.com/acidez/create";
+                        }
+                    });
+
+                }
+
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/acidez/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/acidez/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/acidez/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/acidez/create";
+                        }
+                    });
+                }
 
             }
 

@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <div id="contenedor_registro_depart" style="display: none">
@@ -21,7 +21,8 @@
             <div class="col-lg-12">
                 <div class="form-group">
                     <label for="input">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                    <input type="text" class="k-textbox" id="nombre" name="nombre"
+                           required validationMessage="El campo {0} es obligatorio"
                            placeholder="Ingrese el Nombre" style="width: 100%">
                     <input type="hidden" id="id_depart" name="id_depart">
                 </div>
@@ -96,6 +97,8 @@
         $(".btn_agregar_departamento").click(function () {
             $(".btn_agregar_departamento").slideUp('slow');
             $("#contenedor_registro_depart").slideDown('slow');
+            $(".btn_actualizar_departamento").attr('disabled','true');
+            $(".btn_eliminar_departamento").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -106,41 +109,45 @@
 
             if($("#btn-agregar-departamento").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/departamentos',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        toastr.info("El departamento " + nombre + " se agrego con exito.","DEPARTAMENTOS");
-                        self.location="http://cafesdelhuila.com/departamentos/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/departamentos',
+                        data: {
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            toastr.info("El departamento " + nombre + " se agrego con exito.", "DEPARTAMENTOS");
+                            self.location = "http://cafesdelhuila.com/departamentos/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/departamentos/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/departamentos/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/departamentos/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/departamentos/create";
+                        }
+                    });
+                }
 
             }
 
@@ -151,6 +158,8 @@
 
             $(".btn_agregar_departamento").slideUp('slow');
             $("#contenedor_registro_depart").slideDown('slow');
+            $(".btn_actualizar_departamento").attr('disabled','true');
+            $(".btn_eliminar_departamento").attr('disabled','true');
             $("#btn-agregar-departamento").val('Actualizar departamento');
             $("#btn-agregar-departamento").attr('accion','2');
             $("#id_depart").val($(this).attr('id_depart'));
@@ -194,6 +203,8 @@
 
             $(".btn_agregar_departamento").slideDown('slow');
             $("#contenedor_registro_depart").slideUp('slow');
+            $(".btn_actualizar_departamento").attr('disabled',false);
+            $(".btn_eliminar_departamento").attr('disabled',false);
             $("#btn-agregar-departamento").val('Agregar departamento');
             $("#btn-agregar-departamento").attr('accion','1');
             $("#nombre").val('');

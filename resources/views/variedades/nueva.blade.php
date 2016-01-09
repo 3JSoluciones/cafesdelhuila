@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_variedades" style="display: none">
@@ -21,7 +21,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_varied" name="id_varied">
             </div>
@@ -32,7 +33,8 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Acidez</label>
-                    <select name="acidez_id" id="acidez_id" class="form-control" style="width: 100%">
+                    <select name="acidez_id" id="acidez_id" class="select"
+                            validationMessage="El campo acidez es obligatorio" required style="width: 100%">
                         <option value="">Seleccione..</option>
 
                         @foreach($acidezes as $acidez)
@@ -45,7 +47,8 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Aroma</label>
-                    <select name="aroma_id" id="aroma_id" class="form-control" style="width: 100%">
+                    <select name="aroma_id" id="aroma_id" class="select"
+                            validationMessage="El campo aroma es obligatorio" required style="width: 100%">
                         <option value="">Seleccione..</option>
 
                         @foreach($aromas as $aroma)
@@ -58,7 +61,8 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Sabor</label>
-                    <select name="sabor_id" id="sabor_id" class="form-control" style="width: 100%">
+                    <select name="sabor_id" id="sabor_id" class="select"
+                            validationMessage="El campo sabor es obligatorio" required style="width: 100%">
                         <option value="">Seleccione..</option>
 
                         @foreach($sabores as $sabor)
@@ -152,6 +156,8 @@
         $(".btn_agregar_variedad").click(function () {
             $(".btn_agregar_variedad").slideUp('slow');
             $("#contenedor_registro_variedades").slideDown('slow');
+            $(".btn_actualizar_varied").attr('disabled','true');
+            $(".btn_eliminar_varied").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -166,47 +172,51 @@
 
             if($("#btn-agregar-variedad").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/variedades',
-                    data:{
-                        Acidez_id:Acidez_id,
-                        Aroma_id:Aroma_id,
-                        Sabor_id:Sabor_id,
-                        nombre:nombre,
-                        Variedadescol:Variedadescol,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/variedades/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/variedades',
+                        data: {
+                            Acidez_id: Acidez_id,
+                            Aroma_id: Aroma_id,
+                            Sabor_id: Sabor_id,
+                            nombre: nombre,
+                            Variedadescol: Variedadescol,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/variedades/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/variedades/' + id + '',
-                    data:{
-                        Acidez_id:Acidez_id,
-                        Aroma_id:Aroma_id,
-                        Sabor_id:Sabor_id,
-                        nombre:nombre,
-                        Variedadescol:Variedadescol,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/variedades/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/variedades/' + id + '',
+                        data: {
+                            Acidez_id: Acidez_id,
+                            Aroma_id: Aroma_id,
+                            Sabor_id: Sabor_id,
+                            nombre: nombre,
+                            Variedadescol: Variedadescol,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/variedades/create";
+                        }
+                    });
+                }
 
             }
 
@@ -217,6 +227,8 @@
 
             $(".btn_agregar_variedad").slideUp('slow');
             $("#contenedor_registro_variedades").slideDown('slow');
+            $(".btn_actualizar_varied").attr('disabled','true');
+            $(".btn_eliminar_varied").attr('disabled','true');
             $("#btn-agregar-variedad").val('Actualizar Variedad');
             $("#btn-agregar-variedad").attr('accion','2');
 
@@ -264,6 +276,8 @@
 
             $(".btn_agregar_variedad").slideDown('slow');
             $("#contenedor_registro_variedades").slideUp('slow');
+            $(".btn_actualizar_varied").attr('disabled',false);
+            $(".btn_eliminar_varied").attr('disabled',false);
 
             $("#btn-agregar-variedad").val('Agregar Variedad');
             $("#btn-agregar-variedad").attr('accion','1');

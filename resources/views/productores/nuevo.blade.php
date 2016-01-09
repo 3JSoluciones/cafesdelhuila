@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_product" style="display: none">
@@ -21,7 +21,8 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
+                <input type="text" class="k-textbox" id="nombre" name="nombre"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el Nombre" style="width: 100%">
                 <input type="hidden" id="id_prod" name="id_prod">
             </div>
@@ -29,14 +30,16 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Telefono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" required="required"
+                <input type="text" class="k-textbox" id="telefono" name="telefono"
+                       required validationMessage="El campo {0} es obligatorio"
                        placeholder="Ingrese el telefono" style="width: 100%">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Organizacion</label>
-                <select name="organizacion_id" id="organizacion_id" class="form-control" style="width: 100%">
+                <select name="organizacion_id" id="organizacion_id" class="select"
+                        validationMessage="El campo organizacion es obligatorio" required style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($organizaciones as $organizacion)
@@ -52,7 +55,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Correo Electronico</label>
-                <input type="email" class="form-control" id="email" name="email" required="required"
+                <input type="email" class="k-textbox" id="email" name="email"
+                       required validationMessage="El campo correo es obligatorio, recueder que debe ser un correo valido"
                        placeholder="ejemplo@outlook.com" style="width: 100%">
             </div>
         </div>
@@ -137,6 +141,8 @@
         $(".btn_agregar_productores").click(function () {
             $(".btn_agregar_productores").slideUp('slow');
             $("#contenedor_registro_product").slideDown('slow');
+            $(".btn_actualizar_prod").attr('disabled','true');
+            $(".btn_eliminar_prod").attr('disabled','true');
         });
 
         //btn agregar y actualizar
@@ -150,46 +156,50 @@
 
             if($("#btn-agregar-productores").attr('accion') == 1) {
 
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/productores',
-                    data:{
-                        Organizacion_id:Organizacion_id,
-                        nombre:nombre,
-                        Telefono:Telefono,
-                        Email:Email,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/productores/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn agregar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/productores',
+                        data: {
+                            Organizacion_id: Organizacion_id,
+                            nombre: nombre,
+                            Telefono: Telefono,
+                            Email: Email,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/productores/create";
+                        }
+                    });
+                }
 
             } else {
 
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/productores/' + id + '',
-                    data:{
-                        id:id,
-                        Organizacion_id:Organizacion_id,
-                        nombre:nombre,
-                        Telefono:Telefono,
-                        Email:Email,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/productores/create";
-                    }
-                });
+                if (validator.validate()) {
+                    //btn actualizar
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/productores/' + id + '',
+                        data: {
+                            id: id,
+                            Organizacion_id: Organizacion_id,
+                            nombre: nombre,
+                            Telefono: Telefono,
+                            Email: Email,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/productores/create";
+                        }
+                    });
+                }
 
             }
 
@@ -200,6 +210,8 @@
 
             $(".btn_agregar_productores").slideUp('slow');
             $("#contenedor_registro_product").slideDown('slow');
+            $(".btn_actualizar_prod").attr('disabled','true');
+            $(".btn_eliminar_prod").attr('disabled','true');
             $("#btn-agregar-productores").val('Actualizar Productor');
             $("#btn-agregar-productores").attr('accion','2');
 
@@ -246,6 +258,8 @@
 
             $(".btn_agregar_productores").slideDown('slow');
             $("#contenedor_registro_product").slideUp('slow');
+            $(".btn_actualizar_prod").attr('disabled',false);
+            $(".btn_eliminar_prod").attr('disabled',false);
             $("#btn-agregar-productores").val('Agregar Productor');
             $("#btn-agregar-productores").attr('accion','1');
             $("#id_prod")           .val('');

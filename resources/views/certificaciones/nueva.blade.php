@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form>
+    <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
    <div id="contenedor_registro_certifi" style="display: none">
@@ -21,8 +21,8 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="required"
-                       placeholder="Ingrese el Nombre" style="width: 100%">
+                <input type="text"  class="k-textbox" id="nombre" name="nombre" required="required"
+                       placeholder="Ingrese el Nombre" style="width: 100%" required validationMessage="El campo {0} es obligatorio">
                 <input type="hidden" id="id_certif" name="id_certif">
             </div>
         </div>
@@ -108,38 +108,42 @@
 
             if($("#btn-agregar-certificacion").attr('accion') == 1) {
 
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificaciones',
-                    data:{
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'POST',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/certificaciones/create";
-                    }
-                });
+                if (validator.validate()) {
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/certificaciones',
+                        data: {
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/certificaciones/create";
+                        }
+                    });
+                }
 
             } else {
 
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificaciones/' + id + '',
-                    data:{
-                        id:id,
-                        nombre:nombre,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'PUT',
-                    success:function(data) {
-                        self.location="http://cafesdelhuila.com/certificaciones/create";
-                    }
-                });
+                if (validator.validate()) {
+                    $.ajax({
+                        url: 'http://cafesdelhuila.com/certificaciones/' + id + '',
+                        data: {
+                            id: id,
+                            nombre: nombre,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType: 'json',
+                        type: 'PUT',
+                        success: function (data) {
+                            self.location = "http://cafesdelhuila.com/certificaciones/create";
+                        }
+                    });
+                }
 
             }
 
