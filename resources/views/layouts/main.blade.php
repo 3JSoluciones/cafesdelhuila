@@ -35,7 +35,7 @@
             background: none;
             box-shadow: none;
             display: inline-block;
-            color: red;
+            color: #b9b9b9;
         }
 
         .date {
