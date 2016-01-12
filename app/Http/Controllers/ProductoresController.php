@@ -32,8 +32,10 @@ class ProductoresController extends Controller
     //controller productores
     public function create() {
         $organizaciones = Organizacion::all();
+        $proceso        = 1;
         return view('productores.nuevo', array(
-            'organizaciones'    => $organizaciones
+            'organizaciones'    => $organizaciones,
+            'proceso'           => $proceso
         ));
     }
 
@@ -73,6 +75,24 @@ class ProductoresController extends Controller
             console.log('el productor no existe :(');
         }
 
+    }
+
+    public function getActualizar($id) {
+        $productor    = Productor::with('organizacion')
+            ->where('id', '=', $id)
+            ->get();
+        $organizaciones = Organizacion::all();
+        $proceso        = 2;
+        if($productor->count()) {
+            $productor = $productor->first();
+            return view('productores.nuevo', array(
+                'productor'         => $productor,
+                'organizaciones'    => $organizaciones,
+                'proceso'           => $proceso
+            ));
+        } else {
+            echo "error";
+        }
     }
 
 }

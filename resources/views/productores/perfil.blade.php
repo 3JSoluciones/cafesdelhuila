@@ -82,11 +82,9 @@
             </div>
         </div>
 
-
-
         <div class="col-lg-10">
-            <input type="hidden" id="id_productor" value="{{ $productor->id }}">
-            <input type="hidden" id="id_organizacion" value="{{ $productor->organizacion_id }}">
+            <input type="hidden" id="id_productor"      value="{{ $productor->id }}">
+            <input type="hidden" id="id_organizacion"   value="{{ $productor->organizacion_id }}">
             <p></p><b>
                 {{ $productor->nombre }}<br />
                 {{ $productor->telefono }}<br />
@@ -127,13 +125,9 @@
                         <td>{{ $productor->email }}</td>
                         <td>{{ $productor->organizacion->nombre }}</td>
                         <td>
-                            <input type="button" value="Actualizar" class="btn_actualizar_prod
-                                btn btn-primary btn-sm"
-                                   id_prod="{{ $productor->id }}"
-                                   nombre_prod="{{ $productor->nombre }}"
-                                   org_prod="{{ $productor->organizacion->id }}"
-                                   tel_prod="{{ $productor->telefono }}"
-                                   ema_prod="{{ $productor->email }}">
+                            <a href="http://cafesdelhuila.com/productores/actualizar/{{ $productor->id}}">
+                                <input type="button" value="Actualizar" class="btn btn-primary btn-sm">
+                            </a>
                         </td>
                     </tr>
 
@@ -168,19 +162,6 @@
         listadoCertificaciones();
         crearCertificaciones();
     });
-
-
-
-    //--------------------------------------------------------------------
-    //comienza datos productor
-    //--------------------------------------------------------------------
-
-
-
-    //--------------------------------------------------------------------
-    //termina datos productor
-    //--------------------------------------------------------------------
-
 
     //--------------------------------------------------------------------
     //inicia fincas

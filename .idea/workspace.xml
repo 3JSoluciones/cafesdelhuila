@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccf084e-2789-4d66-a2db-cf0bda0b7724" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/productores/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/productores/nuevo.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/productores/perfil.blade.php" afterPath="$PROJECT_DIR$/resources/views/productores/perfil.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -26,18 +27,38 @@
     <favorites_list name="cafesdelhuila" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="perfil.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/productores/perfil.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61442006">
-              <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="91" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.75391096">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="nuevo.blade.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/views/productores/nuevo.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.3647059">
+                  <caret line="216" column="49" selection-start-line="216" selection-start-column="49" selection-end-line="216" selection-end-column="49" />
+                  <folding>
+                    <element signature="e#573#594#0#HTML" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="ProductoresController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5415473">
+                  <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,9 +101,7 @@
         <option value="$PROJECT_DIR$/resources/views/municipios/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/public/js/scrip.js" />
         <option value="$PROJECT_DIR$/resources/views/fincas/nueva.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/productores/nuevo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/productores/listado.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" />
         <option value="$PROJECT_DIR$/resources/views/fincas/listado.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/organizaciones/nueva.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" />
@@ -93,9 +112,11 @@
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/certificacionesProductores/listado.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/fincas/crear.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/productores/perfil.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/fincas/crear.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" />
+        <option value="$PROJECT_DIR$/resources/views/productores/nuevo.blade.php" />
       </list>
     </option>
   </component>
@@ -116,9 +137,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1012" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -143,6 +163,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -272,7 +293,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,7 +300,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="SearchEverywhereHistoryKey" value="framewok&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
@@ -333,7 +353,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1012" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -508,13 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7868339">
-          <caret line="72" column="54" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/lotes/nuevo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6394984">
@@ -585,13 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42319748">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/organizaciones/listado.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4827586">
@@ -613,13 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/productores/nuevo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46708465">
-          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/fincas/listado.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3260188">
@@ -638,20 +637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47648904">
           <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FincasController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5423198">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CertificacionesProductoresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.523511">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -697,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7199582">
-          <caret line="96" column="4" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MediosController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.62695926">
@@ -711,87 +689,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/productores/listado.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4263323">
-          <caret line="17" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="50" selection-end-column="7" />
-          <folding>
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452614290000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/fincas/crear.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02507837">
           <caret line="6" column="32" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452625974000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/departamentos/nuevo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8140021">
+          <caret line="145" column="23" selection-start-line="125" selection-start-column="20" selection-end-line="145" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4629049">
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/productores/perfil.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61442006">
-          <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="91" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.21107627">
+          <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/productores/listado.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5415473">
+          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FincasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0773638">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CertificacionesProductoresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38968483">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5415473">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/productores/nuevo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3647059">
+          <caret line="216" column="49" selection-start-line="216" selection-start-column="49" selection-end-line="216" selection-end-column="49" />
+          <folding>
+            <element signature="e#573#594#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
