@@ -24,62 +24,78 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-    //rutas del sistema
-    /*inicio departamentos*/
-    Route::resource('departamentos', 'DepartamentosController');
-    /*fin departamentos*/
-
-    /*inicio municipios*/
-    Route::resource('municipios', 'MunicipiosController');
-    /*fin municipios*/
-
-    /*inicio certificaciones*/
-    Route::resource('certificaciones', 'CertificacionesController');
-    /*fin certificaciones*/
-
-    /*inicio organizaciones*/
-    Route::resource('organizaciones', 'OrganizacionesController');
-    /*fin organizaciones*/
-
-    /*inicio tiposBeneficios*/
-    Route::resource('tiposBeneficios', 'TiposBeneficiosController');
-    /*fin tiposBeneficios*/
-
-    /*inicio sabores*/
-    Route::resource('sabores', 'SaboresController');
-    /*fin sabores*/
-
     /*inicio acidez*/
+    Route::get('acidez/listado', 'AcidezController@getAcidez');
     Route::resource('acidez', 'AcidezController');
     /*fin acidez*/
 
     /*inicio aromas*/
+    Route::get('aromas/listado', 'AromasController@getAromas');
     Route::resource('aromas', 'AromasController');
     /*fin aromas*/
 
-    /*inicio tiposSecados*/
-    Route::resource('tiposSecados', 'TiposSecadosController');
-    /*fin tiposSecados*/
-
-    /*inicio variedades*/
-    Route::resource('variedades', 'VariedadesController');
-    /*fin variedades*/
-
-    /*inicio productores*/
-    Route::resource('productores', 'ProductoresController');
-    /*fin productores*/
+    /*inicio certificaciones*/
+    Route::get('certificaciones/listado', 'CertificacionesController@getCertificaciones');
+    Route::resource('certificaciones', 'CertificacionesController');
+    /*fin certificaciones*/
 
     /*inicio certificacionesProductores*/
+    Route::get('certificacionesProductores/listado', 'CertificacionesProductoresController@getCertificacionesProductores');
     Route::resource('certificacionesProductores', 'CertificacionesProductoresController');
     /*fin certificacionesProductores*/
 
+    //rutas del sistema
+    /*inicio departamentos*/
+    Route::get('departamentos/listado', 'DepartamentosController@getDepartamentos');
+    Route::resource('departamentos', 'DepartamentosController');
+    /*fin departamentos*/
+
     /*inicio fincas*/
+    Route::get('fincas/listado', 'FincasController@getFincas');
     Route::resource('fincas', 'FincasController');
     /*fin fincas*/
 
     /*inicio lotes*/
+    Route::get('lotes/listado', 'LotesController@getLotes');
     Route::resource('lotes', 'LotesController');
     /*fin lotes*/
+
+    /*inicio municipios*/
+    Route::get('municipios/listado', 'MunicipiosController@getMunicipios');
+    Route::resource('municipios', 'MunicipiosController');
+    /*fin municipios*/
+
+    /*inicio organizaciones*/
+    Route::get('organizaciones/listado', 'OrganizacionesController@getOrganizaciones');
+    Route::resource('organizaciones', 'OrganizacionesController');
+    /*fin organizaciones*/
+
+    /*inicio productores*/
+    Route::get('productores/listado', 'ProductoresController@getProductores');
+    Route::resource('productores', 'ProductoresController');
+    /*fin productores*/
+
+    /*inicio sabores*/
+    Route::get('sabores/listado', 'SaboresController@getSabores');
+    Route::resource('sabores', 'SaboresController');
+    /*fin sabores*/
+
+    /*inicio tiposBeneficios*/
+    Route::get('tiposBeneficios/listado', 'TiposBeneficiosController@getTiposBeneficios');
+    Route::resource('tiposBeneficios', 'TiposBeneficiosController');
+    /*fin tiposBeneficios*/
+
+    /*inicio tiposSecados*/
+    Route::get('tiposSecados/listado', 'TiposSecadosController@getTiposSecados');
+    Route::resource('tiposSecados', 'TiposSecadosController');
+    /*fin tiposSecados*/
+
+    /*inicio variedades*/
+    Route::get('variedades/listado', 'VariedadesController@getVariedades');
+    Route::resource('variedades', 'VariedadesController');
+    /*fin variedades*/
+
+
 
     /*inicio medios*/
     Route::resource('medios', 'MediosController');

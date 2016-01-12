@@ -47,36 +47,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_organiz" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($organizaciones as $organizacion)
-                        <tr>
-                            <td>{{ $organizacion->id }}</td>
-                            <td>{{ $organizacion->nombre }}</td>
-                            <td>{{ $organizacion->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_organiz
-                                btn btn-primary btn-sm" id_organiz="{{ $organizacion->id }}" nombre_organiz="{{ $organizacion->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_organiz
-                                btn btn-danger btn-sm" id_organiz="{{ $organizacion->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_organizaciones" ></div>
             </div>
         </div>
 
@@ -86,12 +60,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_organiz').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/organizaciones/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_organizaciones').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_organizacion").click(function () {
@@ -100,6 +82,12 @@
             $(".btn_actualizar_organiz").attr('disabled','true');
             $(".btn_eliminar_organiz").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#nombre").val('');
+            $("#id_organiz").val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-organizacion").click(function(){
@@ -122,7 +110,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/organizaciones/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "ORGANIZACIONES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_organizacion").slideDown('slow');
+                            $("#contenedor_registro_organiz").slideUp('slow');
                         }
                     });
                 }
@@ -143,7 +135,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/organizaciones/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "ORGANIZACIONES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-organizacion").val('Agregar organizacion');
+                            $("#btn-agregar-organizacion").attr('accion','1');
+                            $(".btn_agregar_organizacion").slideDown('slow');
+                            $("#contenedor_registro_organiz").slideUp('slow');
                         }
                     });
                 }
@@ -191,7 +189,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/organizaciones/create";
+                    toastr.info("Eliminacion exitosa.", "ORGANIZACIONES");
+                    listado();
                 }
             });
 
@@ -206,7 +205,7 @@
             $(".btn_eliminar_organiz").attr('disabled',false);
             $("#btn-agregar-organizacion").val('Agregar organizacion');
             $("#btn-agregar-organizacion").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

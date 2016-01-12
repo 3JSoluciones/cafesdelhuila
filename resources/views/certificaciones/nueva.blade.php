@@ -46,36 +46,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_certif" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($certificaciones as $certificacione)
-                        <tr>
-                            <td>{{ $certificacione->id }}</td>
-                            <td>{{ $certificacione->nombre }}</td>
-                            <td>{{ $certificacione->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_certif
-                                btn btn-primary btn-sm" id_certif="{{ $certificacione->id }}" nombre_certif="{{ $certificacione->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_certif
-                                btn btn-danger btn-sm" id_certif="{{ $certificacione->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_certificacion" ></div>
             </div>
         </div>
 
@@ -85,12 +59,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_certif').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/certificaciones/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_certificacion').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_certificacion").click(function () {
@@ -100,10 +82,16 @@
             $(".btn_eliminar_certif").attr('disabled','true');
         });
 
+        //limpiar capos
+        function limpiar() {
+            $("#nombre").val('');
+            $("#id_certif").val('');
+        };
+
         //btn agregar y actualizar
         $("#btn-agregar-certificacion").click(function(){
 
-            var nombre = $("#nombre").val();
+            var nombre  = $("#nombre").val();
             var id      = $("#id_certif").val();
 
             if($("#btn-agregar-certificacion").attr('accion') == 1) {
@@ -120,7 +108,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/certificaciones/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "CERTIFICACIONES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_certificacion").slideDown('slow');
+                            $("#contenedor_registro_certifi").slideUp('slow');
                         }
                     });
                 }
@@ -140,7 +132,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/certificaciones/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "CERTIFICACIONES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-certificacion").val('Agregar certificacion');
+                            $("#btn-agregar-certificacion").attr('accion','1');
+                            $(".btn_agregar_certificacion").slideDown('slow');
+                            $("#contenedor_registro_certifi").slideUp('slow');
                         }
                     });
                 }
@@ -188,7 +186,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/certificaciones/create";
+                    toastr.info("Eliminacion exitosa.", "CERTIFICACIONES");
+                    listado();
                 }
             });
 
@@ -203,7 +202,7 @@
             $("#contenedor_registro_certifi").slideUp('slow');
             $("#btn-agregar-certificacion").val('Agregar certificacion');
             $("#btn-agregar-certificacion").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

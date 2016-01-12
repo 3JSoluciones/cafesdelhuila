@@ -46,36 +46,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_sabor" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($sabores as $sabor)
-                        <tr>
-                            <td>{{ $sabor->id }}</td>
-                            <td>{{ $sabor->nombre }}</td>
-                            <td>{{ $sabor->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_sabor
-                                btn btn-primary btn-sm" id_sabor="{{ $sabor->id }}" nombre_sabor="{{ $sabor->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_sabor
-                                btn btn-danger btn-sm" id_sabor="{{ $sabor->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_sabores" ></div>
             </div>
         </div>
 
@@ -85,12 +59,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_sabor').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/sabores/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_sabores').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_sabores").click(function () {
@@ -99,6 +81,12 @@
             $(".btn_actualizar_sabor").attr('disabled','true');
             $(".btn_eliminar_sabor").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#nombre")            .val('');
+            $("#id_sabor")           .val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-sabores").click(function(){
@@ -121,7 +109,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/sabores/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "SABORES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_sabores").slideDown('slow');
+                            $("#contenedor_registro_sabor").slideUp('slow');
                         }
                     });
                 }
@@ -142,7 +134,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/sabores/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "SABORES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-sabores").val('Agregar Sabor');
+                            $("#btn-agregar-sabores").attr('accion','1');
+                            $(".btn_agregar_sabores").slideDown('slow');
+                            $("#contenedor_registro_sabor").slideUp('slow');
                         }
                     });
                 }
@@ -190,7 +188,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/sabores/create";
+                    toastr.info("Eliminacion exitosa.", "SABORES");
+                    listado();
                 }
             });
 
@@ -205,7 +204,7 @@
             $(".btn_eliminar_sabor").attr('disabled',false);
             $("#btn-agregar-sabores").val('Agregar Sabor');
             $("#btn-agregar-sabores").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

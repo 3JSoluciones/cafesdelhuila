@@ -47,36 +47,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_tipoSeca" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($tiposSecados as $tipoSecado)
-                        <tr>
-                            <td>{{ $tipoSecado->id }}</td>
-                            <td>{{ $tipoSecado->nombre }}</td>
-                            <td>{{ $tipoSecado->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_tipoSeca
-                                btn btn-primary btn-sm" id_tipoSeca="{{ $tipoSecado->id }}" nombre_tipoSeca="{{ $tipoSecado->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_tipoSeca
-                                btn btn-danger btn-sm" id_tipoSeca="{{ $tipoSecado->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_tipoSecado" ></div>
             </div>
         </div>
 
@@ -86,12 +60,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_tipoSeca').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/tiposSecados/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_tipoSecado').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_tipoSecados").click(function () {
@@ -100,6 +82,12 @@
             $(".btn_actualizar_tipoSeca").attr('disabled','true');
             $(".btn_eliminar_tipoSeca").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#nombre")            .val('');
+            $("#id_tipoSeca")       .val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-tipoSecados").click(function(){
@@ -122,7 +110,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/tiposSecados/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "TIPOS DE SECADOS");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_tipoSecados").slideDown('slow');
+                            $("#contenedor_registro_tipoSecad").slideUp('slow');
                         }
                     });
                 }
@@ -143,7 +135,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/tiposSecados/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "TIPOS DE BENEFICIOS");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-tipoSecados").val('Agregar Tipo Secado');
+                            $("#btn-agregar-tipoSecados").attr('accion','1');
+                            $(".btn_agregar_tipoSecados").slideDown('slow');
+                            $("#contenedor_registro_tipoSecad").slideUp('slow');
                         }
                     });
                 }
@@ -191,7 +189,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/tiposSecados/create";
+                    toastr.info("Eliminacion exitosa.", "TIPOS DE SECADOS");
+                    listado();
                 }
             });
 
@@ -206,7 +205,7 @@
             $(".btn_eliminar_tipoSeca").attr('disabled',false);
             $("#btn-agregar-tipoSecados").val('Agregar Tipo Secado');
             $("#btn-agregar-tipoSecados").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

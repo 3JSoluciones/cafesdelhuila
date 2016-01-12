@@ -47,36 +47,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_departamentos" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($departamentos as $departamento)
-                        <tr>
-                            <td>{{ $departamento->id }}</td>
-                            <td>{{ $departamento->nombre }}</td>
-                            <td>{{ $departamento->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_departamento
-                                btn btn-primary btn-sm" id_depart="{{ $departamento->id }}" nombre_depart="{{ $departamento->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_departamento
-                                btn btn-danger btn-sm" id_depart="{{ $departamento->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_departamento" ></div>
             </div>
         </div>
 
@@ -86,12 +60,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_departamentos').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/departamentos/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_departamento').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_departamento").click(function () {
@@ -100,6 +82,12 @@
             $(".btn_actualizar_departamento").attr('disabled','true');
             $(".btn_eliminar_departamento").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#nombre").val('');
+            $("#id_depart").val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-departamento").click(function(){
@@ -122,8 +110,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            toastr.info("El departamento " + nombre + " se agrego con exito.", "DEPARTAMENTOS");
-                            self.location = "http://cafesdelhuila.com/departamentos/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "DEPARTAMENTOS");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_departamento").slideDown('slow');
+                            $("#contenedor_registro_depart").slideUp('slow');
                         }
                     });
                 }
@@ -144,7 +135,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/departamentos/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "DEPARTAMENTOS");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-departamento").val('Agregar departamento');
+                            $("#btn-agregar-departamento").attr('accion','1');
+                            $(".btn_agregar_departamento").slideDown('slow');
+                            $("#contenedor_registro_depart").slideUp('slow');
                         }
                     });
                 }
@@ -192,7 +189,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/departamentos/create";
+                    toastr.info("Eliminacion exitosa.", "DEPARTAMENTOS");
+                    listado();
                 }
             });
 
@@ -207,7 +205,7 @@
             $(".btn_eliminar_departamento").attr('disabled',false);
             $("#btn-agregar-departamento").val('Agregar departamento');
             $("#btn-agregar-departamento").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

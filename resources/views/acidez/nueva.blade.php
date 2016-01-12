@@ -16,8 +16,6 @@
 
     <div id="contenedor_registro_acidez" style="display: none">
 
-
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group">
@@ -47,36 +45,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_acidez" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($acidez as $acidz)
-                        <tr>
-                            <td>{{ $acidz->id }}</td>
-                            <td>{{ $acidz->nombre }}</td>
-                            <td>{{ $acidz->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class=" btn_actualizar_acidez
-                                btn btn-primary btn-sm" id_acidez="{{ $acidz->id }}" nombre_acidez="{{ $acidz->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_acidez
-                                btn btn-danger btn-sm" id_acidez="{{ $acidz->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_acidez" ></div>
             </div>
         </div>
 
@@ -86,12 +58,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_acidez').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/acidez/listado') }}",
+                   function (data) {
+                        $('#contenedor_listado_acidez').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                   }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_acidez").click(function () {
@@ -100,6 +80,12 @@
             $(".btn_actualizar_acidez").attr('disabled','true');
             $(".btn_eliminar_acidez").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#nombre").val('');
+            $("#id_acidez").val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-acidez").click(function(){
@@ -122,7 +108,11 @@
                         dataType:'json',
                         type:'POST',
                         success:function(data) {
-                            self.location="http://cafesdelhuila.com/acidez/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "ACIDEZ");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_acidez").slideDown('slow');
+                            $("#contenedor_registro_acidez").slideUp('slow');
                         }
                     });
 
@@ -145,7 +135,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/acidez/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "ACIDEZ");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-acidez").val('Agregar Acidez');
+                            $("#btn-agregar-acidez").attr('accion','1');
+                            $(".btn_agregar_acidez").slideDown('slow');
+                            $("#contenedor_registro_acidez").slideUp('slow');
                         }
                     });
                 }
@@ -195,7 +191,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/acidez/create";
+                    toastr.info("Eliminacion exitosa.", "ACIDEZ");
+                    listado();
                 }
             });
 
@@ -211,7 +208,7 @@
 
             $("#btn-agregar-acidez").val('Agregar Acidez');
             $("#btn-agregar-acidez").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

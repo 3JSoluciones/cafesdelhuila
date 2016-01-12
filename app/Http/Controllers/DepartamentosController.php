@@ -25,8 +25,12 @@ class DepartamentosController extends Controller
     //controller departamentos
     public function create()
     {
+        return view('departamentos.nuevo');
+    }
+
+    public function getDepartamentos() {
         $departamentos = \App\Departamento::all();
-        return view('departamentos.nuevo', array(
+        return view('departamentos.listado', array(
             'departamentos' => $departamentos
         ));
     }

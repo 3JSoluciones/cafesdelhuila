@@ -22,8 +22,12 @@ class SaboresController extends Controller
 
     //controller sabores
     public function create() {
+        return view('sabores.nuevo');
+    }
+
+    public function getSabores() {
         $sabores = \App\Sabor::all();
-        return view('sabores.nuevo', array(
+        return view('sabores.listado', array(
             'sabores' => $sabores
         ));
     }

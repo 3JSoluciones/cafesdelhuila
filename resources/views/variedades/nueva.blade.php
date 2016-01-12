@@ -94,48 +94,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_varied" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>ACIDEZ</th>
-                        <th>AROMA</th>
-                        <th>SABOR</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($variedades as $variedad)
-                        <tr>
-                            <td>{{ $variedad->id }}</td>
-                            <td>{{ $variedad->nombre }}</td>
-                            <td>{{ $variedad->acidez->nombre }}</td>
-                            <td>{{ $variedad->aroma->nombre }}</td>
-                            <td>{{ $variedad->sabor->nombre }}</td>
-                            <td>{{ $variedad->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_varied
-                                btn btn-primary btn-sm"
-                                       id_varied="{{ $variedad->id }}"
-                                       nombre_varied="{{ $variedad->nombre }}"
-                                       acidez_varied="{{ $variedad->acidez->id }}"
-                                       aroma_varied="{{ $variedad->aroma->id }}"
-                                       sabor_varied="{{ $variedad->sabor->id }}"
-                                       varidCol_varied="{{ $variedad->variedadescol }}" >
-                                <input type="button" value="Eliminar" class="btn_eliminar_varied
-                                btn btn-danger btn-sm" id_varied="{{ $variedad->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_variedades" ></div>
             </div>
         </div>
 
@@ -145,12 +107,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_varied').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/variedades/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_variedades').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_variedad").click(function () {
@@ -159,6 +129,16 @@
             $(".btn_actualizar_varied").attr('disabled','true');
             $(".btn_eliminar_varied").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#id_varied")     .val('');
+            $("#acidez_id")     .val('');
+            $("#aroma_id")      .val('');
+            $("#sabor_id")      .val('');
+            $("#nombre")        .val('');
+            $("#Variedadescol") .val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-variedad").click(function(){
@@ -189,7 +169,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/variedades/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "VARIEDADES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_variedad").slideDown('slow');
+                            $("#contenedor_registro_variedades").slideUp('slow');
                         }
                     });
                 }
@@ -213,7 +197,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/variedades/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "VARIEDADES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-variedad").val('Agregar Variedad');
+                            $("#btn-agregar-variedad").attr('accion','1');
+                            $(".btn_agregar_variedad").slideDown('slow');
+                            $("#contenedor_registro_variedades").slideUp('slow');
                         }
                     });
                 }
@@ -265,7 +255,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/variedades/create";
+                    toastr.info("Eliminacion exitosa.", "TIPOS DE SECADOS");
+                    listado();
                 }
             });
 
@@ -278,15 +269,9 @@
             $("#contenedor_registro_variedades").slideUp('slow');
             $(".btn_actualizar_varied").attr('disabled',false);
             $(".btn_eliminar_varied").attr('disabled',false);
-
             $("#btn-agregar-variedad").val('Agregar Variedad');
             $("#btn-agregar-variedad").attr('accion','1');
-            $("#id_varied")     .val('');
-            $("#acidez_id")     .val('');
-            $("#aroma_id")      .val('');
-            $("#sabor_id")      .val('');
-            $("#nombre")        .val('');
-            $("#Variedadescol") .val('');
+            limpiar();
 
         });
 

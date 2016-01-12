@@ -159,59 +159,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_finca" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>FINCA</th>
-                        <th>PRODUCTOR</th>
-                        <th>DEPAR</th>
-                        <th>MUNI</th>
-                        <th>CORRE</th>
-                        <th>VER</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($fincas as $finca)
-                        <tr>
-                            <td>{{ $finca->id }}</td>
-                            <td>{{ $finca->finca }}</td>
-                            <td>{{ $finca->productor->nombre }}</td>
-                            <td>{{ $finca->departamento->nombre }}</td>
-                            <td>{{ $finca->municipio->nombre }}</td>
-                            <td>{{ $finca->corregimiento }}</td>
-                            <td>{{ $finca->vereda }}</td>
-                            <td>{{ $finca->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_finca
-                                btn btn-primary btn-sm"
-                                       id                   ="{{ $finca->id }}"
-                                       Productor_id         ="{{ $finca->productor->id }}"
-                                       Departamento_id      ="{{ $finca->departamento->id }}"
-                                       Municipio_id         ="{{ $finca->municipio->id }}"
-                                       Corregimiento        ="{{ $finca->corregimiento }}"
-                                       Vereda               ="{{ $finca->vereda }}"
-                                       Finca                ="{{ $finca->finca }}"
-                                       Coordenadas          ="{{ $finca->coordenadas }}"
-                                       Altitud              ="{{ $finca->altitud }}"
-                                       Cosecha_comienza     ="{{ $finca->cosecha_comienza }}"
-                                       Cosecha_termina      ="{{ $finca->cosecha_termina }}"
-                                       Mitaca_comienza      ="{{ $finca->mitaca_comienza }}"
-                                       Mitaca_termina       ="{{ $finca->mitaca_termina }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_finca
-                                btn btn-danger btn-sm" id_finca="{{ $finca->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_finca" ></div>
             </div>
         </div>
 
@@ -221,12 +172,37 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_finca').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/fincas/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_finca').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
+
+        //limpiar capos
+        function limpiar() {
+            $("#id_finca")          .val('');
+            $("#productor_id")      .val('');
+            $("#departamento_id")   .val('');
+            $("#municipio_id")      .val('');
+            $("#corregimiento")     .val('');
+            $("#vereda")            .val('');
+            $("#finca")             .val('');
+            $("#coordenadas")       .val('');
+            $("#altitud")           .val('');
+            $("#inicioCosecha")     .val('');
+            $("#finCosecha")        .val('');
+            $("#inicioMitaca")      .val('');
+            $("#finMitaca")         .val('');
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_finca").click(function () {
@@ -279,7 +255,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/fincas/create";
+                            toastr.info("Registro de " + Finca + " exitoso.", "FINCAS");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_finca").slideDown('slow');
+                            $("#contenedor_registro_finca").slideUp('slow');
                         }
                     });
             }
@@ -311,7 +291,13 @@
                     dataType: 'json',
                     type: 'PUT',
                     success: function (data) {
-                        self.location = "http://cafesdelhuila.com/fincas/create";
+                        toastr.info("Actualizacion de " + Finca + " exitosa.", "FINCAS");
+                        listado();
+                        limpiar();
+                        $("#btn-agregar-finca").val('Agregar Finca');
+                        $("#btn-agregar-finca").attr('accion','1');
+                        $(".btn_agregar_finca").slideDown('slow');
+                        $("#contenedor_registro_finca").slideUp('slow');
                     }
                 });
             }
@@ -370,7 +356,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/fincas/create";
+                    toastr.info("Eliminacion exitosa.", "FINCAS");
+                    listado();
                 }
             });
 
@@ -385,20 +372,7 @@
             $(".btn_eliminar_finca").attr('disabled',false);
             $("#btn-agregar-finca").val('Agregar Finca');
             $("#btn-agregar-finca").attr('accion','1');
-
-            $("#id_finca")         .val('');
-            $("#productor_id")      .val('');
-            $("#departamento_id")   .val('');
-            $("#municipio_id")      .val('');
-            $("#corregimiento")     .val('');
-            $("#vereda")            .val('');
-            $("#finca")             .val('');
-            $("#coordenadas")       .val('');
-            $("#altitud")           .val('');
-            $("#inicioCosecha")     .val('');
-            $("#finCosecha")        .val('');
-            $("#inicioMitaca")      .val('');
-            $("#finMitaca")         .val('');
+            limpiar();
 
         });
 

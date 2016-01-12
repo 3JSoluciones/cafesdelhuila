@@ -25,16 +25,21 @@ class FincasController extends Controller
 
     //controller fincas
     public function create() {
-        $fincas        = Finca::with('productor','departamento','municipio')->get();
         $productores    = Productor::all();
         $departamentos  = Departamento::all();
         $municipios     = Municipio::all();
         return view('fincas.nueva', array(
-            'fincas'          => $fincas,
             'productores'     => $productores,
             'departamentos'   => $departamentos,
             'municipios'      => $municipios
         ));
+    }
+
+    public function getFincas() {
+        $fincas        = Finca::with('productor','departamento','municipio')->get();
+        return view('fincas.listado', array(
+                'fincas'          => $fincas
+            ));
     }
 
     public function store(Request $request)

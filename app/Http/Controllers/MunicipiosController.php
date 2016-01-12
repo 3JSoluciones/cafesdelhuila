@@ -22,8 +22,13 @@ class MunicipiosController extends Controller
 
     //controller municipios
     public function create() {
+
+        return view('municipios.nuevo');
+    }
+
+    public function getMunicipios() {
         $municipios = \App\Municipio::all();
-        return view('municipios.nuevo', array(
+        return view('municipios.listado', array(
             'municipios' => $municipios
         ));
     }

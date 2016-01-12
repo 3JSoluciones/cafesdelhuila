@@ -23,8 +23,12 @@ class OrganizacionesController extends Controller
 
     //controller organizacion
     public function create() {
+        return view('organizaciones.nueva');
+    }
+
+    public function getOrganizaciones() {
         $organizaciones = \App\Organizacion::all();
-        return view('organizaciones.nueva', array(
+        return view('organizaciones.listado', array(
             'organizaciones' => $organizaciones
         ));
     }

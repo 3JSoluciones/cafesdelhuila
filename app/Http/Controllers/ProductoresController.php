@@ -24,11 +24,16 @@ class ProductoresController extends Controller
 
     //controller productores
     public function create() {
-        $productores    = Productor::with('organizacion')->get();
         $organizaciones = Organizacion::all();
         return view('productores.nuevo', array(
-            'productores'       => $productores,
             'organizaciones'    => $organizaciones
+        ));
+    }
+
+    public function getProductores() {
+        $productores    = Productor::with('organizacion')->get();
+        return view('productores.listado', array(
+            'productores'       => $productores
         ));
     }
 

@@ -24,9 +24,14 @@ class CertificacionesController extends Controller
     //controller certificaciones
     public function create() {
         $certificaciones = \App\Certificacion::all();
-        return view('certificaciones.nueva', array(
-            'certificaciones' => $certificaciones
-        ));
+        return view('certificaciones.nueva');
+    }
+
+    public function getCertificaciones() {
+        $certificaciones = Certificacion::all();
+        return view('certificaciones.listado', array(
+                'certificaciones' => $certificaciones)
+        );
     }
 
     public function store(Request $request)

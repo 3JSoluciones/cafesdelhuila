@@ -24,9 +24,14 @@ class AromasController extends Controller
     //controller aromas
     public function create() {
         $aromas = \App\Aroma::all();
-        return view('aromas.nuevo', array(
-            'aromas' => $aromas
-        ));
+        return view('aromas.nuevo');
+    }
+
+    public function getAromas() {
+        $aromas = Aroma::all();
+        return view('aromas.listado', array(
+                'aromas' => $aromas)
+        );
     }
 
     public function store(Request $request)

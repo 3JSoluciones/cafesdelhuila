@@ -26,15 +26,20 @@ class VariedadesController extends Controller
 
     //controller variedades
     public function create() {
-        $variedades     = Variedad::with('acidez','aroma','sabor')->get();
         $acidezes       = Acidez::all();
         $aromas         = Aroma::all();
         $sabores        = Sabor::all();
         return view('variedades.nueva', array(
-            'variedades'    => $variedades,
             'acidezes'      => $acidezes,
             'aromas'        => $aromas,
             'sabores'       => $sabores
+        ));
+    }
+
+    public function getVariedades() {
+        $variedades     = Variedad::with('acidez','aroma','sabor')->get();
+        return view('variedades.listado', array(
+            'variedades'    => $variedades
         ));
     }
 

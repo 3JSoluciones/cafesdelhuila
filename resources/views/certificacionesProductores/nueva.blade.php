@@ -70,41 +70,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_certiProd" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>PRODUCTOR</th>
-                        <th>CERTIFICACION</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($certificacionesProductores as $certificacionProductor)
-                        <tr>
-                            <td>{{ $certificacionProductor->id }}</td>
-                            <td>{{ $certificacionProductor->productor->nombre }}</td>
-                            <td>{{ $certificacionProductor->certificacion->nombre }}</td>
-                            <td>{{ $certificacionProductor->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_certiProd
-                                btn btn-primary btn-sm"
-                                       id_certiProd="{{ $certificacionProductor->id }}"
-                                       prod_certiProd="{{ $certificacionProductor->productor->id }}"
-                                       cert_certiProd="{{ $certificacionProductor->certificacion->id }}" >
-                                <input type="button" value="Eliminar" class="btn_eliminar_certiProd
-                                btn btn-danger btn-sm" id_certiProd="{{ $certificacionProductor->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_certifiProduct" ></div>
             </div>
         </div>
 
@@ -114,12 +83,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_certiProd').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/certificacionesProductores/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_certifiProduct').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_certificacionProductor").click(function () {
@@ -128,6 +105,13 @@
             $(".btn_actualizar_certiProd").attr('disabled','true');
             $(".btn_eliminar_certiProd").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#productor_id").val('');
+            $("#certificacion_id").val('');
+            $("#id_certProd").val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-certificacionProductor").click(function(){
@@ -152,7 +136,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/certificacionesProductores/create";
+                            toastr.info("Registro exitoso.", "CERTIFICACIONES DE PRODUCTORES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_certificacionProductor").slideDown('slow');
+                            $("#contenedor_registro_certiProduct").slideUp('slow');
                         }
                     });
                 }
@@ -174,7 +162,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/certificacionesProductores/create";
+                            toastr.info("Actualizacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
+                            $("#btn-agregar-certificacionProductor").attr('accion','1');
+                            $(".btn_agregar_certificacionProductor").slideDown('slow');
+                            $("#contenedor_registro_certiProduct").slideUp('slow');
                         }
                     });
                 }
@@ -223,7 +217,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/certificacionesProductores/create";
+                    toastr.info("Eliminacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
+                    listado();
                 }
             });
 
@@ -238,9 +233,7 @@
             $(".btn_eliminar_certiProd").attr('disabled',false);
             $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
             $("#btn-agregar-certificacionProductor").attr('accion','1');
-            $("#id_certProd")       .val('');
-            $("#productor_id")      .val('');
-            $("#certificacion_id")  .val('');
+            limpiar();
 
         });
 

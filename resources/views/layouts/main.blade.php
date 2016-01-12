@@ -69,12 +69,16 @@
                 <a class="navbar-brand" href="/home">
                    <b>Cafes Del Huila</b>
                 </a>
+
             </div>
+
+
 
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+
                     <!-- Authentication Links -->
                     @if (Auth::guest())
 
@@ -85,6 +89,8 @@
                         <li><a href="/login">Iniciar Sesion</a></li>
                         <li><a href="/register">Crear una cuenta</a></li>
                     @else
+
+                        <div class="navbar-brand contenedor_carga nav navbar-nav navbar-right"></div>
 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="/home">INICIO</a></li>
@@ -166,7 +172,11 @@
             "hideEasing": "linear",
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
-        }
+        };
+
+        $('.contenedor_carga')
+                .hide()
+                .html('<img src="{{ asset('img/loader.gif') }}" width="18px">' );
 
     });
 

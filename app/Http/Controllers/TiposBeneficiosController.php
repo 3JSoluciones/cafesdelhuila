@@ -23,8 +23,12 @@ class TiposBeneficiosController extends Controller
 
     //controller tiposBeneficios
     public function create() {
+        return view('tiposBeneficios.nuevo');
+    }
+
+    public function getTiposBeneficios() {
         $tiposBeneficios = \App\Tipo_Beneficio::all();
-        return view('tiposBeneficios.nuevo', array(
+        return view('tiposBeneficios.listado', array(
             'tiposBeneficios' => $tiposBeneficios
         ));
     }

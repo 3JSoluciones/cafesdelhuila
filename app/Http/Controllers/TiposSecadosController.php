@@ -22,8 +22,13 @@ class TiposSecadosController extends Controller
 
     //controller tiposSecados
     public function create() {
+
+        return view('tiposSecados.nuevo');
+    }
+
+    public function getTiposSecados() {
         $tiposSecados = \App\Tipo_Secado::all();
-        return view('tiposSecados.nuevo', array(
+        return view('tiposSecados.listado', array(
             'tiposSecados' => $tiposSecados
         ));
     }

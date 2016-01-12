@@ -80,47 +80,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_prod" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>TELEFONO</th>
-                        <th>EMAIL</th>
-                        <th>ORGANIZACION</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($productores as $productor)
-                        <tr>
-                            <td>{{ $productor->id }}</td>
-                            <td>{{ $productor->nombre }}</td>
-                            <td>{{ $productor->telefono }}</td>
-                            <td>{{ $productor->email }}</td>
-                            <td>{{ $productor->organizacion->nombre }}</td>
-                            <td>{{ $productor->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_prod
-                                btn btn-primary btn-sm"
-                                       id_prod="{{ $productor->id }}"
-                                       nombre_prod="{{ $productor->nombre }}"
-                                       org_prod="{{ $productor->organizacion->id }}"
-                                       tel_prod="{{ $productor->telefono }}"
-                                       ema_prod="{{ $productor->email }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_prod
-                                btn btn-danger btn-sm" id_prod="{{ $productor->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_productores" ></div>
             </div>
         </div>
 
@@ -130,12 +93,20 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_prod').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/productores/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_productores').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_productores").click(function () {
@@ -144,6 +115,15 @@
             $(".btn_actualizar_prod").attr('disabled','true');
             $(".btn_eliminar_prod").attr('disabled','true');
         });
+
+        //limpiar capos
+        function limpiar() {
+            $("#id_prod")           .val('');
+            $("#nombre")            .val('');
+            $("#organizacion_id")   .val('');
+            $("#telefono")          .val('');
+            $("#email")             .val('');
+        };
 
         //btn agregar y actualizar
         $("#btn-agregar-productores").click(function(){
@@ -172,7 +152,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/productores/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "PRODUCTORES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_productores").slideDown('slow');
+                            $("#contenedor_registro_product").slideUp('slow');
                         }
                     });
                 }
@@ -196,7 +180,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/productores/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "PRODUCTORES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-productores").val('Agregar Productor');
+                            $("#btn-agregar-productores").attr('accion','1');
+                            $(".btn_agregar_productores").slideDown('slow');
+                            $("#contenedor_registro_product").slideUp('slow');
                         }
                     });
                 }
@@ -247,7 +237,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/productores/create";
+                    toastr.info("Eliminacion exitosa.", "PRODUCTORES");
+                    listado();
                 }
             });
 
@@ -262,11 +253,7 @@
             $(".btn_eliminar_prod").attr('disabled',false);
             $("#btn-agregar-productores").val('Agregar Productor');
             $("#btn-agregar-productores").attr('accion','1');
-            $("#id_prod")           .val('');
-            $("#nombre")            .val('');
-            $("#organizacion_id")   .val('');
-            $("#telefono")          .val('');
-            $("#email")             .val('');
+            limpiar();
 
         });
 

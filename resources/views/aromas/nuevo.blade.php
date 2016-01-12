@@ -45,36 +45,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_aromas" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($aromas as $aroma)
-                        <tr>
-                            <td>{{ $aroma->id }}</td>
-                            <td>{{ $aroma->nombre }}</td>
-                            <td>{{ $aroma->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_aromas
-                                btn btn-primary btn-sm" id_aromas="{{ $aroma->id }}" nombre_aromas="{{ $aroma->nombre }}">
-                                <input type="button" value="Eliminar" class="btn_eliminar_aromas
-                                btn btn-danger btn-sm" id_aromas="{{ $aroma->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_aromas" ></div>
             </div>
         </div>
 
@@ -84,12 +58,26 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_aromas').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/aromas/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_aromas').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
+
+        //limpiar capos
+        function limpiar() {
+            $("#nombre").val('');
+            $("#id_aromas").val('');
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_aromas").click(function () {
@@ -121,7 +109,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/aromas/create";
+                            toastr.info("Registro de " + nombre + " exitoso.", "AROMAS");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_aromas").slideDown('slow');
+                            $("#contenedor_registro_aroma").slideUp('slow');
                         }
                     });
                 }
@@ -142,7 +134,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/aromas/create";
+                            toastr.info("Actualizacion de " + nombre + " exitosa.", "AROMAS");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-aromas").val('Agregar Aromas');
+                            $("#btn-agregar-aromas").attr('accion','1');
+                            $(".btn_agregar_aromas").slideDown('slow');
+                            $("#contenedor_registro_aroma").slideUp('slow');
                         }
                     });
                 }
@@ -190,7 +188,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/aromas/create";
+                    toastr.info("Eliminacion exitosa.", "AROMAS");
+                    listado();
                 }
             });
 
@@ -205,7 +204,7 @@
             $("#contenedor_registro_aroma").slideUp('slow');
             $("#btn-agregar-aromas").val('Agregar Aromas');
             $("#btn-agregar-aromas").attr('accion','1');
-            $("#nombre").val('');
+            limpiar();
 
         });
 

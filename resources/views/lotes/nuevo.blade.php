@@ -89,7 +89,7 @@
             <div class="form-group">
                 <label for="input">Finca</label>
                 <select name="finca_id" id="finca_id" class="select"
-                        validationMessage="El campo finca es obligatorio" requiredstyle="width: 100%">
+                        validationMessage="El campo finca es obligatorio" required style="width: 100%">
                     <option value="">Seleccione..</option>
 
                     @foreach($fincas as $finca)
@@ -174,63 +174,10 @@
             </div>
         </div>
 
-        <hr>
         <div class="row">
             <div class="col-lg-12">
-
-                <table id="tabla_lote" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>NIT</th>
-                        <th>NOMBRE</th>
-                        <th>AREA</th>
-                        <th>FINCA</th>
-                        <th>TP.BENEF</th>
-                        <th>TP.SECAD</th>
-                        <th>CREADO</th>
-                        <th>ACCION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($lotes as $lote)
-                        <tr>
-                            <td>{{ $lote->id }}</td>
-                            <td>{{ $lote->nombre }}</td>
-                            <td>{{ $lote->area }}</td>
-                            <td>{{ $lote->finca->finca }}</td>
-                            <td>{{ $lote->tipo_beneficio->nombre }}</td>
-                            <td>{{ $lote->tipo_secado->nombre }}</td>
-                            <td>{{ $lote->created_at }}</td>
-                            <td>
-                                <input type="button" value="Actualizar" class="btn_actualizar_lote
-                                btn btn-primary btn-sm"
-                                       id                           ="{{ $lote->id }}"
-                                       Finca_id                     ="{{ $lote->finca_id }}"
-                                       <?php
-
-                                       if($lote->variedad1_id == 0) { } else { ?> Variedad1_id ="{{ $lote->variedad1_id }}" <?php }
-                                       if($lote->variedad2_id == 0) { } else { ?> Variedad2_id ="{{ $lote->variedad2_id }}" <?php }
-                                       if($lote->variedad3_id == 0) { } else { ?> Variedad3_id ="{{ $lote->variedad3_id }}" <?php }
-
-                                       ?>
-                                       Tipo_beneficio_id            ="{{ $lote->tipo_beneficio_id }}"
-                                       Tipo_secado_id               ="{{ $lote->tipo_secado_id }}"
-                                       Cantidad_arboles_variedad1   ="{{ $lote->cantidad_arboles_variedad1 }}"
-                                       Cantidad_arboles_variedad2   ="{{ $lote->cantidad_arboles_variedad2 }}"
-                                       Cantidad_arboles_variedad3   ="{{ $lote->cantidad_arboles_variedad3 }}"
-                                       Nombre                       ="{{ $lote->nombre }}"
-                                       Area                         ="{{ $lote->area }}"
-                                       Perfil                       ="{{ $lote->perfil }}"
-
-                                        >
-                                <input type="button" value="Eliminar" class="btn_eliminar_lote
-                                btn btn-danger btn-sm" id_lote="{{ $lote->id }}">
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
+                <hr>
+                <div id="contenedor_listado_lotes" ></div>
             </div>
         </div>
 
@@ -240,12 +187,37 @@
 
     <script type="application/javascript">
 
-        //Establecer tabla con jquery table
-        $('#tabla_lote').DataTable({
-            "language": {
-                "url": "/bower_components/jquery/Spanish.json"
-            }
+        $(document).ready(function () {
+            listado();
         });
+
+        //listado
+        function listado() {
+            $('.contenedor_carga').slideDown('slow');
+            $.get("{{ URL('http://cafesdelhuila.com/lotes/listado') }}",
+                    function (data) {
+                        $('#contenedor_listado_lotes').hide().html(data).slideDown('slow');
+                        $('.contenedor_carga').slideUp('slow');
+                    }
+            );
+        };
+
+        //limpiar capos
+        function limpiar() {
+            $("#id_lote")                   .val('');
+            $("#finca_id")                  .val('');
+            $("#variedad1")                 .val('');
+            $("#variedad2")                 .val('');
+            $("#variedad3")                 .val('');
+            $("#tipo_beneficio_id")         .val('');
+            $("#tipo_secado_id")            .val('');
+            $("#cantidad_aboles_variedad1") .val('');
+            $("#cantidad_aboles_variedad2") .val('');
+            $("#cantidad_aboles_variedad3") .val('');
+            $("#nombre")                    .val('');
+            $("#area")                      .val('');
+            $("#perfil")                    .val('');
+        };
 
         //animacion del contenedor de registro
         $(".btn_agregar_lotes").click(function () {
@@ -298,7 +270,11 @@
                         dataType: 'json',
                         type: 'POST',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/lotes/create";
+                            toastr.info("Registro de " + Nombre + " exitoso.", "LOTES");
+                            listado();
+                            limpiar();
+                            $(".btn_agregar_lotes").slideDown('slow');
+                            $("#contenedor_registro_lote").slideUp('slow');
                         }
                     });
                 }
@@ -330,7 +306,13 @@
                         dataType: 'json',
                         type: 'PUT',
                         success: function (data) {
-                            self.location = "http://cafesdelhuila.com/lotes/create";
+                            toastr.info("Actualizacion de " + Nombre + " exitosa.", "LOTES");
+                            listado();
+                            limpiar();
+                            $("#btn-agregar-lotes").val('Agregar Lote');
+                            $("#btn-agregar-lotes").attr('accion','1');
+                            $(".btn_agregar_lotes").slideDown('slow');
+                            $("#contenedor_registro_lote").slideUp('slow');
                         }
                     });
                 }
@@ -389,7 +371,8 @@
                 dataType:'json',
                 type:'DELETE',
                 success:function(data) {
-                    self.location="http://cafesdelhuila.com/lotes/create";
+                    toastr.info("Eliminacion exitosa.", "LOTES");
+                    listado();
                 }
             });
 
@@ -404,20 +387,7 @@
             $("#btn-agregar-lotes").attr('accion','1');
             $(".btn_actualizar_lote").attr('disabled',false);
             $(".btn_eliminar_lote").attr('disabled',false);
-
-            $("#id_lote")                   .val('');
-            $("#finca_id")                  .val('');
-            $("#variedad1")                 .val('');
-            $("#variedad2")                 .val('');
-            $("#variedad3")                 .val('');
-            $("#tipo_beneficio_id")         .val('');
-            $("#tipo_secado_id")            .val('');
-            $("#cantidad_aboles_variedad1") .val('');
-            $("#cantidad_aboles_variedad2") .val('');
-            $("#cantidad_aboles_variedad3") .val('');
-            $("#nombre")                    .val('');
-            $("#area")                      .val('');
-            $("#perfil")                    .val('');
+            limpiar();
 
         });
 

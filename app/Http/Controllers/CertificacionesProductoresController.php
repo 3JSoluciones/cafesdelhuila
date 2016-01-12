@@ -25,14 +25,19 @@ class CertificacionesProductoresController extends Controller
 
     //controller certificacionesProductores
     public function create() {
-        $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')->get();
         $productores                = Productor::all();
         $certificaciones            = Certificacion::all();
         return view('certificacionesProductores.nueva', array(
-            'certificacionesProductores' => $certificacionesProductores,
             'productores'                 => $productores,
             'certificaciones'             => $certificaciones
         ));
+    }
+
+    public function getCertificacionesProductores() {
+        $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')->get();
+        return view('certificacionesProductores.listado', array(
+                'certificacionesProductores' => $certificacionesProductores)
+        );
     }
 
     public function store(Request $request)
