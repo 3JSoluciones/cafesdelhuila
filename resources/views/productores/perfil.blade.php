@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="col-lg-10">
+        <div class="col-lg-4">
             <input type="hidden" id="id_productor"      value="{{ $productor->id }}">
             <input type="hidden" id="id_organizacion"   value="{{ $productor->organizacion_id }}">
             <p></p><b>
@@ -92,6 +92,15 @@
             <input type="submit" class="btn btn-primary btn-xs"value="Establecer Img Seleccionada" name="upload" id="upload">
             <hr>
         </div>
+
+        <div class="col-lg-6">
+            <h5><b>ORGANIZACIONES</b></h5>
+            <ul>
+                <li>{{ $productor->organizacion->nombre }}</li>
+            </ul>
+            <hr>
+        </div>
+
     </div>
 
    <div class="row">

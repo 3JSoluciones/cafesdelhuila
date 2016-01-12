@@ -4,37 +4,6 @@
 
     <div id="contenedor_registro_finca" style="display: none">
 
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="input">Departamento</label>
-                    <select name="departamento_id" id="departamento_id" class="select" style="width: 100%"
-                            validationMessage="El campo departamento es obligatorio" required>
-                        <option value="">Seleccione..</option>
-
-                        @foreach($departamentos as $departamento)
-                            <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
-                        @endforeach
-
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="input">Municipio</label>
-                    <select name="municipio_id" id="municipio_id" class="select" style="width: 100%"
-                            validationMessage="El campo municipio es obligatorio" required>
-                        <option value="">Seleccione..</option>
-
-                        @foreach($municipios as $municipio)
-                            <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-                        @endforeach
-
-                    </select>
-                </div>
-            </div>
-
-
-
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Corregimiento</label>
@@ -105,6 +74,38 @@
                            validationMessage="El campo Finalizacion de la Mitaca es obligatorio"/>
                 </div>
             </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="input">Departamento</label>
+                <select name="departamento_id" id="departamento_id" class="select" style="width: 100%"
+                        validationMessage="El campo departamento es obligatorio" required>
+                    <option value="">Seleccione..</option>
+
+                    @foreach($departamentos as $departamento)
+                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                    @endforeach
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="input">Municipio</label>
+                <select name="municipio_id" id="municipio_id" class="select" style="width: 100%"
+                        validationMessage="El campo municipio es obligatorio" required>
+                    <option value="">Seleccione..</option>
+
+                    @foreach($municipios as $municipio)
+                        <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+                    @endforeach
+
+                </select>
+            </div>
+        </div>
+
 
             <div class="col-lg-12 text-right">
                 <input type="button" value="Cancelar" class="btn btn-danger btn-sm"

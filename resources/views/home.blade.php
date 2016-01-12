@@ -22,7 +22,6 @@
                         <hr><li><a href="http://cafesdelhuila.com/certificaciones/create">Certificaciones</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/departamentos/create">Departamentos</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/lotes/create">Lotes</a></li>
-                        <hr><li><a href="http://cafesdelhuila.com/medios/create">Medios</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/municipios/create">Municipios</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/organizaciones/create">Organizaciones</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/productores/create">Productores</a></li>

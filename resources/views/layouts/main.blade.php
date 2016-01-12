@@ -121,11 +121,12 @@
     <div class="panel-heading text-center"
          style="color: #66512c; font-size: 30px;
                      font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">
-        BIENVENIDO A CAFES DEL HUILA
+
     </div>
 
     <div class="panel-body text-center">
-        <img src="/img/descarga.jpeg" width="600px" style="margin-right: 100px; text-align: center !important;">
+       <!--<img src="/img/descarga.jpeg" width="600px" style="margin-right: 100px; text-align: center !important;">-->
+        <b style="color: #901504; font-size: 100px; text-shadow: 0 0 0.1em, 0 0 0.1em #0001ff">CAFES DEL HUILA</b>
     </div>
 
     @yield('content')

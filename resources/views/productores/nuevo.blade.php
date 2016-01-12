@@ -109,12 +109,11 @@
 
         } else if($("#proceso").val() == 2) {
             $(document).ready(function () {
-                $(".btn_agregar_productores").slideUp('slow');
-                $("#contenedor_registro_product").slideDown('slow');
-                $(".btn_actualizar_prod").attr('disabled','true');
-                $(".btn_eliminar_prod").attr('disabled','true');
                 $("#btn-agregar-productores").val('Actualizar Productor');
                 $("#btn-agregar-productores").attr('accion','2');
+                $(".btn_agregar_productores").slideUp('slow');
+                $("#contenedor_registro_product").slideDown('slow');
+                $('#contenedor_listado_productores').hide().html(data).slideUp('slow');
             });
         }
 
@@ -278,13 +277,19 @@
         //cancelar actualizar
         $(document).on('click','#btn-cancelar-prod', function () {
 
-            $(".btn_agregar_productores").slideDown('slow');
-            $("#contenedor_registro_product").slideUp('slow');
-            $(".btn_actualizar_prod").attr('disabled',false);
-            $(".btn_eliminar_prod").attr('disabled',false);
-            $("#btn-agregar-productores").val('Agregar Productor');
-            $("#btn-agregar-productores").attr('accion','1');
-            limpiar();
+            if($("#proceso").val() == 1 ) {
+                $(".btn_agregar_productores").slideDown('slow');
+                $("#contenedor_registro_product").slideUp('slow');
+                $(".btn_actualizar_prod").attr('disabled',false);
+                $(".btn_eliminar_prod").attr('disabled',false);
+                $("#btn-agregar-productores").val('Agregar Productor');
+                $("#btn-agregar-productores").attr('accion','1');
+                limpiar();
+            } else if($("#proceso").val() == 2) {
+                @if($proceso == 2)
+                self.location.href='http://cafesdelhuila.com/productores/perfil/{{$productor->id}}';
+                @else @endif
+            }
 
         });
 
