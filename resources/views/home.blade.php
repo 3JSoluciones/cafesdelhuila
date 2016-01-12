@@ -20,9 +20,7 @@
                         <b><li><a href="http://cafesdelhuila.com/acidez/create">Acidez</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/aromas/create">Aromas</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/certificaciones/create">Certificaciones</a></li>
-                        <hr><li><a href="http://cafesdelhuila.com/certificacionesProductores/create">Certificaciones de Productores</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/departamentos/create">Departamentos</a></li>
-                        <hr><li><a href="http://cafesdelhuila.com/fincas/create">Fincas</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/lotes/create">Lotes</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/medios/create">Medios</a></li>
                         <hr><li><a href="http://cafesdelhuila.com/municipios/create">Municipios</a></li>

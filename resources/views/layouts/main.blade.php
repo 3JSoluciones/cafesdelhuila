@@ -8,22 +8,25 @@
     <title>Cafes del Huila</title>
 
     <!-- estilos -->
-    <!-- bootstrap -->
 
-    <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/bower_components/jquery/jquery.dataTables.css">
+    <!--
+         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+         <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css' />
+         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css' />
+         <link href="https://kendo.cdn.telerik.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet" />
+         <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
+         <link href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet"/>
+       -->
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="/bower_components/jquery/jquery.dataTables.css" rel="stylesheet" type="text/css" >
+        <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
+        <link href="/bower_components/bootstrap/dist/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+        <link href="/telerik/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+        <link href="/telerik/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css"/>
-    <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
-    <link href="https://kendo.cdn.telerik.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet">
-    <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
     <!-- fin de los estilos -->
 
     <style type="text/css">
@@ -136,18 +139,22 @@
 
 <!-- js -->
 
-<!-- jquery -->
+<!--
 <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="/bower_components/jquery/jquery.validate.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
-
-<script type="text/javascript" charset="utf8" src="/bower_components/jquery/jquery.dataTables.js"></script>
-
-<!-- Toastr -->
-<script src="/bower_components/toastr/toastr.js"></script>
+<script src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
 <script src="https://kendo.cdn.telerik.com/2014.1.318/js/kendo.all.min.js"></script>
+-->
+
+
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/telerik/js/kendo.all.min.js"></script>
+<script src="/bower_components/jquery/jquery.validate.js"></script>
+<script src="/bower_components/jquery/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
+<script src="/bower_components/toastr/toastr.js"></script>
 <script src="/js/scrip.js"></script>
+
 <!-- fin js -->
 
 <script type="application/javascript">

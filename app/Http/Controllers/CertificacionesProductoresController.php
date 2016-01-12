@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class CertificacionesProductoresController extends Controller
 {
@@ -23,21 +24,32 @@ class CertificacionesProductoresController extends Controller
         $this->middleware('auth');
     }
 
+    public function show() {
+        $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')
+            ->where('productor_id', '=', Input::get('id'))
+            ->get();
+        if($certificacionesProductores->count()) {
+            return view('certificacionesProductores.listado', array(
+                    'certificacionesProductores' => $certificacionesProductores)
+            );
+        } else {
+            echo
+            "
+            <div class='text-center'>
+            <h4><b>Sin Datos Registrados</b></h4>
+            </div>
+            ";
+        }
+    }
+
     //controller certificacionesProductores
-    public function create() {
+    public function getCrear() {
         $productores                = Productor::all();
         $certificaciones            = Certificacion::all();
-        return view('certificacionesProductores.nueva', array(
+        return view('certificacionesProductores.crear', array(
             'productores'                 => $productores,
             'certificaciones'             => $certificaciones
         ));
-    }
-
-    public function getCertificacionesProductores() {
-        $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')->get();
-        return view('certificacionesProductores.listado', array(
-                'certificacionesProductores' => $certificacionesProductores)
-        );
     }
 
     public function store(Request $request)

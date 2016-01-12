@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class FincasController extends Controller
 {
@@ -23,23 +24,34 @@ class FincasController extends Controller
         $this->middleware('auth');
     }
 
+    public function show() {
+        $fincas = Finca::with('productor','departamento','municipio')
+            ->where('productor_id', '=', Input::get('id'))
+            ->get();
+        if($fincas->count()) {
+            return view('fincas.listado', array(
+                'fincas' => $fincas
+            ));
+        } else {
+            echo
+            "
+            <div class='text-center'>
+            <h4><b>Sin Datos Registrados</b></h4>
+            </div>
+            ";
+        }
+    }
+
     //controller fincas
-    public function create() {
+    public function getCrear() {
         $productores    = Productor::all();
         $departamentos  = Departamento::all();
         $municipios     = Municipio::all();
-        return view('fincas.nueva', array(
+        return view('fincas.crear', array(
             'productores'     => $productores,
             'departamentos'   => $departamentos,
             'municipios'      => $municipios
         ));
-    }
-
-    public function getFincas() {
-        $fincas        = Finca::with('productor','departamento','municipio')->get();
-        return view('fincas.listado', array(
-                'fincas'          => $fincas
-            ));
     }
 
     public function store(Request $request)

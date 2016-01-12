@@ -10,6 +10,6 @@ var validator = $(".formValidation").kendoValidator().data("kendoValidator");
 //tablas
 $('.tabla').DataTable({
     "language": {
-        "url": "http://cafesdelhuila.com/public/bower_components/jquery/Spanish.json"
+        "url": "/bower_components/jquery/Spanish.json"
     }
 });

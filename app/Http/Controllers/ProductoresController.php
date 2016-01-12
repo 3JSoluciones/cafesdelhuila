@@ -22,18 +22,18 @@ class ProductoresController extends Controller
         $this->middleware('auth');
     }
 
+    public function show() {
+        $productores    = Productor::with('organizacion')->get();
+        return view('productores.listado', array(
+            'productores'       => $productores
+        ));
+    }
+
     //controller productores
     public function create() {
         $organizaciones = Organizacion::all();
         return view('productores.nuevo', array(
             'organizaciones'    => $organizaciones
-        ));
-    }
-
-    public function getProductores() {
-        $productores    = Productor::with('organizacion')->get();
-        return view('productores.listado', array(
-            'productores'       => $productores
         ));
     }
 
@@ -57,6 +57,22 @@ class ProductoresController extends Controller
             Productor::find($id)->fill($request->all())->delete();
             return response()->json(["mensaje" => "eliminado"]);
         }
+    }
+
+    public function getPerfil($id) {
+        $productor    = Productor::with('organizacion')->where('id', '=', $id)->get();
+
+        if($productor->count()) {
+            $productor      = $productor->first();
+            $organizaciones = Organizacion::all();
+            return view('productores.perfil', array(
+                'organizaciones'    => $organizaciones,
+                'productor'         => $productor
+            ));
+        } else {
+            console.log('el productor no existe :(');
+        }
+
     }
 
 }

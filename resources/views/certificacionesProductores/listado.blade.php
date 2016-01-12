@@ -11,7 +11,6 @@
     <thead>
     <tr>
         <th>NIT</th>
-        <th>PRODUCTOR</th>
         <th>CERTIFICACION</th>
         <th>CREADO</th>
         <th>ACCION</th>
@@ -21,7 +20,6 @@
     @foreach($certificacionesProductores as $certificacionProductor)
         <tr>
             <td>{{ $certificacionProductor->id }}</td>
-            <td>{{ $certificacionProductor->productor->nombre }}</td>
             <td>{{ $certificacionProductor->certificacion->nombre }}</td>
             <td>{{ $certificacionProductor->created_at }}</td>
             <td>

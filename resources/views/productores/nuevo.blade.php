@@ -15,7 +15,7 @@
     <form class="formValidation">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-   <div id="contenedor_registro_product" style="display: none">
+    <div id="contenedor_registro_product" style="display: none">
 
     <div class="row">
         <div class="col-lg-4">
@@ -92,6 +92,7 @@
     @section('page-js-code')
 
     <script type="application/javascript">
+
 
         $(document).ready(function () {
             listado();

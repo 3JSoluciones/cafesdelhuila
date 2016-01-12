@@ -39,21 +39,31 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('certificaciones', 'CertificacionesController');
     /*fin certificaciones*/
 
-    /*inicio certificacionesProductores*/
-    Route::get('certificacionesProductores/listado', 'CertificacionesProductoresController@getCertificacionesProductores');
-    Route::resource('certificacionesProductores', 'CertificacionesProductoresController');
-    /*fin certificacionesProductores*/
-
     //rutas del sistema
     /*inicio departamentos*/
     Route::get('departamentos/listado', 'DepartamentosController@getDepartamentos');
     Route::resource('departamentos', 'DepartamentosController');
     /*fin departamentos*/
 
+    /*inicio productores*/
+    Route::resource('productores', 'ProductoresController');
+    Route::get('productores/perfil/{id}', 'ProductoresController@getPerfil');
+    /*fin productores*/
+
     /*inicio fincas*/
-    Route::get('fincas/listado', 'FincasController@getFincas');
+    Route::get('fincas/crear', 'FincasController@getCrear');
     Route::resource('fincas', 'FincasController');
     /*fin fincas*/
+
+    /*inicio certificacionesProductores*/
+    Route::get('certificacionesProductores/crear', 'CertificacionesProductoresController@getCrear');
+    Route::resource('certificacionesProductores', 'CertificacionesProductoresController');
+    /*fin certificacionesProductores*/
+
+    /*inicio organizaciones*/
+    Route::get('organizaciones/listado', 'OrganizacionesController@getOrganizaciones');
+    Route::resource('organizaciones', 'OrganizacionesController');
+    /*fin organizaciones*/
 
     /*inicio lotes*/
     Route::get('lotes/listado', 'LotesController@getLotes');
@@ -64,16 +74,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('municipios/listado', 'MunicipiosController@getMunicipios');
     Route::resource('municipios', 'MunicipiosController');
     /*fin municipios*/
-
-    /*inicio organizaciones*/
-    Route::get('organizaciones/listado', 'OrganizacionesController@getOrganizaciones');
-    Route::resource('organizaciones', 'OrganizacionesController');
-    /*fin organizaciones*/
-
-    /*inicio productores*/
-    Route::get('productores/listado', 'ProductoresController@getProductores');
-    Route::resource('productores', 'ProductoresController');
-    /*fin productores*/
 
     /*inicio sabores*/
     Route::get('sabores/listado', 'SaboresController@getSabores');
