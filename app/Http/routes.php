@@ -95,8 +95,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('variedades', 'VariedadesController');
     /*fin variedades*/
 
-
-
     /*inicio medios*/
     Route::resource('medios', 'MediosController');
     /*fin medios*/

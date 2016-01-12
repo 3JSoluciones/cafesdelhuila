@@ -1,17 +1,57 @@
 @extends('layouts.main')
 <style type="text/css">
     .img_perfil {
-        width: 150px;
-        border-radius: 10%;
-        box-shadow: 0px 0px 16px #000;
+        width: 180px;
+        height: 150px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0px 0px 12px #000b93;
     }
 
     .img_perfil:hover {
-        width: 150px;
-        border-radius: 10%;
-        box-shadow: 0px 0px 16px #000;
-        opacity: 0.6;
+        width: 180px;
+        height: 150px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0px 0px 12px #000b93;
     }
+
+    .drag-drop span.desc {
+        color: #000;
+        cursor: pointer;
+    }
+
+    #img_activa{
+        width: 180px;
+        height: 150px;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right:0;
+        position: absolute;
+        opacity: 0;
+        z-index: 3;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+
+    .img {
+        width: 180px;
+        height: 150px;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right:0;
+        position: absolute;
+        opacity: 0;
+        z-index: 3;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+
+
     
 </style>
 
@@ -33,17 +73,25 @@
 
     <div class="row">
         <div class="col-lg-2">
-            <img src="/img/naruto.jpg" class="img_perfil text-center">
+            <div><img class='img_perfil' id='img_perfil' src='/img/naruto.png'></div>
+            <div class="drag-drop" >
+                <div class="img" type="file">
+                    <input id="img_activa" type="file" multiple="multiple" name="image" />
+                </div>
+                <input type="submit" class="btn btn-primary btn-xs"value="Establecer Imag Seleccionada" style="display: none" name="upload" id="upload">
+            </div>
         </div>
+
+
 
         <div class="col-lg-10">
             <input type="hidden" id="id_productor" value="{{ $productor->id }}">
             <input type="hidden" id="id_organizacion" value="{{ $productor->organizacion_id }}">
-            Nombre:         {{ $productor->nombre }}<br />
-            Correo:         {{ $productor->email }}<br />
-            Telefono:       {{ $productor->telefono }}<br />
-            Organizacion:   {{ $productor->organizacion->nombre }}<br />
-            Creado:         {{ $productor->created_at }}<br />
+            <p></p><b>
+                {{ $productor->nombre }}<br />
+                {{ $productor->telefono }}<br />
+                {{ $productor->email }}</b><br />
+            <input type="submit" class="btn btn-primary btn-xs"value="Establecer Img Seleccionada" name="upload" id="upload">
             <hr>
         </div>
     </div>
@@ -52,7 +100,7 @@
       <div class="col-lg-12">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#productor">Productor</a></li>
+            <p /><br /><li class="active"><a data-toggle="tab" href="#productor">Productor</a></li>
             <li><a data-toggle="tab" href="#fincas">Fincas</a></li>
             <li><a data-toggle="tab" href="#certificaciones">Certificaciones</a></li>
             <li><a data-toggle="tab" href="#medios">Medios</a></li>
@@ -60,7 +108,37 @@
 
         <div class="tab-content">
             <div id="productor" class="tab-pane fade in active">
-                <h3>productor</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>NIT</th>
+                        <th>NOMBRE</th>
+                        <th>TELEFONO</th>
+                        <th>EMAIL</th>
+                        <th>ORGANIZACION</th>
+                        <th>ACCION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ $productor->id }}</td>
+                        <td>{{ $productor->nombre }}</td>
+                        <td>{{ $productor->telefono }}</td>
+                        <td>{{ $productor->email }}</td>
+                        <td>{{ $productor->organizacion->nombre }}</td>
+                        <td>
+                            <input type="button" value="Actualizar" class="btn_actualizar_prod
+                                btn btn-primary btn-sm"
+                                   id_prod="{{ $productor->id }}"
+                                   nombre_prod="{{ $productor->nombre }}"
+                                   org_prod="{{ $productor->organizacion->id }}"
+                                   tel_prod="{{ $productor->telefono }}"
+                                   ema_prod="{{ $productor->email }}">
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
             </div>
             <div id="fincas" class="tab-pane fade">
                 <div id="contenedor_fincas"></div>
@@ -90,6 +168,19 @@
         listadoCertificaciones();
         crearCertificaciones();
     });
+
+
+
+    //--------------------------------------------------------------------
+    //comienza datos productor
+    //--------------------------------------------------------------------
+
+
+
+    //--------------------------------------------------------------------
+    //termina datos productor
+    //--------------------------------------------------------------------
+
 
     //--------------------------------------------------------------------
     //inicia fincas
