@@ -68,6 +68,7 @@ Route::group(['middleware' => 'web'], function () {
 
     /*inicio lotes*/
     Route::get('lotes/listado', 'LotesController@getLotes');
+    Route::get('lotes/crear', 'LotesController@getCrear');
     Route::resource('lotes', 'LotesController');
     /*fin lotes*/
 

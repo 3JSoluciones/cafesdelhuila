@@ -47,9 +47,7 @@ class LotesController extends Controller
 
     }
 
-
-    //controller lotes
-    public function create() {
+    public function getCrear() {
         $fincas             = Finca::all();
         $variedades         = Variedad::all();
         $tiposBeneficios    = Tipo_Beneficio::all();
@@ -57,7 +55,7 @@ class LotesController extends Controller
         $acidezes           = \App\Acidez::all();
         $aromas             = \App\Aroma::all();
         $sabores            = \App\Sabor::all();
-        return view('lotes.nuevo', array(
+        return view('lotes.crear', array(
             'fincas'            => $fincas,
             'variedades'        => $variedades,
             'tiposBeneficios'   => $tiposBeneficios,
@@ -67,6 +65,7 @@ class LotesController extends Controller
             'sabores'       => $sabores
         ));
     }
+
 
     public function getLotes() {
         $lotes = Lote::with(

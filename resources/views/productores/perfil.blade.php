@@ -146,6 +146,7 @@
                 <div id="contenedor_listado_fincas" ></div>
             </div>
             <div id="lotes" class="tab-pane fade">
+                <div id="contenedor_lotes" ></div>
                 <div id="contenedor_listado_lotes" ></div>
             </div>
             <div id="certificaciones" class="tab-pane fade">
@@ -174,6 +175,7 @@
         crearMedios();
         listadoMedios();
         listadoLotes();
+        crearLotes();
     });
 
     //--------------------------------------------------------------------
@@ -694,6 +696,215 @@
                 }
         );
     }
+
+    //Crear
+    function crearLotes() {
+        $.get("{{ URL('http://cafesdelhuila.com/lotes/crear') }}",
+                function (data) {
+                    $('#contenedor_lotes').hide().html(data).slideDown('slow');
+                }
+        );
+    };
+
+    //limpiar capos
+    function limpiarCamposLotes() {
+        $("#id_lote")                   .val('');
+        $("#finca_id")                  .val('');
+        $("#variedad1")                 .val('');
+        $("#variedad2")                 .val('');
+        $("#variedad3")                 .val('');
+        $("#acidez_id")                 .val('');
+        $("#aroma_id")                  .val('');
+        $("#sabor_id")                  .val('');
+        $("#tipo_beneficio_id")         .val('');
+        $("#tipo_secado_id")            .val('');
+        $("#cantidad_aboles_variedad1") .val('');
+        $("#cantidad_aboles_variedad2") .val('');
+        $("#cantidad_aboles_variedad3") .val('');
+        $("#nombre")                    .val('');
+        $("#area")                      .val('');
+        $("#perfil")                    .val('');
+    };
+
+    //animacion del contenedor de registro
+    $(document).on('click','.btn_agregar_lotes',function () {
+        $(".btn_agregar_lotes").slideUp('slow');
+        $("#contenedor_registro_lote").slideDown('slow');
+        $(".btn_actualizar_lote").attr('disabled','true');
+        $(".btn_eliminar_lote").attr('disabled','true');
+    });
+
+    //btn agregar y actualizar
+    $(document).on('click','#btn-agregar-lotes',function(){
+
+        var id                              = $("#id_lote").val();
+        var Finca_id                        = $("#finca_id").val();
+        var Variedad1_id                    = $("#variedad1").val();
+        var Variedad2_id                    = $("#variedad2").val();
+        var Variedad3_id                    = $("#variedad3").val();
+        var Acidez_id                       = $("#acidez_id").val();
+        var Aroma_id                        = $("#aroma_id").val();
+        var Sabor_id                        = $("#sabor_id").val();
+        var Tipo_beneficio_id               = $("#tipo_beneficio_id").val();
+        var Tipo_secado_id                  = $("#tipo_secado_id").val();
+        var Cantidad_arboles_variedad1      = $("#cantidad_aboles_variedad1").val();
+        var Cantidad_arboles_variedad2      = $("#cantidad_aboles_variedad2").val();
+        var Cantidad_arboles_variedad3      = $("#cantidad_aboles_variedad3").val();
+        var Nombre                          = $("#nombre").val();
+        var Area                            = $("#area").val();
+        var Perfil                          = $("#perfil").val();
+
+        if($("#btn-agregar-lotes").attr('accion') == 1) {
+
+                //btn agregar
+                $.ajax({
+                    url: 'http://cafesdelhuila.com/lotes',
+                    data: {
+                        Finca_id: Finca_id,
+                        Variedad1_id: Variedad1_id,
+                        Variedad2_id: Variedad2_id,
+                        Variedad3_id: Variedad3_id,
+                        Acidez_id:Acidez_id,
+                        Aroma_id:Aroma_id,
+                        Sabor_id:Sabor_id,
+                        Tipo_beneficio_id: Tipo_beneficio_id,
+                        Tipo_secado_id: Tipo_secado_id,
+                        Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
+                        Cantidad_arboles_variedad2: Cantidad_arboles_variedad2,
+                        Cantidad_arboles_variedad3: Cantidad_arboles_variedad3,
+                        Nombre: Nombre,
+                        Area: Area,
+                        Perfil: Perfil,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (data) {
+                        toastr.info("Registro de " + Nombre + " exitoso.", "LOTES");
+                        listadoLotes()
+                        limpiarCamposLotes();
+                        $(".btn_agregar_lotes").slideDown('slow');
+                        $("#contenedor_registro_lote").slideUp('slow');
+                    }
+                });
+
+        } else {
+
+                //btn actualizar
+                $.ajax({
+                    url: 'http://cafesdelhuila.com/lotes/' + id + '',
+                    data: {
+                        id: id,
+                        Finca_id: Finca_id,
+                        Variedad1_id: Variedad1_id,
+                        Variedad2_id: Variedad2_id,
+                        Variedad3_id: Variedad3_id,
+                        Acidez_id:Acidez_id,
+                        Aroma_id:Aroma_id,
+                        Sabor_id:Sabor_id,
+                        Tipo_beneficio_id: Tipo_beneficio_id,
+                        Tipo_secado_id: Tipo_secado_id,
+                        Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
+                        Cantidad_arboles_variedad2: Cantidad_arboles_variedad2,
+                        Cantidad_arboles_variedad3: Cantidad_arboles_variedad3,
+                        Nombre: Nombre,
+                        Area: Area,
+                        Perfil: Perfil,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: 'json',
+                    type: 'PUT',
+                    success: function (data) {
+                        toastr.info("Actualizacion de " + Nombre + " exitosa.", "LOTES");
+                        listadoLotes();
+                        limpiarCamposLotes();
+                        $("#btn-agregar-lotes").val('Agregar Lote');
+                        $("#btn-agregar-lotes").attr('accion','1');
+                        $(".btn_agregar_lotes").slideDown('slow');
+                        $("#contenedor_registro_lote").slideUp('slow');
+                    }
+                });
+            }
+
+
+    });
+
+    //btn actualizar
+    $(document).on('click','.btn_actualizar_lote', function () {
+
+        $(".btn_agregar_lotes").slideUp('slow');
+        $("#contenedor_registro_lote").slideDown('slow');
+        $("#btn-agregar-lotes").val('Actualizar Lote');
+        $("#btn-agregar-lotes").attr('accion','2');
+        $(".btn_actualizar_lote").attr('disabled','true');
+        $(".btn_eliminar_lote").attr('disabled','true');
+
+        $("#id_lote")                   .val($(this).attr('id'));
+        $("#finca_id")                  .val($(this).attr('finca_id'));
+        $("#variedad1")                 .val($(this).attr('Variedad1_id'));
+        $("#variedad2")                 .val($(this).attr('Variedad2_id'));
+        $("#variedad3")                 .val($(this).attr('Variedad3_id'));
+        $("#acidez_id")                 .val($(this).attr('Acidez_id'));
+        $("#aroma_id")                  .val($(this).attr('Aroma_id'));
+        $("#sabor_id")                  .val($(this).attr('Sabor_id'));
+        $("#tipo_beneficio_id")         .val($(this).attr('Tipo_beneficio_id'));
+        $("#tipo_secado_id")            .val($(this).attr('Tipo_secado_id'));
+        $("#cantidad_aboles_variedad1") .val($(this).attr('Cantidad_arboles_variedad1'));
+        $("#cantidad_aboles_variedad2") .val($(this).attr('Cantidad_arboles_variedad2'));
+        $("#cantidad_aboles_variedad3") .val($(this).attr('Cantidad_arboles_variedad3'));
+        $("#nombre")                    .val($(this).attr('Nombre'));
+        $("#area")                      .val($(this).attr('Area'));
+        $("#perfil")                    .val($(this).attr('Perfil'));
+
+    });
+
+    //btn eliminar
+    $(document).on('click','.btn_eliminar_lote', function () {
+
+        $("#id_lote").val($(this).attr('id_lote'));
+        toastr.error("¿Esta seguro que desea eliminar el lote?<br>" +
+                "<button class='btn-danger confirmar'>Confirmar eliminar</button>","LOTES");
+
+    });
+
+    //confirmar eliminar
+    $(document).on('click','.confirmar', function () {
+
+        var id = $("#id_lote").val();
+        $.ajax({
+            url: 'http://cafesdelhuila.com/lotes/' + id + '',
+            data:{
+                id:id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType:'json',
+            type:'DELETE',
+            success:function(data) {
+                toastr.info("Eliminacion exitosa.", "LOTES");
+                listadoLotes();
+            }
+        });
+
+    });
+
+    //cancelar actualizar
+    $(document).on('click','#btn-cancelar-lote', function () {
+
+        $(".btn_agregar_lotes").slideDown('slow');
+        $("#contenedor_registro_lote").slideUp('slow');
+        $("#btn-agregar-lotes").val('Agregar Lote');
+        $("#btn-agregar-lotes").attr('accion','1');
+        $(".btn_actualizar_lote").attr('disabled',false);
+        $(".btn_eliminar_lote").attr('disabled',false);
+        limpiarCamposLotes()
+
+    });
 
     //--------------------------------------------------------------------
     //termina lotes
