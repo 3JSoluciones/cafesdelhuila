@@ -682,7 +682,7 @@
 
     //listado
     function listadoLotes() {
-        var id = $("#id_finca").val();
+        var id  = $("#id_finca").val();
         var idP = $("#id_productor").val();
         $('.contenedor_carga').slideDown('slow');
         $.get("{{ URL('http://cafesdelhuila.com/lotes/listado' ) }}",
@@ -699,7 +699,11 @@
 
     //Crear
     function crearLotes() {
+        var id = $("#id_productor").val();
         $.get("{{ URL('http://cafesdelhuila.com/lotes/crear') }}",
+                {
+                   id:id
+                },
                 function (data) {
                     $('#contenedor_lotes').hide().html(data).slideDown('slow');
                 }

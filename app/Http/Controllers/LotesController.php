@@ -26,29 +26,8 @@ class LotesController extends Controller
         $this->middleware('auth');
     }
 
-    public function show() {
-
-       $lotes = Lote::with('finca', 'variedad1', 'variedad2', 'variedad3', 'tipo_beneficio', 'tipo_secado')
-            ->where('finca_id', '=', Input::get('id'))
-            ->get();
-
-        if($lotes->count()) {
-            return view('lotes.listado', array(
-                'lotes'  => $lotes
-            ));
-        } else {
-            echo
-            "
-            <div class='text-center'>
-            <h4><b>Sin Datos Registrados</b></h4>
-            </div>
-            ";
-        }
-
-    }
-
     public function getCrear() {
-        $fincas             = Finca::all();
+        $fincas             = Finca::where('productor_id', '=', Input::get('id'))->get();
         $variedades         = Variedad::all();
         $tiposBeneficios    = Tipo_Beneficio::all();
         $tiposSecados       = Tipo_Secado::all();
@@ -60,25 +39,25 @@ class LotesController extends Controller
             'variedades'        => $variedades,
             'tiposBeneficios'   => $tiposBeneficios,
             'tiposSecados'      => $tiposSecados,
-            'acidezes'      => $acidezes,
-            'aromas'        => $aromas,
-            'sabores'       => $sabores
+            'acidezes'          => $acidezes,
+            'aromas'            => $aromas,
+            'sabores'           => $sabores
         ));
     }
 
-
     public function getLotes() {
-        $lotes = Lote::with(
-            'finca',
-            'variedad1',
-            'variedad2',
-            'variedad3',
-            'tipo_beneficio',
-            'tipo_secado'
-        )->get();
-        return view('lotes.listado', array(
+        $fincas = Finca::where('productor_id', '=', Input::get('idP'))->get();
+        if($fincas->count()) {
+            $fincas = $fincas->all();
+            $lotes = Lote::with('finca', 'variedad1', 'variedad2', 'variedad3', 'tipo_beneficio', 'tipo_secado','acidez','aroma','sabor')
+
+                ->get();
+            return view('lotes.listado', array(
                 'lotes'  => $lotes
-        ));
+            ));
+        } else {
+            echo "posible error<br> o puede que no ayan datos";
+        }
     }
 
     public function store(Request $request)
