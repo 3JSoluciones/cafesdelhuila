@@ -19,6 +19,9 @@ class CreateLotesTable extends Migration
             $table->integer('variedad1_id')->unsigned();
             $table->integer('variedad2_id')->unsigned();
             $table->integer('variedad3_id')->unsigned();
+            $table->integer('acidez_id')->unsigned();
+            $table->integer('aroma_id')->unsigned();
+            $table->integer('sabor_id')->unsigned();
             $table->integer('tipo_beneficio_id')->unsigned();
             $table->integer('tipo_secado_id')->unsigned();
             $table->string('cantidad_arboles_variedad1');
@@ -34,6 +37,9 @@ class CreateLotesTable extends Migration
             $table->foreign('variedad1_id')->references('id')->on('variedades');
             $table->foreign('variedad2_id')->references('id')->on('variedades');
             $table->foreign('variedad3_id')->references('id')->on('variedades');
+            $table->foreign('acidez_id')->references('id')->on('acidez');
+            $table->foreign('aroma_id')->references('id')->on('aromas');
+            $table->foreign('sabor_id')->references('id')->on('sabores');
             $table->foreign('tipo_beneficio_id')->references('id')->on('tipos_beneficios');
             $table->foreign('tipo_secado_id')->references('id')->on('tipos_secados');
 

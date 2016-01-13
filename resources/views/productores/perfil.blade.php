@@ -59,7 +59,6 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li><a href="/home">Inicio</a></li>
-                <li><a href="#">Cafes del Huila</a></li>
                 <li><a href="/productores/create" >Productores</a></li>
                 <li class="active" id="proceso_activo">{{ $productor->nombre }}</li>
             </ol>
@@ -89,7 +88,7 @@
                 {{ $productor->telefono }}<br />
                 {{ $productor->email }}</b><br />
             <input type="submit" class="btn btn-primary btn-xs"value="Establecer Img Seleccionada" name="upload" id="upload">
-            <hr>
+
         </div>
 
         <div class="col-lg-6">
@@ -97,7 +96,6 @@
             <ul>
                 <li>{{ $productor->organizacion->nombre }}</li>
             </ul>
-            <hr>
         </div>
 
     </div>
@@ -108,6 +106,7 @@
         <ul class="nav nav-tabs">
             <p /><br /><li class="active"><a data-toggle="tab" href="#productor">Productor</a></li>
             <li><a data-toggle="tab" href="#fincas">Fincas</a></li>
+            <li><a data-toggle="tab" href="#lotes">Lotes</a></li>
             <li><a data-toggle="tab" href="#certificaciones">Certificaciones</a></li>
             <li><a data-toggle="tab" href="#medios">Medios</a></li>
         </ul>
@@ -146,6 +145,9 @@
                 <div id="contenedor_fincas"></div>
                 <div id="contenedor_listado_fincas" ></div>
             </div>
+            <div id="lotes" class="tab-pane fade">
+                <div id="contenedor_listado_lotes" ></div>
+            </div>
             <div id="certificaciones" class="tab-pane fade">
                 <div id="contenedor_certificacion"></div>
                 <div id="contenedor_listado_certificacion" ></div>
@@ -171,6 +173,7 @@
         crearCertificaciones();
         crearMedios();
         listadoMedios();
+        listadoLotes();
     });
 
     //--------------------------------------------------------------------
@@ -210,7 +213,8 @@
         $("#corregimiento")     .val('');
         $("#vereda")            .val('');
         $("#finca")             .val('');
-        $("#coordenadas")       .val('');
+        $("#latitud")           .val('');
+        $("#longitud")          .val('');
         $("#altitud")           .val('');
         $("#inicioCosecha")     .val('');
         $("#finCosecha")        .val('');
@@ -230,13 +234,14 @@
     $(document).on('click',"#btn-agregar-finca", function(){
 
         var id                      = $("#id_finca").val();
-        var idP                      = $("#id_productor").val();
+        var idP                     = $("#id_productor").val();
         var Departamento_id         = $("#departamento_id").val();
         var Municipio_id            = $("#municipio_id").val();
         var Corregimiento           = $("#corregimiento").val();
         var Vereda                  = $("#vereda").val();
         var Finca                   = $("#finca").val();
-        var Coordenadas             = $("#coordenadas").val();
+        var Longitud                = $("#longitud").val();
+        var Latitud                 = $("#latitud").val();
         var Altitud                 = $("#altitud").val();
         var Cosecha_comienza        = $("#inicioCosecha").val();
         var Cosecha_termina         = $("#finCosecha").val();
@@ -255,7 +260,8 @@
                         Corregimiento: Corregimiento,
                         Vereda: Vereda,
                         Finca: Finca,
-                        Coordenadas: Coordenadas,
+                        Longitud: Longitud,
+                        Latitud: Latitud,
                         Altitud: Altitud,
                         Cosecha_comienza: Cosecha_comienza,
                         Cosecha_termina: Cosecha_termina,
@@ -289,7 +295,8 @@
                         Corregimiento: Corregimiento,
                         Vereda: Vereda,
                         Finca: Finca,
-                        Coordenadas: Coordenadas,
+                        Longitud: Longitud,
+                        Latitud: Latitud,
                         Altitud: Altitud,
                         Cosecha_comienza: Cosecha_comienza,
                         Cosecha_termina: Cosecha_termina,
@@ -332,7 +339,8 @@
         $("#corregimiento")     .val($(this).attr('Corregimiento'));
         $("#vereda")            .val($(this).attr('Vereda'));
         $("#finca")             .val($(this).attr('Finca'));
-        $("#coordenadas")       .val($(this).attr('Coordenadas'));
+        $("#longitud")          .val($(this).attr('Longitud'));
+        $("#latitud")           .val($(this).attr('Latitud'));
         $("#altitud")           .val($(this).attr('Altitud'));
         $("#inicioCosecha")     .val($(this).attr('Cosecha_comienza'));
         $("#finCosecha")        .val($(this).attr('Cosecha_termina'));
@@ -665,6 +673,32 @@
     //--------------------------------------------------------------------
     //termina medios
     //--------------------------------------------------------------------
+
+    //--------------------------------------------------------------------
+    //inicia lotes
+    //--------------------------------------------------------------------
+
+    //listado
+    function listadoLotes() {
+        var id = $("#id_finca").val();
+        var idP = $("#id_productor").val();
+        $('.contenedor_carga').slideDown('slow');
+        $.get("{{ URL('http://cafesdelhuila.com/lotes/listado' ) }}",
+                {
+                    id: id,
+                    idP:idP
+                },
+                function (data) {
+                    $('#contenedor_listado_lotes').hide().html(data).slideDown('slow');
+                    $('.contenedor_carga').slideUp('slow');
+                }
+        );
+    }
+
+    //--------------------------------------------------------------------
+    //termina lotes
+    //--------------------------------------------------------------------
+
 
 </script>
 

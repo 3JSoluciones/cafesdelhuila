@@ -42,6 +42,9 @@
                        if($lote->variedad3_id == 0) { } else { ?> Variedad3_id ="{{ $lote->variedad3_id }}" <?php }
 
                        ?>
+                       Acidez_id                    ="{{ $lote->acidez_id }}"
+                       Aroma_id                     ="{{ $lote->aroma_id }}"
+                       Sabor_id                     ="{{ $lote->sabor_id }}"
                        Tipo_beneficio_id            ="{{ $lote->tipo_beneficio_id }}"
                        Tipo_secado_id               ="{{ $lote->tipo_secado_id }}"
                        Cantidad_arboles_variedad1   ="{{ $lote->cantidad_arboles_variedad1 }}"

@@ -6,7 +6,6 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li><a href="/home">Inicio</a></li>
-                <li><a href="#">Cafes del Huila</a></li>
                 <li class="active" id="proceso_activo">Lotes</li>
             </ol>
         </div>
@@ -129,6 +128,51 @@
         </div>
     </div>
 
+      <div class="row">
+          <div class="col-lg-4">
+              <div class="form-group">
+                  <label for="input">Acidez</label>
+                  <select name="acidez_id" id="acidez_id" class="select"
+                          validationMessage="El campo acidez es obligatorio" required style="width: 100%">
+                      <option value="">Seleccione..</option>
+
+                      @foreach($acidezes as $acidez)
+                          <option value="{{ $acidez->id }}">{{ $acidez->nombre }}</option>
+                      @endforeach
+
+                  </select>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="form-group">
+                  <label for="input">Aroma</label>
+                  <select name="aroma_id" id="aroma_id" class="select"
+                          validationMessage="El campo aroma es obligatorio" required style="width: 100%">
+                      <option value="">Seleccione..</option>
+
+                      @foreach($aromas as $aroma)
+                          <option value="{{ $aroma->id }}">{{ $aroma->nombre }}</option>
+                      @endforeach
+
+                  </select>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="form-group">
+                  <label for="input">Sabor</label>
+                  <select name="sabor_id" id="sabor_id" class="select"
+                          validationMessage="El campo sabor es obligatorio" required style="width: 100%">
+                      <option value="">Seleccione..</option>
+
+                      @foreach($sabores as $sabor)
+                          <option value="{{ $sabor->id }}">{{ $sabor->nombre }}</option>
+                      @endforeach
+
+                  </select>
+              </div>
+          </div>
+      </div>
+
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
@@ -209,6 +253,9 @@
             $("#variedad1")                 .val('');
             $("#variedad2")                 .val('');
             $("#variedad3")                 .val('');
+            $("#acidez_id")                 .val('');
+            $("#aroma_id")                  .val('');
+            $("#sabor_id")                  .val('');
             $("#tipo_beneficio_id")         .val('');
             $("#tipo_secado_id")            .val('');
             $("#cantidad_aboles_variedad1") .val('');
@@ -235,6 +282,9 @@
             var Variedad1_id                    = $("#variedad1").val();
             var Variedad2_id                    = $("#variedad2").val();
             var Variedad3_id                    = $("#variedad3").val();
+            var Acidez_id                       = $("#acidez_id").val();
+            var Aroma_id                        = $("#aroma_id").val();
+            var Sabor_id                        = $("#sabor_id").val();
             var Tipo_beneficio_id               = $("#tipo_beneficio_id").val();
             var Tipo_secado_id                  = $("#tipo_secado_id").val();
             var Cantidad_arboles_variedad1      = $("#cantidad_aboles_variedad1").val();
@@ -255,6 +305,9 @@
                             Variedad1_id: Variedad1_id,
                             Variedad2_id: Variedad2_id,
                             Variedad3_id: Variedad3_id,
+                            Acidez_id:Acidez_id,
+                            Aroma_id:Aroma_id,
+                            Sabor_id:Sabor_id,
                             Tipo_beneficio_id: Tipo_beneficio_id,
                             Tipo_secado_id: Tipo_secado_id,
                             Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
@@ -291,6 +344,9 @@
                             Variedad1_id: Variedad1_id,
                             Variedad2_id: Variedad2_id,
                             Variedad3_id: Variedad3_id,
+                            Acidez_id:Acidez_id,
+                            Aroma_id:Aroma_id,
+                            Sabor_id:Sabor_id,
                             Tipo_beneficio_id: Tipo_beneficio_id,
                             Tipo_secado_id: Tipo_secado_id,
                             Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
@@ -336,6 +392,9 @@
             $("#variedad1")                 .val($(this).attr('Variedad1_id'));
             $("#variedad2")                 .val($(this).attr('Variedad2_id'));
             $("#variedad3")                 .val($(this).attr('Variedad3_id'));
+            $("#acidez_id")                 .val($(this).attr('Acidez_id'));
+            $("#aroma_id")                  .val($(this).attr('Aroma_id'));
+            $("#sabor_id")                  .val($(this).attr('Sabor_id'));
             $("#tipo_beneficio_id")         .val($(this).attr('Tipo_beneficio_id'));
             $("#tipo_secado_id")            .val($(this).attr('Tipo_secado_id'));
             $("#cantidad_aboles_variedad1") .val($(this).attr('Cantidad_arboles_variedad1'));

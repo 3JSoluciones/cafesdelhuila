@@ -29,14 +29,24 @@
                 </div>
             </div>
 
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="input">Longitud</label>
+                <input type="text" class="k-textbox" id="longitud" name="longitud" required="required"
+                       placeholder="Ingrese las Longitud" style="width: 100%"
+                       validationMessage="El campo {0} es obligatorio">
+            </div>
+        </div>
+
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="input">Coordenadas</label>
-                    <input type="text" class="k-textbox" id="coordenadas" name="coordenadas" required="required"
-                           placeholder="Ingrese las coordenadas" style="width: 100%"
+                    <label for="input">Latitud</label>
+                    <input type="text" class="k-textbox" id="latitud" name="latitud" required="required"
+                           placeholder="Ingrese las Latitud" style="width: 100%"
                            validationMessage="El campo {0} es obligatorio">
                 </div>
             </div>
+
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Altitud</label>
@@ -75,7 +85,7 @@
                 </div>
             </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Departamento</label>
                 <select name="departamento_id" id="departamento_id" class="select" style="width: 100%"
@@ -91,7 +101,7 @@
         </div>
 
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Municipio</label>
                 <select name="municipio_id" id="municipio_id" class="select" style="width: 100%"

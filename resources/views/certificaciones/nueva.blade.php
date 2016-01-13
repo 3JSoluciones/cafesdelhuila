@@ -6,7 +6,6 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li><a href="/home">Inicio</a></li>
-                <li><a href="#">Cafes del Huila</a></li>
                 <li class="active" id="proceso_activo">Certificaciones</li>
             </ol>
         </div>

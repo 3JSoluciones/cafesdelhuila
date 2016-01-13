@@ -28,6 +28,15 @@ class Lote extends Model
     public function tipo_secado() {
         return $this->hasOne('App\Tipo_Secado','id','tipo_secado_id');
     }
+    public function acidez() {
+        return $this->hasOne('App\Acidez','id','acidez_id');
+    }
+    public function aroma() {
+        return $this->hasOne('App\Aroma','id','aroma_id');
+    }
+    public function sabor() {
+        return $this->hasOne('App\Sabor','id','sabor_id');
+    }
 
     protected $fillable =
         [
@@ -42,7 +51,10 @@ class Lote extends Model
           'Cantidad_arboles_variedad3',
           'Nombre',
           'Area',
-          'Perfil'
+          'Perfil',
+          'Acidez_id',
+          'Aroma_id',
+          'Sabor_id'
         ];
 
 }
