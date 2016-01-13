@@ -20,7 +20,8 @@
             <div class="col-lg-12">
                 <div class="form-group">
                     <label for="nombre" class="required">Nombre</label>
-                        <input type="text" class="k-textbox" id="nombre" name="nombre" required validationMessage="El campo {0} es obligatorio"
+                        <input type="text" class="k-textbox" id="nombre" name="nombre"
+                               required validationMessage="El campo {0} es obligatorio"
                                placeholder="Ingrese el Nombre" style="width: 100%">
 
                     <input type="hidden" id="id_acidez" name="id_acidez">

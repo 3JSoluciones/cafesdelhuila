@@ -51,8 +51,6 @@
         cursor: pointer;
     }
 
-
-    
 </style>
 
 @section('content')
@@ -85,6 +83,7 @@
         <div class="col-lg-4">
             <input type="hidden" id="id_productor"      value="{{ $productor->id }}">
             <input type="hidden" id="id_organizacion"   value="{{ $productor->organizacion_id }}">
+            <input type="hidden" id="id_medio">
             <p></p><b>
                 {{ $productor->nombre }}<br />
                 {{ $productor->telefono }}<br />
@@ -152,7 +151,8 @@
                 <div id="contenedor_listado_certificacion" ></div>
             </div>
             <div id="medios" class="tab-pane fade">
-                <h3>medios</h3>
+                <div id="contenedor_medios"></div>
+                <div id="contenedor_listado_medios"></div>
             </div>
         </div>
 
@@ -162,7 +162,6 @@
     </form>
 
 @section('page-js-code')
-
 <script type="application/javascript">
 
     $(document).ready(function () {
@@ -170,6 +169,8 @@
         crearFincas();
         listadoCertificaciones();
         crearCertificaciones();
+        crearMedios();
+        listadoMedios();
     });
 
     //--------------------------------------------------------------------
@@ -554,6 +555,115 @@
 
     //--------------------------------------------------------------------
     //termina certificaciones productores
+    //--------------------------------------------------------------------
+
+    //--------------------------------------------------------------------
+    //inicia medios
+    //--------------------------------------------------------------------
+
+    //Crear
+    function crearMedios() {
+        $.get("{{ URL('http://cafesdelhuila.com/medios/crear') }}",
+                function (data) {
+                    $('#contenedor_medios').hide().html(data).slideDown('slow');
+                }
+        );
+    }
+
+    //listado
+    function listadoMedios() {
+        var id = $("#id_productor").val();
+        $('.contenedor_carga').slideDown('slow');
+        $.get("{{ URL('http://cafesdelhuila.com/medios/listado' ) }}",
+                {
+                    id: id
+                },
+                function (data) {
+                    $('#contenedor_listado_medios').hide().html(data).slideDown('slow');
+                    $('.contenedor_carga').slideUp('slow');
+                }
+        );
+    }
+
+    //cambia la propiedad del archivo
+    $(document).on('change','#nombre',function () {
+        var file        = this.files[0];
+        nombreArchivo   = file.name;
+        tamanioArchivo  = file.size;
+        tipoArchivo     = file.type;
+
+        $("#nombre").val(nombreArchivo);
+    });
+
+    //btn mostrar formulario registro
+    $(document).on('click','.btn_agregar_medio',function(){
+        $(".btn_agregar_medio").slideUp('slow');
+        $("#div_medio").slideDown('slow');
+        $("#div_agregar_medio").slideDown('slow');
+    });
+
+    //btn agregar
+    $(document).on('click','#btn-agregar-medio',function(){
+
+        var idP             = $("#id_productor").val();
+        var nombre          = $("#nombre").val();
+
+        $.ajax({
+                url: 'http://cafesdelhuila.com/medios',
+                data: {
+                    Productor_id: idP,
+                    nombre: nombre,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    toastr.info("El medio " + nombre + " se agrego con exito.", "REGISTRO DE MEDIOS");
+                    $("#nombre").val('');
+                    $(".btn_agregar_medio").slideDown('slow');
+                    $("#div_medio").slideUp('slow');
+                    $("#div_agregar_medio").slideUp('slow');
+                    listadoMedios();
+                }
+            });
+
+    });
+
+    //btn eliminar
+    $(document).on('click','.btn_eliminar_medio', function () {
+
+        $("#id_medio").val($(this).attr('id_medio'));
+        toastr.error("¿Esta seguro que desea eliminar el medio?<br>" +
+                "<button class='btn-danger confirmar-eliminar-medio'>Confirmar eliminar</button>","MEDIO DE PRODUCTORES");
+
+    });
+
+    //confirmar eliminar
+    $(document).on('click','.confirmar-eliminar-medio', function () {
+
+        var id = $("#id_medio").val();
+        $.ajax({
+            url: 'http://cafesdelhuila.com/medios/' + id + '',
+            data:{
+                id:id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType:'json',
+            type:'DELETE',
+            success:function(data) {
+                toastr.info("Eliminacion exitosa.", "MEDIOS");
+                listadoMedios();
+            }
+        });
+
+    });
+
+    //--------------------------------------------------------------------
+    //termina medios
     //--------------------------------------------------------------------
 
 </script>

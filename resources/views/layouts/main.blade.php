@@ -18,7 +18,6 @@
          <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
          <link href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet"/>
        -->
-
         <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.css" rel="stylesheet" type="text/css" >
@@ -118,15 +117,9 @@
 </center>
 <div class="container">
 
-    <div class="panel-heading text-center"
-         style="color: #66512c; font-size: 30px;
-                     font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">
-
-    </div>
-
     <div class="panel-body text-center">
-       <!--<img src="/img/descarga.jpeg" width="600px" style="margin-right: 100px; text-align: center !important;">-->
-        <b style="color: #901504; font-size: 100px; text-shadow: 0 0 0.1em, 0 0 0.1em #0001ff">CAFES DEL HUILA</b>
+       <img src="/img/descarga.jpeg" width="600px"; style="padding: 0; margin: 0; margin-right: 0px; text-align: center !important;">
+        <!--<b style="color: #901504; font-size: 100px; text-shadow: 0 0 0.1em, 0 0 0.1em #0001ff">CAFES DEL HUILA</b>-->
     </div>
 
     @yield('content')

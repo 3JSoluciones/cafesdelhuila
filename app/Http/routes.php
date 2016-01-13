@@ -97,6 +97,7 @@ Route::group(['middleware' => 'web'], function () {
     /*fin variedades*/
 
     /*inicio medios*/
+    Route::get('medios/crear', 'MediosController@getCrear');
     Route::resource('medios', 'MediosController');
     /*fin medios*/
 
