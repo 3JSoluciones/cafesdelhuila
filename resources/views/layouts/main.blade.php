@@ -70,7 +70,10 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="/home">
                    <b>Cafes Del Huila</b>
+
                 </a>
+
+
 
             </div>
 
@@ -79,24 +82,54 @@
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-left">
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
 
+
+                    @else
+
                         <ul class="nav navbar-nav navbar-right">
+                            <li><a href="http://cafesdelhuila.com/productores/create">PRODUCTORES</a></li>
+                        </ul>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                DATOS <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                    <li><a href="http://cafesdelhuila.com/acidez/create"><i class="fa fa-btn fa-sign-out"></i>Acidez</a></li>
+                                    <li><a href="http://cafesdelhuila.com/aromas/create"><i class="fa fa-btn fa-sign-out"></i>Aromas</a></li>
+                                    <li><a href="http://cafesdelhuila.com/certificaciones/create"><i class="fa fa-btn fa-sign-out"></i>Certificaciones</a></li>
+                                    <li><a href="http://cafesdelhuila.com/departamentos/create"><i class="fa fa-btn fa-sign-out"></i>Departamentos</a></li>
+                                    <li><a href="http://cafesdelhuila.com/municipios/create"><i class="fa fa-btn fa-sign-out"></i>Municipios</a></li>
+                                    <li><a href="http://cafesdelhuila.com/organizaciones/create"><i class="fa fa-btn fa-sign-out"></i>Organizaciones</a></li>
+                                    <li><a href="http://cafesdelhuila.com/sabores/create"><i class="fa fa-btn fa-sign-out"></i>Sabores</a></li>
+                                    <li><a href="http://cafesdelhuila.com/tiposBeneficios/create"><i class="fa fa-btn fa-sign-out"></i>Tipos Beneficios</a></li>
+                                    <li><a href="http://cafesdelhuila.com/tiposSecados/create"><i class="fa fa-btn fa-sign-out"></i>Tipos Secados</a></li>
+                                    <li><a href="http://cafesdelhuila.com/variedades/create"><i class="fa fa-btn fa-sign-out"></i>Variedades</a></li>
+                            </ul>
+                        </li>
+
+                    @endif
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+
+                    <div class="navbar-brand contenedor_carga nav navbar-nav navbar-right"></div>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+
+                        <ul class="nav navbar-nav navbar-left">
                             <li><a href="/">INICIO</a></li>
                         </ul>
 
                         <li><a href="/login">Iniciar Sesion</a></li>
                         <li><a href="/register">Crear una cuenta</a></li>
                     @else
-
-                        <div class="navbar-brand contenedor_carga nav navbar-nav navbar-right"></div>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/home">INICIO</a></li>
-                        </ul>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -107,10 +140,11 @@
                                 <li><a href="/logout"><i class="fa fa-btn fa-sign-out"></i>Cerrar sesion ..</a></li>
                             </ul>
                         </li>
-
                     @endif
                 </ul>
+
             </div>
+
 
         </div>
     </nav>

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +24,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+    Route::get('/', function () {
+        return view('layouts.main');
+    });
 
     /*inicio acidez*/
     Route::get('acidez/listado', 'AcidezController@getAcidez');

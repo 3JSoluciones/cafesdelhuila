@@ -9,9 +9,6 @@
         <th>NIT</th>
         <th>NOMBRE</th>
         <th>AREA</th>
-        <th>FINCA</th>
-        <th>TP.BENEF</th>
-        <th>TP.SECAD</th>
         <th>CREADO</th>
         <th>ACCION</th>
     </tr>
@@ -22,9 +19,6 @@
             <td>{{ $lote->id }}</td>
             <td>{{ $lote->nombre }}</td>
             <td>{{ $lote->area }}</td>
-            <td>{{ $lote->finca_id }}</td>
-            <td>{{ $lote->tipo_beneficio_id }}</td>
-            <td>{{ $lote->tipo_secado_id }}</td>
             <td>{{ $lote->created_at }}</td>
             <td>
                 <input type="button" value="Actualizar" class="btn_actualizar_lote
