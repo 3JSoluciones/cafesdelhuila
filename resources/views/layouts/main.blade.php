@@ -18,7 +18,8 @@
          <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
          <link href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet"/>
        -->
-        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="/bower_components/bootswatch/lumen/bootstrap.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.css" rel="stylesheet" type="text/css" >
         <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
@@ -80,25 +81,24 @@
 
 
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
-
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-left">
-
                     <!-- Authentication Links -->
                     @if (Auth::guest())
 
-
                     @else
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/"><b>INICIO</b></a></li>
+                        </ul>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://cafesdelhuila.com/productores/create">PRODUCTORES</a></li>
+                            <li><a href="http://cafesdelhuila.com/productores/create"><b>PRODUCTORES</b></a></li>
                         </ul>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                DATOS <span class="caret"></span>
+                                <b>CONFIGURACIONES</b> <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu" role="menu">
                                     <li><a href="http://cafesdelhuila.com/acidez/create"><i class="fa fa-btn fa-sign-out"></i>Acidez</a></li>
                                     <li><a href="http://cafesdelhuila.com/aromas/create"><i class="fa fa-btn fa-sign-out"></i>Aromas</a></li>
@@ -112,7 +112,6 @@
                                     <li><a href="http://cafesdelhuila.com/variedades/create"><i class="fa fa-btn fa-sign-out"></i>Variedades</a></li>
                             </ul>
                         </li>
-
                     @endif
                 </ul>
 

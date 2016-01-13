@@ -183,6 +183,7 @@
     //inicia fincas
     //--------------------------------------------------------------------
 
+
     //Crear
     function crearFincas() {
         $.get("{{ URL('http://cafesdelhuila.com/fincas/crear') }}",
