@@ -40,21 +40,23 @@ class Lote extends Model
 
     protected $fillable =
         [
-          'Finca_id',
-          'Variedad1_id',
-          'Variedad2_id',
-          'Variedad3_id',
-          'Tipo_beneficio_id',
-          'Tipo_secado_id',
-          'Cantidad_arboles_variedad1',
-          'Cantidad_arboles_variedad2',
-          'Cantidad_arboles_variedad3',
-          'Nombre',
-          'Area',
-          'Perfil',
-          'Acidez_id',
-          'Aroma_id',
-          'Sabor_id'
+            'Id',
+            'Finca_id',
+            'Variedad1_id',
+            'Variedad2_id',
+            'Variedad3_id',
+            'Acidez_id',
+            'Aroma_id',
+            'Sabor_id',
+            'Tipo_beneficio_id',
+            'Tipo_secado_id',
+            'Cantidad_arboles_variedad1',
+            'Cantidad_arboles_variedad2',
+            'Cantidad_arboles_variedad3',
+            'Nombre',
+            'Area',
+            'Perfil'
+
         ];
 
 }

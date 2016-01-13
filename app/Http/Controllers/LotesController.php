@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class LotesController extends Controller
@@ -46,18 +47,15 @@ class LotesController extends Controller
     }
 
     public function getLotes() {
-        $fincas = Finca::where('productor_id', '=', Input::get('idP'))->get();
-        if($fincas->count()) {
-            $fincas = $fincas->all();
-            $lotes = Lote::with('finca', 'variedad1', 'variedad2', 'variedad3', 'tipo_beneficio', 'tipo_secado','acidez','aroma','sabor')
-
-                ->get();
-            return view('lotes.listado', array(
-                'lotes'  => $lotes
-            ));
-        } else {
-            echo "posible error<br> o puede que no ayan datos";
-        }
+        $lotes = DB::table('fincas')
+            ->join('lotes', 'fincas.id', '=', 'lotes.finca_id')
+            ->join('productores', 'fincas.productor_id', '=', 'productores.id')
+            ->where('fincas.productor_id', '=', Input::get('idP'))
+            ->select('lotes.*')
+            ->get();
+        return view('lotes.listado', array(
+            'lotes'=>$lotes
+        ));
     }
 
     public function store(Request $request)

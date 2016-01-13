@@ -11,5 +11,5 @@ var validator = $(".formValidation").kendoValidator().data("kendoValidator");
 $('.tabla').DataTable({
     "language": {
         "url": "/bower_components/jquery/Spanish.json"
-    }
+    },
 });

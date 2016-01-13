@@ -83,6 +83,7 @@
             <input type="hidden" id="id_productor"      value="{{ $productor->id }}">
             <input type="hidden" id="id_organizacion"   value="{{ $productor->organizacion_id }}">
             <input type="hidden" id="id_medio">
+            <input type="hidden" id="id_lote">
             <p></p><b>
                 {{ $productor->nombre }}<br />
                 {{ $productor->telefono }}<br />

@@ -2,11 +2,7 @@
     <script src="/js/scrip.js"></script>
 </head>
 <body>
-@if($lotes->count() == 0)
-    <div class="text-center">
-        <h4><b>Sin Datos Registrados</b></h4>
-    </div>
-@else
+
 <table class="tabla display" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -26,9 +22,9 @@
             <td>{{ $lote->id }}</td>
             <td>{{ $lote->nombre }}</td>
             <td>{{ $lote->area }}</td>
-            <td>{{ $lote->finca->finca }}</td>
-            <td>{{ $lote->tipo_beneficio->nombre }}</td>
-            <td>{{ $lote->tipo_secado->nombre }}</td>
+            <td>{{ $lote->finca_id }}</td>
+            <td>{{ $lote->tipo_beneficio_id }}</td>
+            <td>{{ $lote->tipo_secado_id }}</td>
             <td>{{ $lote->created_at }}</td>
             <td>
                 <input type="button" value="Actualizar" class="btn_actualizar_lote
@@ -36,11 +32,9 @@
                        id                           ="{{ $lote->id }}"
                        Finca_id                     ="{{ $lote->finca_id }}"
                        <?php
-
                        if($lote->variedad1_id == 0) { } else { ?> Variedad1_id ="{{ $lote->variedad1_id }}" <?php }
                        if($lote->variedad2_id == 0) { } else { ?> Variedad2_id ="{{ $lote->variedad2_id }}" <?php }
                        if($lote->variedad3_id == 0) { } else { ?> Variedad3_id ="{{ $lote->variedad3_id }}" <?php }
-
                        ?>
                        Acidez_id                    ="{{ $lote->acidez_id }}"
                        Aroma_id                     ="{{ $lote->aroma_id }}"
@@ -62,6 +56,6 @@
     @endforeach
     </tbody>
 </table>
-@endif
+
 
 </body>
