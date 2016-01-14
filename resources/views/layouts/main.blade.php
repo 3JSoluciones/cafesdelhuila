@@ -19,7 +19,7 @@
          <link href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet"/>
        -->
         <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-        <link href="/bower_components/bootswatch/lumen/bootstrap.min.css" rel="stylesheet">
+        <link href="/bower_components/bootswatch/spacelab/bootstrap.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.css" rel="stylesheet" type="text/css" >
         <link href="/bower_components/toastr/toastr.css" rel="stylesheet">

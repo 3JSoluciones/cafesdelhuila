@@ -16,6 +16,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('formulario', 'StorageController@index');
+Route::post('storage/create', 'StorageController@save');
+Route::get('storage/{archivo}', function ($archivo) {
+    $public_path = public_path();
+    $url = $public_path.'/storage/'.$archivo;
+    //verificamos si el archivo existe y lo retornamos
+    if (Storage::exists($archivo))
+    {
+        return response()->download($url);
+    }
+    //si no se encuentra lanzamos un error 404.
+    abort(404);
+
+});
+
+
+
 Route::group(['middleware' => ['web']], function () {
 
 });
@@ -105,6 +122,7 @@ Route::group(['middleware' => 'web'], function () {
     /*inicio medios*/
     Route::get('medios/crear', 'MediosController@getCrear');
     Route::resource('medios', 'MediosController');
+    Route::post('medios/create', 'MediosController@save');
     /*fin medios*/
 
 

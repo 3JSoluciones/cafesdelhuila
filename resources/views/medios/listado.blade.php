@@ -13,6 +13,7 @@
         <tr>
             <th>NIT</th>
             <th>MEDIO</th>
+            <th>NOMBRE</th>
             <th>CREADO</th>
             <th>ACCION</th>
         </tr>
@@ -22,6 +23,18 @@
 
             <tr>
                 <td>{{ $medio->id }}</td>
+                <td><?php
+                if (Storage::exists($medio->nombre)) {
+                    ?>
+                    <img src="http://cafesdelhuila.com/storage/{{$medio->nombre}}" style="width: 50px; height: 50px; border-radius: 50%;">
+                    <?php
+                } else {
+                    ?>
+                    <img src="http://cafesdelhuila.com/storage/naruto.png" style="width: 50px; height: 50px; border-radius: 50%;">
+                    <?php
+                }
+                ?>
+                </td>
                 <td>{{ $medio->nombre }}</td>
                 <td>{{ $medio->created_at }}</td>
                 <td>

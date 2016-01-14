@@ -127,11 +127,11 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{ $productor->id }}</td>
-                        <td>{{ $productor->nombre }}</td>
-                        <td>{{ $productor->telefono }}</td>
-                        <td>{{ $productor->email }}</td>
-                        <td>{{ $productor->organizacion->nombre }}</td>
+                        <td><b>{{ $productor->id }}</b></td>
+                        <td><b>{{ $productor->nombre }}</b></td>
+                        <td><b>{{ $productor->telefono }}</b></td>
+                        <td><b>{{ $productor->email }}</b></td>
+                        <td><b>{{ $productor->organizacion->nombre }}</b></td>
                         <td>
                             <a href="http://cafesdelhuila.com/productores/actualizar/{{ $productor->id}}">
                                 <input type="button" value="Actualizar" class="btn btn-primary btn-sm">
@@ -163,6 +163,7 @@
       </div>
    </div>
 
+
     </form>
 
 @section('page-js-code')
@@ -170,12 +171,12 @@
 
     $(document).ready(function () {
         listadoFincas();
-        crearFincas();
         listadoCertificaciones();
-        crearCertificaciones();
-        crearMedios();
         listadoMedios();
         listadoLotes();
+        crearFincas();
+        crearCertificaciones();
+        crearMedios();
         crearLotes();
     });
 
@@ -281,6 +282,7 @@
                         toastr.info("Registro de " + Finca + " exitoso.", "FINCAS");
                         listadoFincas();
                         limpiarCamposFincas();
+                        crearLotes();
                         $(".btn_agregar_finca").slideDown('slow');
                         $("#contenedor_registro_finca").slideUp('slow');
                     }
@@ -316,6 +318,7 @@
                         toastr.info("Actualizacion de " + Finca + " exitosa.", "FINCAS");
                         listadoFincas();
                         limpiarCamposFincas();
+                        crearLotes();
                         $("#btn-agregar-finca").val('Agregar Finca');
                         $("#btn-agregar-finca").attr('accion','1');
                         $(".btn_agregar_finca").slideDown('slow');
@@ -578,6 +581,7 @@
         $.get("{{ URL('http://cafesdelhuila.com/medios/crear') }}",
                 function (data) {
                     $('#contenedor_medios').hide().html(data).slideDown('slow');
+                    $("#id_productor_Medios").val({{ $productor->id }});
                 }
         );
     }
@@ -612,35 +616,7 @@
         $(".btn_agregar_medio").slideUp('slow');
         $("#div_medio").slideDown('slow');
         $("#div_agregar_medio").slideDown('slow');
-    });
-
-    //btn agregar
-    $(document).on('click','#btn-agregar-medio',function(){
-
-        var idP             = $("#id_productor").val();
-        var nombre          = $("#nombre").val();
-
-        $.ajax({
-                url: 'http://cafesdelhuila.com/medios',
-                data: {
-                    Productor_id: idP,
-                    nombre: nombre,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType: 'json',
-                type: 'POST',
-                success: function (data) {
-                    toastr.info("El medio " + nombre + " se agrego con exito.", "REGISTRO DE MEDIOS");
-                    $("#nombre").val('');
-                    $(".btn_agregar_medio").slideDown('slow');
-                    $("#div_medio").slideUp('slow');
-                    $("#div_agregar_medio").slideUp('slow');
-                    listadoMedios();
-                }
-            });
-
+        $(".btn_eliminar_medio").attr('disabled',true);
     });
 
     //btn eliminar
@@ -673,6 +649,18 @@
         });
 
     });
+
+
+    //cancelar
+    $(document).on('click','#btn-cancelar-medio', function () {
+
+        $(".btn_agregar_medio").slideDown('slow');
+        $("#div_medio").slideUp('slow');
+        $("#div_agregar_medio").slideUp('slow');
+        $(".btn_eliminar_medio").attr('disabled',false);
+
+    });
+
 
     //--------------------------------------------------------------------
     //termina medios

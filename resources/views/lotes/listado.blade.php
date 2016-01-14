@@ -3,7 +3,7 @@
 </head>
 <body>
 
-<table class="tabla display" cellspacing="0" width="100%">
+<table id="tabla_lotes" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>NIT</th>
