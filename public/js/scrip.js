@@ -16,23 +16,5 @@ $(document).ready(function () {
         }
     });
 
-    $('#tabla_fincas').DataTable({
-        "language": {
-            "url": "/bower_components/jquery/Spanish.json"
-        }
-    });
-
-    $('#tabla_lotes').DataTable({
-        "language": {
-            "url": "/bower_components/jquery/Spanish.json"
-        }
-    });
-
-    $('#tabla_certificaciones').DataTable({
-        "language": {
-            "url": "/bower_components/jquery/Spanish.json"
-        }
-    });
-
-
 });
+

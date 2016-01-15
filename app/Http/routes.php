@@ -71,6 +71,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('productores', 'ProductoresController');
     Route::get('productores/perfil/{id}', 'ProductoresController@getPerfil');
     Route::get('productores/actualizar/{id}', 'ProductoresController@getActualizar');
+    Route::get('productores/perfil/createFoto', 'ProductoresController@save');
     /*fin productores*/
 
     /*inicio fincas*/

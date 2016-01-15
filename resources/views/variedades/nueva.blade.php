@@ -151,6 +151,7 @@
 
             if($("#btn-agregar-variedad").attr('accion') == 1) {
 
+                var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
                     $.ajax({
@@ -179,6 +180,7 @@
 
             } else {
 
+                var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
                     $.ajax({

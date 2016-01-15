@@ -30,13 +30,9 @@
 
 
         <div class="col-lg-12 text-right">
-            <input type="button" value="+ Agregar Certificacion al Productor"
+            <br><input type="button" value="+ Agregar Certificacion al Productor"
                    class="btn_agregar_certificacionProductor btn btn-primary btn-sm" >
-        </div>
-
-        <div class="col-lg-12">
             <hr>
-            <div id="contenedor_listado_certifiProduct" ></div>
         </div>
 
 </form>

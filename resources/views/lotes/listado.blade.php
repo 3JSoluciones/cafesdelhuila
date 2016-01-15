@@ -1,9 +1,5 @@
-<head>
-    <script src="/js/scrip.js"></script>
-</head>
-<body>
-
-<table id="tabla_lotes" class="display" cellspacing="0" width="100%">
+<script src="/js/scrip.js"></script>
+<table class="table display" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>NIT</th>
@@ -50,6 +46,3 @@
     @endforeach
     </tbody>
 </table>
-
-
-</body>

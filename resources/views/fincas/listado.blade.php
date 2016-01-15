@@ -1,13 +1,10 @@
-<head>
-    <script src="/js/scrip.js"></script>
-</head>
-<body>
+<script src="/js/scrip.js"></script>
 @if($fincas->count() == 0)
     <div class="text-center">
         <h4><b>Sin Datos Registrados</b></h4>
     </div>
 @else
-    <table id="tabla_fincas" class="display" cellspacing="0" width="100%">
+    <table class="table display" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th>NIT</th>
@@ -55,5 +52,3 @@
         </tbody>
     </table>
 @endif
-
-</body>

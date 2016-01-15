@@ -187,7 +187,7 @@
 
 
         <div class="col-lg-12 text-right">
-            <input type="button" value="+ Agregar Lote"
+            <br><input type="button" value="+ Agregar Lote"
                    class="btn_agregar_lotes btn btn-primary btn-sm">
             <hr>
         </div>

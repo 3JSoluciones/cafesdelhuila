@@ -67,9 +67,11 @@ class ProductoresController extends Controller
         if($productor->count()) {
             $productor      = $productor->first();
             $organizaciones = Organizacion::all();
+            $medioAgregado  = 1;
             return view('productores.perfil', array(
                 'organizaciones'    => $organizaciones,
-                'productor'         => $productor
+                'productor'         => $productor,
+                'medioAgregado'    => $medioAgregado
             ));
         } else {
             console.log('el productor no existe :(');

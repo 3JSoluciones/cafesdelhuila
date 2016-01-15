@@ -19,7 +19,6 @@
          <link href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet"/>
        -->
         <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-        <link href="/bower_components/bootswatch/spacelab/bootstrap.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.min.css" rel="stylesheet">
         <link href="/bower_components/jquery/jquery.dataTables.css" rel="stylesheet" type="text/css" >
         <link href="/bower_components/toastr/toastr.css" rel="stylesheet">
@@ -110,6 +109,7 @@
                                     <li><a href="http://cafesdelhuila.com/tiposBeneficios/create"><i class="fa fa-btn fa-sign-out"></i>Tipos Beneficios</a></li>
                                     <li><a href="http://cafesdelhuila.com/tiposSecados/create"><i class="fa fa-btn fa-sign-out"></i>Tipos Secados</a></li>
                                     <li><a href="http://cafesdelhuila.com/variedades/create"><i class="fa fa-btn fa-sign-out"></i>Variedades</a></li>
+                                    <li><a href="http://cafesdelhuila.com/productores/create"><i class="fa fa-btn fa-sign-out"></i>Productores</a></li>
                             </ul>
                         </li>
                     @endif

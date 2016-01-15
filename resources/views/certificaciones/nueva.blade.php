@@ -95,6 +95,7 @@
 
             if($("#btn-agregar-certificacion").attr('accion') == 1) {
 
+                var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     $.ajax({
                         url: 'http://cafesdelhuila.com/certificaciones',
@@ -118,6 +119,7 @@
 
             } else {
 
+                var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     $.ajax({
                         url: 'http://cafesdelhuila.com/certificaciones/' + id + '',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Medio;
+use App\Organizacion;
 use App\Productor;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class MediosController extends Controller
 {
@@ -51,10 +53,15 @@ class MediosController extends Controller
 
     public function save(Request $request)
     {
-        $file   = $request->file('file');
+        $file   = $request->file('medio');
         $idPro  = Input::get('id_productor_Medios');
-        $nombre = $file->getClientOriginalName();
+        $nombre = str_random(5).$file->getClientOriginalName();
         \Storage::disk('local')->put($nombre,  \File::get($file));
+
+        $productor    = Productor::with('organizacion')->where('id', '=', $idPro)->get();
+        $productor      = $productor->first();
+        $organizaciones = Organizacion::all();
+        $medioAgregado  = 2;
 
         $medio = Medio::where('nombre', '=', $nombre)->where('productor_id', '=', $idPro)->get();
         if($medio->count()) {
@@ -70,11 +77,20 @@ class MediosController extends Controller
             $medio->save();
         }
 
-        return redirect(url('productores/perfil/'.$idPro));
+        return view('productores.perfil', array(
+            'productor'         => $productor,
+            'organizaciones'    => $organizaciones,
+            'idPro'             => $idPro,
+            'medioAgregado'     => $medioAgregado
+        ));
+
     }
 
     public function destroy(Request $request, $id) {
         if($request->ajax()) {
+            if(Storage::exists(Input::get('medio'))) {
+                Storage::delete(Input::get('medio'));
+            }
             Medio::find($id)->fill($request->all())->delete();
             return response()->json(["mensaje" => "eliminado"]);
         }

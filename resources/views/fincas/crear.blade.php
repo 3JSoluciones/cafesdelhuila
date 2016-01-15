@@ -120,14 +120,14 @@
             <div class="col-lg-12 text-right">
                 <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
                        id="btn-cancelar-finca">
-                <input type="button" value="Agregar Variedad" class="btn btn-primary btn-sm"
+                <input type="button" value="Agregar Finca" class="btn btn-primary btn-sm"
                        id="btn-agregar-finca" accion="1">
             </div>
         </div>
 
 
         <div class="col-lg-12 text-right">
-            <input type="button" value="+ Agregar Finca"
+            <br><input type="button" value="+ Agregar Finca"
                    class="btn_agregar_finca btn btn-primary btn-sm" ><hr>
         </div>
 
