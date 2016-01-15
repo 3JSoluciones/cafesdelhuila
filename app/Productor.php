@@ -4,15 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Productor extends Model
-{
-    //model productor
-    protected $table = 'productores';
+class Productor extends Model {
 
-    //foreign keys
-    public function organizacion() {
-        return $this->hasOne('App\Organizacion','id','organizacion_id');
-    }
+	protected $fillable = ['Organizacion_id', 'nombre', 'Telefono', 'Email'];
 
-    protected $fillable = ['Organizacion_id','nombre','Telefono','Email'];
+	// Tabla
+	protected $table = 'productores';
+
+	// Organizacion
+	public function organizacion() {
+		return $this->hasOne('App\Organizacion', 'id', 'organizacion_id');
+	}
+
+	// Fincas
+	public function fincas() {
+		return $this->hasMany('App\Finca', 'id', 'finca_id');
+	}
+
 }
