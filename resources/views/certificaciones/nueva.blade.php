@@ -65,11 +65,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/certificaciones/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('certificaciones-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_certificacion').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -97,23 +97,16 @@
 
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/certificaciones',
-                        data: {
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "CERTIFICACIONES");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_certificacion").slideDown('slow');
-                            $("#contenedor_registro_certifi").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('certificaciones-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                        nombre:nombre,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "CERTIFICACIONES");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_certificacion").slideDown('slow');
+                      $("#contenedor_registro_certifi").slideUp('slow');
                     });
                 }
 
@@ -121,26 +114,19 @@
 
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/certificaciones/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "CERTIFICACIONES");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-certificacion").val('Agregar certificacion');
-                            $("#btn-agregar-certificacion").attr('accion','1');
-                            $(".btn_agregar_certificacion").slideDown('slow');
-                            $("#contenedor_registro_certifi").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('certificaciones-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "CERTIFICACIONES");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-certificacion").val('Agregar certificacion');
+                      $("#btn-agregar-certificacion").attr('accion','1');
+                      $(".btn_agregar_certificacion").slideDown('slow');
+                      $("#contenedor_registro_certifi").slideUp('slow');
                     });
                 }
 
@@ -176,20 +162,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_certif").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/certificaciones/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "CERTIFICACIONES");
-                    listado();
-                }
+            $.post("{{ URL::route('certificaciones-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "CERTIFICACIONES");
+              listado();
             });
 
         });

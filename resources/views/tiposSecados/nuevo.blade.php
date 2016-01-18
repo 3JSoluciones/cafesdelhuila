@@ -66,11 +66,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/tiposSecados/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('tiposSecados-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_tipoSecado').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -99,23 +99,16 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/tiposSecados',
-                        data: {
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "TIPOS DE SECADOS");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_tipoSecados").slideDown('slow');
-                            $("#contenedor_registro_tipoSecad").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('tiposSecados-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                        nombre:nombre,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "TIPOS DE SECADOS");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_tipoSecados").slideDown('slow');
+                      $("#contenedor_registro_tipoSecad").slideUp('slow');
                     });
                 }
 
@@ -124,26 +117,19 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/tiposSecados/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "TIPOS DE BENEFICIOS");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-tipoSecados").val('Agregar Tipo Secado');
-                            $("#btn-agregar-tipoSecados").attr('accion','1');
-                            $(".btn_agregar_tipoSecados").slideDown('slow');
-                            $("#contenedor_registro_tipoSecad").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('tiposSecados-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "TIPOS DE BENEFICIOS");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-tipoSecados").val('Agregar Tipo Secado');
+                      $("#btn-agregar-tipoSecados").attr('accion','1');
+                      $(".btn_agregar_tipoSecados").slideDown('slow');
+                      $("#contenedor_registro_tipoSecad").slideUp('slow');
                     });
                 }
 
@@ -179,20 +165,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_tipoSeca").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/tiposSecados/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "TIPOS DE SECADOS");
-                    listado();
-                }
+            $.post("{{ URL::route('tiposSecados-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "TIPOS DE SECADOS");
+              listado();
             });
 
         });

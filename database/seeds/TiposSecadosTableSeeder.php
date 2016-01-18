@@ -13,17 +13,11 @@ class TiposSecadosTableSeeder extends Seeder {
 
 		Tipo_Secado::create(array('nombre' => 'Patio de cemento'));
 		Tipo_Secado::create(array('nombre' => 'Carros'));
-
-		/*
-			//seeder tiposSecados
-			DB::table('tipos_secados')->insert(['nombre' => 'Patio de cemento')),
-				\App\Tipo_Secado::create(array('nombre' => 'Carros')),
-				\App\Tipo_Secado::create(array('nombre' => 'Carros')),
-				\App\Tipo_Secado::create(array('nombre' => 'Secador tipo parabólico')),
-				\App\Tipo_Secado::create(array('nombre' => 'Secador tipo capilla')),
-				\App\Tipo_Secado::create(array('nombre' => 'Paceras')),
-				\App\Tipo_Secado::create(array('nombre' => 'Mecanico')),
-			]);
-		*/
+		Tipo_Secado::create(array('nombre' => 'Secador tipo parabólico'));
+		Tipo_Secado::create(array('nombre' => 'Secador tipo capilla'));
+		Tipo_Secado::create(array('nombre' => 'Paceras'));
+		Tipo_Secado::create(array('nombre' => 'Mecanico'));
+		
 	}
+
 }

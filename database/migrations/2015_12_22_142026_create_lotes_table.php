@@ -29,6 +29,9 @@ class CreateLotesTable extends Migration {
 			$table->string('nombre');
 			$table->string('area');
 			$table->string('perfil');
+			$table->string('notas_variedad1');
+			$table->string('notas_variedad2');
+			$table->string('notas_variedad3');
 			$table->timestamps();
 
 			// $table->foreign('finca_id')->references('id')->on('fincas');

@@ -8,51 +8,59 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class AcidezController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+
+  /*
+   * Create a new controller instance.
+   *
+   * @return void
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+*/
+
+    public function getCrear() {
+      return view('acidez.nueva');
     }
 
-    //controller acidez
-    public function create() {
-        return view('acidez.nueva');
+    public function getListado() {
+      $acidez = Acidez::all();
+      return view('acidez.listado', array(
+          'acidez' => $acidez
+      ));
     }
 
-    public function getAcidez() {
-        $acidez = Acidez::all();
-        return view('acidez.listado', array(
-            'acidez' => $acidez
-        ));
+    public function postCrear() {
+
+      $acidez = new Acidez();
+
+      $acidez->nombre = Input::get('nombre');
+
+      $acidez->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Acidez::create($request->all());
-            return response()->json (["mensanje" => "registrando"]);
-        }
+    public function postActualizar() {
+
+      $acidez = Acidez::find(Input::get('id'));
+
+      $acidez->nombre = Input::get('nombre');
+
+      $acidez->save();
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Acidez::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizando"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Acidez::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminando"]);
-        }
+      $acidez = Acidez::find(Input::get('id'));
+
+      $acidez->delete();
+
     }
 
 }

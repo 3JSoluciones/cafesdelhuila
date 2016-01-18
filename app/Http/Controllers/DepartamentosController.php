@@ -8,55 +8,59 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class DepartamentosController extends Controller
 {
 
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
     }
+*/
 
-    //controller departamentos
-    public function create()
-    {
+    public function getCrear() {
         return view('departamentos.nuevo');
     }
 
-    public function getDepartamentos() {
-        $departamentos = \App\Departamento::all();
-        return view('departamentos.listado', array(
-            'departamentos' => $departamentos
-        ));
+    public function getListado() {
+      $departamentos = Departamento::all();
+      return view('departamentos.listado', array(
+          'departamentos' => $departamentos
+      ));
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax()) {
-             Departamento::create($request->all());
-             return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postCrear() {
+
+      $departamentos = new Departamento();
+
+      $departamentos->nombre = Input::get('nombre');
+
+      $departamentos->save();
+
     }
 
-    public function update(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            Departamento::find($id)->fill($request->all())->save();
-            return response()->json (["mensanje" => "actualizado"]);
-        }
+    public function postActualizar() {
+
+      $departamentos = Departamento::find(Input::get('id'));
+
+      $departamentos->nombre = Input::get('nombre');
+
+      $departamentos->save();
+
     }
 
-    public function destroy(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            Departamento::find($id)->fill($request->all())->delete();
-            return response()->json(["mensanje" => "eliminado"]);
-        }
+    public function postEliminar() {
+
+      $departamentos = Departamento::find(Input::get('id'));
+
+      $departamentos->delete();
+
     }
 
 }

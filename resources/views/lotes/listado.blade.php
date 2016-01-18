@@ -1,4 +1,5 @@
 <script src="/js/scrip.js"></script>
+
 <table class="table display" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -36,11 +37,13 @@
                        Cantidad_arboles_variedad3   ="{{ $lote->cantidad_arboles_variedad3 }}"
                        Nombre                       ="{{ $lote->nombre }}"
                        Area                         ="{{ $lote->area }}"
-                       Perfil                       ="{{ $lote->perfil }}"
+                       perfil                       ="{{ $lote->perfil }}"
 
                         >
                 <input type="button" value="Eliminar" class="btn_eliminar_lote
-                                btn btn-danger btn-sm" id_lote="{{ $lote->id }}">
+                                btn btn-danger btn-sm"
+                                id_lote = "{{ $lote->id }}"
+                                perfil  = "{{ $lote->perfil }}">
             </td>
         </tr>
     @endforeach

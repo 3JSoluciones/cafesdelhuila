@@ -70,14 +70,8 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="/home">
                    <b>Cafes Del Huila</b>
-
                 </a>
-
-
-
             </div>
-
-
 
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
                 <!-- Right Side Of Navbar -->
@@ -99,17 +93,17 @@
                                 <b>CONFIGURACIONES</b> <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                    <li><a href="http://cafesdelhuila.com/acidez/create"><i class="fa fa-btn fa-sign-out"></i>Acidez</a></li>
-                                    <li><a href="http://cafesdelhuila.com/aromas/create"><i class="fa fa-btn fa-sign-out"></i>Aromas</a></li>
-                                    <li><a href="http://cafesdelhuila.com/certificaciones/create"><i class="fa fa-btn fa-sign-out"></i>Certificaciones</a></li>
-                                    <li><a href="http://cafesdelhuila.com/departamentos/create"><i class="fa fa-btn fa-sign-out"></i>Departamentos</a></li>
-                                    <li><a href="http://cafesdelhuila.com/municipios/create"><i class="fa fa-btn fa-sign-out"></i>Municipios</a></li>
-                                    <li><a href="http://cafesdelhuila.com/organizaciones/create"><i class="fa fa-btn fa-sign-out"></i>Organizaciones</a></li>
-                                    <li><a href="http://cafesdelhuila.com/sabores/create"><i class="fa fa-btn fa-sign-out"></i>Sabores</a></li>
-                                    <li><a href="http://cafesdelhuila.com/tiposBeneficios/create"><i class="fa fa-btn fa-sign-out"></i>Tipos Beneficios</a></li>
-                                    <li><a href="http://cafesdelhuila.com/tiposSecados/create"><i class="fa fa-btn fa-sign-out"></i>Tipos Secados</a></li>
-                                    <li><a href="http://cafesdelhuila.com/variedades/create"><i class="fa fa-btn fa-sign-out"></i>Variedades</a></li>
-                                    <li><a href="http://cafesdelhuila.com/productores/create"><i class="fa fa-btn fa-sign-out"></i>Productores</a></li>
+                                    <li><a href="{{ URL::route('acidez-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Acidez</a></li>
+                                    <li><a href="{{ URL::route('aromas-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Aromas</a></li>
+                                    <li><a href="{{ URL::route('certificaciones-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Certificaciones</a></li>
+                                    <li><a href="{{ URL::route('departamentos-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Departamentos</a></li>
+                                    <li><a href="{{ URL::route('municipios-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Municipios</a></li>
+                                    <li><a href="{{ URL::route('organizaciones-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Organizaciones</a></li>
+                                    <li><a href="{{ URL::route('sabores-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Sabores</a></li>
+                                    <li><a href="{{ URL::route('tiposBeneficios-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Tipos Beneficios</a></li>
+                                    <li><a href="{{ URL::route('tiposSecados-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Tipos Secados</a></li>
+                                    <li><a href="{{ URL::route('variedades-getCrear') }}"><i class="fa fa-btn fa-sign-out"></i>Variedades</a></li>
+                                    <li><a href="{{ URL::route('productores-getCrear')}}"><i class="fa fa-btn fa-sign-out"></i>Productores</a></li>
                             </ul>
                         </li>
                     @endif
@@ -221,5 +215,3 @@
 
 </body>
 </html>
-
-

@@ -66,11 +66,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/departamentos/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('departamentos-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_departamento').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -99,23 +99,16 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/departamentos',
-                        data: {
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "DEPARTAMENTOS");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_departamento").slideDown('slow');
-                            $("#contenedor_registro_depart").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('departamentos-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                        nombre:nombre,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "DEPARTAMENTOS");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_departamento").slideDown('slow');
+                      $("#contenedor_registro_depart").slideUp('slow');
                     });
                 }
 
@@ -124,26 +117,19 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/departamentos/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "DEPARTAMENTOS");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-departamento").val('Agregar departamento');
-                            $("#btn-agregar-departamento").attr('accion','1');
-                            $(".btn_agregar_departamento").slideDown('slow');
-                            $("#contenedor_registro_depart").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('departamentos-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "DEPARTAMENTOS");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-departamento").val('Agregar departamento');
+                      $("#btn-agregar-departamento").attr('accion','1');
+                      $(".btn_agregar_departamento").slideDown('slow');
+                      $("#contenedor_registro_depart").slideUp('slow');
                     });
                 }
 
@@ -179,20 +165,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_depart").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/departamentos/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "DEPARTAMENTOS");
-                    listado();
-                }
+            $.post("{{ URL::route('departamentos-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "DEPARTAMENTOS");
+              listado();
             });
 
         });

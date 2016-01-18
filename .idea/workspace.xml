@@ -2,20 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccf084e-2789-4d66-a2db-cf0bda0b7724" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/17231_1336460371773_1239017150_1029725_6908249_n - copia.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/naruto_and_kurama_we_will_be_the_bes_by_iitheyahikodarkii-d5kd9w2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/StorageController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/naruto.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/Czklug.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/McBDxE1A.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/S7UVEfondos-de-pantalla-para-celular-de-naruto-shippuden-6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/TCNBNe.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/e5dVsKurama2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/hyyCFb.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/naruto.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/storage/pZXTpkurama_form_naruto_vs_mugetsu_form_ichigo_by_shippuuryu-d4ow3jh.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/new.blade.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_12_22_133819_create_municipios_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_12_22_133819_create_municipios_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_12_22_140309_create_productores_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_12_22_140309_create_productores_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_12_22_140926_create_medios_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_12_22_140926_create_medios_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_12_22_141355_create_fincas_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_12_22_141355_create_fincas_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_12_22_142026_create_lotes_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_12_22_142026_create_lotes_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Acidez.php" afterPath="$PROJECT_DIR$/app/Acidez.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AcidezController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AcidezController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/AcidezTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/AcidezTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Aroma.php" afterPath="$PROJECT_DIR$/app/Aroma.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AromasController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AromasController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/AromasTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/AromasTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Certificacion.php" afterPath="$PROJECT_DIR$/app/Certificacion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Certificacion_Productor.php" afterPath="$PROJECT_DIR$/app/Certificacion_Productor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CertificacionesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CertificacionesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CertificacionesProductoresController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CertificacionesProductoresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CertificacionesTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/CertificacionesTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Departamento.php" afterPath="$PROJECT_DIR$/app/Departamento.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/DepartamentosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/DepartamentosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DepartamentosTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DepartamentosTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Finca.php" afterPath="$PROJECT_DIR$/app/Finca.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FincasController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FincasController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Lote.php" afterPath="$PROJECT_DIR$/app/Lote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/LotesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/LotesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Medio.php" afterPath="$PROJECT_DIR$/app/Medio.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MediosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MediosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Municipio.php" afterPath="$PROJECT_DIR$/app/Municipio.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MunicipiosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MunicipiosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/MunicipiosTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/MunicipiosTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Organizacion.php" afterPath="$PROJECT_DIR$/app/Organizacion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganizacionesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Productor.php" afterPath="$PROJECT_DIR$/app/Productor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoresController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificacionesProductores/crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificacionesProductores/crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/fincas/crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/fincas/crear.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Sabor.php" afterPath="$PROJECT_DIR$/app/Sabor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaboresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Tipo_Beneficio.php" afterPath="$PROJECT_DIR$/app/Tipo_Beneficio.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Tipo_Secado.php" afterPath="$PROJECT_DIR$/app/Tipo_Secado.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TiposBeneficiosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/TiposBeneficiosTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/TiposBeneficiosTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TiposSecadosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TiposSecadosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/TiposSecadosTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/TiposSecadosTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Variedad.php" afterPath="$PROJECT_DIR$/app/Variedad.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/VariedadesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/VariedadesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/lotes/crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/lotes/crear.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/medios/crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/medios/crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/bower_components/jquery/jquery.dataTables.min.css" afterPath="$PROJECT_DIR$/public/bower_components/jquery/jquery.dataTables.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificacionesProductores/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificacionesProductores/listado.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/fincas/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/fincas/listado.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/filesystems.php" afterPath="$PROJECT_DIR$/config/filesystems.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificaciones/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificaciones/listado.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/lotes/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/lotes/listado.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/medios/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/medios/listado.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/productores/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/productores/listado.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/acidez/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/acidez/nueva.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" afterPath="$PROJECT_DIR$/resources/views/certificaciones/nueva.blade.php" />
@@ -30,7 +79,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tiposSecados/nuevo.blade.php" afterPath="$PROJECT_DIR$/resources/views/tiposSecados/nuevo.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/productores/perfil.blade.php" afterPath="$PROJECT_DIR$/resources/views/productores/perfil.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/scrip.js" afterPath="$PROJECT_DIR$/public/js/scrip.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cafesdelhuila.iws" />
@@ -52,36 +100,18 @@
     <favorites_list name="cafesdelhuila" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.20727272">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="crear.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/medios/crear.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="61" selection-start-line="0" selection-start-column="61" selection-end-line="0" selection-end-column="61" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="perfil.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/productores/perfil.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4263323">
-                  <caret line="589" column="33" selection-start-line="589" selection-start-column="33" selection-end-line="589" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="2015_12_22_133819_create_municipios_table.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2015_12_22_133819_create_municipios_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -207,158 +237,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="productores" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medios" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cafesdelhuila" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -421,7 +299,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1012" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1012" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -430,19 +308,19 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.140625" sideWeight="0.4959596" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19947916" sideWeight="0.4959596" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11145833" sideWeight="0.5040404" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -463,13 +341,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Middleware/AuthenticateWithBasicAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/CreatesUserProviders.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.12539186">
@@ -488,13 +359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5768025">
           <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StorageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5015674">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -551,13 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3260188">
           <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/new.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5266458">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -775,16 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15047021">
           <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887012000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,15 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5015674">
           <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding>
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887271000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -808,16 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37617555">
           <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887292000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,29 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.677116">
           <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding>
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452887041000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/medios/crear.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="61" selection-start-line="0" selection-start-column="61" selection-end-line="0" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,49 +660,75 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64890283">
           <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding>
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1452866868000" expanded="true" signature="-1:-1" placeholder="{&quot;closeButton&quot;: false...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/productores/perfil.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4263323">
-          <caret line="589" column="33" selection-start-line="589" selection-start-column="33" selection-end-line="589" selection-end-column="33" />
+          <caret line="554" column="1" selection-start-line="554" selection-start-column="1" selection-end-line="554" selection-end-column="1" />
+          <folding>
+            <marker date="1453091402000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/medios/crear.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47648904">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.432602">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452989685000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452989685000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2015_12_22_141355_create_fincas_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.17554858">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1453092031000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder=" Run the migrations. ..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder=" Reverse the migrations. ..." />
+            <marker date="1453092031000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2015_12_22_133819_create_municipios_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

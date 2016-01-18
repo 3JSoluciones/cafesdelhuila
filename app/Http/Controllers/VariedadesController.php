@@ -10,59 +10,71 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class VariedadesController extends Controller
 {
 
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
+    }*/
+
+    public function getCrear() {
+      $acidezes       = Acidez::all();
+      $aromas         = Aroma::all();
+      $sabores        = Sabor::all();
+      return view('variedades.nueva', array(
+          'acidezes'      => $acidezes,
+          'aromas'        => $aromas,
+          'sabores'       => $sabores
+      ));
     }
 
-    //controller variedades
-    public function create() {
-        $acidezes       = Acidez::all();
-        $aromas         = Aroma::all();
-        $sabores        = Sabor::all();
-        return view('variedades.nueva', array(
-            'acidezes'      => $acidezes,
-            'aromas'        => $aromas,
-            'sabores'       => $sabores
-        ));
+    public function getListado() {
+      $variedades     = Variedad::with('acidez','aroma','sabor')->get();
+      return view('variedades.listado', array(
+          'variedades'    => $variedades
+      ));
     }
 
-    public function getVariedades() {
-        $variedades     = Variedad::with('acidez','aroma','sabor')->get();
-        return view('variedades.listado', array(
-            'variedades'    => $variedades
-        ));
+    public function postCrear() {
+
+      $variedades = new Variedad();
+
+      $variedades->nombre     = Input::get('nombre');
+      $variedades->acidez_id  = Input::get('acidez_id');
+      $variedades->aroma_id   = Input::get('aroma_id');
+      $variedades->sabor_id   = Input::get('sabor_id');
+
+      $variedades->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Variedad::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postActualizar() {
+
+      $variedades = Variedad::find(Input::get('id'));
+
+      $variedades->nombre     = Input::get('nombre');
+      $variedades->acidez_id  = Input::get('acidez_id');
+      $variedades->aroma_id   = Input::get('aroma_id');
+      $variedades->sabor_id   = Input::get('sabor_id');
+
+      $variedades->save();
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Variedad::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizado"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Variedad::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminado"]);
-        }
+      $variedades = Variedad::find(Input::get('id'));
+
+      $variedades->delete();
+
     }
 
 }

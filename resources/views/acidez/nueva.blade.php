@@ -65,7 +65,7 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/acidez/listado') }}",
+            $.get("{{ URL::Route('acidez-getListado') }}",
                    function (data) {
                         $('#contenedor_listado_acidez').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
@@ -95,56 +95,41 @@
 
             if($("#btn-agregar-acidez").attr('accion') == 1) {
 
-                var validator = $(".formValidation").kendoValidator().data("kendoValidator");
-                if (validator.validate()) {
-                    //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/acidez',
-                        data:{
-                            nombre:nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType:'json',
-                        type:'POST',
-                        success:function(data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "ACIDEZ");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_acidez").slideDown('slow');
-                            $("#contenedor_registro_acidez").slideUp('slow');
-                        }
-                    });
+              var validator = $(".formValidation").kendoValidator().data("kendoValidator");
+              if (validator.validate()) {
+                  //btn agregar
+                  $.post("{{ URL::route('acidez-postCrear') }}?" + $('.formValidation').serialize(),
+                  {
+                      nombre:nombre,
+                  },
+                  function (data) {
+                    toastr.info("Registro de " + nombre + " exitoso.", "ACIDEZ");
+                    listado();
+                    limpiar();
+                    $(".btn_agregar_acidez").slideDown('slow');
+                    $("#contenedor_registro_acidez").slideUp('slow');
+                  });
 
-                }
-
+              }
 
             } else {
 
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/acidez/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "ACIDEZ");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-acidez").val('Agregar Acidez');
-                            $("#btn-agregar-acidez").attr('accion','1');
-                            $(".btn_agregar_acidez").slideDown('slow');
-                            $("#contenedor_registro_acidez").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('acidez-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "ACIDEZ");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-acidez").val('Agregar Acidez');
+                      $("#btn-agregar-acidez").attr('accion','1');
+                      $(".btn_agregar_acidez").slideDown('slow');
+                      $("#contenedor_registro_acidez").slideUp('slow');
                     });
                 }
 
@@ -182,20 +167,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_acidez").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/acidez/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "ACIDEZ");
-                    listado();
-                }
+            $.post("{{ URL::route('acidez-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "ACIDEZ");
+              listado();
             });
 
         });

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Departamento;
 
 class DepartamentosTableSeeder extends Seeder
 {
@@ -9,11 +10,9 @@ class DepartamentosTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        //seeder departamentos
-        DB::table('departamentos')->insert([
-            \App\Departamento::create(array('nombre' => 'Huila'))
-        ]);
+    public function run() {
+
+        Departamento::create(array('nombre' => 'Huila'));
+
     }
 }

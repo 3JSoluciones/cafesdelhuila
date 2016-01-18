@@ -66,11 +66,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/organizaciones/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('organizaciones-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_organizaciones').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -99,23 +99,16 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/organizaciones',
-                        data: {
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "ORGANIZACIONES");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_organizacion").slideDown('slow');
-                            $("#contenedor_registro_organiz").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('organizaciones-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                        nombre:nombre,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "ORGANIZACIONES");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_organizacion").slideDown('slow');
+                      $("#contenedor_registro_organiz").slideUp('slow');
                     });
                 }
 
@@ -124,26 +117,19 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/organizaciones/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "ORGANIZACIONES");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-organizacion").val('Agregar organizacion');
-                            $("#btn-agregar-organizacion").attr('accion','1');
-                            $(".btn_agregar_organizacion").slideDown('slow');
-                            $("#contenedor_registro_organiz").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('organizaciones-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "ORGANIZACIONES");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-organizacion").val('Agregar organizacion');
+                      $("#btn-agregar-organizacion").attr('accion','1');
+                      $(".btn_agregar_organizacion").slideDown('slow');
+                      $("#contenedor_registro_organiz").slideUp('slow');
                     });
                 }
 
@@ -179,20 +165,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_organiz").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/organizaciones/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "ORGANIZACIONES");
-                    listado();
-                }
+            $.post("{{ URL::route('organizaciones-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "ORGANIZACIONES");
+              listado();
             });
 
         });

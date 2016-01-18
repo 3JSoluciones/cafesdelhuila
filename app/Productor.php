@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Productor extends Model {
 
-	protected $fillable = ['Organizacion_id', 'nombre', 'Telefono', 'Email'];
+	protected $fillable = ['Organizacion_id', 'nombre', 'Telefono', 'Email', 'foto'];
 
 	// Tabla
 	protected $table = 'productores';
@@ -18,7 +18,11 @@ class Productor extends Model {
 
 	// Fincas
 	public function fincas() {
-		return $this->hasMany('App\Finca', 'id', 'finca_id');
+		return $this->hasMany('App\Finca');
+	}
+
+	public function certificacion_productor() {
+		return $this->hasMany('App\Certificacion_Productor');
 	}
 
 }

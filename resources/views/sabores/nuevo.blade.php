@@ -65,11 +65,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/sabores/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('sabores-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_sabores').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -98,23 +98,16 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/sabores',
-                        data: {
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "SABORES");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_sabores").slideDown('slow');
-                            $("#contenedor_registro_sabor").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('sabores-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                        nombre:nombre,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "SABORES");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_sabores").slideDown('slow');
+                      $("#contenedor_registro_sabor").slideUp('slow');
                     });
                 }
 
@@ -123,26 +116,19 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/sabores/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "SABORES");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-sabores").val('Agregar Sabor');
-                            $("#btn-agregar-sabores").attr('accion','1');
-                            $(".btn_agregar_sabores").slideDown('slow');
-                            $("#contenedor_registro_sabor").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('sabores-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "SABORES");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-sabores").val('Agregar Sabor');
+                      $("#btn-agregar-sabores").attr('accion','1');
+                      $(".btn_agregar_sabores").slideDown('slow');
+                      $("#contenedor_registro_sabor").slideUp('slow');
                     });
                 }
 
@@ -178,20 +164,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_sabor").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/sabores/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "SABORES");
-                    listado();
-                }
+            $.post("{{ URL::route('sabores-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "SABORES");
+              listado();
             });
 
         });

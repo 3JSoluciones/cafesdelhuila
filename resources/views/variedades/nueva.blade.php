@@ -113,11 +113,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/variedades/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('variedades-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_variedades').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -154,27 +154,20 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/variedades',
-                        data: {
-                            Acidez_id: Acidez_id,
-                            Aroma_id: Aroma_id,
-                            Sabor_id: Sabor_id,
-                            nombre: nombre,
-                            Variedadescol: Variedadescol,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "VARIEDADES");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_variedad").slideDown('slow');
-                            $("#contenedor_registro_variedades").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('variedades-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                      Acidez_id: Acidez_id,
+                      Aroma_id: Aroma_id,
+                      Sabor_id: Sabor_id,
+                      nombre: nombre,
+                      Variedadescol: Variedadescol,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "VARIEDADES");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_variedad").slideDown('slow');
+                      $("#contenedor_registro_variedades").slideUp('slow');
                     });
                 }
 
@@ -183,29 +176,23 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/variedades/' + id + '',
-                        data: {
-                            Acidez_id: Acidez_id,
-                            Aroma_id: Aroma_id,
-                            Sabor_id: Sabor_id,
-                            nombre: nombre,
-                            Variedadescol: Variedadescol,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "VARIEDADES");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-variedad").val('Agregar Variedad');
-                            $("#btn-agregar-variedad").attr('accion','1');
-                            $(".btn_agregar_variedad").slideDown('slow');
-                            $("#contenedor_registro_variedades").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('variedades-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id:id,
+                      Acidez_id: Acidez_id,
+                      Aroma_id: Aroma_id,
+                      Sabor_id: Sabor_id,
+                      nombre: nombre,
+                      Variedadescol: Variedadescol,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "VARIEDADES");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-variedad").val('Agregar Variedad');
+                      $("#btn-agregar-variedad").attr('accion','1');
+                      $(".btn_agregar_variedad").slideDown('slow');
+                      $("#contenedor_registro_variedades").slideUp('slow');
                     });
                 }
 
@@ -245,20 +232,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_varied").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/variedades/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "TIPOS DE SECADOS");
-                    listado();
-                }
+            $.post("{{ URL::route('variedades-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "VARIEDADES");
+              listado();
             });
 
         });

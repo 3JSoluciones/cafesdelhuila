@@ -24,7 +24,7 @@
 
         <tr>
             <td>{{ $productor->id }}</td>
-            <td><a href="http://cafesdelhuila.com/productores/perfil/{{ $productor->id }}">{{ $productor->nombre }}</a></td>
+            <td><a href="{{ URL::route('productoresPerfil-getPerfil', $productor->id )}}">{{ $productor->nombre }}</a></td>
             <td>{{ $productor->telefono }}</td>
             <td>{{ $productor->email }}</td>
             <td>{{ $productor->organizacion->nombre }}</td>

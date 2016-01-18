@@ -15,41 +15,12 @@
             height: 150px;
             border-radius: 50%;
             cursor: pointer;
+            opacity: 0.4;
             box-shadow: 0px 0px 12px #000b93;
         }
 
         .drag-dropImg span.desc {
             color: #000;
-            cursor: pointer;
-        }
-
-        #img_activa{
-            width: 180px;
-            height: 150px;
-            border-radius: 50%;
-            top: 0;
-            left: 0;
-            right:0;
-            position: absolute;
-            opacity: 0;
-            z-index: 3;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: pointer;
-        }
-
-        .img {
-            width: 180px;
-            height: 150px;
-            border-radius: 50%;
-            top: 0;
-            left: 0;
-            right:0;
-            position: absolute;
-            opacity: 0;
-            z-index: 3;
-            margin-left: auto;
-            margin-right: auto;
             cursor: pointer;
         }
 
@@ -63,43 +34,57 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><a href="/home">Inicio</a></li>
-                <li><a href="/productores/create" >Productores</a></li>
-                <li class="active" id="proceso_activo"><b><a href="http://cafesdelhuila.com/productores/perfil/{{ $productor->id }}">{{ $productor->nombre }}</a></b></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="{{ URL::route('productores-getCrear')}}" >Productores</a></li>
+                <li class="active" id="proceso_activo"><b><a href="{{ URL::route('productoresPerfil-getPerfil',$productor->id)}}">{{ $productor->nombre }}</a></b></li>
             </ol>
         </div>
     </div>
 
-    <form class="formValidation" method="POST" action="http://cafesdelhuila.com/productores/perfil/createFoto"
-          accept-charset="UTF-8" enctype="multipart/form-data">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
         <div class="row">
-            <div class="col-lg-2">
-                <div><img class='img_perfil' id='img_perfil' src='/img/naruto.png'></div>
+
+            <!--<div class="col-lg-2">
+                <div><img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'></div>
                 <div class="drag-drop drag-dropImg" >
                     <div class="img" type="file">
-                        <input id="img_activa" type="file" multiple="multiple" name="image" />
+                        <input id="img_activa_a" type="file" name="img_activa_a" />
+                        <input type="file" class="k-textbox" name="img" id="img">
                     </div>
-                    <button class="btn btn-primary btn-xs"
-                            style="display: none" name="upload" id="upload" type="submit">Establecer Imag Seleccionada</button>
+                </div>
+            </div>-->
+
+            <div class="col-lg-2">
+                <div>
+                  <?php
+                  if ($productor->foto != null) {
+                      ?> <img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'> <?php
+                  } else {
+                      ?> <img class='img_perfil' id='img_perfil' src='/img/naruto.png'> <?php
+                  }
+                  ?>
+
                 </div>
             </div>
 
             <div class="col-lg-4">
+                <p></p><b>
+                    {{ $productor->nombre }}<br />
+                    {{ $productor->telefono }}<br />
+                    {{ $productor->email }}</b><br />
+            <form class="formValidation" method="POST" action="{{ URL::route('productores-postSubirImagen')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+
+                <input type="hidden" id="idPro" name="idPro" value="{{ $productor->id}}">
                 <input type="hidden" id="id_productor"      value="{{ $productor->id }}">
                 <input type="hidden" id="id_organizacion"   value="{{ $productor->organizacion_id }}">
                 <input type="hidden" id="id_medio">
                 <input type="hidden" id="medio">
                 <input type="hidden" id="id_lote">
-                <p></p><b>
-                    {{ $productor->nombre }}<br />
-                    {{ $productor->telefono }}<br />
-                    {{ $productor->email }}</b><br />
-                <button class="btn btn-primary btn-xs"
-                        style="display: block" name="upload" id="upload" type="submit">Establecer Imag Seleccionada</button>
-            </div>
+                <input type="file" class="filestyle" required validationMessage="El campo foto es obligatorio" data-buttonBefore="true" name="img" id="img">
+                <button type="submit" id="btn-agregar-medio" class="btn btn-primary btn-sm">Establecer foto seleccionada</button>
 
+            </div>
+            </form>
             <div class="col-lg-6">
                 <h5><b>ORGANIZACIONES</b></h5>
                 <ul>
@@ -124,6 +109,8 @@
                 <div class="tab-content">
                     <div id="productor" @if($medioAgregado == 1) class="tab-pane fade in active"
                          @elseif($medioAgregado == 2) class="tab-pane fade" @endif>
+              <form class="formValidation">
+                  <meta name="csrf-token" content="{{ csrf_token() }}">
                         <table class="table">
                             <thead>
                             <tr>
@@ -143,7 +130,7 @@
                                 <td><b>{{ $productor->email }}</b></td>
                                 <td><b>{{ $productor->organizacion->nombre }}</b></td>
                                 <td>
-                                    <a href="http://cafesdelhuila.com/productores/actualizar/{{ $productor->id}}">
+                                    <a href="{{ URL::route('productoresPerfil-getActualizar', $productor->id)}}">
                                         <input type="button" value="Actualizar" class="btn btn-primary btn-sm">
                                     </a>
                                 </td>
@@ -173,8 +160,9 @@
 
             </div>
         </div>
-
     </form>
+
+
 
 @section('page-js-code')
     <script type="application/javascript">
@@ -188,6 +176,7 @@
             crearCertificaciones();
             crearMedios();
             crearLotes();
+            $(":file").filestyle({buttonBefore: true});
         });
 
         //--------------------------------------------------------------------
@@ -197,7 +186,7 @@
 
         //Crear
         function crearFincas() {
-            $.get("{{ URL('http://cafesdelhuila.com/fincas/crear') }}",
+            $.get("{{ URL::route('fincas-getCrear') }}",
                     function (data) {
                         $('#contenedor_fincas').hide().html(data).slideDown('slow');
                     }
@@ -208,7 +197,7 @@
         function listadoFincas() {
             var id = $("#id_productor").val();
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/fincas/listado' ) }}",
+            $.get("{{ URL::route('fincas-getListado') }}",
                     {
                         id: id
                     },
@@ -266,74 +255,60 @@
             if($("#btn-agregar-finca").attr('accion') == 1) {
 
                 //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/fincas',
-                    data: {
-                        Productor_id: idP,
-                        Departamento_id: Departamento_id,
-                        Municipio_id: Municipio_id,
-                        Corregimiento: Corregimiento,
-                        Vereda: Vereda,
-                        Finca: Finca,
-                        Longitud: Longitud,
-                        Latitud: Latitud,
-                        Altitud: Altitud,
-                        Cosecha_comienza: Cosecha_comienza,
-                        Cosecha_termina: Cosecha_termina,
-                        Mitaca_comienza: Mitaca_comienza,
-                        Mitaca_termina: Mitaca_termina,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'json',
-                    type: 'POST',
-                    success: function (data) {
-                        toastr.info("Registro de " + Finca + " exitoso.", "FINCAS");
-                        listadoFincas();
-                        limpiarCamposFincas();
-                        crearLotes();
-                        $(".btn_agregar_finca").slideDown('slow');
-                        $("#contenedor_registro_finca").slideUp('slow');
-                    }
+                $.post("{{ URL::route('fincas-postCrear') }}?" + $('.formValidation').serialize(),
+                {
+                  Productor_id: idP,
+                  Departamento_id: Departamento_id,
+                  Municipio_id: Municipio_id,
+                  Corregimiento: Corregimiento,
+                  Vereda: Vereda,
+                  Finca: Finca,
+                  Longitud: Longitud,
+                  Latitud: Latitud,
+                  Altitud: Altitud,
+                  Cosecha_comienza: Cosecha_comienza,
+                  Cosecha_termina: Cosecha_termina,
+                  Mitaca_comienza: Mitaca_comienza,
+                  Mitaca_termina: Mitaca_termina,
+                },
+                function (data) {
+                  toastr.info("Registro de " + Finca + " exitoso.", "FINCAS");
+                  listadoFincas();
+                  limpiarCamposFincas();
+                  crearLotes();
+                  $(".btn_agregar_finca").slideDown('slow');
+                  $("#contenedor_registro_finca").slideUp('slow');
                 });
 
             } else {
 
                 //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/fincas/' + id + '',
-                    data: {
-                        id: id,
-                        Productor_id: idP,
-                        Departamento_id: Departamento_id,
-                        Municipio_id: Municipio_id,
-                        Corregimiento: Corregimiento,
-                        Vereda: Vereda,
-                        Finca: Finca,
-                        Longitud: Longitud,
-                        Latitud: Latitud,
-                        Altitud: Altitud,
-                        Cosecha_comienza: Cosecha_comienza,
-                        Cosecha_termina: Cosecha_termina,
-                        Mitaca_comienza: Mitaca_comienza,
-                        Mitaca_termina: Mitaca_termina,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'json',
-                    type: 'PUT',
-                    success: function (data) {
-                        toastr.info("Actualizacion de " + Finca + " exitosa.", "FINCAS");
-                        listadoFincas();
-                        limpiarCamposFincas();
-                        crearLotes();
-                        $("#btn-agregar-finca").val('Agregar Finca');
-                        $("#btn-agregar-finca").attr('accion','1');
-                        $(".btn_agregar_finca").slideDown('slow');
-                        $("#contenedor_registro_finca").slideUp('slow');
-                    }
+                $.post("{{ URL::route('fincas-postActualizar') }}?" + $('.formValidation').serialize(),
+                {
+                  id: id,
+                  Productor_id: idP,
+                  Departamento_id: Departamento_id,
+                  Municipio_id: Municipio_id,
+                  Corregimiento: Corregimiento,
+                  Vereda: Vereda,
+                  Finca: Finca,
+                  Longitud: Longitud,
+                  Latitud: Latitud,
+                  Altitud: Altitud,
+                  Cosecha_comienza: Cosecha_comienza,
+                  Cosecha_termina: Cosecha_termina,
+                  Mitaca_comienza: Mitaca_comienza,
+                  Mitaca_termina: Mitaca_termina,
+                },
+                function (data) {
+                  toastr.info("Actualizacion de " + Finca + " exitosa.", "FINCAS");
+                  listadoFincas();
+                  limpiarCamposFincas();
+                  crearLotes();
+                  $("#btn-agregar-finca").val('Agregar Finca');
+                  $("#btn-agregar-finca").attr('accion','1');
+                  $(".btn_agregar_finca").slideDown('slow');
+                  $("#contenedor_registro_finca").slideUp('slow');
                 });
             }
 
@@ -379,20 +354,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_finca").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/fincas/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "FINCAS");
-                    listadoFincas();
-                }
+            $.post("{{ URL::route('fincas-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "FINCAS");
+              listadoFincas();
             });
 
         });
@@ -420,7 +388,7 @@
 
         //Crear
         function crearCertificaciones() {
-            $.get("{{ URL('http://cafesdelhuila.com/certificacionesProductores/crear') }}",
+            $.get("{{ URL::Route('certificacionesProductores-getCrear') }}",
                     function (data) {
                         $('#contenedor_certificacion').hide().html(data).slideDown('slow');
                     }
@@ -431,14 +399,14 @@
         function listadoCertificaciones() {
             var id = $("#id_productor").val();
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/certificacionesProductores/listado' ) }}",
+            $.get("{{ URL::Route('certificacionesProductores-getListado') }}",
                     {
                         id: id
                     },
                     function (data) {
                         $('#contenedor_listado_certificacion').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -468,50 +436,36 @@
             if($("#btn-agregar-certificacionProductor").attr('accion') == 1) {
 
                 //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificacionesProductores',
-                    data: {
-                        Productor_id: idP,
-                        Certificacion_id: Certificacion_id,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'json',
-                    type: 'POST',
-                    success: function (data) {
-                        toastr.info("Registro exitoso.", "CERTIFICACIONES DE PRODUCTORES");
-                        listadoCertificaciones();
-                        limpiarCamposCertProduc();
-                        $(".btn_agregar_certificacionProductor").slideDown('slow');
-                        $("#contenedor_registro_certiProduct").slideUp('slow');
-                    }
+                $.post("{{ URL::route('certificacionesProductores-postCrear') }}?" + $('.formValidation').serialize(),
+                {
+                  Productor_id: idP,
+                  Certificacion_id: Certificacion_id,
+                },
+                function (data) {
+                  toastr.info("Registro exitoso.", "CERTIFICACIONES DE PRODUCTORES");
+                  listadoCertificaciones();
+                  limpiarCamposCertProduc();
+                  $(".btn_agregar_certificacionProductor").slideDown('slow');
+                  $("#contenedor_registro_certiProduct").slideUp('slow');
                 });
 
             } else {
 
                 //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/certificacionesProductores/' + id + '',
-                    data: {
-                        id: id,
-                        Productor_id: idP,
-                        Certificacion_id: Certificacion_id,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'json',
-                    type: 'PUT',
-                    success: function (data) {
-                        toastr.info("Actualizacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
-                        listadoCertificaciones();
-                        limpiarCamposCertProduc();
-                        $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
-                        $("#btn-agregar-certificacionProductor").attr('accion','1');
-                        $(".btn_agregar_certificacionProductor").slideDown('slow');
-                        $("#contenedor_registro_certiProduct").slideUp('slow');
-                    }
+                $.post("{{ URL::route('certificacionesProductores-postActualizar') }}?" + $('.formValidation').serialize(),
+                {
+                  id: id,
+                  Productor_id: idP,
+                  Certificacion_id: Certificacion_id,
+                },
+                function (data) {
+                  toastr.info("Actualizacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
+                  listadoCertificaciones();
+                  limpiarCamposCertProduc();
+                  $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
+                  $("#btn-agregar-certificacionProductor").attr('accion','1');
+                  $(".btn_agregar_certificacionProductor").slideDown('slow');
+                  $("#contenedor_registro_certiProduct").slideUp('slow');
                 });
             }
 
@@ -547,20 +501,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_certProd").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/certificacionesProductores/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
-                    listadoCertificaciones();
-                }
+            $.post("{{ URL::route('certificacionesProductores-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
+              listadoCertificaciones();
             });
 
         });
@@ -586,6 +533,7 @@
         //inicia medios
         //--------------------------------------------------------------------
 
+
         <?php
         if($medioAgregado == 1) {
 
@@ -595,7 +543,7 @@
         ?>
         //Crear
         function crearMedios() {
-            $.get("{{ URL('http://cafesdelhuila.com/medios/crear') }}",
+            $.get("{{ URL::Route('mediosProductor-getCrear') }}",
                     function (data) {
                         $('#contenedor_medios').hide().html(data).slideDown('slow');
                         $("#id_productor_Medios").val({{ $productor->id }});
@@ -607,26 +555,16 @@
         function listadoMedios() {
             var id = $("#id_productor").val();
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/medios/listado' ) }}",
+            $.get("{{ URL::Route('mediosProductor-getListado') }}",
                     {
                         id: id
                     },
-                    function (data) {
-                        $('#contenedor_listado_medios').hide().html(data).slideDown('slow');
-                        $('.contenedor_carga').slideUp('slow');
-                    }
+                   function (data) {
+                     $('#contenedor_listado_medios').hide().html(data).slideDown('slow');
+                     $('.contenedor_carga').slideUp('slow');
+                   }
             );
         }
-
-        //cambia la propiedad del archivo
-        $(document).on('change','#nombre',function () {
-            var file        = this.files[0];
-            nombreArchivo   = file.name;
-            tamanioArchivo  = file.size;
-            tipoArchivo     = file.type;
-
-            $("#nombre").val(nombreArchivo);
-        });
 
         //btn mostrar formulario registro
         $(document).on('click','.btn_agregar_medio',function(){
@@ -651,21 +589,14 @@
 
             var id      = $("#id_medio").val();
             var medio   = $("#medio").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/medios/' + id + '',
-                data:{
-                    id:id,
-                    medio:medio
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "MEDIOS");
-                    listadoMedios();
-                }
+            $.post("{{ URL::route('mediosProductor-postEliminar') }}",
+            {
+              id: id,
+              medio:medio,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "MEDIOS");
+              listadoMedios();
             });
 
         });
@@ -695,30 +626,32 @@
             var id  = $("#id_finca").val();
             var idP = $("#id_productor").val();
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/lotes/listado' ) }}",
-                    {
-                        id: id,
-                        idP:idP
-                    },
-                    function (data) {
+            $.get("{{ URL::Route('lotes-getListado') }}",
+                  {
+                      id: id,
+                      idP:idP
+                  },
+                   function (data) {
                         $('#contenedor_listado_lotes').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         }
 
         //Crear
         function crearLotes() {
-            var id = $("#id_productor").val();
-            $.get("{{ URL('http://cafesdelhuila.com/lotes/crear') }}",
+          var id = $("#id_productor").val();
+            $.get("{{ URL::route('lotes-getCrear') }}",
                     {
-                        id:id
+                      id:id,
                     },
                     function (data) {
                         $('#contenedor_lotes').hide().html(data).slideDown('slow');
+                        $("#id_lotes_perfil").val({{ $productor->id }});
                     }
             );
         };
+
 
         //limpiar capos
         function limpiarCamposLotes() {
@@ -748,117 +681,21 @@
             $(".btn_eliminar_lote").attr('disabled','true');
         });
 
-        //btn agregar y actualizar
-        $(document).on('click','#btn-agregar-lotes',function(){
-
-            var id                              = $("#id_lote").val();
-            var Finca_id                        = $("#finca_id").val();
-            var Variedad1_id                    = $("#variedad1").val();
-            var Variedad2_id                    = $("#variedad2").val();
-            var Variedad3_id                    = $("#variedad3").val();
-            var Acidez_id                       = $("#acidez_id").val();
-            var Aroma_id                        = $("#aroma_id").val();
-            var Sabor_id                        = $("#sabor_id").val();
-            var Tipo_beneficio_id               = $("#tipo_beneficio_id").val();
-            var Tipo_secado_id                  = $("#tipo_secado_id").val();
-            var Cantidad_arboles_variedad1      = $("#cantidad_aboles_variedad1").val();
-            var Cantidad_arboles_variedad2      = $("#cantidad_aboles_variedad2").val();
-            var Cantidad_arboles_variedad3      = $("#cantidad_aboles_variedad3").val();
-            var Nombre                          = $("#nombre").val();
-            var Area                            = $("#area").val();
-            var Perfil                          = $("#perfil").val();
-
-            if($("#btn-agregar-lotes").attr('accion') == 1) {
-
-                //btn agregar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/lotes',
-                    data: {
-                        Finca_id: Finca_id,
-                        Variedad1_id: Variedad1_id,
-                        Variedad2_id: Variedad2_id,
-                        Variedad3_id: Variedad3_id,
-                        Acidez_id:Acidez_id,
-                        Aroma_id:Aroma_id,
-                        Sabor_id:Sabor_id,
-                        Tipo_beneficio_id: Tipo_beneficio_id,
-                        Tipo_secado_id: Tipo_secado_id,
-                        Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
-                        Cantidad_arboles_variedad2: Cantidad_arboles_variedad2,
-                        Cantidad_arboles_variedad3: Cantidad_arboles_variedad3,
-                        Nombre: Nombre,
-                        Area: Area,
-                        Perfil: Perfil,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'json',
-                    type: 'POST',
-                    success: function (data) {
-                        toastr.info("Registro de " + Nombre + " exitoso.", "LOTES");
-                        listadoLotes()
-                        limpiarCamposLotes();
-                        $(".btn_agregar_lotes").slideDown('slow');
-                        $("#contenedor_registro_lote").slideUp('slow');
-                    }
-                });
-
-            } else {
-
-                //btn actualizar
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/lotes/' + id + '',
-                    data: {
-                        id: id,
-                        Finca_id: Finca_id,
-                        Variedad1_id: Variedad1_id,
-                        Variedad2_id: Variedad2_id,
-                        Variedad3_id: Variedad3_id,
-                        Acidez_id:Acidez_id,
-                        Aroma_id:Aroma_id,
-                        Sabor_id:Sabor_id,
-                        Tipo_beneficio_id: Tipo_beneficio_id,
-                        Tipo_secado_id: Tipo_secado_id,
-                        Cantidad_arboles_variedad1: Cantidad_arboles_variedad1,
-                        Cantidad_arboles_variedad2: Cantidad_arboles_variedad2,
-                        Cantidad_arboles_variedad3: Cantidad_arboles_variedad3,
-                        Nombre: Nombre,
-                        Area: Area,
-                        Perfil: Perfil,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'json',
-                    type: 'PUT',
-                    success: function (data) {
-                        toastr.info("Actualizacion de " + Nombre + " exitosa.", "LOTES");
-                        listadoLotes();
-                        limpiarCamposLotes();
-                        $("#btn-agregar-lotes").val('Agregar Lote');
-                        $("#btn-agregar-lotes").attr('accion','1');
-                        $(".btn_agregar_lotes").slideDown('slow');
-                        $("#contenedor_registro_lote").slideUp('slow');
-                    }
-                });
-            }
-
-
-        });
-
         //btn actualizar
         $(document).on('click','.btn_actualizar_lote', function () {
 
             $(".btn_agregar_lotes").slideUp('slow');
+            $("#btn-agregar-lotes").slideUp('slow');
+            $("#btn-actualizar-lote").slideDown('slow');
             $("#contenedor_registro_lote").slideDown('slow');
             $("#btn-agregar-lotes").val('Actualizar Lote');
             $("#btn-agregar-lotes").attr('accion','2');
             $(".btn_actualizar_lote").attr('disabled','true');
             $(".btn_eliminar_lote").attr('disabled','true');
 
-            $("#id_lote")                   .val($(this).attr('id'));
             $("#finca_id")                  .val($(this).attr('finca_id'));
+            $("#lote_actualizar")           .val(2);
+            $("#id_lote_actualizar")        .val($(this).attr('id'));
             $("#variedad1")                 .val($(this).attr('Variedad1_id'));
             $("#variedad2")                 .val($(this).attr('Variedad2_id'));
             $("#variedad3")                 .val($(this).attr('Variedad3_id'));
@@ -880,29 +717,25 @@
         $(document).on('click','.btn_eliminar_lote', function () {
 
             $("#id_lote").val($(this).attr('id_lote'));
+            $("#id_perfil_lote_eliminar").val($(this).attr('perfil'));
             toastr.error("¿Esta seguro que desea eliminar el lote?<br>" +
-                    "<button class='btn-danger confirmar'>Confirmar eliminar</button>","LOTES");
+                    "<button class='btn-danger confirmarEliminarLote'>Confirmar eliminar</button>","LOTES");
 
         });
 
         //confirmar eliminar
-        $(document).on('click','.confirmar', function () {
+        $(document).on('click','.confirmarEliminarLote', function () {
 
             var id = $("#id_lote").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/lotes/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "LOTES");
-                    listadoLotes();
-                }
+            var perfil = $("#id_perfil_lote_eliminar").val();
+            $.post("{{ URL::route('lotes-postEliminar') }}",
+            {
+              id: id,
+              perfil:perfil,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "LOTES");
+              listadoLotes();
             });
 
         });

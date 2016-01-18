@@ -7,7 +7,7 @@
         <h4><b>Sin Datos Registrados</b></h4>
     </div>
 @else
-<table id="tabla_certificaciones" class="display" cellspacing="0" width="100%">
+<table id="tabla_certificaciones" class="tabla display" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>NIT</th>

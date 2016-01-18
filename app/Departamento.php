@@ -8,5 +8,11 @@ class Departamento extends Model
 {
     //model departamento
     protected $table = 'departamentos';
+    
     protected $fillable = ['nombre'];
+
+    public function finca() {
+      return $this->hasMany('App\Finca');
+    }
+
 }

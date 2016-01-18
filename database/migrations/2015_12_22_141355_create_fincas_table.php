@@ -20,7 +20,8 @@ class CreateFincasTable extends Migration {
 			$table->string('corregimiento');
 			$table->string('vereda');
 			$table->string('finca');
-			$table->string('coordenadas');
+			$table->string('latitud');
+			$table->string('longitud');
 			$table->string('altitud');
 			$table->dateTime('cosecha_comienza');
 			$table->dateTime('cosecha_termina');

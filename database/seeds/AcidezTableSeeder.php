@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Acidez;
 
 class AcidezTableSeeder extends Seeder
 {
@@ -9,15 +10,13 @@ class AcidezTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        //seeder acidez
-        DB::table('acidez')->insert([
-            \App\Acidez::create(array('nombre' => 'Alta')),
-            \App\Acidez::create(array('nombre' => 'Media alta')),
-            \App\Acidez::create(array('nombre' => 'Media')),
-            \App\Acidez::create(array('nombre' => 'Media Baja')),
-            \App\Acidez::create(array('nombre' => 'Baja'))
-        ]);
+    public function run() {
+
+            Acidez::create(array('nombre' => 'Alta'));
+            Acidez::create(array('nombre' => 'Media alta'));
+            Acidez::create(array('nombre' => 'Media'));
+            Acidez::create(array('nombre' => 'Media Baja'));
+            Acidez::create(array('nombre' => 'Baja'));
+
     }
 }

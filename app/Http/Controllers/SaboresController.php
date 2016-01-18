@@ -7,51 +7,57 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class SaboresController extends Controller
 {
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
+    }*/
+
+    public function getCrear() {
+      return view('sabores.nuevo');
     }
 
-    //controller sabores
-    public function create() {
-        return view('sabores.nuevo');
+    public function getListado() {
+      $sabores = Sabor::all();
+      return view('sabores.listado', array(
+          'sabores' => $sabores
+      ));
     }
 
-    public function getSabores() {
-        $sabores = \App\Sabor::all();
-        return view('sabores.listado', array(
-            'sabores' => $sabores
-        ));
+    public function postCrear() {
+
+      $sabores = new Sabor();
+
+      $sabores->nombre = Input::get('nombre');
+
+      $sabores->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Sabor::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postActualizar() {
+
+      $sabores = Sabor::find(Input::get('id'));
+
+      $sabores->nombre = Input::get('nombre');
+
+      $sabores->save();
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Sabor::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizado"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Sabor::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminado"]);
-        }
+      $sabores = Sabor::find(Input::get('id'));
+
+      $sabores->delete();
+
     }
 
 }

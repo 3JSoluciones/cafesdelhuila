@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Tipo_Beneficio;
 
 class TiposBeneficiosTableSeeder extends Seeder
 {
@@ -9,14 +10,12 @@ class TiposBeneficiosTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        //seeder tiposBeneficios
-        DB::table('tipos_beneficios')->insert([
-            \App\Tipo_Beneficio::create(array('nombre' => 'Humedo tradicional')),
-            \App\Tipo_Beneficio::create(array('nombre' => 'Fermentación controlada')),
-            \App\Tipo_Beneficio::create(array('nombre' => 'Natural')),
-            \App\Tipo_Beneficio::create(array('nombre' => 'Honey'))
-        ]);
+    public function run() {
+
+        Tipo_Beneficio::create(array('nombre' => 'Humedo tradicional'));
+        Tipo_Beneficio::create(array('nombre' => 'Fermentación controlada'));
+        Tipo_Beneficio::create(array('nombre' => 'Natural'));
+        Tipo_Beneficio::create(array('nombre' => 'Honey'));
+        
     }
 }

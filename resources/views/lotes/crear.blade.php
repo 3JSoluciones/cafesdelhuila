@@ -1,4 +1,4 @@
-<form class="formValidation">
+<form class="formValidation" method="POST" action="{{ URL::route('lotes-postCrear')}}" accept-charset="UTF-8" enctype="multipart/form-data">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <input type="hidden" id="id_lote" name="id_lote">
 
@@ -163,25 +163,35 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Area</label>
-                    <input type="text" class="k-textbox" id="area" name="area"
+                    <input type="text" class="k-textbox" id="area" name="area" style="width:100%;"
                             validationMessage="El campo {0} es obligatorio"
-                           placeholder="Ingrese la area" style="width: 100%">
+                           placeholder="Ingrese la area">
                 </div>
             </div>
-            <div class="col-lg-4">
+            <!--<div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Perfil</label>
                     <input type="text" class="k-textbox" id="perfil" name="perfil"
                             validationMessage="El campo {0} es obligatorio"
                            placeholder="Ingrese el perfil" style="width: 100%">
                 </div>
+            </div>-->
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleInputFile" >Por favor presione click <br>
+                    en esta area para seleccionar un archivo</label>
+                    <input type="file"class="k-textbox" name="perfil" id="perfil" >
+                    <input type="hidden" id="id_lotes_perfil" name="id_lotes_perfil">
+                </div>
             </div>
 
-            <div class="col-lg-12 text-right">
-                <input type="button" value="Cancelar" class="btn btn-danger btn-sm"
-                       id="btn-cancelar-lote">
-                <input type="button" value="Agregar Lote" class="btn btn-primary btn-sm"
-                       id="btn-agregar-lotes" accion="1">
+            <div class="col-lg-12 text-left">
+                <input  type="button" value="Cancelar" class="btn btn-danger btn-sm"id="btn-cancelar-lote">
+                <button type="submit" id="btn-agregar-lotes"   class="btn btn-primary btn-sm">Agregar Lote al Productor</button>
+                <button type="submit" id="btn-actualizar-lote" class="btn btn-primary btn-sm" style="display:none;">Actualizar Lote del Productor</button>
+                <input  type="hidden" id="lote_actualizar" value="1">
+                <input  type="hidden" id="id_lote_actualizar">
+                <input  type="hidden" id="id_perfil_lote_eliminar">
             </div>
         </div>
 
@@ -191,7 +201,4 @@
                    class="btn_agregar_lotes btn btn-primary btn-sm">
             <hr>
         </div>
-
-
-
 </form>

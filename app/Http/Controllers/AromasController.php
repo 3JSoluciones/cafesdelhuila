@@ -7,53 +7,57 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class AromasController extends Controller
 {
 
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
+    }*/
+
+    public function getCrear() {
+      return view('aromas.nuevo');
     }
 
-    //controller aromas
-    public function create() {
-        $aromas = \App\Aroma::all();
-        return view('aromas.nuevo');
+    public function getListado() {
+      $aromas = Aroma::all();
+      return view('aromas.listado', array(
+              'aromas' => $aromas)
+      );
     }
 
-    public function getAromas() {
-        $aromas = Aroma::all();
-        return view('aromas.listado', array(
-                'aromas' => $aromas)
-        );
+    public function postCrear() {
+
+      $aromas = new Aroma();
+
+      $aromas->nombre = Input::get('nombre');
+
+      $aromas->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Aroma::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postActualizar() {
+
+      $aromas = Aroma::find(Input::get('id'));
+
+      $aromas->nombre = Input::get('nombre');
+
+      $aromas->save();
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Aroma::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizado"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Aroma::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminado"]);
-        }
-    }
+      $aromas = Aroma::find(Input::get('id'));
 
+      $aromas->delete();
+
+    }
 }

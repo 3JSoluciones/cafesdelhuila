@@ -65,11 +65,11 @@
             //listado
             function listado() {
                 $('.contenedor_carga').slideDown('slow');
-                $.get("{{ URL('http://cafesdelhuila.com/municipios/listado') }}",
-                        function (data) {
+                $.get("{{ URL::Route('municipios-getListado') }}",
+                       function (data) {
                             $('#contenedor_listado_municipios').hide().html(data).slideDown('slow');
                             $('.contenedor_carga').slideUp('slow');
-                        }
+                       }
                 );
             };
 
@@ -98,23 +98,16 @@
                     var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                     if (validator.validate()) {
                         //btn agregar
-                        $.ajax({
-                            url: 'http://cafesdelhuila.com/municipios',
-                            data: {
-                                nombre: nombre,
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            dataType: 'json',
-                            type: 'POST',
-                            success: function (data) {
-                                toastr.info("Registro de " + nombre + " exitoso.", "MUNICIPIOS");
-                                listado();
-                                limpiar();
-                                $(".btn_agregar_municipio").slideDown('slow');
-                                $("#contenedor_registro_munici").slideUp('slow');
-                            }
+                        $.post("{{ URL::route('municipios-postCrear') }}?" + $('.formValidation').serialize(),
+                        {
+                            nombre:nombre,
+                        },
+                        function (data) {
+                          toastr.info("Registro de " + nombre + " exitoso.", "MUNICIPIOS");
+                          listado();
+                          limpiar();
+                          $(".btn_agregar_municipio").slideDown('slow');
+                          $("#contenedor_registro_munici").slideUp('slow');
                         });
                     }
 
@@ -123,26 +116,19 @@
                     var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                     if (validator.validate()) {
                         //btn actualizar
-                        $.ajax({
-                            url: 'http://cafesdelhuila.com/municipios/' + id + '',
-                            data: {
-                                id: id,
-                                nombre: nombre,
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            dataType: 'json',
-                            type: 'PUT',
-                            success: function (data) {
-                                toastr.info("Actualizacion de " + nombre + " exitosa.", "MUNICIPIOS");
-                                listado();
-                                limpiar();
-                                $("#btn-agregar-municipio").val('Agregar municipio');
-                                $("#btn-agregar-municipio").attr('accion','1');
-                                $(".btn_agregar_municipio").slideDown('slow');
-                                $("#contenedor_registro_munici").slideUp('slow');
-                            }
+                        $.post("{{ URL::route('municipios-postActualizar') }}?" + $('.formValidation').serialize(),
+                        {
+                          id: id,
+                          nombre: nombre,
+                        },
+                        function (data) {
+                          toastr.info("Actualizacion de " + nombre + " exitosa.", "MUNICIPIOS");
+                          listado();
+                          limpiar();
+                          $("#btn-agregar-municipio").val('Agregar municipio');
+                          $("#btn-agregar-municipio").attr('accion','1');
+                          $(".btn_agregar_municipio").slideDown('slow');
+                          $("#contenedor_registro_munici").slideUp('slow');
                         });
                     }
 
@@ -179,20 +165,13 @@
             $(document).on('click','.confirmar', function () {
 
                 var id = $("#id_municipio").val();
-                $.ajax({
-                    url: 'http://cafesdelhuila.com/municipios/' + id + '',
-                    data:{
-                        id:id,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType:'json',
-                    type:'DELETE',
-                    success:function(data) {
-                        toastr.info("Eliminacion exitosa.", "MUNICIPIOS");
-                        listado();
-                    }
+                $.post("{{ URL::route('municipios-postEliminar') }}",
+                {
+                  id: id,
+                },
+                function (data) {
+                  toastr.info("Eliminacion exitosa.", "MUNICIPIOS");
+                  listado();
                 });
 
             });

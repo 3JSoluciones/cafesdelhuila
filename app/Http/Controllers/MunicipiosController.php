@@ -7,54 +7,57 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class MunicipiosController extends Controller
 {
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
+    }*/
+
+    public function getCrear() {
+      return view('municipios.nuevo');
     }
 
-    //controller municipios
-    public function create() {
-
-        return view('municipios.nuevo');
+    public function getListado() {
+      $municipios = Municipio::all();
+      return view('municipios.listado', array(
+          'municipios' => $municipios
+      ));
     }
 
-    public function getMunicipios() {
-        $municipios = \App\Municipio::all();
-        return view('municipios.listado', array(
-            'municipios' => $municipios
-        ));
+    public function postCrear() {
+
+      $municipios = new Municipio();
+
+      $municipios->nombre = Input::get('nombre');
+
+      $municipios->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Municipio::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postActualizar() {
+
+      $municipios = Municipio::find(Input::get('id'));
+
+      $municipios->nombre = Input::get('nombre');
+
+      $municipios->save();
+
     }
 
-    public function update(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            Municipio::find($id)->fill($request->all())->save();
-            return response()->json (["mensanje" => "actualizado"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            Municipio::find($id)->fill($request->all())->delete();
-            return response()->json(["mensanje" => "eliminado"]);
-        }
+      $municipios = Municipio::find(Input::get('id'));
+
+      $municipios->delete();
+
     }
 
 }

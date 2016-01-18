@@ -64,11 +64,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/aromas/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('aromas-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_aromas').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -98,23 +98,16 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/aromas',
-                        data: {
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "AROMAS");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_aromas").slideDown('slow');
-                            $("#contenedor_registro_aroma").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('aromas-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                        nombre:nombre,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "AROMAS");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_aromas").slideDown('slow');
+                      $("#contenedor_registro_aroma").slideUp('slow');
                     });
                 }
 
@@ -123,26 +116,19 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/aromas/' + id + '',
-                        data: {
-                            id: id,
-                            nombre: nombre,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "AROMAS");
-                            listado();
-                            limpiar();
-                            $("#btn-agregar-aromas").val('Agregar Aromas');
-                            $("#btn-agregar-aromas").attr('accion','1');
-                            $(".btn_agregar_aromas").slideDown('slow');
-                            $("#contenedor_registro_aroma").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('aromas-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      nombre: nombre,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "AROMAS");
+                      listado();
+                      limpiar();
+                      $("#btn-agregar-aromas").val('Agregar Aromas');
+                      $("#btn-agregar-aromas").attr('accion','1');
+                      $(".btn_agregar_aromas").slideDown('slow');
+                      $("#contenedor_registro_aroma").slideUp('slow');
                     });
                 }
 
@@ -178,20 +164,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_aromas").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/aromas/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "AROMAS");
-                    listado();
-                }
+            $.post("{{ URL::route('aromas-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "AROMAS");
+              listado();
             });
 
         });

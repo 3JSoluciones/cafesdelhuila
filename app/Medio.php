@@ -9,9 +9,10 @@ class Medio extends Model
     //model medio
     protected $table = 'medios';
 
-    //foreign keys
+    protected $fillable = ['Productor_id','nombre'];
+
     public function productor() {
         return $this->hasOne('App\Productor','id','productor_id');
     }
-    protected $fillable = ['Productor_id','nombre'];
+
 }

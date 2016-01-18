@@ -123,11 +123,11 @@
         //listado
         function listado() {
             $('.contenedor_carga').slideDown('slow');
-            $.get("{{ URL('http://cafesdelhuila.com/productores/listado') }}",
-                    function (data) {
+            $.get("{{ URL::Route('productores-getListado') }}",
+                   function (data) {
                         $('#contenedor_listado_productores').hide().html(data).slideDown('slow');
                         $('.contenedor_carga').slideUp('slow');
-                    }
+                   }
             );
         };
 
@@ -162,26 +162,19 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn agregar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/productores',
-                        data: {
-                            Organizacion_id: Organizacion_id,
-                            nombre: nombre,
-                            Telefono: Telefono,
-                            Email: Email,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        success: function (data) {
-                            toastr.info("Registro de " + nombre + " exitoso.", "PRODUCTORES");
-                            listado();
-                            limpiar();
-                            $(".btn_agregar_productores").slideDown('slow');
-                            $("#contenedor_registro_product").slideUp('slow');
-                        }
+                    $.post("{{ URL::route('productores-postCrear') }}?" + $('.formValidation').serialize(),
+                    {
+                      Organizacion_id: Organizacion_id,
+                      nombre: nombre,
+                      Telefono: Telefono,
+                      Email: Email,
+                    },
+                    function (data) {
+                      toastr.info("Registro de " + nombre + " exitoso.", "PRODUCTORES");
+                      listado();
+                      limpiar();
+                      $(".btn_agregar_productores").slideDown('slow');
+                      $("#contenedor_registro_product").slideUp('slow');
                     });
                 }
 
@@ -190,35 +183,28 @@
                 var validator = $(".formValidation").kendoValidator().data("kendoValidator");
                 if (validator.validate()) {
                     //btn actualizar
-                    $.ajax({
-                        url: 'http://cafesdelhuila.com/productores/' + id + '',
-                        data: {
-                            id: id,
-                            Organizacion_id: Organizacion_id,
-                            nombre: nombre,
-                            Telefono: Telefono,
-                            Email: Email,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        dataType: 'json',
-                        type: 'PUT',
-                        success: function (data) {
-                            toastr.info("Actualizacion de " + nombre + " exitosa.", "PRODUCTORES");
-                            if($("#proceso").val() == 1 ) {
-                                listado();
-                                limpiar();
-                                $("#btn-agregar-productores").val('Agregar Productor');
-                                $("#btn-agregar-productores").attr('accion','1');
-                                $(".btn_agregar_productores").slideDown('slow');
-                                $("#contenedor_registro_product").slideUp('slow');
-                            } else if($("#proceso").val() == 2) {
-                                @if($proceso == 2)
-                                self.location.href='http://cafesdelhuila.com/productores/perfil/{{$productor->id}}';
-                                @else @endif
-                            }
-                        }
+                    $.post("{{ URL::route('productores-postActualizar') }}?" + $('.formValidation').serialize(),
+                    {
+                      id: id,
+                      Organizacion_id: Organizacion_id,
+                      nombre: nombre,
+                      Telefono: Telefono,
+                      Email: Email,
+                    },
+                    function (data) {
+                      toastr.info("Actualizacion de " + nombre + " exitosa.", "PRODUCTORES");
+                      if($("#proceso").val() == 1 ) {
+                          listado();
+                          limpiar();
+                          $("#btn-agregar-productores").val('Agregar Productor');
+                          $("#btn-agregar-productores").attr('accion','1');
+                          $(".btn_agregar_productores").slideDown('slow');
+                          $("#contenedor_registro_product").slideUp('slow');
+                      } else if($("#proceso").val() == 2) {
+                          @if($proceso == 2)
+                          self.location.href='http://localhost:8000/productoresPerfil/getPerfil/{{$productor->id}}';
+                          @else @endif
+                      }
                     });
                 }
 
@@ -257,20 +243,13 @@
         $(document).on('click','.confirmar', function () {
 
             var id = $("#id_prod").val();
-            $.ajax({
-                url: 'http://cafesdelhuila.com/productores/' + id + '',
-                data:{
-                    id:id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType:'json',
-                type:'DELETE',
-                success:function(data) {
-                    toastr.info("Eliminacion exitosa.", "PRODUCTORES");
-                    listado();
-                }
+            $.post("{{ URL::route('productores-postEliminar') }}",
+            {
+              id: id,
+            },
+            function (data) {
+              toastr.info("Eliminacion exitosa.", "PRODUCTORES");
+              listado();
             });
 
         });
@@ -288,7 +267,7 @@
                 limpiar();
             } else if($("#proceso").val() == 2) {
                 @if($proceso == 2)
-                self.location.href='http://cafesdelhuila.com/productores/perfil/{{$productor->id}}';
+                self.location.href='http://localhost:8000/productoresPerfil/getPerfil/{{$productor->id}}';
                 @else @endif
             }
 

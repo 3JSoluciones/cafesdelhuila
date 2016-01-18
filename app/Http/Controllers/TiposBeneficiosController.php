@@ -7,52 +7,59 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class TiposBeneficiosController extends Controller
 {
 
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
     }
+*/
 
-    //controller tiposBeneficios
-    public function create() {
-        return view('tiposBeneficios.nuevo');
+    public function getCrear() {
+      return view('tiposBeneficios.nuevo');
     }
 
-    public function getTiposBeneficios() {
-        $tiposBeneficios = \App\Tipo_Beneficio::all();
-        return view('tiposBeneficios.listado', array(
-            'tiposBeneficios' => $tiposBeneficios
-        ));
+    public function getListado() {
+      $tiposBeneficios = Tipo_Beneficio::all();
+      return view('tiposBeneficios.listado', array(
+          'tiposBeneficios' => $tiposBeneficios
+      ));
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Tipo_Beneficio::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postCrear() {
+
+      $tiposBeneficios = new Tipo_Beneficio();
+
+      $tiposBeneficios->nombre = Input::get('nombre');
+
+      $tiposBeneficios->save();
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Tipo_Beneficio::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizado"]);
-        }
+    public function postActualizar() {
+
+      $tiposBeneficios = Tipo_Beneficio::find(Input::get('id'));
+
+      $tiposBeneficios->nombre = Input::get('nombre');
+
+      $tiposBeneficios->save();
+
     }
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Tipo_Beneficio::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminado"]);
-        }
+    public function postEliminar() {
+
+      $tiposBeneficios = Tipo_Beneficio::find(Input::get('id'));
+
+      $tiposBeneficios->delete();
+
     }
 
 }

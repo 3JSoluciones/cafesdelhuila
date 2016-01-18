@@ -7,52 +7,57 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class TiposSecadosController extends Controller
 {
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
+    }*/
+
+    public function getCrear() {
+      return view('tiposSecados.nuevo');
     }
 
-    //controller tiposSecados
-    public function create() {
-
-        return view('tiposSecados.nuevo');
+    public function getListado() {
+      $tiposSecados = Tipo_Secado::all();
+      return view('tiposSecados.listado', array(
+          'tiposSecados' => $tiposSecados
+      ));
     }
 
-    public function getTiposSecados() {
-        $tiposSecados = \App\Tipo_Secado::all();
-        return view('tiposSecados.listado', array(
-            'tiposSecados' => $tiposSecados
-        ));
+    public function postCrear() {
+
+      $tiposSecados = new Tipo_Secado();
+
+      $tiposSecados->nombre = Input::get('nombre');
+
+      $tiposSecados->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Tipo_Secado::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postActualizar() {
+
+      $tiposSecados = Tipo_Secado::find(Input::get('id'));
+
+      $tiposSecados->nombre = Input::get('nombre');
+
+      $tiposSecados->save();
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Tipo_Secado::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizado"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Tipo_Secado::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminado"]);
-        }
+      $tiposSecados = Tipo_Secado::find(Input::get('id'));
+
+      $tiposSecados->delete();
+
     }
 
 }

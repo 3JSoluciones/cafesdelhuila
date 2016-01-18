@@ -14,64 +14,78 @@ use Illuminate\Support\Facades\Input;
 class CertificacionesProductoresController extends Controller
 {
 
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
-    public function show() {
-        $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')
-            ->where('productor_id', '=', Input::get('id'))
-            ->get();
-        if($certificacionesProductores->count()) {
-            return view('certificacionesProductores.listado', array(
-                    'certificacionesProductores' => $certificacionesProductores)
-            );
-        } else {
-            echo
-            "
-            <div class='text-center'>
-            <h4><b>Sin Datos Registrados</b></h4>
-            </div>
-            ";
-        }
-    }
 
-    //controller certificacionesProductores
     public function getCrear() {
-        $productores                = Productor::all();
-        $certificaciones            = Certificacion::all();
-        return view('certificacionesProductores.crear', array(
-            'productores'                 => $productores,
-            'certificaciones'             => $certificaciones
-        ));
+
+      $productores                = Productor::all();
+      $certificaciones            = Certificacion::all();
+
+      return view('certificacionesProductores.crear', array(
+          'productores'                 => $productores,
+          'certificaciones'             => $certificaciones
+      ));
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Certificacion_Productor::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function getListado() {
+
+      $certificacionesProductores = Certificacion_Productor::with('certificacion','productor')
+          ->where('productor_id', '=', Input::get('id'))
+          ->get();
+
+      if($certificacionesProductores->count()) {
+
+          return view('certificacionesProductores.listado', array(
+                  'certificacionesProductores' => $certificacionesProductores
+                ));
+
+      } else {
+          echo"
+          <div class='text-center'>
+            <h4><b>Sin Datos Registrados</b></h4>
+          </div>";
+      }
+
     }
 
-    public function update(Request $request, $id) {
-        if($request->ajax()) {
-            Certificacion_Productor::find($id)->fill($request->all())->save();
-            return response()->json(["mensaje" => "actualizado"]);
-        }
+    public function postCrear() {
+
+      $certificacionesProductores = new Certificacion_Productor();
+
+      $certificacionesProductores->productor_id     = Input::get('Productor_id');
+      $certificacionesProductores->certificacion_id = Input::get('Certificacion_id');
+
+      $certificacionesProductores->save();
+
     }
 
-    public function destroy(Request $request, $id) {
-        if($request->ajax()) {
-            Certificacion_Productor::find($id)->fill($request->all())->delete();
-            return response()->json(["mensaje" => "eliminado"]);
-        }
+    public function postActualizar() {
+
+      $certificacionesProductores = Certificacion_Productor::find(Input::get('id'));
+
+      $certificacionesProductores->productor_id     = Input::get('Productor_id');
+      $certificacionesProductores->certificacion_id = Input::get('Certificacion_id');
+
+      $certificacionesProductores->save();
+
+    }
+
+    public function postEliminar() {
+
+      $certificacionesProductores = Certificacion_Productor::find(Input::get('id'));
+
+      $certificacionesProductores->delete();
+
     }
 
 }

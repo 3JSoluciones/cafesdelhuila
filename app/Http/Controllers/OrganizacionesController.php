@@ -7,54 +7,58 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class OrganizacionesController extends Controller
 {
 
-    /**
+    /*
      * Create a new controller instance.
      *
      * @return void
-     */
+     *
     public function __construct()
     {
         $this->middleware('auth');
+    }*/
+
+    public function getCrear() {
+      return view('organizaciones.nueva');
     }
 
-    //controller organizacion
-    public function create() {
-        return view('organizaciones.nueva');
+    public function getListado() {
+      $organizaciones = Organizacion::all();
+      return view('organizaciones.listado', array(
+          'organizaciones' => $organizaciones
+      ));
     }
 
-    public function getOrganizaciones() {
-        $organizaciones = \App\Organizacion::all();
-        return view('organizaciones.listado', array(
-            'organizaciones' => $organizaciones
-        ));
+    public function postCrear() {
+
+      $organizaciones = new Organizacion();
+
+      $organizaciones->nombre = Input::get('nombre');
+
+      $organizaciones->save();
+
     }
 
-    public function store(Request $request)
-    {
-        if ($request->ajax( )) {
-            Organizacion::create($request->all());
-            return response()->json (["mensanje" => "registrado"]);
-        }
+    public function postActualizar() {
+
+      $organizaciones = Organizacion::find(Input::get('id'));
+
+      $organizaciones->nombre = Input::get('nombre');
+
+      $organizaciones->save();
+
     }
 
-    public function update(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            Organizacion::find($id)->fill($request->all())->save();
-            return response()->json (["mensanje" => "actualizado"]);
-        }
-    }
+    public function postEliminar() {
 
-    public function destroy(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            Organizacion::find($id)->fill($request->all())->delete();
-            return response()->json(["mensanje" => "eliminado"]);
-        }
+      $organizaciones = Organizacion::find(Input::get('id'));
+
+      $organizaciones->delete();
+
     }
 
 }
