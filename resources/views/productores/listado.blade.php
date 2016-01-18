@@ -16,6 +16,7 @@
         <th>TELEFONO</th>
         <th>EMAIL</th>
         <th>ORGANIZACION</th>
+        <th>BIO</th>
         <th>ACCION</th>
     </tr>
     </thead>
@@ -28,6 +29,7 @@
             <td>{{ $productor->telefono }}</td>
             <td>{{ $productor->email }}</td>
             <td>{{ $productor->organizacion->nombre }}</td>
+            <td>{{ $productor->bio }}</td>
             <td>
                 <input type="button" value="Actualizar" class="btn_actualizar_prod
                                 btn btn-primary btn-sm"
@@ -35,7 +37,8 @@
                        nombre_prod="{{ $productor->nombre }}"
                        org_prod="{{ $productor->organizacion->id }}"
                        tel_prod="{{ $productor->telefono }}"
-                       ema_prod="{{ $productor->email }}">
+                       ema_prod="{{ $productor->email }}"
+                       bioPro="{{ $productor->bio }}">
                 <input type="button" value="Eliminar" class="btn_eliminar_prod
                                 btn btn-danger btn-sm" id_prod="{{ $productor->id }}">
                 <input type="hidden" id="id_productorPerfil">

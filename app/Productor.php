@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Productor extends Model {
 
-	protected $fillable = ['Organizacion_id', 'nombre', 'Telefono', 'Email', 'foto'];
+	protected $fillable = ['Organizacion_id', 'nombre', 'Telefono', 'Email', 'foto', 'bio'];
 
 	// Tabla
 	protected $table = 'productores';

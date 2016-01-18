@@ -63,7 +63,15 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="input">Bio</label>
+                <input type="text" class="k-textbox" id="bio" name="bio"
+                       required validationMessage="El campo {0} es obligatorio"
+                       placeholder="bio" style="width: 100%" value="@if($proceso == 2) {{ $productor->bio }} @endif">
+            </div>
+        </div>
+        <div class="col-lg-8">
             <div class="form-group">
                 <label for="input">Correo Electronico</label>
                 <input type="email" class="k-textbox" id="email" name="email"
@@ -146,6 +154,7 @@
             $("#organizacion_id")   .val('');
             $("#telefono")          .val('');
             $("#email")             .val('');
+            $("#bio")               .val('');
         };
 
         //btn agregar y actualizar
@@ -156,6 +165,7 @@
             var Telefono            = $("#telefono").val();
             var Email               = $("#email").val();
             var id                  = $("#id_prod").val();
+            var bio                 = $("#bio").val();
 
             if($("#btn-agregar-productores").attr('accion') == 1) {
 
@@ -168,6 +178,7 @@
                       nombre: nombre,
                       Telefono: Telefono,
                       Email: Email,
+                        bio:bio,
                     },
                     function (data) {
                       toastr.info("Registro de " + nombre + " exitoso.", "PRODUCTORES");
@@ -190,6 +201,7 @@
                       nombre: nombre,
                       Telefono: Telefono,
                       Email: Email,
+                      bio:bio,
                     },
                     function (data) {
                       toastr.info("Actualizacion de " + nombre + " exitosa.", "PRODUCTORES");
@@ -227,6 +239,7 @@
             $("#organizacion_id")   .val($(this).attr('org_prod'));
             $("#telefono")          .val($(this).attr('tel_prod'));
             $("#email")             .val($(this).attr('ema_prod'));
+            $("#bio")               .val($(this).attr('bioPro'));
 
         });
 

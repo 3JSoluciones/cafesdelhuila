@@ -18,6 +18,7 @@ class CreateProductoresTable extends Migration {
 			$table->string('telefono');
 			$table->string('email');
 			$table->string('foto');
+			$table->string('bio');
 			$table->timestamps();
 
 			// $table->foreign('organizacion_id')->references('id')->on('organizaciones');

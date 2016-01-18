@@ -95,6 +95,9 @@ class LotesController extends Controller
         $lote->Cantidad_arboles_variedad3 = Input::get('cantidad_aboles_variedad3');
         $lote->nombre  = Input::get('nombre');
         $lote->area    = Input::get('area');
+        $lote->notas_variedad1    = Input::get('notas_variedad1');
+        $lote->notas_variedad2    = Input::get('notas_variedad2');
+        $lote->notas_variedad3    = Input::get('notas_variedad3');
 
         $lote->save();
 

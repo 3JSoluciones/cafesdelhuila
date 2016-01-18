@@ -62,6 +62,7 @@
                       ?> <img class='img_perfil' id='img_perfil' src='/img/naruto.png'> <?php
                   }
                   ?>
+                    <input type="hidden" id="nombreFotoPerfil" value="{{ $productor->foto }}">
 
                 </div>
             </div>
@@ -119,6 +120,7 @@
                                 <th>TELEFONO</th>
                                 <th>EMAIL</th>
                                 <th>ORGANIZACION</th>
+                                <th>BIO</th>
                                 <th>ACCION</th>
                             </tr>
                             </thead>
@@ -129,6 +131,7 @@
                                 <td><b>{{ $productor->telefono }}</b></td>
                                 <td><b>{{ $productor->email }}</b></td>
                                 <td><b>{{ $productor->organizacion->nombre }}</b></td>
+                                <td><b>{{ $productor->bio }}</b></td>
                                 <td>
                                     <a href="{{ URL::route('productoresPerfil-getActualizar', $productor->id)}}">
                                         <input type="button" value="Actualizar" class="btn btn-primary btn-sm">
@@ -179,6 +182,17 @@
             $(":file").filestyle({buttonBefore: true});
         });
 
+        $(".img_perfil").click(function () {
+            var archivo = $('#nombreFotoPerfil').val();
+            $.get("{{ URL::route('productoresPerfilImagen-getPerfilImagen', $productor->foto) }}",
+                    {
+                        archivo: archivo
+                    },
+                    function (data) {
+                    }
+            );
+        });
+
         //--------------------------------------------------------------------
         //inicia fincas
         //--------------------------------------------------------------------
@@ -195,11 +209,11 @@
 
         //listado
         function listadoFincas() {
-            var id = $("#id_productor").val();
+            var archivo = $("#id_productor").val();
             $('.contenedor_carga').slideDown('slow');
             $.get("{{ URL::route('fincas-getListado') }}",
                     {
-                        id: id
+                        archivo: archivo
                     },
                     function (data) {
                         $('#contenedor_listado_fincas').hide().html(data).slideDown('slow');
@@ -710,6 +724,9 @@
             $("#nombre")                    .val($(this).attr('Nombre'));
             $("#area")                      .val($(this).attr('Area'));
             $("#perfil")                    .val($(this).attr('Perfil'));
+            $("#notas_variedad1")           .val($(this).attr('notas_variedad1'));
+            $("#notas_variedad2")           .val($(this).attr('notas_variedad2'));
+            $("#notas_variedad3")           .val($(this).attr('notas_variedad3'));
 
         });
 

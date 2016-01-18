@@ -50,19 +50,43 @@
                     <label for="input">Cantidad de arboles por variedad 1</label>
                     <input type="text" class="k-textbox" id="cantidad_aboles_variedad1" name="cantidad_aboles_variedad1"
                             validationMessage="El campo Cantidad de arboles es obligatorio"
-                           placeholder="Ingrese" style="width: 100%">
+                           placeholder="Ingrese la variedad" style="width: 100%">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Cantidad de arboles por variedad 2</label>
-                    <input type="text" class="k-textbox" id="cantidad_aboles_variedad2" name="cantidad_aboles_variedad2" placeholder="Ingrese" style="width: 100%">
+                    <input type="text" class="k-textbox" id="cantidad_aboles_variedad2" name="cantidad_aboles_variedad2"
+                           placeholder="Ingrese la variedad" style="width: 100%">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Cantidad de arboles por variedad 3</label>
-                    <input type="text" class="k-textbox" id="cantidad_aboles_variedad3" name="cantidad_aboles_variedad3" placeholder="Ingrese" style="width: 100%">
+                    <input type="text" class="k-textbox" id="cantidad_aboles_variedad3" name="cantidad_aboles_variedad3"
+                           placeholder="Ingrese la variedad" style="width: 100%">
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="input">Notas variedad 1</label>
+                    <input type="text" class="k-textbox" id="notas_variedad1" name="notas_variedad1"
+                           placeholder="Ingrese las notas" style="width: 100%">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="input">Notas variedad 2</label>
+                    <input type="text" class="k-textbox" id="notas_variedad2" name="notas_variedad2"
+                           placeholder="Ingrese las notas" style="width: 100%">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="input">Notas variedad 3</label>
+                    <input type="text" class="k-textbox" id="notas_variedad3" name="notas_variedad3"
+                           placeholder="Ingrese las notas" style="width: 100%">
                 </div>
             </div>
 
@@ -168,18 +192,10 @@
                            placeholder="Ingrese la area">
                 </div>
             </div>
-            <!--<div class="col-lg-4">
-                <div class="form-group">
-                    <label for="input">Perfil</label>
-                    <input type="text" class="k-textbox" id="perfil" name="perfil"
-                            validationMessage="El campo {0} es obligatorio"
-                           placeholder="Ingrese el perfil" style="width: 100%">
-                </div>
-            </div>-->
+
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="exampleInputFile" >Por favor presione click <br>
-                    en esta area para seleccionar un archivo</label>
+                    <label for="exampleInputFile" >Perfil</label>
                     <input type="file"class="k-textbox" name="perfil" id="perfil" >
                     <input type="hidden" id="id_lotes_perfil" name="id_lotes_perfil">
                 </div>

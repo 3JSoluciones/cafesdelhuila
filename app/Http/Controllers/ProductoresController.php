@@ -44,15 +44,16 @@ class ProductoresController extends Controller {
 
 	public function postCrear() {
 
-		$productores = new Productor();
+		$productor = new Productor();
 
-		$productores->organizacion_id = Input::get('organizacion_id');
-		$productores->nombre 					= Input::get('nombre');
-		$productores->telefono 				= Input::get('telefono');
-		$productores->email 					= Input::get('email');
-		$productores->foto 						= 'naruto.png';
+		$productor->organizacion_id 		= Input::get('organizacion_id');
+		$productor->nombre 					= Input::get('nombre');
+		$productor->telefono 				= Input::get('telefono');
+		$productor->email 					= Input::get('email');
+		$productor->foto 					= 'naruto.png';
+		$productor->bio 					= Input::get('bio');
 
-		$productores->save();
+		$productor->save();
 
 	}
 
@@ -64,6 +65,7 @@ class ProductoresController extends Controller {
 		$productor->nombre 					= Input::get('nombre');
 		$productor->telefono 				= Input::get('telefono');
 		$productor->email 					= Input::get('email');
+		$productor->bio 					= Input::get('bio');
 
 		$productor->save();
 
@@ -71,9 +73,9 @@ class ProductoresController extends Controller {
 
 	public function postEliminar() {
 
-		$productores = Productor::find(Input::get('id'));
+		$productor = Productor::find(Input::get('id'));
 
-		$productores->delete();
+		$productor->delete();
 
 	}
 
@@ -94,7 +96,7 @@ class ProductoresController extends Controller {
 			));
 
 		} else {
-			echo "el productor no existe :";
+			return view('errors.503');
 		}
 
 	}
@@ -140,6 +142,14 @@ class ProductoresController extends Controller {
 
 		return redirect('productoresPerfil/getPerfil/'.$idPro);
 
+	}
+
+	public function getPerfilImagen($archivo) {
+
+		$public_path = public_path();
+		$url = $public_path.'/perfiles/'.$archivo;
+		//return response()->download($url);
+		return "<div><img src='/perfiles/$archivo'></div>";
 	}
 
 

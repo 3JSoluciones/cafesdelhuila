@@ -33,7 +33,7 @@
                     else if($tipo == 'pdf') {
                       ?><img class="img_click" src="/img/pdf.png" style="width: 50px; height: 50px; border-radius: 50%;"><?php
                     }
-                    else if($tipo == 'xls' || $tipo == 'txt') {
+                    else if($tipo == 'xls' || $tipo == 'txt' || $tipo == 'ods') {
                       ?><img class="img_click" src="/img/excel.png" style="width: 50px; height: 50px; border-radius: 50%;"><?php
                     }
                     else if($tipo == 'rar' || $tipo == 'zip' || $tipo == 'tar' || $tipo == 'gz') {

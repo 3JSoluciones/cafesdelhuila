@@ -26,7 +26,10 @@ class Lote extends Model
             'Cantidad_arboles_variedad3',
             'Nombre',
             'Area',
-            'Perfil'
+            'Perfil',
+            'notas_variedad1',
+            'notas_variedad2',
+            'notas_variedad3',
 
         ];
 

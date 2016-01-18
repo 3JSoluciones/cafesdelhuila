@@ -38,7 +38,11 @@
                        Nombre                       ="{{ $lote->nombre }}"
                        Area                         ="{{ $lote->area }}"
                        perfil                       ="{{ $lote->perfil }}"
-
+                       <?php
+                       if($lote->notas_variedad1 == '') { } else { ?> notas_variedad1 = "{{ $lote->notas_variedad1 }}" <?php }
+                       if($lote->notas_variedad2 == '') { } else { ?> notas_variedad2 = "{{ $lote->notas_variedad2 }}" <?php }
+                       if($lote->notas_variedad3 == '') { } else { ?> notas_variedad3 = "{{ $lote->notas_variedad3 }}" <?php }
+                       ?>
                         >
                 <input type="button" value="Eliminar" class="btn_eliminar_lote
                                 btn btn-danger btn-sm"

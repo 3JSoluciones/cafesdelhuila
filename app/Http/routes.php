@@ -316,6 +316,11 @@ Route::get('productoresPerfil/getPerfil/{id}', [
 	'uses'	=> 'ProductoresController@getPerfil'
 ]);
 
+Route::get('productoresPerfilImagen/getPerfilImagen/{archivo}', [
+	'as' 	=> 'productoresPerfilImagen-getPerfilImagen',
+	'uses'	=> 'ProductoresController@getPerfilImagen'
+]);
+
 Route::get('productoresPerfil/getActualizar/{id}', [
 	'as' 		=> 'productoresPerfil-getActualizar',
 	'uses'	=> 'ProductoresController@getActualizar'
