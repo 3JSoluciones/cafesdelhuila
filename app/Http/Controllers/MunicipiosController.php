@@ -16,47 +16,53 @@ class MunicipiosController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getCrear() {
+
       return view('municipios.nuevo');
+
     }
 
     public function getListado() {
+
       $municipios = Municipio::all();
+
       return view('municipios.listado', array(
           'municipios' => $municipios
       ));
+
     }
 
     public function postCrear() {
 
-      $municipios = new Municipio();
+      $municipio = new Municipio();
 
-      $municipios->nombre = Input::get('nombre');
+      $municipio->nombre = Input::get('nombre');
 
-      $municipios->save();
+      $municipio->save();
 
     }
 
     public function postActualizar() {
 
-      $municipios = Municipio::find(Input::get('id'));
+      $municipio = Municipio::find(Input::get('id'));
 
-      $municipios->nombre = Input::get('nombre');
+      $municipio->nombre = Input::get('nombre');
 
-      $municipios->save();
+      $municipio->save();
 
     }
 
     public function postEliminar() {
 
-      $municipios = Municipio::find(Input::get('id'));
+      $municipio = Municipio::find(Input::get('id'));
 
-      $municipios->delete();
+      $municipio->delete();
 
     }
 

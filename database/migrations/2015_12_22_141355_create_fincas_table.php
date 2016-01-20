@@ -23,10 +23,10 @@ class CreateFincasTable extends Migration {
 			$table->string('latitud');
 			$table->string('longitud');
 			$table->string('altitud');
-			$table->dateTime('cosecha_comienza');
-			$table->dateTime('cosecha_termina');
-			$table->dateTime('mitaca_comienza');
-			$table->dateTime('mitaca_termina');
+			$table->date('cosecha_comienza');
+			$table->date('cosecha_termina');
+			$table->date('mitaca_comienza');
+			$table->date('mitaca_termina');
 			$table->timestamps();
 
 			//$table->foreign('productor_id')->references('id')->on('productores');

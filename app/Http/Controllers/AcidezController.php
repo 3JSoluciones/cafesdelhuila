@@ -17,22 +17,25 @@ class AcidezController extends Controller
    * Create a new controller instance.
    *
    * @return void
+   */
 
   public function __construct()
   {
       $this->middleware('auth');
   }
-*/
+
 
     public function getCrear() {
       return view('acidez.nueva');
     }
 
     public function getListado() {
+
       $acidez = Acidez::all();
       return view('acidez.listado', array(
           'acidez' => $acidez
       ));
+
     }
 
     public function postCrear() {

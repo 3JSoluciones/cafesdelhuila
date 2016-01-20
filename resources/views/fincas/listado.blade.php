@@ -7,7 +7,7 @@
     <table class="table display" cellspacing="0" width="100%">
         <thead>
         <tr>
-            <th>NIT</th>
+            <th>ID</th>
             <th>FINCA</th>
             <th>DEPARTAMENTO</th>
             <th>MUNICIPIO</th>
@@ -22,8 +22,8 @@
             <tr>
                 <td>{{ $finca->id }}</td>
                 <td>{{ $finca->finca }}</td>
-                <td>{{ $finca->departamento->nombre }}</td>
-                <td>{{ $finca->municipio->nombre }}</td>
+                <td>@if(isset($finca->departamento->nombre)) {{ $finca->departamento->nombre }} @else Ninguno @endif</td>
+                <td>@if(isset($finca->municipio->nombre)){{ $finca->municipio->nombre }} @else Ninguno @endif</td>
                 <td>{{ $finca->corregimiento }}</td>
                 <td>{{ $finca->vereda }}</td>
                 <td>{{ $finca->created_at }}</td>
@@ -32,18 +32,18 @@
                                 btn btn-primary btn-sm"
                            id                   ="{{ $finca->id }}"
                            Productor_id         ="{{ $finca->productor->id }}"
-                           Departamento_id      ="{{ $finca->departamento->id }}"
-                           Municipio_id         ="{{ $finca->municipio->id }}"
+                           Departamento_id      ="{{ $finca->departamento_id }}"
+                           Municipio_id         ="{{ $finca->municipio_id }}"
                            Corregimiento        ="{{ $finca->corregimiento }}"
                            Vereda               ="{{ $finca->vereda }}"
                            Finca                ="{{ $finca->finca }}"
                            Longitud             ="{{ $finca->longitud }}"
                            Latitud              ="{{ $finca->latitud }}"
                            Altitud              ="{{ $finca->altitud }}"
-                           Cosecha_comienza     ="{{ $finca->cosecha_comienza }}"
-                           Cosecha_termina      ="{{ $finca->cosecha_termina }}"
-                           Mitaca_comienza      ="{{ $finca->mitaca_comienza }}"
-                           Mitaca_termina       ="{{ $finca->mitaca_termina }}">
+                           cosecha_comienza     ="{{ $finca->cosecha_comienza }}"
+                           cosecha_termina      ="{{ $finca->cosecha_termina }}"
+                           mitaca_comienza      ="{{ $finca->mitaca_comienza }}"
+                           mitaca_termina       ="{{ $finca->mitaca_termina }}">
                     <input type="button" value="Eliminar" class="btn_eliminar_finca
                                 btn btn-danger btn-sm" id_finca="{{ $finca->id }}">
                 </td>

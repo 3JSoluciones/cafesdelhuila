@@ -15,4 +15,5 @@ class Medio extends Model
         return $this->hasOne('App\Productor','id','productor_id');
     }
 
+
 }

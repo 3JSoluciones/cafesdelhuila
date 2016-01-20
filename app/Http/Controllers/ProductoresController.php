@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Organizacion;
-use App\Productor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+
+use App\Organizacion;
+use App\Productor;
+use App\Finca;
+use App\Lote;
 
 class ProductoresController extends Controller {
 
@@ -16,9 +19,11 @@ class ProductoresController extends Controller {
 	 *
 	 * @return void
 	 *
-	public function __construct() {
+	 */
+	public function __construct()
+	{
 		$this->middleware('auth');
-	}*/
+	}
 
 	public function getCrear() {
 
@@ -46,12 +51,12 @@ class ProductoresController extends Controller {
 
 		$productor = new Productor();
 
-		$productor->organizacion_id 		= Input::get('organizacion_id');
+		$productor->organizacion_id = Input::get('organizacion_id');
 		$productor->nombre 					= Input::get('nombre');
 		$productor->telefono 				= Input::get('telefono');
 		$productor->email 					= Input::get('email');
-		$productor->foto 					= 'naruto.png';
-		$productor->bio 					= Input::get('bio');
+		$productor->foto 						= 'no_foto.png';
+		$productor->bio 						= Input::get('bio');
 
 		$productor->save();
 
@@ -65,7 +70,7 @@ class ProductoresController extends Controller {
 		$productor->nombre 					= Input::get('nombre');
 		$productor->telefono 				= Input::get('telefono');
 		$productor->email 					= Input::get('email');
-		$productor->bio 					= Input::get('bio');
+		$productor->bio 						= Input::get('bio');
 
 		$productor->save();
 
@@ -73,7 +78,17 @@ class ProductoresController extends Controller {
 
 	public function postEliminar() {
 
-		$productor = Productor::find(Input::get('id'));
+		$idProductor = Input::get('id');
+
+		$productor = Productor::find($idProductor);
+		$finca = Finca::where('productor_id', '=', $idProductor);
+
+		if($finca->count()) {
+				$finca->delete();
+		}
+
+		$lote = Lote::where('finca_id', '=', $finca->id);
+		$lote->delete();
 
 		$productor->delete();
 
@@ -150,6 +165,7 @@ class ProductoresController extends Controller {
 		$url = $public_path.'/perfiles/'.$archivo;
 		//return response()->download($url);
 		return "<div><img src='/perfiles/$archivo'></div>";
+
 	}
 
 

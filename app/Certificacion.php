@@ -10,5 +10,10 @@ class Certificacion extends Model
     protected $table = 'certificaciones';
 
     protected $fillable = ['nombre'];
-    
+
+    //foreign keys
+    public function certificacion() {
+        return $this->hasOne('App\Certificacion');
+    }
+
 }

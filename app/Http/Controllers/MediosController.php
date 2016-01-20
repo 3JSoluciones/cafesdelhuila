@@ -21,13 +21,16 @@ class MediosController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getCrear() {
+
       return view('medios.crear');
+
     }
 
     public function getListado() {
@@ -58,7 +61,7 @@ class MediosController extends Controller
       $nombre  = $file->getClientOriginalName();
       $extend  = $file->getClientOriginalExtension();
       $tamanio = $file->getClientSize();
-      $img     = str_random(8).'.'.$extend;
+      $img     = str_random(3).$nombre;
 
       $medio = new Medio();
       $medio->productor_id    = $idPro;
@@ -68,7 +71,7 @@ class MediosController extends Controller
       $medio->save();
 
       $directorio = public_path().'/medios/';
-      $file->move($directorio, $img);      
+      $file->move($directorio, $img);
 
       return redirect('productoresPerfil/getPerfil/'.$idPro);
 
@@ -78,9 +81,11 @@ class MediosController extends Controller
 
         $id     = Input::get('id');
         $medio  = Input::get('medio');
+
         if(Storage::exists($medio)) {
             Storage::delete($medio);
         }
+
         Medio::find(Input::get('id'))->fill(Input::all())->delete();
         return response()->json(["mensaje" => "eliminado"]);
 

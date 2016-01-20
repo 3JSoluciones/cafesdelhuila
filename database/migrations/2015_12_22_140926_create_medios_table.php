@@ -15,6 +15,7 @@ class CreateMediosTable extends Migration {
 			$table->increments('id');
 			$table->integer('productor_id')->unsigned();
 			$table->string('nombre');
+			$table->string('nombre_original');
 			$table->string('tipo');
 			$table->timestamps();
 

@@ -17,47 +17,53 @@ class CertificacionesController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getCrear() {
+
       return view('certificaciones.nueva');
+
     }
 
     public function getListado() {
+
       $certificaciones = Certificacion::all();
+
       return view('certificaciones.listado', array(
               'certificaciones' => $certificaciones)
       );
+
     }
 
     public function postCrear() {
 
-      $certificaciones = new Certificacion();
+      $certificacion = new Certificacion();
 
-      $certificaciones->nombre = Input::get('nombre');
+      $certificacion->nombre = Input::get('nombre');
 
-      $certificaciones->save();
+      $certificacion->save();
 
     }
 
     public function postActualizar() {
 
-      $certificaciones = Certificacion::find(Input::get('id'));
+      $certificacion = Certificacion::find(Input::get('id'));
 
-      $certificaciones->nombre = Input::get('nombre');
+      $certificacion->nombre = Input::get('nombre');
 
-      $certificaciones->save();
+      $certificacion->save();
 
     }
 
     public function postEliminar() {
 
-      $certificaciones = Certificacion::find(Input::get('id'));
+      $certificacion = Certificacion::find(Input::get('id'));
 
-      $certificaciones->delete();
+      $certificacion->delete();
 
     }
 

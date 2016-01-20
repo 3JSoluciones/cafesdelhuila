@@ -17,6 +17,7 @@
                             @endforeach
                                     <!--</optgroup>-->
                     </select>
+                    <h6 id="mgs_certifiProductores" style="color:#ccc; display:none;">recuerde que el campo es obligatorio</h6>
                 </div>
             </div>
 

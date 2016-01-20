@@ -32,30 +32,42 @@
             <div class="form-group">
                 <label for="input">Telefono</label>
                 <input type="text" class="k-textbox" id="telefono" name="telefono"
-                       required validationMessage="El campo {0} es obligatorio"
-                       placeholder="Ingrese el telefono" style="width: 100%"
+                 placeholder="Ingrese el telefono" style="width: 100%"
                        value="@if($proceso == 2) {{ $productor->telefono }} @endif">
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="input">Organizacion</label>
-                <select name="organizacion_id" id="organizacion_id" class="select"
-                        validationMessage="El campo organizacion es obligatorio" required style="width: 100%">
+                <select name="organizacion_id" id="organizacion_id" class="select" style="width: 100%">
 
-                    @if($proceso == 2)
-                        <option value="{{ $productor->organizacion->id }} ">
-                            {{ $productor->organizacion->nombre }}
+                        <option value="0" >
+                            Seleccione..
                         </option>
-                    @else
-                        <option value="">Seleccione..</option>
-                    @endif
 
-                    @foreach($organizaciones as $organizacion)
-                        <option value="{{ $organizacion->id }}">
-                            {{ $organizacion->nombre }}
-                        </option>
-                    @endforeach
+                        @foreach($organizaciones as $organizacion)
+
+                            @if($proceso == 2)
+
+                                @if(isset($productor->organizacion->id))
+                                    <option selected value="{{ $productor->organizacion->id }}">
+                                        {{ $productor->organizacion->nombre }}
+                                    </option>
+                                @else
+                                    <option value="{{ $organizacion->id }}">
+                                        {{ $organizacion->nombre }}
+                                    </option>
+                                @endif
+
+                            @else
+
+                                <option value="{{ $organizacion->id }}">
+                                    {{ $organizacion->nombre }}
+                                </option>
+
+                            @endif
+
+                        @endforeach
 
                 </select>
             </div>
@@ -63,15 +75,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="input">Bio</label>
-                <input type="text" class="k-textbox" id="bio" name="bio"
-                       required validationMessage="El campo {0} es obligatorio"
-                       placeholder="bio" style="width: 100%" value="@if($proceso == 2) {{ $productor->bio }} @endif">
-            </div>
-        </div>
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="form-group">
                 <label for="input">Correo Electronico</label>
                 <input type="email" class="k-textbox" id="email" name="email"
@@ -79,6 +83,17 @@
                        placeholder="ejemplo@outlook.com" style="width: 100%" value="@if($proceso == 2) {{ $productor->email }} @endif">
             </div>
         </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="form-group">
+              <label for="input">Bio. productor</label>
+              <textarea class="k-textbox" id="bio" name="bio" style="width: 100%">
+                  <?php if($proceso == 2) { echo trim("".$productor->bio); } ?>
+              </textarea>
+          </div>
+      </div>
     </div>
 
     <div class="row">
@@ -214,7 +229,7 @@
                           $("#contenedor_registro_product").slideUp('slow');
                       } else if($("#proceso").val() == 2) {
                           @if($proceso == 2)
-                          self.location.href='http://localhost:8000/productoresPerfil/getPerfil/{{$productor->id}}';
+                          self.location.href='/productoresPerfil/getPerfil/{{$productor->id}}';
                           @else @endif
                       }
                     });
@@ -280,7 +295,7 @@
                 limpiar();
             } else if($("#proceso").val() == 2) {
                 @if($proceso == 2)
-                self.location.href='http://localhost:8000/productoresPerfil/getPerfil/{{$productor->id}}';
+                self.location.href='/productoresPerfil/getPerfil/{{$productor->id}}';
                 @else @endif
             }
 

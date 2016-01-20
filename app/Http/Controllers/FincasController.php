@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Departamento;
 use App\Finca;
+use App\Lote;
 use App\Municipio;
 use App\Productor;
 use Illuminate\Http\Request;
@@ -19,10 +20,11 @@ class FincasController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getCrear() {
 
@@ -62,53 +64,58 @@ class FincasController extends Controller
 
     public function postCrear() {
 
-      $fincas = new Finca();
+      $finca = new Finca();
 
-      $fincas->productor_id       = Input::get('Productor_id');
-      $fincas->departamento_id    = Input::get('Departamento_id');
-      $fincas->municipio_id       = Input::get('Municipio_id');
-      $fincas->corregimiento      = Input::get('Corregimiento');
-      $fincas->vereda             = Input::get('Vereda');
-      $fincas->finca              = Input::get('Finca');
-      $fincas->latitud            = Input::get('Latitud');
-      $fincas->longitud           = Input::get('Longitud');
-      $fincas->altitud            = Input::get('altitud');
-      $fincas->cosecha_comienza   = Input::get('Cosecha_comienza');
-      $fincas->cosecha_termina    = Input::get('Cosecha_termina');
-      $fincas->mitaca_comienza    = Input::get('Mitaca_comienza');
-      $fincas->mitaca_termina     = Input::get('Mitaca_termina');
+      $finca->productor_id       = Input::get('Productor_id');
+      $finca->departamento_id    = Input::get('Departamento_id');
+      $finca->municipio_id       = Input::get('Municipio_id');
+      $finca->corregimiento      = Input::get('Corregimiento');
+      $finca->vereda             = Input::get('Vereda');
+      $finca->finca              = Input::get('Finca');
+      $finca->latitud            = Input::get('Latitud');
+      $finca->longitud           = Input::get('Longitud');
+      $finca->altitud            = Input::get('altitud');
+      $finca->cosecha_comienza   = Input::get('Cosecha_comienza');
+      $finca->cosecha_termina    = Input::get('Cosecha_termina');
+      $finca->mitaca_comienza    = Input::get('Mitaca_comienza');
+      $finca->mitaca_termina     = Input::get('Mitaca_termina');
 
-      $fincas->save();
+      $finca->save();
 
     }
 
     public function postActualizar() {
 
-      $fincas = Finca::find(Input::get('id'));
+      $finca = Finca::find(Input::get('id'));
 
-      $fincas->productor_id       = Input::get('Productor_id');
-      $fincas->departamento_id    = Input::get('Departamento_id');
-      $fincas->municipio_id       = Input::get('Municipio_id');
-      $fincas->corregimiento      = Input::get('Corregimiento');
-      $fincas->vereda             = Input::get('Vereda');
-      $fincas->finca              = Input::get('Finca');
-      $fincas->latitud            = Input::get('Latitud');
-      $fincas->longitud           = Input::get('Longitud');
-      $fincas->altitud            = Input::get('altitud');
-      $fincas->cosecha_comienza   = Input::get('Cosecha_comienza');
-      $fincas->cosecha_termina    = Input::get('Cosecha_termina');
-      $fincas->mitaca_comienza    = Input::get('Mitaca_comienza');
-      $fincas->mitaca_termina     = Input::get('Mitaca_termina');
+      $finca->productor_id       = Input::get('Productor_id');
+      $finca->departamento_id    = Input::get('Departamento_id');
+      $finca->municipio_id       = Input::get('Municipio_id');
+      $finca->corregimiento      = Input::get('Corregimiento');
+      $finca->vereda             = Input::get('Vereda');
+      $finca->finca              = Input::get('Finca');
+      $finca->latitud            = Input::get('Latitud');
+      $finca->longitud           = Input::get('Longitud');
+      $finca->altitud            = Input::get('altitud');
+      $finca->cosecha_comienza   = Input::get('Cosecha_comienza');
+      $finca->cosecha_termina    = Input::get('Cosecha_termina');
+      $finca->mitaca_comienza    = Input::get('Mitaca_comienza');
+      $finca->mitaca_termina     = Input::get('Mitaca_termina');
 
-      $fincas->save();
+      $finca->save();
 
     }
 
     public function postEliminar() {
 
-      $fincas = Finca::find(Input::get('id'));
+      $idFinca  = Input::get('id');
+      $lote     = Lote::where('finca_id', '=', $idFinca);
+      $finca    = Finca::find($idFinca);
 
-      $fincas->delete();
+      $finca->delete();
+      if($lote->count()) {
+        $lote->delete();
+      }
 
     }
 

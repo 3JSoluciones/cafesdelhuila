@@ -16,47 +16,53 @@ class SaboresController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getCrear() {
+
       return view('sabores.nuevo');
+
     }
 
     public function getListado() {
+
       $sabores = Sabor::all();
+
       return view('sabores.listado', array(
           'sabores' => $sabores
       ));
+
     }
 
     public function postCrear() {
 
-      $sabores = new Sabor();
+      $sabor = new Sabor();
 
-      $sabores->nombre = Input::get('nombre');
+      $sabor->nombre = Input::get('nombre');
 
-      $sabores->save();
+      $sabor->save();
 
     }
 
     public function postActualizar() {
 
-      $sabores = Sabor::find(Input::get('id'));
+      $sabor = Sabor::find(Input::get('id'));
 
-      $sabores->nombre = Input::get('nombre');
+      $sabor->nombre = Input::get('nombre');
 
-      $sabores->save();
+      $sabor->save();
 
     }
 
     public function postEliminar() {
 
-      $sabores = Sabor::find(Input::get('id'));
+      $sabor = Sabor::find(Input::get('id'));
 
-      $sabores->delete();
+      $sabor->delete();
 
     }
 

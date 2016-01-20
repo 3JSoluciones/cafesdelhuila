@@ -19,10 +19,11 @@ class CertificacionesProductoresController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
 
     public function getCrear() {
@@ -60,31 +61,31 @@ class CertificacionesProductoresController extends Controller
 
     public function postCrear() {
 
-      $certificacionesProductores = new Certificacion_Productor();
+      $certificacionProductor = new Certificacion_Productor();
 
-      $certificacionesProductores->productor_id     = Input::get('Productor_id');
-      $certificacionesProductores->certificacion_id = Input::get('Certificacion_id');
+      $certificacionProductor->productor_id     = Input::get('Productor_id');
+      $certificacionProductor->certificacion_id = Input::get('Certificacion_id');
 
-      $certificacionesProductores->save();
+      $certificacionProductor->save();
 
     }
 
     public function postActualizar() {
 
-      $certificacionesProductores = Certificacion_Productor::find(Input::get('id'));
+      $certificacionProductor = Certificacion_Productor::find(Input::get('id'));
 
-      $certificacionesProductores->productor_id     = Input::get('Productor_id');
-      $certificacionesProductores->certificacion_id = Input::get('Certificacion_id');
+      $certificacionProductor->productor_id     = Input::get('Productor_id');
+      $certificacionProductor->certificacion_id = Input::get('Certificacion_id');
 
-      $certificacionesProductores->save();
+      $certificacionProductor->save();
 
     }
 
     public function postEliminar() {
 
-      $certificacionesProductores = Certificacion_Productor::find(Input::get('id'));
+      $certificacionProductor = Certificacion_Productor::find(Input::get('id'));
 
-      $certificacionesProductores->delete();
+      $certificacionProductor->delete();
 
     }
 

@@ -25,6 +25,7 @@
         <link href="/bower_components/bootstrap/dist/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
         <link href="/telerik/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
         <link href="/telerik/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/telerik/styles/kendo.default.min.css" rel="stylesheet" type="text/css" />
 
     <!-- fin de los estilos -->
 
@@ -85,7 +86,7 @@
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://cafesdelhuila.com/productores/create"><b>PRODUCTORES</b></a></li>
+                            <li><a href="{{ URL::route('productores-getCrear')}}"><b>PRODUCTORES</b></a></li>
                         </ul>
 
                         <li class="dropdown">
@@ -116,12 +117,13 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
 
+
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="/">INICIO</a></li>
                         </ul>
 
                         <li><a href="/login">Iniciar Sesion</a></li>
-                        <li><a href="/register">Crear una cuenta</a></li>
+
                     @else
 
                         <li class="dropdown">
@@ -135,18 +137,17 @@
                         </li>
                     @endif
                 </ul>
-
             </div>
-
-
         </div>
     </nav>
 </center>
 <div class="container">
 
     <div class="panel-body text-center">
-       <img src="/img/descarga.jpeg" width="600px"; style="padding: 0; margin: 0; margin-right: 0px; text-align: center !important;">
-        <!--<b style="color: #901504; font-size: 100px; text-shadow: 0 0 0.1em, 0 0 0.1em #0001ff">CAFES DEL HUILA</b>-->
+        <img src="/img/descarga.jpeg" width="600px"; style="padding: 0; margin: 0;
+				 margin-right: 0px; text-align: center !important;">
+				<!-- <b style="color: #901504; font-size: 60px; text-shadow: 0px 0px 0.1em,
+				0px 0px 1px #000; ">CAFES DEL HUILA</b>-->
     </div>
 
     @yield('content')

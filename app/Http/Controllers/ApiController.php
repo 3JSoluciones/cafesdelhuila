@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Illuminate\Http\Respose;
+use Mail;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,8 @@ use \App\Sabor;
 use \App\Tipo_Beneficio;
 use \App\Tipo_Secado;
 use \App\Variedad;
+use \App\Municipio;
+use \App\Contacto;
 
 use Illuminate\Support\Facades\Input;
 
@@ -31,7 +34,7 @@ class ApiController extends Controller
     //acidez
     public function getAcidez() {
 
-      $acidez = Acidez::all();
+      $acidez = Acidez::orderBy('nombre')->get();
       return response()->json($acidez)->setCallback(Input::get('callback'));
 
     }
@@ -39,15 +42,23 @@ class ApiController extends Controller
     //aromas
     public function getAromas() {
 
-      $aromas = Aroma::all();
+      $aromas = Aroma::orderBy('nombre')->get();
       return response()->json($aromas)->setCallback(Input::get('callback'));
+
+    }
+
+    //municipio
+    public function getMunicipios() {
+
+      $municipios = Municipio::orderBy('nombre')->get();
+      return response()->json($municipios)->setCallback(Input::get('callback'));
 
     }
 
     //certificaciones
     public function getCertificaciones() {
 
-      $certificaciones = Certificacion::all();
+      $certificaciones = Certificacion::orderBy('nombre')->get();
       return response()->json($certificaciones)->setCallback(Input::get('callback'));
 
     }
@@ -64,7 +75,7 @@ class ApiController extends Controller
     //departamentos
     public function getDepartamentos() {
 
-      $departamentos = Departamento::all();
+      $departamentos = Departamento::orderBy('nombre')->get();
       return response()->json($departamentos)->setCallback(Input::get('callback'));
 
     }
@@ -72,9 +83,9 @@ class ApiController extends Controller
     //fincas
     public function getFincas() {
 
-      $fincas = Finca::with('productor','departamento','municipio')
+      $fincas = Finca::with('productor','departamento','municipio')->orderBy('finca')
       ->get();
-      return response()->json($fincas)->setCallback(Input::get('callback'));
+      return response()->json('')->setCallback(Input::get('callback'));
 
     }
 
@@ -98,7 +109,7 @@ class ApiController extends Controller
     //organizaciones
     public function getOrganizaciones() {
 
-      $organizaciones = Organizacion::all();
+      $organizaciones = Organizacion::orderBy('nombre')->get();
       return response()->json($organizaciones)->setCallback(Input::get('callback'));
 
     }
@@ -108,7 +119,7 @@ class ApiController extends Controller
 
       $productores = new Productor();
 
-      $productores = $productores->with('organizacion','certificacion_productor',
+      $productores = $productores->with('organizacion','medios','certificacion_productor.certificacion',
       'fincas','fincas.lotes','fincas.departamento','fincas.municipio',
       'fincas.lotes.variedad1',
 
@@ -141,7 +152,7 @@ class ApiController extends Controller
 
 
       $toReturn = $productores->get();*/
-      
+
       return response()->json($productores)->setCallback(Input::get('callback'));
 
     }
@@ -149,7 +160,7 @@ class ApiController extends Controller
     //sabores
     public function getSabores() {
 
-      $sabores = Sabor::all();
+      $sabores = Sabor::orderBy('nombre')->get();
       return response()->json($sabores)->setCallback(Input::get('callback'));
 
     }
@@ -157,7 +168,7 @@ class ApiController extends Controller
     //tiposBeneficios
     public function getTiposBeneficios() {
 
-      $tiposBeneficios = Tipo_Beneficio::all();
+      $tiposBeneficios = Tipo_Beneficio::orderBy('nombre')->get();
       return response()->json($tiposBeneficios)->setCallback(Input::get('callback'));
 
     }
@@ -165,7 +176,7 @@ class ApiController extends Controller
     //tiposSecados
     public function getTiposSecados() {
 
-      $tiposSecados = Tipo_Secado::all();
+      $tiposSecados = Tipo_Secado::orderBy('nombre')->get();
       return response()->json($tiposSecados)->setCallback(Input::get('callback'));
 
     }
@@ -173,9 +184,42 @@ class ApiController extends Controller
     //variedades
     public function getVariedades() {
 
-      $variedades = Variedad::with('acidez', 'aroma', 'sabor')
+      $variedades = Variedad::with('acidez', 'aroma', 'sabor')->orderBy('nombre')
       ->get();
       return response()->json($variedades)->setCallback(Input::get('callback'));
+
+    }
+
+    //contacto
+    public function getContacto() {
+
+      $productor = Productor::find(Input::get('productor_id'));
+
+        $contacto = new Contacto();
+
+
+        $contacto->productor_id   = Input::get('productor_id');
+        $contacto->nombre         = Input::get('nombre');
+        $contacto->correo         = Input::get('email');
+        $contacto->telefono       = Input::get('telefono');
+        $contacto->pais           = Input::get('pais');
+        $contacto->mensaje        = Input::get('mensaje');
+
+
+        $contacto->save();
+
+        Mail::send('emails.notificacion_contacto', ['contacto' => $contacto, 'productor' => $productor], function ($m) use ($contacto, $productor) {
+          $m->from('fernando@3jsoluciones.com', 'CAFES DEL HUILA');
+          $m->to($contacto->correo, 'de ')->subject('Confirmacion de contacto');
+        });
+
+        Mail::send('emails.notificacion_confirmacion', ['contacto' => $contacto, 'productor' => $productor], function ($m) use ($contacto, $productor) {
+          $m->from('fernando@3jsoluciones.com', 'CAFES DEL HUILA');
+          $m->to('jorge@3jsoluciones.com', 'de ')->subject('Confirmacion de contacto');
+        });
+
+        return response()->json('ok')->setCallback(Input::get('callback'));
+
 
     }
 

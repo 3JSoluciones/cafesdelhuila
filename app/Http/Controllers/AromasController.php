@@ -17,47 +17,53 @@ class AromasController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getCrear() {
+
       return view('aromas.nuevo');
+
     }
 
     public function getListado() {
+
       $aromas = Aroma::all();
+
       return view('aromas.listado', array(
               'aromas' => $aromas)
       );
+
     }
 
     public function postCrear() {
 
-      $aromas = new Aroma();
+      $aroma = new Aroma();
 
-      $aromas->nombre = Input::get('nombre');
+      $aroma->nombre = Input::get('nombre');
 
-      $aromas->save();
+      $aroma->save();
 
     }
 
     public function postActualizar() {
 
-      $aromas = Aroma::find(Input::get('id'));
+      $aroma = Aroma::find(Input::get('id'));
 
-      $aromas->nombre = Input::get('nombre');
+      $aroma->nombre = Input::get('nombre');
 
-      $aromas->save();
+      $aroma->save();
 
     }
 
     public function postEliminar() {
 
-      $aromas = Aroma::find(Input::get('id'));
+      $aroma = Aroma::find(Input::get('id'));
 
-      $aromas->delete();
+      $aroma->delete();
 
     }
 }

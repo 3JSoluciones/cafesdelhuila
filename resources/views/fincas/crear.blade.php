@@ -26,6 +26,7 @@
                     <input type="text" class="k-textbox" id="finca" name="finca"
                            placeholder="Ingrese el nombre de la finca" style="width: 100%"
                            validationMessage="El campo {0} es obligatorio">
+                           <h6 id="mgs_fincasFinca" style="color:#ccc; display:none;">recuerde que el campo es obligatorio</h6>
                 </div>
             </div>
 
@@ -97,6 +98,7 @@
                     @endforeach
 
                 </select>
+                <h6 id="mgs_fincasDepar" style="color:#ccc; display:none;">recuerde que el campo es obligatorio</h6>
             </div>
         </div>
 
@@ -113,6 +115,7 @@
                     @endforeach
 
                 </select>
+                <h6 id="mgs_fincasMuni" style="color:#ccc; display:none;">recuerde que el campo es obligatorio</h6>
             </div>
         </div>
 

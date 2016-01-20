@@ -16,6 +16,11 @@ class Productor extends Model {
 		return $this->hasOne('App\Organizacion', 'id', 'organizacion_id');
 	}
 
+	// Medios
+	public function medios() {
+		return $this->hasMany('App\Medio');
+	}
+
 	// Fincas
 	public function fincas() {
 		return $this->hasMany('App\Finca');

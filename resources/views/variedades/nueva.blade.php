@@ -32,8 +32,7 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Acidez</label>
-                    <select name="acidez_id" id="acidez_id" class="select"
-                            validationMessage="El campo acidez es obligatorio" required style="width: 100%">
+                    <select name="acidez_id" id="acidez_id" class="select" style="width: 100%">
                         <option value="">Seleccione..</option>
 
                         @foreach($acidezes as $acidez)
@@ -46,8 +45,7 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Aroma</label>
-                    <select name="aroma_id" id="aroma_id" class="select"
-                            validationMessage="El campo aroma es obligatorio" required style="width: 100%">
+                    <select name="aroma_id" id="aroma_id" class="select"  style="width: 100%">
                         <option value="">Seleccione..</option>
 
                         @foreach($aromas as $aroma)
@@ -60,8 +58,7 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="input">Sabor</label>
-                    <select name="sabor_id" id="sabor_id" class="select"
-                            validationMessage="El campo sabor es obligatorio" required style="width: 100%">
+                    <select name="sabor_id" id="sabor_id" class="select" style="width: 100%">
                         <option value="">Seleccione..</option>
 
                         @foreach($sabores as $sabor)

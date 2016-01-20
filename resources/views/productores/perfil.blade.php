@@ -5,7 +5,6 @@
         .img_perfil {
             width: 180px;
             height: 150px;
-            border-radius: 50%;
             cursor: pointer;
             box-shadow: 0px 0px 12px #000b93;
         }
@@ -13,7 +12,6 @@
         .img_perfil:hover {
             width: 180px;
             height: 150px;
-            border-radius: 50%;
             cursor: pointer;
             opacity: 0.4;
             box-shadow: 0px 0px 12px #000b93;
@@ -23,6 +21,12 @@
             color: #000;
             cursor: pointer;
         }
+
+				#img {
+					 	background: #d9edf7;
+						padding:4px;
+						border-radius: 6px;
+				}
 
     </style>
 
@@ -41,25 +45,24 @@
         </div>
     </div>
 
-        <div class="row">
+        <div class="row" >
 
-            <!--<div class="col-lg-2">
-                <div><img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'></div>
-                <div class="drag-drop drag-dropImg" >
-                    <div class="img" type="file">
-                        <input id="img_activa_a" type="file" name="img_activa_a" />
-                        <input type="file" class="k-textbox" name="img" id="img">
-                    </div>
-                </div>
-            </div>-->
-
-            <div class="col-lg-2">
+            <div class="col-lg-2 ">
                 <div>
                   <?php
                   if ($productor->foto != null) {
-                      ?> <img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'> <?php
+                  ?>
+								  <br><br>
+								  	<a href="/perfiles/{{ $productor->foto}}" target="newwindow">
+								  	<img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'>
+									</a>
+								  <?php
                   } else {
-                      ?> <img class='img_perfil' id='img_perfil' src='/img/naruto.png'> <?php
+                  ?> <br><br>
+		      <a href="/perfiles/no_foto.png" target="newwindow">
+		      <img class='img_perfil' id='img_perfil' src='/perfiles/no_foto.png'>
+		      </a>
+		      <?php
                   }
                   ?>
                     <input type="hidden" id="nombreFotoPerfil" value="{{ $productor->foto }}">
@@ -67,13 +70,17 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <p></p><b>
-                    {{ $productor->nombre }}<br />
-                    {{ $productor->telefono }}<br />
-                    {{ $productor->email }}</b><br />
-            <form class="formValidation" method="POST" action="{{ URL::route('productores-postSubirImagen')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <div class="col-lg-3">
+                    <h5><b>PRODUCTOR</b></h5>
+                    <div class="alert alert-info">
+                      <b>{{ $productor->nombre }}</b><br />
+                      {{ $productor->telefono }}<br />
+                      {{ $productor->email }}<br />
+                    </div>
+            <form class="formValidation" method="POST"
+							    action="{{ URL::route('productores-postSubirImagen')}}"
+							    accept-charset="UTF-8" enctype="multipart/form-data">
+				    <meta name="csrf-token" content="{{ csrf_token() }}">
 
                 <input type="hidden" id="idPro" name="idPro" value="{{ $productor->id}}">
                 <input type="hidden" id="id_productor"      value="{{ $productor->id }}">
@@ -81,19 +88,35 @@
                 <input type="hidden" id="id_medio">
                 <input type="hidden" id="medio">
                 <input type="hidden" id="id_lote">
-                <input type="file" class="filestyle" required validationMessage="El campo foto es obligatorio" data-buttonBefore="true" name="img" id="img">
-                <button type="submit" id="btn-agregar-medio" class="btn btn-primary btn-sm">Establecer foto seleccionada</button>
+                <input type="file" class="filestyle" required style="width:100%;"
+										validationMessage="El campo foto es obligatorio"
+										data-buttonBefore="true" name="img" id="img">
+                <button type="submit" id="btn-agregar-medio"
+										class="btn btn-primary btn-sm" style="width:100%;">
+										Establecer foto seleccionada</button>
 
             </div>
             </form>
-            <div class="col-lg-6">
+
+            <div class="col-lg-4" style="height:200px; ">
+                <h5><b>BIO</b></h5>
+                <div class="alert alert-info">
+                    <i>{{ $productor->bio }}</i>
+                </div>
+            </div>
+
+            <div class="col-lg-3" style="height:200px; ">
                 <h5><b>ORGANIZACIONES</b></h5>
-                <ul>
-                    <li>{{ $productor->organizacion->nombre }}</li>
-                </ul>
+                <div class="alert alert-success">
+                    <ul>
+                      <li><i>@if(isset($productor->organizacion->nombre)) {{ $productor->organizacion->nombre }} @else Ninguna @endif</i></li>
+                    </ul>
+                </div>
             </div>
 
         </div>
+
+        <hr>
 
         <div class="row">
             <div class="col-lg-12">
@@ -120,7 +143,6 @@
                                 <th>TELEFONO</th>
                                 <th>EMAIL</th>
                                 <th>ORGANIZACION</th>
-                                <th>BIO</th>
                                 <th>ACCION</th>
                             </tr>
                             </thead>
@@ -130,8 +152,7 @@
                                 <td><b>{{ $productor->nombre }}</b></td>
                                 <td><b>{{ $productor->telefono }}</b></td>
                                 <td><b>{{ $productor->email }}</b></td>
-                                <td><b>{{ $productor->organizacion->nombre }}</b></td>
-                                <td><b>{{ $productor->bio }}</b></td>
+                                <td><b>@if(isset($productor->organizacion->nombre)) {{ $productor->organizacion->nombre }} @else Ninguna @endif</b></td>
                                 <td>
                                     <a href="{{ URL::route('productoresPerfil-getActualizar', $productor->id)}}">
                                         <input type="button" value="Actualizar" class="btn btn-primary btn-sm">
@@ -209,11 +230,11 @@
 
         //listado
         function listadoFincas() {
-            var archivo = $("#id_productor").val();
+            var id = $("#id_productor").val();
             $('.contenedor_carga').slideDown('slow');
             $.get("{{ URL::route('fincas-getListado') }}",
                     {
-                        archivo: archivo
+                        id: id
                     },
                     function (data) {
                         $('#contenedor_listado_fincas').hide().html(data).slideDown('slow');
@@ -269,34 +290,48 @@
             if($("#btn-agregar-finca").attr('accion') == 1) {
 
                 //btn agregar
-                $.post("{{ URL::route('fincas-postCrear') }}?" + $('.formValidation').serialize(),
-                {
-                  Productor_id: idP,
-                  Departamento_id: Departamento_id,
-                  Municipio_id: Municipio_id,
-                  Corregimiento: Corregimiento,
-                  Vereda: Vereda,
-                  Finca: Finca,
-                  Longitud: Longitud,
-                  Latitud: Latitud,
-                  Altitud: Altitud,
-                  Cosecha_comienza: Cosecha_comienza,
-                  Cosecha_termina: Cosecha_termina,
-                  Mitaca_comienza: Mitaca_comienza,
-                  Mitaca_termina: Mitaca_termina,
-                },
-                function (data) {
-                  toastr.info("Registro de " + Finca + " exitoso.", "FINCAS");
-                  listadoFincas();
-                  limpiarCamposFincas();
-                  crearLotes();
-                  $(".btn_agregar_finca").slideDown('slow');
-                  $("#contenedor_registro_finca").slideUp('slow');
-                });
+                if(Departamento_id == '' || Municipio_id == '' || Finca == '') {
+                  $("#mgs_fincasFinca").slideDown('slow');
+                  $("#mgs_fincasDepar").slideDown('slow');
+                  $("#mgs_fincasMuni").slideDown('slow');
+                } else {
+                  $.post("{{ URL::route('fincas-postCrear') }}?" + $('.formValidation').serialize(),
+                  {
+                    Productor_id: idP,
+                    Departamento_id: Departamento_id,
+                    Municipio_id: Municipio_id,
+                    Corregimiento: Corregimiento,
+                    Vereda: Vereda,
+                    Finca: Finca,
+                    Longitud: Longitud,
+                    Latitud: Latitud,
+                    Altitud: Altitud,
+                    Cosecha_comienza: Cosecha_comienza,
+                    Cosecha_termina: Cosecha_termina,
+                    Mitaca_comienza: Mitaca_comienza,
+                    Mitaca_termina: Mitaca_termina,
+                  },
+                  function (data) {
+                    toastr.info("Registro de " + Finca + " exitoso.", "FINCAS");
+                    listadoFincas();
+                    limpiarCamposFincas();
+                    crearLotes();
+                    $(".btn_agregar_finca").slideDown('slow');
+                    $("#contenedor_registro_finca").slideUp('slow');
+                    $("#mgs_fincasFinca").slideUp('slow');
+                    $("#mgs_fincasDepar").slideUp('slow');
+                    $("#mgs_fincasMuni").slideUp('slow');
+                  });
+                }
 
             } else {
 
                 //btn actualizar
+                if(Departamento_id == '' || Municipio_id == '' || Finca == '') {
+                  $("#mgs_fincasFinca").slideDown('slow');
+                  $("#mgs_fincasDepar").slideDown('slow');
+                  $("#mgs_fincasMuni").slideDown('slow');
+                } else {
                 $.post("{{ URL::route('fincas-postActualizar') }}?" + $('.formValidation').serialize(),
                 {
                   id: id,
@@ -323,7 +358,11 @@
                   $("#btn-agregar-finca").attr('accion','1');
                   $(".btn_agregar_finca").slideDown('slow');
                   $("#contenedor_registro_finca").slideUp('slow');
+                  $("#mgs_fincasFinca").slideUp('slow');
+                  $("#mgs_fincasDepar").slideUp('slow');
+                  $("#mgs_fincasMuni").slideUp('slow');
                 });
+              }
             }
 
         });
@@ -348,10 +387,10 @@
             $("#longitud")          .val($(this).attr('Longitud'));
             $("#latitud")           .val($(this).attr('Latitud'));
             $("#altitud")           .val($(this).attr('Altitud'));
-            $("#inicioCosecha")     .val($(this).attr('Cosecha_comienza'));
-            $("#finCosecha")        .val($(this).attr('Cosecha_termina'));
-            $("#inicioMitaca")      .val($(this).attr('Mitaca_comienza'));
-            $("#finMitaca")         .val($(this).attr('Mitaca_termina'));
+            $("#inicioCosecha")     .val($(this).attr('cosecha_comienza'));
+            $("#finCosecha")        .val($(this).attr('cosecha_termina'));
+            $("#inicioMitaca")      .val($(this).attr('mitaca_comienza'));
+            $("#finMitaca")         .val($(this).attr('mitaca_termina'));
 
         });
 
@@ -375,6 +414,7 @@
             function (data) {
               toastr.info("Eliminacion exitosa.", "FINCAS");
               listadoFincas();
+              listadoLotes();
             });
 
         });
@@ -389,6 +429,9 @@
             $("#btn-agregar-finca").val('Agregar Finca');
             $("#btn-agregar-finca").attr('accion','1');
             limpiarCamposFincas();
+            $("#mgs_fincasFinca").slideUp('slow');
+            $("#mgs_fincasDepar").slideUp('slow');
+            $("#mgs_fincasMuni").slideUp('slow');
 
         });
 
@@ -447,59 +490,28 @@
             var Certificacion_id    = $("#certificacion_id").val();
             var id                  = $("#id_certProd").val();
 
-            if($("#btn-agregar-certificacionProductor").attr('accion') == 1) {
-
                 //btn agregar
-                $.post("{{ URL::route('certificacionesProductores-postCrear') }}?" + $('.formValidation').serialize(),
-                {
-                  Productor_id: idP,
-                  Certificacion_id: Certificacion_id,
-                },
-                function (data) {
-                  toastr.info("Registro exitoso.", "CERTIFICACIONES DE PRODUCTORES");
-                  listadoCertificaciones();
-                  limpiarCamposCertProduc();
-                  $(".btn_agregar_certificacionProductor").slideDown('slow');
-                  $("#contenedor_registro_certiProduct").slideUp('slow');
-                });
+                if($("#certificacion_id").val() != '') {
 
-            } else {
+                  $.post("{{ URL::route('certificacionesProductores-postCrear') }}?" + $('.formValidation').serialize(),
+                  {
+                    Productor_id: idP,
+                    Certificacion_id: Certificacion_id,
+                  },
+                  function (data) {
+                    toastr.info("Registro exitoso.", "CERTIFICACIONES DE PRODUCTORES");
+                    listadoCertificaciones();
+                    limpiarCamposCertProduc();
+                    $(".btn_agregar_certificacionProductor").slideDown('slow');
+                    $("#contenedor_registro_certiProduct").slideUp('slow');
+                    $("#mgs_certifiProductores").slideUp('slow');
+                  });
 
-                //btn actualizar
-                $.post("{{ URL::route('certificacionesProductores-postActualizar') }}?" + $('.formValidation').serialize(),
-                {
-                  id: id,
-                  Productor_id: idP,
-                  Certificacion_id: Certificacion_id,
-                },
-                function (data) {
-                  toastr.info("Actualizacion exitosa.", "CERTIFICACIONES DE PRODUCTORES");
-                  listadoCertificaciones();
-                  limpiarCamposCertProduc();
-                  $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
-                  $("#btn-agregar-certificacionProductor").attr('accion','1');
-                  $(".btn_agregar_certificacionProductor").slideDown('slow');
-                  $("#contenedor_registro_certiProduct").slideUp('slow');
-                });
-            }
+                } else {
 
+                  $("#mgs_certifiProductores").slideDown('slow');
 
-        });
-
-        //btn actualizar
-        $(document).on('click','.btn_actualizar_certiProd', function () {
-
-            $(".btn_agregar_certificacionProductor").slideUp('slow');
-            $("#contenedor_registro_certiProduct").slideDown('slow');
-            $("#btn-agregar-certificacionProductor").val('Actualizar Certificacion a Productores');
-            $("#btn-agregar-certificacionProductor").attr('accion','2');
-            $(".btn_actualizar_certiProd").attr('disabled','true');
-            $(".btn_eliminar_certiProd").attr('disabled','true');
-
-            $("#id_certProd")       .val($(this).attr('id_certiprod'));
-            $("#productor_id")      .val($(this).attr('prod_certiProd'));
-            $("#certificacion_id")  .val($(this).attr('cert_certiProd'));
-
+                }
         });
 
         //btn eliminar
@@ -536,6 +548,7 @@
             $("#btn-agregar-certificacionProductor").val('Agregar Certificacion a Productores');
             $("#btn-agregar-certificacionProductor").attr('accion','1');
             limpiarCamposCertProduc();
+            $("#mgs_certifiProductores").slideUp('slow');
 
         });
 
@@ -669,34 +682,62 @@
 
         //limpiar capos
         function limpiarCamposLotes() {
-            $("#id_lote")                   .val('');
-            $("#finca_id")                  .val('');
-            $("#variedad1")                 .val('');
-            $("#variedad2")                 .val('');
-            $("#variedad3")                 .val('');
-            $("#acidez_id")                 .val('');
-            $("#aroma_id")                  .val('');
-            $("#sabor_id")                  .val('');
-            $("#tipo_beneficio_id")         .val('');
-            $("#tipo_secado_id")            .val('');
-            $("#cantidad_aboles_variedad1") .val('');
-            $("#cantidad_aboles_variedad2") .val('');
-            $("#cantidad_aboles_variedad3") .val('');
-            $("#nombre")                    .val('');
-            $("#area")                      .val('');
-            $("#perfil")                    .val('');
+
+          $("#id_loteActualizarProd")     .val('');
+          $("#finca_id")                  .val('');
+          $("#variedad1")                 .val('');
+          $("#variedad2")                 .val('');
+          $("#variedad3")                 .val('');
+          $("#acidez_id")                 .val('');
+          $("#aroma_id")                  .val('');
+          $("#sabor_id")                  .val('');
+          $("#tipo_beneficio_id")         .val('');
+          $("#tipo_secado_id")            .val('');
+          $("#cantidad_aboles_variedad1") .val('');
+          $("#cantidad_aboles_variedad2") .val('');
+          $("#cantidad_aboles_variedad3") .val('');
+          $("#nombre")                    .val('');
+          $("#area")                      .val('');
+          $("#notas_variedad1")           .val('');
+          $("#notas_variedad2")           .val('');
+          $("#notas_variedad3")           .val('');
+          $("#perfilEstado")              .text('');
+
+          $("#actualizarPerfilUrl").text('');
+          $("#actualizarPerfilUrl").attr("href","#");
+
         };
 
         //animacion del contenedor de registro
         $(document).on('click','.btn_agregar_lotes',function () {
+
             $(".btn_agregar_lotes").slideUp('slow');
             $("#contenedor_registro_lote").slideDown('slow');
+            $("#btn-actualizar-lote").slideUp('slow');
+            $("#btn-agregar-lotes").slideDown('slow');
             $(".btn_actualizar_lote").attr('disabled','true');
             $(".btn_eliminar_lote").attr('disabled','true');
+            $("#perfilEstado").slideUp('slow');
+            $("#perfilEstado").text('');
+            $("#perfilEstadoParaDescargar").slideUp('slow');
+
         });
 
         //btn actualizar
         $(document).on('click','.btn_actualizar_lote', function () {
+
+          $("#perfilEstado").text($(this).attr('perfil'));
+
+          if($("#perfilEstado").text() == '') {
+            $("#perfilEstado").slideUp('slow');
+            $("#perfilEstado").text('');
+            $("#perfilEstadoParaDescargar").slideUp('slow');
+          } else {
+            $("#perfilEstado").text($(this).attr('perfil'));
+            $("#actualizarPerfilUrl").text($(this).attr('perfil'));
+            $("#actualizarPerfilUrl").attr("href","/medios_lotes/"+$(this).attr('perfil'));
+            $("#perfilEstadoParaDescargar").slideDown('slow');
+          }
 
             $(".btn_agregar_lotes").slideUp('slow');
             $("#btn-agregar-lotes").slideUp('slow');
@@ -707,9 +748,8 @@
             $(".btn_actualizar_lote").attr('disabled','true');
             $(".btn_eliminar_lote").attr('disabled','true');
 
+            $("#id_loteActualizarProd")     .val($(this).attr('idLoteProductor'));
             $("#finca_id")                  .val($(this).attr('finca_id'));
-            $("#lote_actualizar")           .val(2);
-            $("#id_lote_actualizar")        .val($(this).attr('id'));
             $("#variedad1")                 .val($(this).attr('Variedad1_id'));
             $("#variedad2")                 .val($(this).attr('Variedad2_id'));
             $("#variedad3")                 .val($(this).attr('Variedad3_id'));
@@ -723,7 +763,6 @@
             $("#cantidad_aboles_variedad3") .val($(this).attr('Cantidad_arboles_variedad3'));
             $("#nombre")                    .val($(this).attr('Nombre'));
             $("#area")                      .val($(this).attr('Area'));
-            $("#perfil")                    .val($(this).attr('Perfil'));
             $("#notas_variedad1")           .val($(this).attr('notas_variedad1'));
             $("#notas_variedad2")           .val($(this).attr('notas_variedad2'));
             $("#notas_variedad3")           .val($(this).attr('notas_variedad3'));

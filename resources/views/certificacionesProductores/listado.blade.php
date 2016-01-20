@@ -7,7 +7,7 @@
 <table class="table display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>NIT</th>
+        <th>ID</th>
         <th>CERTIFICACION</th>
         <th>CREADO</th>
         <th>ACCION</th>
@@ -20,11 +20,6 @@
             <td>{{ $certificacionProductor->certificacion->nombre }}</td>
             <td>{{ $certificacionProductor->created_at }}</td>
             <td>
-                <input type="button" value="Actualizar" class="btn_actualizar_certiProd
-                                btn btn-primary btn-sm"
-                       id_certiProd="{{ $certificacionProductor->id }}"
-                       prod_certiProd="{{ $certificacionProductor->productor->id }}"
-                       cert_certiProd="{{ $certificacionProductor->certificacion->id }}" >
                 <input type="button" value="Eliminar" class="btn_eliminar_certiProd
                                 btn btn-danger btn-sm" id_certiProd="{{ $certificacionProductor->id }}">
             </td>

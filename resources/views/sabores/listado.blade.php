@@ -10,7 +10,7 @@
     <table class="tabla display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>NIT</th>
+        <th>ID</th>
         <th>NOMBRE</th>
         <th>CREADO</th>
         <th>ACCION</th>

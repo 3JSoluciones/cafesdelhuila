@@ -3,7 +3,7 @@
 <table class="table display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>NIT</th>
+        <th>ID</th>
         <th>NOMBRE</th>
         <th>AREA</th>
         <th>CREADO</th>
@@ -20,7 +20,7 @@
             <td>
                 <input type="button" value="Actualizar" class="btn_actualizar_lote
                                 btn btn-primary btn-sm"
-                       id                           ="{{ $lote->id }}"
+                       idLoteProductor              ="{{ $lote->id }}"
                        Finca_id                     ="{{ $lote->finca_id }}"
                        <?php
                        if($lote->variedad1_id == 0) { } else { ?> Variedad1_id ="{{ $lote->variedad1_id }}" <?php }

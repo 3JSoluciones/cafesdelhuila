@@ -27,10 +27,11 @@ class LotesController extends Controller
      *
      * @return void
      *
+     */
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
 
 
@@ -64,6 +65,7 @@ class LotesController extends Controller
           ->join('productores', 'fincas.productor_id', '=', 'productores.id')
           ->where('fincas.productor_id', '=', Input::get('idP'))
           ->select('lotes.*')
+          ->orderBy('id')
           ->get();
 
         return view('lotes.listado', array(
@@ -75,9 +77,50 @@ class LotesController extends Controller
     public function postCrear() {
 
       $AcutualizarLote = Input::get('lote_actualizar');
-      $idLoteActualizar = Input::get('id_lote_actualizar');
       $idPro  = Input::get('id_lotes_perfil');
 
+      $lote = Lote::where('id', '=', Input::get('id_loteActualizarProd'));
+
+      if($lote->count()) {
+
+        $lote = $lote->first();
+
+        $lote->finca_id  = Input::get('finca_id');
+        $lote->variedad1_id = Input::get('variedad1');
+        $lote->variedad2_id = Input::get('variedad2');
+        $lote->variedad3_id = Input::get('variedad3');
+        $lote->acidez_id = Input::get('acidez_id');
+        $lote->aroma_id  = Input::get('aroma_id');
+        $lote->sabor_id  = Input::get('sabor_id');
+        $lote->tipo_beneficio_id = Input::get('tipo_beneficio_id');
+        $lote->tipo_secado_id    = Input::get('tipo_secado_id');
+        $lote->Cantidad_arboles_variedad1 = Input::get('cantidad_aboles_variedad1');
+        $lote->Cantidad_arboles_variedad2 = Input::get('cantidad_aboles_variedad2');
+        $lote->Cantidad_arboles_variedad3 = Input::get('cantidad_aboles_variedad3');
+        $lote->nombre  = Input::get('nombre');
+        $lote->area    = Input::get('area');
+        $lote->notas_variedad1    = Input::get('notas_variedad1');
+        $lote->notas_variedad2    = Input::get('notas_variedad2');
+        $lote->notas_variedad3    = Input::get('notas_variedad3');
+
+        $lote->save();
+
+        $file   = Input::file('perfil');
+        if($file != null) {
+
+          $nombre = $file->getClientOriginalName();
+          $extend = $file->getClientOriginalExtension();
+
+          $lote = Lote::find($lote->id);
+          $lote->perfil = $lote->id.$lote->nombre.'.'.$extend;
+          $lote->save();
+
+          $directorio = public_path().'/medios_lotes/';
+          $file->move($directorio, $lote->id.$lote->nombre.'.'.$extend);
+
+        } else { }
+
+      } else {
 
         $lote = new Lote();
 
@@ -114,26 +157,35 @@ class LotesController extends Controller
           $directorio = public_path().'/medios_lotes/';
           $file->move($directorio, $lote->id.$lote->nombre.'.'.$extend);
 
+        } else {
+
+          $lote = Lote::find($lote->id);
+          $lote->perfil = '';
+          $lote->save();
+
         }
 
-        return redirect('productoresPerfil/getPerfil/'.$idPro);
+      }
+
+      return redirect('productoresPerfil/getPerfil/'.$idPro);
 
     }
 
     public function postEliminar() {
 
-      $lote = Lote::find(Input::get('id'));
+      $id     = Input::get('id');
+      $perfl  = Input::get('perfil');
 
-      $lote->delete();
-
-      if(Input::get('perfil') != null) {
-        if(Storage::exists(Input::get('perfil'))) {
-            Storage::delete(Input::get('perfil'));
-        }
-      } else {
-
-      }
+      Lote::find($id)->fill(Input::all())->delete();
 
     }
+
+    public function getLotePerfilUrl($perfil) {
+
+        return $perfil;
+
+    }
+
+
 
 }
