@@ -98,14 +98,14 @@
             </div>
             </form>
 
-            <div class="col-lg-4" style="height:200px; ">
+            <div class="col-lg-4" >
                 <h5><b>BIO</b></h5>
                 <div class="alert alert-info">
                     <i>@if(isset($productor->bio)) {{ $productor->bio }} @else  @endif</i>
                 </div>
             </div>
 
-            <div class="col-lg-3" style="height:200px; ">
+            <div class="col-lg-3" >
                 <h5><b>ORGANIZACIONES</b></h5>
                 <div class="alert alert-success">
                     <ul>
