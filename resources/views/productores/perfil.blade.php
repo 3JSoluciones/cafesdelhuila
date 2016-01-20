@@ -52,11 +52,11 @@
                   <?php
                   if ($productor->foto != null) {
                   ?>
-								  <br><br>
-								  	<a href="/perfiles/{{ $productor->foto}}" target="newwindow">
-								  	<img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'>
-									</a>
-								  <?php
+					<br><br>
+						<a href="/perfiles/{{ $productor->foto}}" target="newwindow">
+						<img class='img_perfil' id='img_perfil' src='/perfiles/{{ $productor->foto}}'>
+					</a>
+					<?php
                   } else {
                   ?> <br><br>
 		      <a href="/perfiles/no_foto.png" target="newwindow">
@@ -101,7 +101,7 @@
             <div class="col-lg-4" style="height:200px; ">
                 <h5><b>BIO</b></h5>
                 <div class="alert alert-info">
-                    <i>{{ $productor->bio }}</i>
+                    <i>@if(isset($productor->bio)) {{ $productor->bio }} @else  @endif</i>
                 </div>
             </div>
 

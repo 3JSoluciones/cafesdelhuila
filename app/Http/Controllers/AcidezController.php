@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Acidez;
+use App\Lote;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,6 +62,18 @@ class AcidezController extends Controller
     public function postEliminar() {
 
       $acidez = Acidez::find(Input::get('id'));
+
+      $lote = Lote::where('acidez_id', '=', Input::get('id'));
+
+      if($lote->count()) {
+
+        $lote = $lote->first();
+
+        $lote->acidez_id = 0;
+
+        $lote->save();
+
+      }
 
       $acidez->delete();
 

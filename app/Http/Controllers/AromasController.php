@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aroma;
+use App\Lote;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -62,6 +63,18 @@ class AromasController extends Controller
     public function postEliminar() {
 
       $aroma = Aroma::find(Input::get('id'));
+
+        $lote = Lote::where('aroma_id', '=', Input::get('id'));
+
+        if($lote->count()) {
+
+            $lote = $lote->first();
+
+            $lote->aroma_id = 0;
+
+            $lote->save();
+
+        }
 
       $aroma->delete();
 

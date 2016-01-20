@@ -113,8 +113,11 @@ class FincasController extends Controller
       $finca    = Finca::find($idFinca);
 
       $finca->delete();
+
       if($lote->count()) {
+
         $lote->delete();
+
       }
 
     }

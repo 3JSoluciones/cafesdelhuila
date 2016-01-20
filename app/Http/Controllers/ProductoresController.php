@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Certificacion;
+use App\Certificacion_Productor;
 use App\Http\Controllers\Controller;
+use App\Medio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
@@ -52,11 +55,11 @@ class ProductoresController extends Controller {
 		$productor = new Productor();
 
 		$productor->organizacion_id = Input::get('organizacion_id');
-		$productor->nombre 					= Input::get('nombre');
-		$productor->telefono 				= Input::get('telefono');
-		$productor->email 					= Input::get('email');
-		$productor->foto 						= 'no_foto.png';
-		$productor->bio 						= Input::get('bio');
+		$productor->nombre 			= Input::get('nombre');
+		$productor->telefono 		= Input::get('telefono');
+		$productor->email 			= Input::get('email');
+		$productor->foto 			= 'no_foto.png';
+		$productor->bio 			= Input::get('bio');
 
 		$productor->save();
 
@@ -66,11 +69,11 @@ class ProductoresController extends Controller {
 
 		$productor = Productor::find(Input::get('id'));
 
-		$productor->organizacion_id = Input::get('organizacion_id');
+		$productor->organizacion_id 		= Input::get('organizacion_id');
 		$productor->nombre 					= Input::get('nombre');
 		$productor->telefono 				= Input::get('telefono');
 		$productor->email 					= Input::get('email');
-		$productor->bio 						= Input::get('bio');
+		$productor->bio 					= Input::get('bio');
 
 		$productor->save();
 
@@ -78,18 +81,25 @@ class ProductoresController extends Controller {
 
 	public function postEliminar() {
 
-		$idProductor = Input::get('id');
-
-		$productor = Productor::find($idProductor);
-		$finca = Finca::where('productor_id', '=', $idProductor);
-
-		if($finca->count()) {
-				$finca->delete();
+		$medio = Medio::where('productor_id', '=', Input::get('id'));
+		if($medio->count()) {
+			$medio->delete();
 		}
 
-		$lote = Lote::where('finca_id', '=', $finca->id);
-		$lote->delete();
+		$certificacion = Certificacion_Productor::where('productor_id', '=', Input::get('id'));
+		if($certificacion->count()) {
+			$certificacion->delete();
+		}
 
+		$finca = Finca::where('productor_id', '=', Input::get('id'));
+		if($finca->count()) {
+			$finca = $finca->first();
+			$lote = Lote::where('finca_id', '=', $finca->id);
+			$lote->delete();
+			$finca->delete();
+		}
+
+		$productor = Productor::where('id', '=', Input::get('id'));
 		$productor->delete();
 
 	}
@@ -130,7 +140,7 @@ class ProductoresController extends Controller {
 			$productor = $productor->first();
 			return view('productores.nuevo', array(
 				'productor' 			=> $productor,
-				'organizaciones' 	=> $organizaciones,
+				'organizaciones' 		=> $organizaciones,
 				'proceso' 				=> $proceso,
 			));
 

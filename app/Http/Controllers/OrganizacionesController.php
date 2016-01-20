@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Organizacion;
+use App\Productor;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -62,6 +63,17 @@ class OrganizacionesController extends Controller
     public function postEliminar() {
 
       $organizacion = Organizacion::find(Input::get('id'));
+
+      $productor = Productor::where('organizacion_id', '=', Input::get('id'));
+
+      if($productor->count()) {
+
+          $productor = $productor->first();
+
+          $productor->organizacion_id = 0;
+          $productor->save();
+
+      }
 
       $organizacion->delete();
 

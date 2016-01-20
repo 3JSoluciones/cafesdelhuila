@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Departamento;
+use App\Finca;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -64,6 +65,18 @@ class DepartamentosController extends Controller
     public function postEliminar() {
 
       $departamento = Departamento::find(Input::get('id'));
+
+      $finca = Finca::where('departamento_id', '=', Input::get('id'));
+
+        if($finca->count()) {
+
+            $finca = $finca->first();
+
+            $finca->departamento_id = 0;
+
+            $finca->save();
+
+        }
 
       $departamento->delete();
 

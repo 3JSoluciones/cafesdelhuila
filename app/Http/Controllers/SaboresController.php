@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lote;
 use App\Sabor;
 use Illuminate\Http\Request;
 
@@ -61,6 +62,18 @@ class SaboresController extends Controller
     public function postEliminar() {
 
       $sabor = Sabor::find(Input::get('id'));
+
+        $lote = Lote::where('sabor_id', '=', Input::get('id'));
+
+        if($lote->count()) {
+
+            $lote = $lote->first();
+
+            $lote->sabor_id = 0;
+
+            $lote->save();
+
+        }
 
       $sabor->delete();
 

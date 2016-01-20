@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Finca;
 use App\Municipio;
 use Illuminate\Http\Request;
 
@@ -61,6 +62,18 @@ class MunicipiosController extends Controller
     public function postEliminar() {
 
       $municipio = Municipio::find(Input::get('id'));
+
+        $finca = Finca::where('municipio_id', '=', Input::get('id'));
+
+        if($finca->count()) {
+
+            $finca = $finca->first();
+
+            $finca->municipio_id = 0;
+
+            $finca->save();
+
+        }
 
       $municipio->delete();
 

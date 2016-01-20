@@ -48,6 +48,7 @@ return [
             'root'   => public_path().'/medios',
         ],
 
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',
