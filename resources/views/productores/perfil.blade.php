@@ -6,7 +6,7 @@
             width: 180px;
             height: 150px;
             cursor: pointer;
-            box-shadow: 0px 0px 12px #000b93;
+            box-shadow: 1px 1px 12px #000;
         }
 
         .img_perfil:hover {
@@ -22,11 +22,11 @@
             cursor: pointer;
         }
 
-				#img {
-					 	background: #d9edf7;
-						padding:4px;
-						border-radius: 6px;
-				}
+		#img {
+            background: #d9edf7;
+		    padding:4px;
+		    border-radius: 6px;
+		}
 
     </style>
 
@@ -95,9 +95,9 @@
 										class="btn btn-primary btn-sm" style="width:100%;">
 										Establecer foto seleccionada</button>
 
-            </div>
-            </form>
 
+            </form>
+            </div>
             <div class="col-lg-4" >
                 <h5><b>BIO</b></h5>
                 <div class="alert alert-info">
@@ -180,7 +180,7 @@
                         <div id="contenedor_medios"></div>
                         <div id="contenedor_listado_medios"></div>
                     </div>
-                </div>
+
 
             </div>
         </div>
@@ -200,7 +200,7 @@
             crearCertificaciones();
             crearMedios();
             crearLotes();
-            $(":file").filestyle({buttonBefore: true});
+            //$(":file").filestyle({buttonBefore: true});
         });
 
         $(".img_perfil").click(function () {

@@ -52,17 +52,35 @@
                         $creado     = $medio->created_at;
                         $tipo       = $medio->tipo;
 
-                        if($tipo == 'jpg' || $tipo == 'png' || $tipo == 'jpeg') {
+                        if($tipo == 'jpg' || $tipo == 'png' || $tipo == 'jpeg' || $tipo == 'gif') {
                           ?><img class="img_click" src="/medios/{{ $medio->nombre}}"><?php
                         }
                         else if($tipo == 'pdf') {
                           ?><img class="img_click" src="/img/pdf.png"><?php
                         }
-                        else if($tipo == 'xls' || $tipo == 'txt' || $tipo == 'ods') {
-                          ?><img class="img_click" src="/img/excel.png"><?php
+                        else if($tipo == 'doc' || $tipo == 'dot' || $tipo == 'docx') {
+                        ?><img class="img_click" src="/img/m_word.png"><?php
                         }
-                        else if($tipo == 'rar' || $tipo == 'zip' || $tipo == 'tar' || $tipo == 'gz') {
+                        else if($tipo == 'xls' || $tipo == 'xlm' || $tipo == 'xlt' || $tipo == 'xlv' || $tipo == 'ods') {
+                          ?><img class="img_click" src="/img/m_excel.png"><?php
+                        }
+                        else if($tipo == 'ppt' || $tipo == 'pps' || $tipo == 'pot' || $tipo == 'odp') {
+                        ?><img class="img_click" src="/img/m_power.png"><?php
+                        }
+                        else if($tipo == 'rar' || $tipo == 'tar' || $tipo == 'gz') {
                           ?><img class="img_click" src="/img/rar.png"><?php
+                        }
+                        else if($tipo == 'zip') {
+                        ?><img class="img_click" src="/img/zip.jpeg"><?php
+                        }
+                        else if($tipo == 'txt') {
+                        ?><img class="img_click" src="/img/txt.jpg"><?php
+                        }
+                        else if($tipo == 'wav' || $tipo == 'mp3' || $tipo == 'voc' || $tipo == 'ash') {
+                        ?><img class="img_click" src="/img/audio.png"><?php
+                        }
+                        else if($tipo == 'mpeg' || $tipo == 'mpg' || $tipo == 'wmv' || $tipo == 'mp4' || $tipo == 'avi') {
+                        ?><img class="img_click" src="/img/video.png"><?php
                         }
 
                     } else {
