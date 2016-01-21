@@ -138,7 +138,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>NIT</th>
+                                <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>TELEFONO</th>
                                 <th>EMAIL</th>
