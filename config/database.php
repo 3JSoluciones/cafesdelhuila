@@ -52,17 +52,7 @@ return [
 			'prefix' => '',
 		],
 
-		/*'mysql' => [
-			'driver' => 'mysql',
-			'host' => env('DB_HOST', 'mysql.cafesdelhuila.org'),
-			'database' => env('DB_DATABASE', 'si_cafesdelhuila'),
-			'username' => env('DB_USERNAME', 'si_cafesdelhuila'),
-			'password' => env('DB_PASSWORD', 'iXTAbuvHN6qJ9AkFhDk'),
-			'charset' => 'utf8',
-			'collation' => 'utf8_spanish2_ci',
-			'prefix' => '',
-			'strict' => false,
-		],*/
+
 
 		'mysql' => [
 			'driver' => 'mysql',
